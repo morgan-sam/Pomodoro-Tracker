@@ -2,13 +2,17 @@
 	"name": "pomodoro-tracker",
 	"version": "0.1.0",
 	"private": true,
+	"proxy": "http://localhost:8080",
 	"dependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
 		"@testing-library/user-event": "^7.1.2",
+		"eslint-plugin-flowtype": "^3.13.0",
+		"express": "^4.17.1",
 		"react": "^16.13.0",
 		"react-dom": "^16.13.0",
-		"react-scripts": "3.4.0"
+		"react-scripts": "3.4.0",
+		"typescript": "^3.8.3"
 	},
 	"scripts": {
 		"start": "BROWSER=chromium react-scripts start",
@@ -20,7 +24,15 @@
 		"extends": "react-app"
 	},
 	"browserslist": {
-		"production": [ ">0.2%", "not dead", "not op_mini all" ],
-		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	}
 }
