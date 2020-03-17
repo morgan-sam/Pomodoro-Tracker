@@ -21,7 +21,12 @@ function App() {
 		[ appText ]
 	);
 
-	return <div className="App">{appText}</div>;
+	return (
+		<div className="App">
+			{appText}
+			<button onClick={() => null} />
+		</div>
+	);
 }
 
 export default App;
