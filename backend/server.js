@@ -24,5 +24,11 @@ app.post('/api', function(request, response) {
 	entries[entries.length] = { type: request.body.type, date: request.body.date };
 	response.writeHead(201, { Location: entries.length });
 	response.end();
-	console.log(entries);
+
+	try {
+		fs.writeFileSync('record.txt', JSON.stringify(entries, null, 2), 'utf-8');
+	} catch (err) {
+		// An error occurred
+		console.error(err);
+	}
 });
