@@ -1,1 +1,1 @@
-curl -X POST -d "{\"type\": \"start\", \"date\": \""$(date -Iseconds)"\"}" -H "Content-Type: application/json" http://localhost:8000/api
+curl -X POST -d "{\"event\": \"start\", \"date\": \""$(date -Iseconds)"\"}" -H "Content-Type: application/json" http://localhost:8000/api

@@ -21,7 +21,7 @@ app.get('/', (req, res) => res.send(JSON.stringify(words)));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.post('/api', function(request, response) {
-	entries[entries.length] = { type: request.body.type, date: request.body.date };
+	entries[entries.length] = { event: request.body.event, date: request.body.date };
 	response.writeHead(201, { Location: entries.length });
 	response.end();
 
