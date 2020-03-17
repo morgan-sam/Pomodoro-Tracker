@@ -6,7 +6,7 @@ const port = 8000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-var posts = [];
+var entries = [];
 
 app.use(cors());
 
@@ -21,8 +21,8 @@ app.get('/', (req, res) => res.send(JSON.stringify(words)));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.post('/api', function(request, response) {
-	posts[posts.length] = { id: posts.length, name: request.body.name, fruit: request.body.fruit };
-	response.writeHead(201, { Location: posts.length });
+	entries[entries.length] = { type: request.body.type, date: request.body.date };
+	response.writeHead(201, { Location: entries.length });
 	response.end();
-	console.log(posts);
+	console.log(entries);
 });

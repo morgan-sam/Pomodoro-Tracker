@@ -1,1 +1,1 @@
-curl -X POST -d "{\"name\": \""$(shuf -n 1 names.txt)"\", \"fruit\": \""$(shuf -n 1 fruit.txt)"\"}" -H "Content-Type: application/json" http://localhost:8000/api
+curl -X POST -d "{\"type\": \"start\", \"date\": \""$(date -Iseconds)"\"}" -H "Content-Type: application/json" http://localhost:8000/api
