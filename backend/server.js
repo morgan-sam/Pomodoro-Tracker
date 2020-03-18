@@ -6,7 +6,7 @@ const port = 8000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-var entries = [];
+let entries = [];
 
 app.use(cors());
 
@@ -24,11 +24,21 @@ app.post('/api', function(request, response) {
 	entries[entries.length] = { event: request.body.event, date: request.body.date };
 	response.writeHead(201, { Location: entries.length });
 	response.end();
-
-	try {
-		fs.writeFileSync('record.txt', JSON.stringify(entries, null, 2), 'utf-8');
-	} catch (err) {
-		// An error occurred
-		console.error(err);
-	}
+	addEntryToFile(request.body.event, request.body.date);
 });
+
+function addEntryToFile(event, date) {
+	fs.readFile('./record.json', 'utf-8', function(err, data) {
+		if (err) throw err;
+
+		var entriesObjectArray = JSON.parse(data);
+		entriesObjectArray.entries.push({
+			event,
+			date
+		});
+		fs.writeFile('./record.json', JSON.stringify(entriesObjectArray, null, 4), 'utf-8', function(err) {
+			if (err) throw err;
+			console.log('Done!');
+		});
+	});
+}
