@@ -5,9 +5,6 @@ const app = express();
 const port = 8000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-
-let entries = [];
-
 app.use(cors());
 
 let words;
@@ -21,8 +18,7 @@ app.get('/', (req, res) => res.send(JSON.stringify(words)));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.post('/api', function(request, response) {
-	entries[entries.length] = { event: request.body.event, date: request.body.date };
-	response.writeHead(201, { Location: entries.length });
+	response.writeHead(200, { 'Content-Type': 'text/plain' });
 	response.end();
 	addEntryToFile(request.body.event, request.body.date);
 });
