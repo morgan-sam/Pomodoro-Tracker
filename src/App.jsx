@@ -14,19 +14,14 @@ function App() {
 			async function setAppText() {
 				const text = await getServerText();
 				const json = await text.json();
-				setText(json);
+				setText(JSON.stringify(json, null, 4));
 			}
 			setAppText();
 		},
 		[ appText ]
 	);
 
-	return (
-		<div className="App">
-			{appText}
-			<button onClick={() => null} />
-		</div>
-	);
+	return <div className="App">{appText}</div>;
 }
 
 export default App;

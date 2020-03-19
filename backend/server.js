@@ -7,14 +7,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(cors());
 
-let words;
-fs.readFile('./test.txt', 'utf8', (err, data) => {
-	if (err) throw err;
-	words = data;
-});
-
-app.get('/', (req, res) => res.send(JSON.stringify(words)));
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.post('/api', function(request, response) {
@@ -36,5 +28,6 @@ function addEntryToFile(event, date) {
 			if (err) throw err;
 			console.log('Done!');
 		});
+		app.get('/', (req, res) => res.send(JSON.stringify(entriesObjectArray)));
 	});
 }
