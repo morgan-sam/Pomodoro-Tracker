@@ -17,9 +17,14 @@ app.post('/api', function(request, response) {
 
 function addEntryToFile(event, date) {
 	fs.readFile('./record.json', 'utf-8', function(err, data) {
-		if (err) throw err;
+		if (err) {
+			fs.writeFile('./record.json', '{"entries":[]}', 'utf-8', function(err) {
+				if (err) throw err;
+				console.log('Created new record file!');
+			});
+		}
 
-		var entriesObjectArray = JSON.parse(data);
+		let entriesObjectArray = data ? JSON.parse(data) : { entries: [] };
 		entriesObjectArray.entries.push({
 			event,
 			date
