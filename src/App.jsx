@@ -25,6 +25,14 @@ function App() {
 		[ appText ]
 	);
 
+	useEffect(() => {
+		ws.onmessage = (evt) => {
+			// on receiving a message, add it to the list of messages
+			const message = JSON.parse(evt.data);
+			setText(message);
+		};
+	}, []);
+
 	return (
 		<div className="App">
 			{appText}
@@ -34,7 +42,7 @@ function App() {
 			<button
 				style={{ height: '3rem', width: '7rem' }}
 				onClick={() => {
-					ws.send(JSON.stringify(Math.random()));
+					ws.send(JSON.stringify('The quick brown fox jumps over the lazy dog'));
 				}}
 			>
 				Send msg to WS Server
