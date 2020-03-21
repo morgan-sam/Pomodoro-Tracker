@@ -9,8 +9,7 @@ function App() {
 	const [ message, setMessage ] = useState('No data from server');
 
 	ws.onmessage = (e) => {
-		setMessage(JSON.stringify(e.data));
-		console.log('hello');
+		setMessage(e.data);
 	};
 
 	useEffect(
