@@ -6,32 +6,19 @@ const ws = new WebSocket(URL);
 
 function App() {
 	const [ appText, setText ] = useState('No data from server');
+	const [ message, setMessage ] = useState('No data from server');
 
-	async function getServerText() {
-		const url = 'http://localhost:8000/';
-		const response = await fetch(url);
-		return response;
-	}
+	ws.onmessage = (e) => {
+		setMessage(JSON.stringify(e.data));
+		console.log('hello');
+	};
 
 	useEffect(
 		() => {
-			async function setAppText() {
-				const text = await getServerText();
-				const json = await text.json();
-				setText(JSON.stringify(json, null, 4));
-			}
-			setAppText();
-		},
-		[ appText ]
-	);
-
-	useEffect(() => {
-		ws.onmessage = (evt) => {
-			// on receiving a message, add it to the list of messages
-			const message = JSON.parse(evt.data);
 			setText(message);
-		};
-	}, []);
+		},
+		[ message ]
+	);
 
 	return (
 		<div className="App">

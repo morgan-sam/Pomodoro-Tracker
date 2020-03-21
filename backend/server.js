@@ -1,49 +1,32 @@
 const express = require('express');
-const fs = require('fs');
 var cors = require('cors');
 const app = express();
 const port = 8000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(cors());
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
 
 const WebSocket = require('ws');
-
 const wss = new WebSocket.Server({ port: 8080 });
 
-wss.on('connection', function connection(ws) {
-	ws.on('message', function incoming(message) {
-		console.log('received: %s', message);
-		ws.send(message.split('').reverse().join(''));
-	});
-});
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+const entries = [];
 
 app.post('/api', function(request, response) {
 	response.writeHead(200, { 'Content-Type': 'text/plain' });
 	response.end();
-	addEntryToFile(request.body.event, request.body.date);
+	const data = { event: request.body.event, date: request.body.date };
+	entries.push(data);
+	eventEmitter.emit('sendEntryEvent');
 });
 
-function addEntryToFile(event, date) {
-	fs.readFile('./record.json', 'utf-8', function(err, data) {
-		if (err) {
-			fs.writeFile('./record.json', '{"entries":[]}', 'utf-8', function(err) {
-				if (err) throw err;
-				console.log('Created new record file!');
-			});
-		}
-
-		let entriesObjectArray = data ? JSON.parse(data) : { entries: [] };
-		entriesObjectArray.entries.push({
-			event,
-			date
-		});
-		fs.writeFile('./record.json', JSON.stringify(entriesObjectArray, null, 4), 'utf-8', function(err) {
-			if (err) throw err;
-			console.log('Done!');
-		});
-		app.get('/', (req, res) => res.send(JSON.stringify(entriesObjectArray)));
+//Only emits event once connection is established
+wss.on('connection', (ws) => {
+	eventEmitter.on('sendEntryEvent', () => {
+		ws.send(JSON.stringify(entries));
+		console.log('Sent entry to client');
 	});
-}
+});
