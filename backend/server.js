@@ -26,7 +26,7 @@ wss.on('connection', (ws) => {
 		fs.readFile('./record.json', 'utf8', function(err, data) {
 			if (err) throw err;
 			ws.send(data);
-			console.log('Sent entries to client');
+			console.log('Sent entries to client.');
 		});
 	});
 });
@@ -36,14 +36,14 @@ function addEntryToFile(entryObj) {
 		if (err) {
 			fs.writeFile('./record.json', '{"entries":[]}', 'utf-8', function(err) {
 				if (err) throw err;
-				console.log('Created new record file!');
+				console.log('Created new record file.');
 			});
 		}
 		let entriesObjectArray = data ? JSON.parse(data) : { entries: [] };
 		entriesObjectArray.entries.push(entryObj);
 		fs.writeFile('./record.json', JSON.stringify(entriesObjectArray, null, 4), 'utf-8', function(err) {
 			if (err) throw err;
-			console.log('Done!');
+			console.log('Wrote entry to file.');
 			eventEmitter.emit('sendEntryEvent');
 		});
 	});
