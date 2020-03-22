@@ -17,7 +17,7 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 app.post('/api', async function(request, response) {
 	response.writeHead(200, { 'Content-Type': 'text/plain' });
 	response.end();
-	await addEntryToFile({ event: request.body.event, date: request.body.date });
+	addEntryToFile({ type: request.body.type, date: request.body.date });
 	await eventEmitter.emit('sendEntryEvent');
 });
 
@@ -34,7 +34,7 @@ wss.on('connection', (ws) => {
 	});
 });
 
-function addEntryToFile(event, date) {
+function addEntryToFile(entryObj) {
 	fs.readFile('./record.json', 'utf-8', function(err, data) {
 		if (err) {
 			fs.writeFile('./record.json', '{"entries":[]}', 'utf-8', function(err) {
@@ -42,12 +42,8 @@ function addEntryToFile(event, date) {
 				console.log('Created new record file!');
 			});
 		}
-
 		let entriesObjectArray = data ? JSON.parse(data) : { entries: [] };
-		entriesObjectArray.entries.push({
-			event,
-			date
-		});
+		entriesObjectArray.entries.push(entryObj);
 		fs.writeFile('./record.json', JSON.stringify(entriesObjectArray, null, 4), 'utf-8', function(err) {
 			if (err) throw err;
 			console.log('Done!');
