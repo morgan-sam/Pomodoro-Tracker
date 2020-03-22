@@ -14,20 +14,17 @@ const wss = new WebSocket.Server({ port: 8080 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-app.post('/api', async function(request, response) {
+app.post('/api', function(request, response) {
 	response.writeHead(200, { 'Content-Type': 'text/plain' });
 	response.end();
 	addEntryToFile({ type: request.body.type, date: request.body.date });
-	await eventEmitter.emit('sendEntryEvent');
 });
 
 //Only emits event once connection is established
 wss.on('connection', (ws) => {
 	eventEmitter.on('sendEntryEvent', () => {
 		fs.readFile('./record.json', 'utf8', function(err, data) {
-			if (err) {
-				throw err;
-			}
+			if (err) throw err;
 			ws.send(data);
 			console.log('Sent entries to client');
 		});
@@ -47,6 +44,7 @@ function addEntryToFile(entryObj) {
 		fs.writeFile('./record.json', JSON.stringify(entriesObjectArray, null, 4), 'utf-8', function(err) {
 			if (err) throw err;
 			console.log('Done!');
+			eventEmitter.emit('sendEntryEvent');
 		});
 	});
 }
