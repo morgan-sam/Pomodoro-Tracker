@@ -9,12 +9,14 @@ function App() {
 	const [ entriesData, setEntriesData ] = useState('No data from server');
 
 	ws.onmessage = (e) => {
-		setEntriesData(e.data);
+		const data = JSON.parse(e.data);
+		const entries = data.entries;
+		setEntriesData(entries);
 	};
 
 	useEffect(
 		() => {
-			setText(entriesData);
+			setText(JSON.stringify(entriesData));
 		},
 		[ entriesData ]
 	);
