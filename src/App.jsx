@@ -6,7 +6,7 @@ const ws = new WebSocket(URL);
 
 function App() {
 	const [ appText, setText ] = useState('No data from server');
-	const [ entriesData, setEntriesData ] = useState('No data from server');
+	const [ entriesData, setEntriesData ] = useState([]);
 	const [ filterOptions, setFilterOptions ] = useState({
 		type: null,
 		date: new Date().toISOString().substring(0, 10)
@@ -20,10 +20,20 @@ function App() {
 
 	useEffect(
 		() => {
-			setText(JSON.stringify(entriesData));
+			const filteredEntries = filterEntries(entriesData);
+			setText(JSON.stringify(filteredEntries));
 		},
-		[ entriesData ]
+		[ entriesData, filterOptions ]
 	);
+
+	function filterEntries(entries) {
+		console.log(entries);
+		const filteredEntries = entries.filter((el) => {
+			if (el.date.substring(0, 10) === filterOptions.date) return true;
+			else return false;
+		});
+		return filteredEntries;
+	}
 
 	return (
 		<div className="App">
