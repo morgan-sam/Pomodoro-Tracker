@@ -27,12 +27,10 @@ function App() {
 	);
 
 	function filterEntries(entries) {
-		console.log(entries);
-		const filteredEntries = entries.filter((el) => {
+		return entries.filter((el) => {
 			if (el.date.substring(0, 10) === filterOptions.date) return true;
 			else return false;
 		});
-		return filteredEntries;
 	}
 
 	return (
