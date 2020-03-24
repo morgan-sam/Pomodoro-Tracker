@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DayTimeline from './DayTimeline';
+import TimelineToggles from './TimelineToggles';
 import { getISODateXDaysAway } from '../utility/timeFunctions';
 
 const URL = 'ws://localhost:8080';
@@ -73,47 +74,7 @@ function App() {
 			</button>
 			<br />
 			<br />
-			<button
-				style={{ height: '2rem', width: '10rem' }}
-				onClick={() =>
-					setDisplayOptions({
-						...displayOptions,
-						visibility: {
-							...displayOptions.visibility,
-							start: !displayOptions.visibility.start
-						}
-					})}
-			>
-				Turn {displayOptions.visibility.start ? 'Off' : 'On'} Start Markers
-			</button>
-			{'	'}
-			<button
-				style={{ height: '2rem', width: '10rem' }}
-				onClick={() =>
-					setDisplayOptions({
-						...displayOptions,
-						visibility: {
-							...displayOptions.visibility,
-							encore: !displayOptions.visibility.encore
-						}
-					})}
-			>
-				Turn {displayOptions.visibility.encore ? 'Off' : 'On'} Encores
-			</button>
-			{'	'}
-			<button
-				style={{ height: '2rem', width: '10rem' }}
-				onClick={() =>
-					setDisplayOptions({
-						...displayOptions,
-						visibility: {
-							...displayOptions.visibility,
-							grid: !displayOptions.visibility.grid
-						}
-					})}
-			>
-				Turn {displayOptions.visibility.grid ? 'Off' : 'On'} Grid
-			</button>
+			<TimelineToggles setDisplayOptions={setDisplayOptions} displayOptions={displayOptions} />
 		</div>
 	);
 }
