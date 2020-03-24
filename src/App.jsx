@@ -45,11 +45,7 @@ function App() {
 					pomodoro: 25,
 					encore: 5
 				}}
-				visibility={{
-					start: displayOptions.visibility.start,
-					encore: displayOptions.visibility.encore,
-					grid: displayOptions.visibility.grid
-				}}
+				displayOptions={displayOptions}
 				timeOptions={timeOptions}
 			/>
 			<br />

@@ -23,7 +23,7 @@ function DayTimeline(props) {
 					...boxStyle,
 					maxWidth: `${props.timeOptions.hourWidth}rem`,
 					minWidth: `${props.timeOptions.hourWidth}rem`,
-					zIndex: props.visibility.grid ? '1' : '0'
+					zIndex: props.displayOptions.visibility.grid ? '1' : '0'
 				}}
 			>
 				<span style={textStyle}>
@@ -41,7 +41,7 @@ function DayTimeline(props) {
 					key={i}
 					style={{
 						...innerGridStyle,
-						display: props.visibility.grid ? 'flex' : 'none',
+						display: props.displayOptions.visibility.grid ? 'flex' : 'none',
 						left: `${25 * i}%`,
 						borderLeft: i ? '1px solid #555' : 'none'
 					}}
@@ -51,7 +51,7 @@ function DayTimeline(props) {
 	}
 
 	function getEventBoxes(eventType) {
-		if (props.visibility[eventType] || eventType === 'pomodoro') {
+		if (props.displayOptions.visibility[eventType] || eventType === 'pomodoro') {
 			const events = props.entries.filter((el) => el.type === eventType);
 			return events ? events.map((el, i) => convertEventToBox(el, i)) : [];
 		} else {
