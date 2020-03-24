@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
-function DayTimeline() {
+function DayTimeline(props) {
+	console.log(props);
 	const [ timeOptions, setTimeOptions ] = useState({
 		start: 8,
 		end: 24,
-		twelveHourClock: true
+		twelveHourClock: true,
+		hourWidth: 5
 	});
 
 	const containerStyle = {
 		display: 'flex',
 		width: '50%',
-		overflowX: 'scroll'
+		overflowX: 'scroll',
+		position: 'relative'
 	};
 
 	const boxStyle = {
-		height: '5rem',
-		width: '5rem',
-		minWidth: '5rem',
+		height: '8rem',
+		minWidth: `${timeOptions.hourWidth}rem`,
 		border: '1px solid black'
 	};
 
@@ -34,6 +36,28 @@ function DayTimeline() {
 		);
 	});
 
+	const eventBoxStyle = {
+		height: '5rem',
+		minWidth: `${timeOptions.hourWidth * 25 / 60}rem`,
+		backgroundColor: 'red',
+		border: '1px solid black',
+		position: 'absolute',
+		bottom: '0'
+	};
+
+	const eventBoxes = props.entries.map((el, i) => {
+		const time = convertISOToTimeObj(el.date);
+		console.log(time);
+		const currentEventStyle = {
+			//
+		};
+		return (
+			<div key={i} style={{ ...eventBoxStyle, ...currentEventStyle }}>
+				<span />
+			</div>
+		);
+	});
+
 	function convert24hrTo12hrTime(i) {
 		const period = i < 12 ? 'am' : 'pm';
 		let newTime = i % 12;
@@ -41,9 +65,20 @@ function DayTimeline() {
 		return newTime + period;
 	}
 
-	console.log(timelineBoxes);
+	function convertISOToTimeObj(isoString) {
+		const timeLetters = isoString.split('').slice(11, 17);
+		return {
+			hours: parseInt(timeLetters[0] + timeLetters[1]),
+			minutes: parseInt(timeLetters[3] + timeLetters[4])
+		};
+	}
 
-	return <div style={containerStyle}>{timelineBoxes.slice(timeOptions.start, timeOptions.end)}</div>;
+	return (
+		<div style={containerStyle}>
+			{timelineBoxes.slice(timeOptions.start, timeOptions.end)}
+			{eventBoxes}
+		</div>
+	);
 }
 
 export default DayTimeline;
