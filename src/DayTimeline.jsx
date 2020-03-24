@@ -5,19 +5,22 @@ function DayTimeline(props) {
 		startTime: 8,
 		endTime: 24,
 		twelveHourClock: true,
-		hourWidth: 4
+		hourWidth: 5
 	});
 
 	const containerStyle = {
-		display: 'flex',
-		width: '50%',
+		display: 'inline-block',
+		whiteSpace: 'nowrap',
+		width: 'auto',
+		maxWidth: '50%',
 		overflowX: 'scroll',
 		position: 'relative'
 	};
 
 	const boxStyle = {
+		display: 'inline-block',
 		height: '8rem',
-		minWidth: `${timeOptions.hourWidth}rem`,
+		width: `${timeOptions.hourWidth}rem`,
 		border: '1px solid black',
 		boxSizing: 'border-box'
 	};
@@ -37,8 +40,9 @@ function DayTimeline(props) {
 	});
 
 	const eventBoxStyle = {
+		display: 'inline-block',
 		height: '5rem',
-		minWidth: `${timeOptions.hourWidth}rem`,
+		width: `${timeOptions.hourWidth / 60 * 25}rem`,
 		backgroundColor: 'red',
 		border: '1px solid black',
 		position: 'absolute',
