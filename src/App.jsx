@@ -41,7 +41,8 @@ function App() {
 				}}
 				visibility={{
 					start: displayOptions.visibility.start,
-					encore: displayOptions.visibility.encore
+					encore: displayOptions.visibility.encore,
+					grid: displayOptions.visibility.grid
 				}}
 			/>
 			<br />
@@ -95,6 +96,20 @@ function App() {
 					})}
 			>
 				Turn {displayOptions.visibility.encore ? 'Off' : 'On'} Encores
+			</button>
+			{'	'}
+			<button
+				style={{ height: '2rem', width: '10rem' }}
+				onClick={() =>
+					setDisplayOptions({
+						...displayOptions,
+						visibility: {
+							...displayOptions.visibility,
+							grid: !displayOptions.visibility.grid
+						}
+					})}
+			>
+				Turn {displayOptions.visibility.grid ? 'Off' : 'On'} Grid
 			</button>
 		</div>
 	);

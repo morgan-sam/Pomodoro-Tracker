@@ -14,32 +14,61 @@ function DayTimeline(props) {
 	});
 
 	const containerStyle = {
-		display: 'inline-block',
+		display: 'flex',
 		whiteSpace: 'nowrap',
 		width: 'auto',
 		maxWidth: '50%',
 		overflowX: 'scroll',
-		position: 'relative'
+		position: 'relative',
+		flexDirection: 'row'
 	};
 
 	const boxStyle = {
-		display: 'inline-block',
+		position: 'relative',
+		display: 'flex',
 		height: '8rem',
-		width: `${timeOptions.hourWidth}rem`,
+		flexDirection: 'row',
+		maxWidth: `${timeOptions.hourWidth}rem`,
+		minWidth: `${timeOptions.hourWidth}rem`,
 		border: '1px solid black',
-		boxSizing: 'border-box'
+		boxSizing: 'border-box',
+		zIndex: props.visibility.grid ? '1' : '0'
 	};
 
 	const textStyle = {
+		position: 'absolute',
 		textAlign: 'center',
 		verticalAlign: 'middle',
 		padding: '0 5px'
 	};
 
 	const timelineBoxes = [ ...Array(24).keys() ].map((i) => {
+		const innerGrid = [ ...Array(4).keys() ].map((i) => {
+			return (
+				<div
+					style={{
+						display: props.visibility.grid ? 'flex' : 'none',
+						position: 'absolute',
+						left: `${25 * i}%`,
+						bottom: '0',
+						width: '25%',
+						height: 'calc(5rem + 1px)',
+						border: '1px solid #555',
+						borderBottom: 'none',
+						borderRight: 'none',
+						borderLeft: i ? '1px solid #555' : 'none',
+						flexDirection: 'row',
+						boxSizing: 'border-box',
+						zIndex: '1'
+					}}
+				/>
+			);
+		});
+
 		return (
 			<div key={i} style={boxStyle}>
 				<span style={textStyle}>{timeOptions.twelveHourClock ? convert24hrTo12hrTime(i) : `${i}:00`}</span>
+				{innerGrid}
 			</div>
 		);
 	});
