@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 function DayTimeline(props) {
+	const eventLengths = {
+		...props.eventLengths,
+		start: 1
+	};
+
 	const [ timeOptions, setTimeOptions ] = useState({
 		startTime: 8,
 		endTime: 24,
@@ -48,22 +53,30 @@ function DayTimeline(props) {
 	};
 
 	const eventBoxColor = {
+		start: {
+			backgroundColor: '#eee',
+			border: '1px dashed #ddd',
+			bottom: '1px',
+			height: 'calc(5rem - 1px)'
+		},
 		pomodoro: {
-			backgroundColor: 'red'
+			backgroundColor: '#c3e5a7'
 		},
 		encore: {
-			backgroundColor: 'green'
+			backgroundColor: '#95c39f'
 		}
 	};
 
+	const startEvents = props.entries.filter((el) => el.type === 'start');
 	const finishEvents = props.entries.filter((el) => el.type === 'pomodoro');
 	const encoreEvents = props.entries.filter((el) => el.type === 'encore');
+	const startLines = startEvents ? startEvents.map((el, i) => convertEventToBox(el, i)) : [];
 	const pomodoroBoxes = finishEvents ? finishEvents.map((el, i) => convertEventToBox(el, i)) : [];
 	const encoreBoxes = encoreEvents ? encoreEvents.map((el, i) => convertEventToBox(el, i)) : [];
 
 	function convertEventToBox(el, i) {
 		const time = convertISOToTimeObj(el.date);
-		const timelinePosition = time.hours + time.minutes / 60 - props.eventLengths[el.type] / 60;
+		const timelinePosition = time.hours + time.minutes / 60 - eventLengths[el.type] / 60;
 		const currentEventStyle = {
 			left: `${(timelinePosition - timeOptions.startTime) * timeOptions.hourWidth}rem`
 		};
@@ -74,7 +87,7 @@ function DayTimeline(props) {
 					...eventBoxStyle,
 					...currentEventStyle,
 					...eventBoxColor[el.type],
-					width: `${timeOptions.hourWidth / 60 * props.eventLengths[el.type]}rem`
+					width: `${timeOptions.hourWidth / 60 * eventLengths[el.type]}rem`
 				}}
 			>
 				<span />
@@ -100,6 +113,7 @@ function DayTimeline(props) {
 	return (
 		<div style={containerStyle}>
 			{timelineBoxes.slice(timeOptions.startTime, timeOptions.endTime)}
+			{startLines}
 			{pomodoroBoxes}
 			{encoreBoxes}
 		</div>
