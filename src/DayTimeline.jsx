@@ -55,24 +55,10 @@ function DayTimeline(props) {
 		});
 	}
 
-	function getStartLines() {
-		if (props.visibility.start) {
-			const startEvents = props.entries.filter((el) => el.type === 'start');
-			return startEvents ? startEvents.map((el, i) => convertEventToBox(el, i)) : [];
-		} else {
-			return null;
-		}
-	}
-
-	function getPomodoroBoxes() {
-		const pomodoroEvents = props.entries.filter((el) => el.type === 'pomodoro');
-		return pomodoroEvents ? pomodoroEvents.map((el, i) => convertEventToBox(el, i)) : [];
-	}
-
-	function getEncoreBoxes() {
-		if (props.visibility.encore) {
-			const encoreEvents = props.entries.filter((el) => el.type === 'encore');
-			return encoreEvents ? encoreEvents.map((el, i) => convertEventToBox(el, i)) : [];
+	function getEventBoxes(eventType) {
+		if (props.visibility[eventType] || eventType === 'pomodoro') {
+			const events = props.entries.filter((el) => el.type === eventType);
+			return events ? events.map((el, i) => convertEventToBox(el, i)) : [];
 		} else {
 			return null;
 		}
@@ -126,9 +112,9 @@ function DayTimeline(props) {
 	return (
 		<div style={containerStyle}>
 			{timelineBoxes.slice(timeOptions.startTime, timeOptions.endTime)}
-			{getStartLines()}
-			{getPomodoroBoxes()}
-			{getEncoreBoxes()}
+			{getEventBoxes('start')}
+			{getEventBoxes('pomodoro')}
+			{getEventBoxes('encore')}
 		</div>
 	);
 }
