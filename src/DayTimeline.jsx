@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 function DayTimeline(props) {
 	console.log(props);
 	const [ timeOptions, setTimeOptions ] = useState({
-		start: 8,
+		start: 0,
 		end: 24,
 		twelveHourClock: true,
-		hourWidth: 5
+		hourWidth: 4
 	});
 
 	const containerStyle = {
@@ -19,7 +19,8 @@ function DayTimeline(props) {
 	const boxStyle = {
 		height: '8rem',
 		minWidth: `${timeOptions.hourWidth}rem`,
-		border: '1px solid black'
+		border: '1px solid black',
+		boxSizing: 'border-box'
 	};
 
 	const textStyle = {
@@ -38,7 +39,7 @@ function DayTimeline(props) {
 
 	const eventBoxStyle = {
 		height: '5rem',
-		minWidth: `${timeOptions.hourWidth * 25 / 60}rem`,
+		minWidth: `${timeOptions.hourWidth}rem`,
 		backgroundColor: 'red',
 		border: '1px solid black',
 		position: 'absolute',
@@ -47,9 +48,9 @@ function DayTimeline(props) {
 
 	const eventBoxes = props.entries.map((el, i) => {
 		const time = convertISOToTimeObj(el.date);
-		console.log(time);
+		const hourMultiple = time.hours + time.minutes / 60;
 		const currentEventStyle = {
-			//
+			left: `${(hourMultiple - timeOptions.start) * timeOptions.hourWidth}rem`
 		};
 		return (
 			<div key={i} style={{ ...eventBoxStyle, ...currentEventStyle }}>
