@@ -38,6 +38,15 @@ function App() {
 		});
 	}
 
+	const arrowIconStyle = {
+		height: '2rem',
+		width: '2.5rem',
+		fontSize: '1.3rem',
+		verticalAlign: 'middle',
+		textAlign: 'center',
+		lineHeight: '0'
+	};
+
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
 			<DayTimeline
@@ -52,25 +61,25 @@ function App() {
 			<br />
 			<br />
 			<button
-				style={{ height: '2rem', width: '10rem' }}
+				style={arrowIconStyle}
 				onClick={() =>
 					setFilterOptions({
 						...filterOptions,
 						date: getISODateXDaysAway(filterOptions.date, -1)
 					})}
 			>
-				Yesterday
+				⬅️
 			</button>
 			<span style={{ padding: '2rem', width: '10rem' }}>Selected Date: {filterOptions.date}</span>
 			<button
-				style={{ height: '2rem', width: '10rem' }}
+				style={arrowIconStyle}
 				onClick={() =>
 					setFilterOptions({
 						...displayOptions,
 						date: getISODateXDaysAway(filterOptions.date, 1)
 					})}
 			>
-				Tomorrow
+				➡️
 			</button>
 			<br />
 			<br />
