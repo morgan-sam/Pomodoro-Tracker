@@ -17,6 +17,12 @@ function App() {
 			encore: true
 		}
 	});
+	const [ timeOptions, setTimeOptions ] = useState({
+		startTime: 8,
+		endTime: 24,
+		twelveHourClock: true,
+		hourWidth: 5
+	});
 
 	ws.onmessage = (e) => {
 		const data = JSON.parse(e.data);
@@ -44,6 +50,7 @@ function App() {
 					encore: displayOptions.visibility.encore,
 					grid: displayOptions.visibility.grid
 				}}
+				timeOptions={timeOptions}
 			/>
 			<br />
 			<br />

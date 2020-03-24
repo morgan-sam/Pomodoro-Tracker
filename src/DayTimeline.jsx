@@ -15,25 +15,20 @@ function DayTimeline(props) {
 		start: 1
 	};
 
-	const [ timeOptions, setTimeOptions ] = useState({
-		startTime: 8,
-		endTime: 24,
-		twelveHourClock: true,
-		hourWidth: 5
-	});
-
 	const timelineBoxes = [ ...Array(24).keys() ].map((i) => {
 		return (
 			<div
 				key={i}
 				style={{
 					...boxStyle,
-					maxWidth: `${timeOptions.hourWidth}rem`,
-					minWidth: `${timeOptions.hourWidth}rem`,
+					maxWidth: `${props.timeOptions.hourWidth}rem`,
+					minWidth: `${props.timeOptions.hourWidth}rem`,
 					zIndex: props.visibility.grid ? '1' : '0'
 				}}
 			>
-				<span style={textStyle}>{timeOptions.twelveHourClock ? convert24hrTo12hrTime(i) : `${i}:00`}</span>
+				<span style={textStyle}>
+					{props.timeOptions.twelveHourClock ? convert24hrTo12hrTime(i) : `${i}:00`}
+				</span>
 				{getBoxGrid()}
 			</div>
 		);
@@ -67,14 +62,14 @@ function DayTimeline(props) {
 	function convertEventToBox(el, i) {
 		const time = convertISOToTimeObj(el.date);
 		const hourPosition = time.hours + time.minutes / 60 - eventLengths[el.type] / 60;
-		const remPosition = (hourPosition - timeOptions.startTime) * timeOptions.hourWidth;
-		const eventWidth = timeOptions.hourWidth / 60 * eventLengths[el.type];
+		const remPosition = (hourPosition - props.timeOptions.startTime) * props.timeOptions.hourWidth;
+		const eventWidth = props.timeOptions.hourWidth / 60 * eventLengths[el.type];
 		const overflow = calculateEventOverflow(eventWidth, remPosition);
 
 		const currentEventStyle = {
 			left: `${remPosition}rem`,
 			width: `calc(${eventWidth - overflow}rem - ${overflow > 0 ? '2' : '0'}px)`,
-			display: timeOptions.endTime < hourPosition ? 'none' : 'inline-block'
+			display: props.timeOptions.endTime < hourPosition ? 'none' : 'inline-block'
 		};
 		return (
 			<div
@@ -89,7 +84,7 @@ function DayTimeline(props) {
 	}
 
 	function calculateEventOverflow(eventWidth, remPosition) {
-		const timelineWidth = (timeOptions.endTime - timeOptions.startTime) * timeOptions.hourWidth;
+		const timelineWidth = (props.timeOptions.endTime - props.timeOptions.startTime) * props.timeOptions.hourWidth;
 		const eventEndPosition = eventWidth + remPosition;
 		return Math.max(0, eventEndPosition - timelineWidth);
 	}
@@ -111,7 +106,7 @@ function DayTimeline(props) {
 
 	return (
 		<div style={containerStyle}>
-			{timelineBoxes.slice(timeOptions.startTime, timeOptions.endTime)}
+			{timelineBoxes.slice(props.timeOptions.startTime, props.timeOptions.endTime)}
 			{getEventBoxes('start')}
 			{getEventBoxes('pomodoro')}
 			{getEventBoxes('encore')}
