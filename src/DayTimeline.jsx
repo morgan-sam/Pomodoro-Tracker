@@ -23,10 +23,17 @@ function DayTimeline() {
 	const timelineBoxes = [ ...Array(24).keys() ].map((i) => {
 		return (
 			<div key={i} style={boxStyle}>
-				<span style={textStyle}>{i}</span>
+				<span style={textStyle}>{convert24hrTo12hrTime(i)}</span>
 			</div>
 		);
 	});
+
+	function convert24hrTo12hrTime(i) {
+		const period = i < 12 ? 'am' : 'pm';
+		let newTime = i % 12;
+		if (newTime === 0) newTime = 12;
+		return newTime + period;
+	}
 
 	console.log(timelineBoxes);
 
