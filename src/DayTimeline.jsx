@@ -10,14 +10,14 @@ function DayTimeline(props) {
 		startTime: 8,
 		endTime: 24,
 		twelveHourClock: true,
-		hourWidth: 3
+		hourWidth: 5
 	});
 
 	const containerStyle = {
 		display: 'inline-block',
 		whiteSpace: 'nowrap',
 		width: 'auto',
-		maxWidth: '50%',
+		maxWidth: '100%',
 		overflowX: 'scroll',
 		position: 'relative'
 	};

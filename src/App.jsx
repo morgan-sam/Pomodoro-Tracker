@@ -6,7 +6,6 @@ const URL = 'ws://localhost:8080';
 const ws = new WebSocket(URL);
 
 function App() {
-	const [ appText, setText ] = useState('No data from server');
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ filterOptions, setFilterOptions ] = useState({
 		type: null,
@@ -18,14 +17,6 @@ function App() {
 		const entries = data.entries;
 		setEntriesData(entries);
 	};
-
-	useEffect(
-		() => {
-			const filteredEntries = filterEntries(entriesData);
-			setText(JSON.stringify(filteredEntries));
-		},
-		[ entriesData, filterOptions ]
-	);
 
 	function filterEntries(entries) {
 		return entries.filter((el) => {
@@ -43,9 +34,6 @@ function App() {
 					encore: 5
 				}}
 			/>
-			<br />
-			<br />
-			{appText}
 			<br />
 			<br />
 			<button
