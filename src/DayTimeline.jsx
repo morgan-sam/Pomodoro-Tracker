@@ -8,7 +8,7 @@ function DayTimeline(props) {
 
 	const [ timeOptions, setTimeOptions ] = useState({
 		startTime: 8,
-		endTime: 24,
+		endTime: 11,
 		twelveHourClock: true,
 		hourWidth: 5
 	});
@@ -17,7 +17,7 @@ function DayTimeline(props) {
 		display: 'inline-block',
 		whiteSpace: 'nowrap',
 		width: 'auto',
-		maxWidth: '100%',
+		maxWidth: '50%',
 		overflowX: 'scroll',
 		position: 'relative'
 	};
@@ -92,23 +92,32 @@ function DayTimeline(props) {
 
 	function convertEventToBox(el, i) {
 		const time = convertISOToTimeObj(el.date);
-		const timelinePosition = time.hours + time.minutes / 60 - eventLengths[el.type] / 60;
+		const hourPosition = time.hours + time.minutes / 60 - eventLengths[el.type] / 60;
+		const remPosition = (hourPosition - timeOptions.startTime) * timeOptions.hourWidth;
+		const eventWidth = timeOptions.hourWidth / 60 * eventLengths[el.type];
+		const overflow = calculateEventOverflow(eventWidth, remPosition);
+
 		const currentEventStyle = {
-			left: `${(timelinePosition - timeOptions.startTime) * timeOptions.hourWidth}rem`
+			left: `${remPosition}rem`,
+			width: `calc(${eventWidth - overflow}rem - ${overflow > 0 ? '2' : '0'}px)`,
+			display: timeOptions.endTime < hourPosition ? 'none' : 'inline-block'
 		};
 		return (
 			<div
 				key={i}
 				style={{
 					...eventBoxStyle,
-					...currentEventStyle,
 					...eventBoxColor[el.type],
-					width: `${timeOptions.hourWidth / 60 * eventLengths[el.type]}rem`
+					...currentEventStyle
 				}}
-			>
-				<span />
-			</div>
+			/>
 		);
+	}
+
+	function calculateEventOverflow(eventWidth, remPosition) {
+		const timelineWidth = (timeOptions.endTime - timeOptions.startTime) * timeOptions.hourWidth;
+		const eventEndPosition = eventWidth + remPosition;
+		return Math.max(0, eventEndPosition - timelineWidth);
 	}
 
 	function convert24hrTo12hrTime(i) {
