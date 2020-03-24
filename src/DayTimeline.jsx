@@ -9,6 +9,8 @@ import {
 	eventBoxTypeStyle
 } from './styles/timelineStyles';
 
+import { convert24hrTo12hrTime, convertISOToTimeObj } from './utility/timeFunctions';
+
 function DayTimeline(props) {
 	const eventLengths = {
 		...props.eventLengths,
@@ -87,21 +89,6 @@ function DayTimeline(props) {
 		const timelineWidth = (props.timeOptions.endTime - props.timeOptions.startTime) * props.timeOptions.hourWidth;
 		const eventEndPosition = eventWidth + remPosition;
 		return Math.max(0, eventEndPosition - timelineWidth);
-	}
-
-	function convert24hrTo12hrTime(i) {
-		const period = i < 12 ? 'am' : 'pm';
-		let newTime = i % 12;
-		if (newTime === 0) newTime = 12;
-		return newTime + period;
-	}
-
-	function convertISOToTimeObj(isoString) {
-		const timeLetters = isoString.split('').slice(11, 17);
-		return {
-			hours: parseInt(timeLetters[0] + timeLetters[1]),
-			minutes: parseInt(timeLetters[3] + timeLetters[4])
-		};
 	}
 
 	return (

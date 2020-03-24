@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import DayTimeline from './DayTimeline';
+import { getISODateXDaysAway } from './utility/timeFunctions';
 
 const URL = 'ws://localhost:8080';
-
 const ws = new WebSocket(URL);
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
 				onClick={() =>
 					setFilterOptions({
 						...filterOptions,
-						date: new Date(Date.parse(filterOptions.date) - 1 * 86400000).toISOString().substring(0, 10)
+						date: getISODateXDaysAway(filterOptions.date, -1)
 					})}
 			>
 				Yesterday
@@ -66,7 +66,7 @@ function App() {
 				onClick={() =>
 					setFilterOptions({
 						...displayOptions,
-						date: new Date(Date.parse(filterOptions.date) + 1 * 86400000).toISOString().substring(0, 10)
+						date: getISODateXDaysAway(filterOptions.date, 1)
 					})}
 			>
 				Tomorrow
