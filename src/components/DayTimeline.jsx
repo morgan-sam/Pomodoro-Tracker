@@ -7,9 +7,9 @@ import {
 	innerGridStyle,
 	eventBoxStyle,
 	eventBoxTypeStyle
-} from './styles/timelineStyles';
+} from '../styles/timelineStyles';
 
-import { convert24hrTo12hrTime, convertISOToTimeObj } from './utility/timeFunctions';
+import { convert24hrTo12hrTime, convertISOToTimeObj } from '../utility/timeFunctions';
 
 function DayTimeline(props) {
 	const eventLengths = {

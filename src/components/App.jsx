@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DayTimeline from './DayTimeline';
-import { getISODateXDaysAway } from './utility/timeFunctions';
+import { getISODateXDaysAway } from '../utility/timeFunctions';
 
 const URL = 'ws://localhost:8080';
 const ws = new WebSocket(URL);
