@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 function DayTimeline(props) {
-	console.log(props);
 	const [ timeOptions, setTimeOptions ] = useState({
-		start: 0,
-		end: 24,
+		startTime: 8,
+		endTime: 24,
 		twelveHourClock: true,
 		hourWidth: 4
 	});
@@ -48,9 +47,9 @@ function DayTimeline(props) {
 
 	const eventBoxes = props.entries.map((el, i) => {
 		const time = convertISOToTimeObj(el.date);
-		const hourMultiple = time.hours + time.minutes / 60;
+		const timelinePosition = time.hours + time.minutes / 60;
 		const currentEventStyle = {
-			left: `${(hourMultiple - timeOptions.start) * timeOptions.hourWidth}rem`
+			left: `${(timelinePosition - timeOptions.startTime) * timeOptions.hourWidth}rem`
 		};
 		return (
 			<div key={i} style={{ ...eventBoxStyle, ...currentEventStyle }}>
@@ -76,7 +75,7 @@ function DayTimeline(props) {
 
 	return (
 		<div style={containerStyle}>
-			{timelineBoxes.slice(timeOptions.start, timeOptions.end)}
+			{timelineBoxes.slice(timeOptions.startTime, timeOptions.endTime)}
 			{eventBoxes}
 		</div>
 	);
