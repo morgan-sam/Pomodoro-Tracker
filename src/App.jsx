@@ -36,7 +36,13 @@ function App() {
 
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
-			<DayTimeline entries={filterEntries(entriesData)} />
+			<DayTimeline
+				entries={filterEntries(entriesData)}
+				eventLengths={{
+					pomodoro: 25,
+					encore: 5
+				}}
+			/>
 			<br />
 			<br />
 			{appText}

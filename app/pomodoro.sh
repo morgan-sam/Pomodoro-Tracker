@@ -13,7 +13,7 @@ while [ "$date1" -ge `date +%s` ]; do
 done
 clear
 python ./notification/finish.py
-curl -X POST -d "{\"type\": \"finish\", \"date\": \""$(date -Iseconds)"\"}" -H "Content-Type: application/json" http://localhost:8000/api
+curl -X POST -d "{\"type\": \"pomodoro\", \"date\": \""$(date -Iseconds)"\"}" -H "Content-Type: application/json" http://localhost:8000/api
 seconds=300; date1=$((`date +%s` + $seconds)); 
 echo -ne 'Encore:\n'
 while [ "$date1" -ge `date +%s` ]; do 

@@ -5,7 +5,7 @@ function DayTimeline(props) {
 		startTime: 8,
 		endTime: 24,
 		twelveHourClock: true,
-		hourWidth: 5
+		hourWidth: 3
 	});
 
 	const containerStyle = {
@@ -42,25 +42,45 @@ function DayTimeline(props) {
 	const eventBoxStyle = {
 		display: 'inline-block',
 		height: '5rem',
-		width: `${timeOptions.hourWidth / 60 * 25}rem`,
-		backgroundColor: 'red',
 		border: '1px solid black',
 		position: 'absolute',
 		bottom: '0'
 	};
 
-	const eventBoxes = props.entries.map((el, i) => {
+	const eventBoxColor = {
+		pomodoro: {
+			backgroundColor: 'red'
+		},
+		encore: {
+			backgroundColor: 'green'
+		}
+	};
+
+	const finishEvents = props.entries.filter((el) => el.type === 'pomodoro');
+	const encoreEvents = props.entries.filter((el) => el.type === 'encore');
+	const pomodoroBoxes = finishEvents ? finishEvents.map((el, i) => convertEventToBox(el, i)) : [];
+	const encoreBoxes = encoreEvents ? encoreEvents.map((el, i) => convertEventToBox(el, i)) : [];
+
+	function convertEventToBox(el, i) {
 		const time = convertISOToTimeObj(el.date);
-		const timelinePosition = time.hours + time.minutes / 60;
+		const timelinePosition = time.hours + time.minutes / 60 - props.eventLengths[el.type] / 60;
 		const currentEventStyle = {
 			left: `${(timelinePosition - timeOptions.startTime) * timeOptions.hourWidth}rem`
 		};
 		return (
-			<div key={i} style={{ ...eventBoxStyle, ...currentEventStyle }}>
+			<div
+				key={i}
+				style={{
+					...eventBoxStyle,
+					...currentEventStyle,
+					...eventBoxColor[el.type],
+					width: `${timeOptions.hourWidth / 60 * props.eventLengths[el.type]}rem`
+				}}
+			>
 				<span />
 			</div>
 		);
-	});
+	}
 
 	function convert24hrTo12hrTime(i) {
 		const period = i < 12 ? 'am' : 'pm';
@@ -80,7 +100,8 @@ function DayTimeline(props) {
 	return (
 		<div style={containerStyle}>
 			{timelineBoxes.slice(timeOptions.startTime, timeOptions.endTime)}
-			{eventBoxes}
+			{pomodoroBoxes}
+			{encoreBoxes}
 		</div>
 	);
 }
