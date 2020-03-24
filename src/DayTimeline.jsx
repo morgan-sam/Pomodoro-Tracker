@@ -8,7 +8,7 @@ function DayTimeline(props) {
 
 	const [ timeOptions, setTimeOptions ] = useState({
 		startTime: 8,
-		endTime: 11,
+		endTime: 24,
 		twelveHourClock: true,
 		hourWidth: 5
 	});
@@ -57,7 +57,8 @@ function DayTimeline(props) {
 			backgroundColor: '#eee',
 			border: '1px dashed #ddd',
 			bottom: '1px',
-			height: 'calc(5rem - 1px)'
+			height: 'calc(5rem - 1px)',
+			zIndex: '-1'
 		},
 		pomodoro: {
 			backgroundColor: '#c3e5a7'
