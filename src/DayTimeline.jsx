@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 function DayTimeline() {
+	const [ timeOptions, setTimeOptions ] = useState({
+		start: 8,
+		end: 24,
+		twelveHourClock: true
+	});
+
 	const containerStyle = {
 		display: 'flex',
 		width: '50%',
@@ -23,7 +29,7 @@ function DayTimeline() {
 	const timelineBoxes = [ ...Array(24).keys() ].map((i) => {
 		return (
 			<div key={i} style={boxStyle}>
-				<span style={textStyle}>{convert24hrTo12hrTime(i)}</span>
+				<span style={textStyle}>{timeOptions.twelveHourClock ? convert24hrTo12hrTime(i) : `${i}:00`}</span>
 			</div>
 		);
 	});
@@ -37,7 +43,7 @@ function DayTimeline() {
 
 	console.log(timelineBoxes);
 
-	return <div style={containerStyle}>{timelineBoxes}</div>;
+	return <div style={containerStyle}>{timelineBoxes.slice(timeOptions.start, timeOptions.end)}</div>;
 }
 
 export default DayTimeline;
