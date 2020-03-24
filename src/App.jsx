@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import DayTimeline from './DayTimeline';
 
 const URL = 'ws://localhost:8080';
 
@@ -34,7 +35,10 @@ function App() {
 	}
 
 	return (
-		<div className="App">
+		<div className="App" style={{ padding: '1rem' }}>
+			<DayTimeline />
+			<br />
+			<br />
 			{appText}
 			<br />
 			<br />
