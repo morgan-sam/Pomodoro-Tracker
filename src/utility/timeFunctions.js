@@ -14,5 +14,5 @@ export const convertISOToTimeObj = (isoString) => {
 };
 
 export const getISODateXDaysAway = (date, dayChange) => {
-	return new Date(Date.parse(date) + dayChange * 86400000).toISOString().substring(0, 10);
+	return new Date(Date.parse(date) + dayChange * 86400000).toISOString();
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DayTimeline from './DayTimeline';
-import TimelineToggles from './TimelineToggles';
-import { getISODateXDaysAway } from '../utility/timeFunctions';
+import TimelineToggles from 'components/TimelineToggles';
+import DateNavigation from 'components/DateNavigation';
 
 const URL = 'ws://localhost:8080';
 const ws = new WebSocket(URL);
@@ -10,7 +10,7 @@ function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ filterOptions, setFilterOptions ] = useState({
 		type: null,
-		date: new Date().toISOString().substring(0, 10)
+		date: new Date().toISOString()
 	});
 	const [ displayOptions, setDisplayOptions ] = useState({
 		visibility: {
@@ -33,19 +33,10 @@ function App() {
 
 	function filterEntries(entries) {
 		return entries.filter((el) => {
-			if (el.date.substring(0, 10) === filterOptions.date) return true;
+			if (el.date.substring(0, 10) === filterOptions.date.substring(0, 10)) return true;
 			else return false;
 		});
 	}
-
-	const arrowIconStyle = {
-		height: '2rem',
-		width: '2.5rem',
-		fontSize: '1.3rem',
-		verticalAlign: 'middle',
-		textAlign: 'center',
-		lineHeight: '0'
-	};
 
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
@@ -60,27 +51,7 @@ function App() {
 			/>
 			<br />
 			<br />
-			<button
-				style={arrowIconStyle}
-				onClick={() =>
-					setFilterOptions({
-						...filterOptions,
-						date: getISODateXDaysAway(filterOptions.date, -1)
-					})}
-			>
-				⬅️
-			</button>
-			<span style={{ padding: '2rem', width: '10rem' }}>Selected Date: {filterOptions.date}</span>
-			<button
-				style={arrowIconStyle}
-				onClick={() =>
-					setFilterOptions({
-						...displayOptions,
-						date: getISODateXDaysAway(filterOptions.date, 1)
-					})}
-			>
-				➡️
-			</button>
+			<DateNavigation filterOptions={filterOptions} setFilterOptions={setFilterOptions} />
 			<br />
 			<br />
 			<TimelineToggles setDisplayOptions={setDisplayOptions} displayOptions={displayOptions} />
