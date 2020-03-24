@@ -67,12 +67,28 @@ function DayTimeline(props) {
 		}
 	};
 
-	const startEvents = props.entries.filter((el) => el.type === 'start');
-	const finishEvents = props.entries.filter((el) => el.type === 'pomodoro');
-	const encoreEvents = props.entries.filter((el) => el.type === 'encore');
-	const startLines = startEvents ? startEvents.map((el, i) => convertEventToBox(el, i)) : [];
-	const pomodoroBoxes = finishEvents ? finishEvents.map((el, i) => convertEventToBox(el, i)) : [];
-	const encoreBoxes = encoreEvents ? encoreEvents.map((el, i) => convertEventToBox(el, i)) : [];
+	function getStartLines() {
+		if (props.visibility.start) {
+			const startEvents = props.entries.filter((el) => el.type === 'start');
+			return startEvents ? startEvents.map((el, i) => convertEventToBox(el, i)) : [];
+		} else {
+			return null;
+		}
+	}
+
+	function getPomodoroBoxes() {
+		const pomodoroEvents = props.entries.filter((el) => el.type === 'pomodoro');
+		return pomodoroEvents ? pomodoroEvents.map((el, i) => convertEventToBox(el, i)) : [];
+	}
+
+	function getEncoreBoxes() {
+		if (props.visibility.encore) {
+			const encoreEvents = props.entries.filter((el) => el.type === 'encore');
+			return encoreEvents ? encoreEvents.map((el, i) => convertEventToBox(el, i)) : [];
+		} else {
+			return null;
+		}
+	}
 
 	function convertEventToBox(el, i) {
 		const time = convertISOToTimeObj(el.date);
@@ -113,9 +129,9 @@ function DayTimeline(props) {
 	return (
 		<div style={containerStyle}>
 			{timelineBoxes.slice(timeOptions.startTime, timeOptions.endTime)}
-			{startLines}
-			{pomodoroBoxes}
-			{encoreBoxes}
+			{getStartLines()}
+			{getPomodoroBoxes()}
+			{getEncoreBoxes()}
 		</div>
 	);
 }

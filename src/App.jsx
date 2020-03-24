@@ -11,6 +11,12 @@ function App() {
 		type: null,
 		date: new Date().toISOString().substring(0, 10)
 	});
+	const [ displayOptions, setDisplayOptions ] = useState({
+		visibility: {
+			start: true,
+			encore: true
+		}
+	});
 
 	ws.onmessage = (e) => {
 		const data = JSON.parse(e.data);
@@ -33,6 +39,10 @@ function App() {
 					pomodoro: 25,
 					encore: 5
 				}}
+				visibility={{
+					start: displayOptions.visibility.start,
+					encore: displayOptions.visibility.encore
+				}}
 			/>
 			<br />
 			<br />
@@ -51,11 +61,26 @@ function App() {
 				style={{ height: '2rem', width: '10rem' }}
 				onClick={() =>
 					setFilterOptions({
-						...filterOptions,
+						...displayOptions,
 						date: new Date(Date.parse(filterOptions.date) + 1 * 86400000).toISOString().substring(0, 10)
 					})}
 			>
 				Tomorrow
+			</button>
+			<br />
+			<br />
+			<button
+				style={{ height: '2rem', width: '10rem' }}
+				onClick={() =>
+					setDisplayOptions({
+						...displayOptions,
+						visibility: {
+							...displayOptions.visibility,
+							start: !displayOptions.visibility.start
+						}
+					})}
+			>
+				Turn {displayOptions.visibility.start ? 'Off' : 'On'} Start Markers
 			</button>
 		</div>
 	);
