@@ -13,7 +13,7 @@ function App() {
 	});
 	const [ displayOptions, setDisplayOptions ] = useState({
 		visibility: {
-			start: true,
+			start: false,
 			encore: true
 		}
 	});
@@ -81,6 +81,20 @@ function App() {
 					})}
 			>
 				Turn {displayOptions.visibility.start ? 'Off' : 'On'} Start Markers
+			</button>
+			{'	'}
+			<button
+				style={{ height: '2rem', width: '10rem' }}
+				onClick={() =>
+					setDisplayOptions({
+						...displayOptions,
+						visibility: {
+							...displayOptions.visibility,
+							encore: !displayOptions.visibility.encore
+						}
+					})}
+			>
+				Turn {displayOptions.visibility.encore ? 'Off' : 'On'} Encores
 			</button>
 		</div>
 	);
