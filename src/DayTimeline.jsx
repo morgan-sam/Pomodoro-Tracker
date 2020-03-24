@@ -23,7 +23,24 @@ function DayTimeline(props) {
 	});
 
 	const timelineBoxes = [ ...Array(24).keys() ].map((i) => {
-		const innerGrid = [ ...Array(4).keys() ].map((i) => {
+		return (
+			<div
+				key={i}
+				style={{
+					...boxStyle,
+					maxWidth: `${timeOptions.hourWidth}rem`,
+					minWidth: `${timeOptions.hourWidth}rem`,
+					zIndex: props.visibility.grid ? '1' : '0'
+				}}
+			>
+				<span style={textStyle}>{timeOptions.twelveHourClock ? convert24hrTo12hrTime(i) : `${i}:00`}</span>
+				{getBoxGrid()}
+			</div>
+		);
+	});
+
+	function getBoxGrid() {
+		return [ ...Array(4).keys() ].map((i) => {
 			return (
 				<div
 					key={i}
@@ -36,22 +53,7 @@ function DayTimeline(props) {
 				/>
 			);
 		});
-
-		return (
-			<div
-				key={i}
-				style={{
-					...boxStyle,
-					maxWidth: `${timeOptions.hourWidth}rem`,
-					minWidth: `${timeOptions.hourWidth}rem`,
-					zIndex: props.visibility.grid ? '1' : '0'
-				}}
-			>
-				<span style={textStyle}>{timeOptions.twelveHourClock ? convert24hrTo12hrTime(i) : `${i}:00`}</span>
-				{innerGrid}
-			</div>
-		);
-	});
+	}
 
 	function getStartLines() {
 		if (props.visibility.start) {
