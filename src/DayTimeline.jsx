@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+import {
+	containerStyle,
+	boxStyle,
+	textStyle,
+	innerGridStyle,
+	eventBoxStyle,
+	eventBoxTypeStyle
+} from './styles/timelineStyles';
+
 function DayTimeline(props) {
 	const eventLengths = {
 		...props.eventLengths,
@@ -13,89 +22,36 @@ function DayTimeline(props) {
 		hourWidth: 5
 	});
 
-	const containerStyle = {
-		display: 'flex',
-		whiteSpace: 'nowrap',
-		width: 'auto',
-		maxWidth: '50%',
-		overflowX: 'scroll',
-		position: 'relative',
-		flexDirection: 'row'
-	};
-
-	const boxStyle = {
-		position: 'relative',
-		display: 'flex',
-		height: '8rem',
-		flexDirection: 'row',
-		maxWidth: `${timeOptions.hourWidth}rem`,
-		minWidth: `${timeOptions.hourWidth}rem`,
-		border: '1px solid black',
-		boxSizing: 'border-box',
-		zIndex: props.visibility.grid ? '1' : '0'
-	};
-
-	const textStyle = {
-		position: 'absolute',
-		textAlign: 'center',
-		verticalAlign: 'middle',
-		padding: '0 5px'
-	};
-
 	const timelineBoxes = [ ...Array(24).keys() ].map((i) => {
 		const innerGrid = [ ...Array(4).keys() ].map((i) => {
 			return (
 				<div
+					key={i}
 					style={{
+						...innerGridStyle,
 						display: props.visibility.grid ? 'flex' : 'none',
-						position: 'absolute',
 						left: `${25 * i}%`,
-						bottom: '0',
-						width: '25%',
-						height: 'calc(5rem + 1px)',
-						border: '1px solid #555',
-						borderBottom: 'none',
-						borderRight: 'none',
-						borderLeft: i ? '1px solid #555' : 'none',
-						flexDirection: 'row',
-						boxSizing: 'border-box',
-						zIndex: '1'
+						borderLeft: i ? '1px solid #555' : 'none'
 					}}
 				/>
 			);
 		});
 
 		return (
-			<div key={i} style={boxStyle}>
+			<div
+				key={i}
+				style={{
+					...boxStyle,
+					maxWidth: `${timeOptions.hourWidth}rem`,
+					minWidth: `${timeOptions.hourWidth}rem`,
+					zIndex: props.visibility.grid ? '1' : '0'
+				}}
+			>
 				<span style={textStyle}>{timeOptions.twelveHourClock ? convert24hrTo12hrTime(i) : `${i}:00`}</span>
 				{innerGrid}
 			</div>
 		);
 	});
-
-	const eventBoxStyle = {
-		display: 'inline-block',
-		height: '5rem',
-		border: '1px solid black',
-		position: 'absolute',
-		bottom: '0'
-	};
-
-	const eventBoxColor = {
-		start: {
-			backgroundColor: '#eee',
-			border: '1px dashed #ddd',
-			bottom: '1px',
-			height: 'calc(5rem - 1px)',
-			zIndex: '-1'
-		},
-		pomodoro: {
-			backgroundColor: '#c3e5a7'
-		},
-		encore: {
-			backgroundColor: '#95c39f'
-		}
-	};
 
 	function getStartLines() {
 		if (props.visibility.start) {
@@ -137,7 +93,7 @@ function DayTimeline(props) {
 				key={i}
 				style={{
 					...eventBoxStyle,
-					...eventBoxColor[el.type],
+					...eventBoxTypeStyle[el.type],
 					...currentEventStyle
 				}}
 			/>
