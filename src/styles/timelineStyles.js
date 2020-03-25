@@ -14,7 +14,8 @@ export const boxStyle = {
 	height: '8rem',
 	flexDirection: 'row',
 	border: '1px solid black',
-	boxSizing: 'border-box'
+	boxSizing: 'border-box',
+	overflowX: 'hidden'
 };
 
 export const textStyle = {
