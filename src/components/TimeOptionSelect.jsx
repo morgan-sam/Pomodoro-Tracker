@@ -13,7 +13,8 @@ function TimeOptionSelect(props) {
 	const timeOptionLabelStyle = {
 		display: 'flex',
 		justifyContent: 'center',
-		flexDirection: 'column'
+		flexDirection: 'column',
+		height: '2rem'
 	};
 
 	return (

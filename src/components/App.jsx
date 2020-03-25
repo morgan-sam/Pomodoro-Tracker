@@ -42,8 +42,8 @@ function App() {
 	const appContainerStyle = {
 		display: 'grid',
 		gridTemplateColumns: '1fr',
-		gridTemplateRows: 'auto 2fr 1fr 2fr',
-		gridRowGap: '3rem'
+		gridTemplateRows: 'auto auto auto auto',
+		gridRowGap: '3.5rem'
 	};
 
 	return (
