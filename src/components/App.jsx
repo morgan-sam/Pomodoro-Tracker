@@ -39,24 +39,29 @@ function App() {
 		});
 	}
 
+	const appContainerStyle = {
+		display: 'grid',
+		gridTemplateColumns: '1fr',
+		gridTemplateRows: 'auto 2fr 1fr 2fr',
+		gridRowGap: '3rem'
+	};
+
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
-			<DayTimeline
-				entries={filterEntries(entriesData)}
-				eventLengths={{
-					pomodoro: 25,
-					encore: 5
-				}}
-				displayOptions={displayOptions}
-				timeOptions={timeOptions}
-			/>
-			<br />
-			<br />
-			<DateNavigation filterOptions={filterOptions} setFilterOptions={setFilterOptions} />
-			<br />
-			<TimeOptionSelect timeOptions={timeOptions} setTimeOptions={setTimeOptions} />
-			<br />
-			<TimelineToggles setDisplayOptions={setDisplayOptions} displayOptions={displayOptions} />
+			<div style={appContainerStyle}>
+				<DayTimeline
+					entries={filterEntries(entriesData)}
+					eventLengths={{
+						pomodoro: 25,
+						encore: 5
+					}}
+					displayOptions={displayOptions}
+					timeOptions={timeOptions}
+				/>
+				<DateNavigation filterOptions={filterOptions} setFilterOptions={setFilterOptions} />
+				<TimeOptionSelect timeOptions={timeOptions} setTimeOptions={setTimeOptions} />
+				<TimelineToggles setDisplayOptions={setDisplayOptions} displayOptions={displayOptions} />
+			</div>
 		</div>
 	);
 }

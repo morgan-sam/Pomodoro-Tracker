@@ -10,9 +10,15 @@ function TimeOptionSelect(props) {
 		gridTemplateColumns: 'repeat(4, 5rem)'
 	};
 
+	const timeOptionLabelStyle = {
+		display: 'flex',
+		justifyContent: 'center',
+		flexDirection: 'column'
+	};
+
 	return (
 		<div style={containerStyle}>
-			<span>Start Hour:</span>
+			<span style={timeOptionLabelStyle}>Start Hour:</span>
 			<Dropdown
 				className={'dropdownStartHour'}
 				default={
@@ -31,7 +37,7 @@ function TimeOptionSelect(props) {
 				options={getArrayTimes(props.timeOptions.twelveHourClock, 0).slice(0, props.timeOptions.endTime)}
 				style={{ width: '5rem' }}
 			/>
-			<span>End Hour:</span>
+			<span style={timeOptionLabelStyle}>End Hour:</span>
 			<Dropdown
 				className={'dropdownEndHour'}
 				default={
