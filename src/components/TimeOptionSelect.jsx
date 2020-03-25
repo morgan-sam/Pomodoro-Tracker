@@ -10,15 +10,13 @@ function TimeOptionSelect(props) {
 		gridTemplateColumns: 'repeat(4, 5rem)'
 	};
 
-	function getArrayTimes(timeOptions, offset) {
-		if (timeOptions.twelveHourClock) {
+	function getArrayTimes(twelveHourClock, offset) {
+		if (twelveHourClock) {
 			return [ ...Array(24).keys() ].map((el) => convert24hrTo12hrTime(el + offset));
 		} else {
 			return [ ...Array(24).keys() ].map((el) => el + offset);
 		}
 	}
-
-	console.log(getArrayTimes(props.timeOptions));
 
 	return (
 		<div style={containerStyle}>
@@ -38,7 +36,7 @@ function TimeOptionSelect(props) {
 						startTime: props.timeOptions.twelveHourClock ? convert12hrTo24hrTime(el) : el
 					});
 				}}
-				options={getArrayTimes(props.timeOptions, 0).slice(0, props.timeOptions.endTime)}
+				options={getArrayTimes(props.timeOptions.twelveHourClock, 0).slice(0, props.timeOptions.endTime)}
 				style={{ width: '5rem' }}
 			/>
 			<span>End Hour:</span>
@@ -57,7 +55,7 @@ function TimeOptionSelect(props) {
 						endTime: props.timeOptions.twelveHourClock ? convert12hrTo24hrTime(el) : el
 					});
 				}}
-				options={getArrayTimes(props.timeOptions, 1).slice(props.timeOptions.startTime)}
+				options={getArrayTimes(props.timeOptions.twelveHourClock, 1).slice(props.timeOptions.startTime)}
 				style={{ width: '5rem' }}
 			/>
 		</div>
