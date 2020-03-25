@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
-import { convert24hrTo12hrTime, convert12hrTo24hrTime } from 'utility/timeFunctions';
+import { convert24hrTo12hrTime, convert12hrTo24hrTime, getArrayTimes } from 'utility/timeFunctions';
 
 function TimeOptionSelect(props) {
 	const containerStyle = {
@@ -9,14 +9,6 @@ function TimeOptionSelect(props) {
 		gridAutoFlow: 'column',
 		gridTemplateColumns: 'repeat(4, 5rem)'
 	};
-
-	function getArrayTimes(twelveHourClock, offset) {
-		if (twelveHourClock) {
-			return [ ...Array(24).keys() ].map((el) => convert24hrTo12hrTime(el + offset));
-		} else {
-			return [ ...Array(24).keys() ].map((el) => el + offset);
-		}
-	}
 
 	return (
 		<div style={containerStyle}>

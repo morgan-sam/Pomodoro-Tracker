@@ -22,3 +22,11 @@ export const convert12hrTo24hrTime = (i) => {
 	if (i.includes('am')) return parseInt(i.match(/[0-9]+/g));
 	if (i.includes('pm')) return parseInt(i.match(/[0-9]+/g)) + 12;
 };
+
+export const getArrayTimes = (twelveHourClock, offset) => {
+	if (twelveHourClock) {
+		return [ ...Array(24).keys() ].map((el) => convert24hrTo12hrTime(el + offset));
+	} else {
+		return [ ...Array(24).keys() ].map((el) => el + offset);
+	}
+};
