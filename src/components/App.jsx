@@ -21,7 +21,7 @@ function App() {
 	});
 	const [ timeOptions, setTimeOptions ] = useState({
 		startTime: 8,
-		endTime: 20,
+		endTime: 24,
 		twelveHourClock: true,
 		hourWidth: 5
 	});

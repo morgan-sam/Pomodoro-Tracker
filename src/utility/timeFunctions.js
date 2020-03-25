@@ -16,3 +16,9 @@ export const convertISOToTimeObj = (isoString) => {
 export const getISODateXDaysAway = (date, dayChange) => {
 	return new Date(Date.parse(date) + dayChange * 86400000).toISOString();
 };
+
+export const convert12hrTo24hrTime = (i) => {
+	if (i === '12am') return 0;
+	if (i.includes('am')) return parseInt(i.match(/[0-9]+/g));
+	if (i.includes('pm')) return parseInt(i.match(/[0-9]+/g)) + 12;
+};

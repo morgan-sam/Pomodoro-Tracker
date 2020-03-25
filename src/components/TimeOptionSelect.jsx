@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
-import { convert24hrTo12hrTime } from 'utility/timeFunctions';
+import { convert24hrTo12hrTime, convert12hrTo24hrTime } from 'utility/timeFunctions';
 
 function TimeOptionSelect(props) {
 	const containerStyle = {
@@ -10,12 +10,15 @@ function TimeOptionSelect(props) {
 		gridTemplateColumns: 'repeat(4, 5rem)'
 	};
 
-	function getArrayTimes(timeOptions) {
-		const nums = [ ...Array(24).keys() ].map((el) => convert24hrTo12hrTime(el));
-		console.log(nums);
+	function getArrayTimes(timeOptions, offset) {
+		if (timeOptions.twelveHourClock) {
+			return [ ...Array(24).keys() ].map((el) => convert24hrTo12hrTime(el + offset));
+		} else {
+			return [ ...Array(24).keys() ].map((el) => el + offset);
+		}
 	}
 
-	getArrayTimes(props.timeOptions);
+	console.log(getArrayTimes(props.timeOptions));
 
 	return (
 		<div style={containerStyle}>
@@ -29,12 +32,13 @@ function TimeOptionSelect(props) {
 						props.timeOptions.startTime
 					)
 				}
-				onClick={(el) =>
+				onClick={(el) => {
 					props.setTimeOptions({
 						...props.timeOptions,
-						startTime: el
-					})}
-				options={[ ...Array(24).keys() ].slice(0, props.timeOptions.endTime)}
+						startTime: props.timeOptions.twelveHourClock ? convert12hrTo24hrTime(el) : el
+					});
+				}}
+				options={getArrayTimes(props.timeOptions, 0).slice(0, props.timeOptions.endTime)}
 				style={{ width: '5rem' }}
 			/>
 			<span>End Hour:</span>
@@ -47,12 +51,13 @@ function TimeOptionSelect(props) {
 						props.timeOptions.endTime
 					)
 				}
-				onClick={(el) =>
+				onClick={(el) => {
 					props.setTimeOptions({
 						...props.timeOptions,
-						endTime: el
-					})}
-				options={[ ...Array(24).keys() ].map((el) => el + 1).slice(props.timeOptions.startTime)}
+						endTime: props.timeOptions.twelveHourClock ? convert12hrTo24hrTime(el) : el
+					});
+				}}
+				options={getArrayTimes(props.timeOptions, 1).slice(props.timeOptions.startTime)}
 				style={{ width: '5rem' }}
 			/>
 		</div>
