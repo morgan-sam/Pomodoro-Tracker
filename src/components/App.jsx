@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DayTimeline from './DayTimeline';
 import TimelineToggles from 'components/TimelineToggles';
+import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
 import DateNavigation from 'components/DateNavigation';
 
 const URL = 'ws://localhost:8080';
@@ -20,7 +21,7 @@ function App() {
 	});
 	const [ timeOptions, setTimeOptions ] = useState({
 		startTime: 8,
-		endTime: 24,
+		endTime: 20,
 		twelveHourClock: true,
 		hourWidth: 5
 	});
@@ -53,6 +54,7 @@ function App() {
 			<br />
 			<DateNavigation filterOptions={filterOptions} setFilterOptions={setFilterOptions} />
 			<br />
+			<TimeOptionSelect timeOptions={timeOptions} setTimeOptions={setTimeOptions} />
 			<br />
 			<TimelineToggles setDisplayOptions={setDisplayOptions} displayOptions={displayOptions} />
 		</div>

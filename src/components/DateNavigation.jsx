@@ -24,7 +24,7 @@ const DateNavigation = (props) => {
 	};
 
 	return (
-		<div style={dateContainerStyle}>
+		<div style={dateContainerStyle} className={'dateNavigation'}>
 			<button
 				style={arrowIconStyle}
 				onClick={() =>
