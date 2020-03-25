@@ -13,6 +13,7 @@ import {
 
 const Dropdown = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
+	const [ scrollPosition, setScrollPosition ] = useState(0);
 
 	const getCurrentOptionStyle = (index, options) => {
 		const max = options.length - 1;
@@ -27,7 +28,7 @@ const Dropdown = (props) => {
 				return (
 					<div
 						key={i}
-						className="dropdownOption"
+						className={`${props.className} dropdownOption`}
 						style={{ ...dropdownBoxStyle, ...currentOptionStyle }}
 						onMouseDown={() => {
 							props.onClick(el);
@@ -51,7 +52,7 @@ const Dropdown = (props) => {
 	});
 
 	const whileDropdownOpenClick = (e) => {
-		if (e.target.className === 'dropdown') {
+		if (e.target.classList.contains(`${props.className}`)) {
 			return;
 		}
 		setListOpen(false);
@@ -65,10 +66,14 @@ const Dropdown = (props) => {
 	};
 
 	return (
-		<div className={props.className} style={{ ...dropdownParentStyle, ...props.style }}>
-			<div className="dropdownElement" style={dropdownElementStyle}>
-				<div className="dropdownOptionContainer" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
+		<div className={`${props.className}`} style={{ ...dropdownParentStyle, ...props.style }}>
+			<div className={`${props.className} dropdownElement`} style={dropdownElementStyle}>
+				<div
+					className={`${props.className} dropdownOptionContainer`}
+					style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}
+				>
 					<div
+						className={`${props.className} dropdownHeader`}
 						style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle }}
 						onMouseDown={(e) => {
 							if (e.buttons === 1) setListOpen(!listOpen);
@@ -80,6 +85,7 @@ const Dropdown = (props) => {
 					{listOpen ? optionDivs : null}
 				</div>
 				<div
+					className={`${props.className} dropdownEndNode`}
 					style={{
 						...dropdownBoxStyle,
 						display: listOpen ? 'block' : 'none'

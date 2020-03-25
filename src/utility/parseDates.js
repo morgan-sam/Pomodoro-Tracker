@@ -4,7 +4,6 @@ export const parseISOToLittleEndian = (string) => {
 };
 
 export const parseISOToDateObj = (string) => {
-	console.log(string);
 	const stringDate = string.match(/.+?(?=T)/g)[0];
 	const dateSplitString = stringDate.split('-').reverse();
 	const dateArray = dateSplitString.map((el) => parseInt(el));

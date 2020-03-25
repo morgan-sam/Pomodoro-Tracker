@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Dropdown from 'components/Dropdown';
 import { getMonthIntegers, arrayOfMonthDays, get21stCenturyYears } from 'data/dates';
 import { dateSelectStyle } from 'styles/dateSelect';
@@ -10,6 +10,7 @@ const DateSelect = (props) => {
 			<div className="dropdownLabel">Month</div>
 			<div className="dropdownLabel">Year</div>
 			<Dropdown
+				className={'dayDropdown'}
 				default={props.date.day}
 				options={arrayOfMonthDays(props.date.month, props.date.year)}
 				onClick={(val) => {
@@ -17,6 +18,7 @@ const DateSelect = (props) => {
 				}}
 			/>
 			<Dropdown
+				className={'monthDropdown'}
 				default={props.date.month}
 				options={getMonthIntegers()}
 				onClick={(val) => {
@@ -24,6 +26,7 @@ const DateSelect = (props) => {
 				}}
 			/>
 			<Dropdown
+				className={'yearDropdown'}
 				default={props.date.year}
 				options={get21stCenturyYears()}
 				onClick={(val) => {
