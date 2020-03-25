@@ -7,14 +7,15 @@ function TimeOptionSelect(props) {
 		display: 'grid',
 		gap: '1rem',
 		gridAutoFlow: 'column',
-		gridTemplateColumns: 'repeat(4, 5rem)'
+		gridTemplateColumns: 'repeat(6, 5rem)'
 	};
 
 	const timeOptionLabelStyle = {
 		display: 'flex',
 		justifyContent: 'center',
 		flexDirection: 'column',
-		height: '2rem'
+		height: '2rem',
+		textAlign: 'center'
 	};
 
 	return (
@@ -56,6 +57,21 @@ function TimeOptionSelect(props) {
 				}}
 				options={getArrayTimes(props.timeOptions.twelveHourClock, 1).slice(props.timeOptions.startTime)}
 				style={{ width: '5rem' }}
+			/>
+			<span style={timeOptionLabelStyle}>Timeline Zoom:</span>
+			<input
+				type="range"
+				min="2"
+				max="20"
+				value={props.timeOptions.hourWidth}
+				onChange={(e) => {
+					props.setTimeOptions({
+						...props.timeOptions,
+						hourWidth: e.target.value
+					});
+				}}
+				step="0.01"
+				style={{ width: '15rem' }}
 			/>
 		</div>
 	);
