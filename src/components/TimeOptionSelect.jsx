@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
+import { convert24hrTo12hrTime } from 'utility/timeFunctions';
 
 function TimeOptionSelect(props) {
 	const containerStyle = {
@@ -9,12 +10,25 @@ function TimeOptionSelect(props) {
 		gridTemplateColumns: 'repeat(4, 5rem)'
 	};
 
+	function getArrayTimes(timeOptions) {
+		const nums = [ ...Array(24).keys() ].map((el) => convert24hrTo12hrTime(el));
+		console.log(nums);
+	}
+
+	getArrayTimes(props.timeOptions);
+
 	return (
 		<div style={containerStyle}>
 			<span>Start Hour:</span>
 			<Dropdown
 				className={'dropdownStartHour'}
-				default={props.timeOptions.startTime}
+				default={
+					props.timeOptions.twelveHourClock ? (
+						convert24hrTo12hrTime(props.timeOptions.startTime)
+					) : (
+						props.timeOptions.startTime
+					)
+				}
 				onClick={(el) =>
 					props.setTimeOptions({
 						...props.timeOptions,
@@ -26,7 +40,13 @@ function TimeOptionSelect(props) {
 			<span>End Hour:</span>
 			<Dropdown
 				className={'dropdownEndHour'}
-				default={props.timeOptions.endTime}
+				default={
+					props.timeOptions.twelveHourClock ? (
+						convert24hrTo12hrTime(props.timeOptions.endTime)
+					) : (
+						props.timeOptions.endTime
+					)
+				}
 				onClick={(el) =>
 					props.setTimeOptions({
 						...props.timeOptions,

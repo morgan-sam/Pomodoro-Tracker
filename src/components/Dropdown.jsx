@@ -42,7 +42,6 @@ const Dropdown = (props) => {
 		: null;
 
 	useEffect(() => {
-		checkIfOptionOOB();
 		if (listOpen) {
 			document.addEventListener('mousedown', whileDropdownOpenClick);
 		} else {
@@ -56,13 +55,6 @@ const Dropdown = (props) => {
 			return;
 		}
 		setListOpen(false);
-	};
-
-	const checkIfOptionOOB = () => {
-		if (props.options.indexOf(props.default) === -1) {
-			const lastValue = props.options[props.options.length - 1];
-			props.onClick(lastValue);
-		}
 	};
 
 	return (
