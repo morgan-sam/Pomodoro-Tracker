@@ -4,5 +4,7 @@ export const dateSelectStyle = {
 	gridTemplateRows: '1fr 3fr',
 	gridTemplateAreas: '". . ." ". . ."',
 	textAlign: 'center',
-	verticalAlign: 'middle'
+	verticalAlign: 'middle',
+	gridColumnGap: '1rem',
+	padding: '0.5rem 1rem'
 };

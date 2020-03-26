@@ -12,8 +12,7 @@ const DateNavigation = (props) => {
 		verticalAlign: 'middle',
 		textAlign: 'center',
 		lineHeight: '0',
-		top: '50%',
-		transform: 'translateY(50%)'
+		transform: 'translateY(-10%)'
 	};
 
 	const dateContainerStyle = {
@@ -21,7 +20,8 @@ const DateNavigation = (props) => {
 		display: 'flex',
 		justifyContent: 'space-between',
 		width: '20rem',
-		verticalAlign: 'middle'
+		verticalAlign: 'middle',
+		alignItems: 'center'
 	};
 
 	const todayBtnStyle = {
@@ -35,7 +35,8 @@ const DateNavigation = (props) => {
 	const centerContainer = {
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center'
+		alignItems: 'center',
+		padding: '0 1rem'
 	};
 
 	return (
