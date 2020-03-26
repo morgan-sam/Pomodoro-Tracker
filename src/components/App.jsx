@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BounceButton from './BounceButton';
 import DayTimeline from './DayTimeline';
 import TimelineToggles from 'components/TimelineToggles';
 import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
@@ -81,6 +82,12 @@ function App() {
 				<DateNavigation filterOptions={filterOptions} setFilterOptions={setFilterOptions} />
 				<TimeOptionSelect timeOptions={timeOptions} setTimeOptions={setTimeOptions} />
 				<TimelineToggles setDisplayOptions={setDisplayOptions} displayOptions={displayOptions} />
+				<BounceButton
+					onClick={() => console.log('hello')}
+					delay={500}
+					style={{ width: '8rem', height: '2rem' }}
+					text={'Bounce Button'}
+				/>
 			</div>
 		</div>
 	);

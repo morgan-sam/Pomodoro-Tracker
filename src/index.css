@@ -22,3 +22,18 @@ code {
 .dateNavigation {
 	z-index: 1;
 }
+
+@keyframes infinite-spinning {
+	0% {
+		top: 0;
+		box-shadow: 0 2px 1px #ccc, 0 0.5rem #ccc;
+	}
+	50% {
+		top: 5px;
+		box-shadow: 0 2px 1px #ccc;
+	}
+	100% {
+		top: 0;
+		box-shadow: 0 2px 1px #ccc, 0 0.5rem #ccc;
+	}
+}
