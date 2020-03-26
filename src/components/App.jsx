@@ -40,6 +40,11 @@ function App() {
 		});
 	}
 
+	function getEventCountForDay(event, date) {
+		return entriesData.filter((el) => el.type === event && el.date.substring(0, 10) === date.substring(0, 10))
+			.length;
+	}
+
 	const appContainerStyle = {
 		display: 'grid',
 		gridTemplateColumns: '1fr',
@@ -50,7 +55,13 @@ function App() {
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
 			<div style={appContainerStyle}>
-				<h1>Pomodoros for {parseISOToLittleEndian(filterOptions.date).replace(new RegExp('/', 'g'), '-')}</h1>
+				<div>
+					<h1>
+						Pomodoros for {parseISOToLittleEndian(filterOptions.date).replace(new RegExp('/', 'g'), '-')}
+					</h1>
+					<h3>Total for today: </h3>
+					<h2>Pomodoros: {getEventCountForDay('pomodoro', filterOptions.date)}</h2>
+				</div>
 				<DayTimeline
 					entries={filterEntries(entriesData)}
 					eventLengths={{
