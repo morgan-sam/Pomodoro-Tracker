@@ -23,6 +23,23 @@ const Dropdown = (props) => {
 		else return optionStyle;
 	};
 
+	const optionHeader = () => {
+		return (
+			<div
+				className={`${props.className} dropdownHeader`}
+				style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle }}
+				onMouseDown={(e) => {
+					if (e.buttons === 1) {
+						setListOpen(!listOpen);
+					}
+				}}
+				onContextMenu={(e) => e.preventDefault()}
+			>
+				{capitalizeFirstLetter(props.default)}
+			</div>
+		);
+	};
+
 	const optionDivs = props.options
 		? props.options.map(function(el, i) {
 				const currentOptionStyle = getCurrentOptionStyle(el, props.options);
@@ -55,7 +72,7 @@ const Dropdown = (props) => {
 	const setDropdownStartPosition = () => {
 		const currentIndex = props.options.indexOf(props.default);
 		dropdownRef.current.scrollTop =
-			DROPDOWN_HEIGHT_REMS * (currentIndex + 1) * parseFloat(getComputedStyle(dropdownRef.current).fontSize);
+			DROPDOWN_HEIGHT_REMS * currentIndex * parseFloat(getComputedStyle(dropdownRef.current).fontSize);
 	};
 
 	const whileDropdownOpenClick = (e) => {
@@ -80,19 +97,7 @@ const Dropdown = (props) => {
 					style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}
 					ref={dropdownRef}
 				>
-					<div
-						className={`${props.className} dropdownHeader`}
-						style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle }}
-						onMouseDown={(e) => {
-							if (e.buttons === 1) {
-								setListOpen(!listOpen);
-							}
-						}}
-						onContextMenu={(e) => e.preventDefault()}
-					>
-						{capitalizeFirstLetter(props.default)}
-					</div>
-					{listOpen ? optionDivs : null}
+					{listOpen ? optionDivs : optionHeader()}
 				</div>
 				<div
 					className={`${props.className} dropdownEndNode`}
