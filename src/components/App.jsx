@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import DayTimeline from './DayTimeline';
 import TimelineToggles from 'components/TimelineToggles';
 import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
+import TopPageText from 'components/TopPageText.jsx';
 import DateNavigation from 'components/DateNavigation';
-import { parseISOToLittleEndian } from 'utility/parseDates';
 
 const URL = 'ws://localhost:8080';
 const ws = new WebSocket(URL);
@@ -40,11 +40,6 @@ function App() {
 		});
 	}
 
-	function getEventCountForDay(event, date) {
-		return entriesData.filter((el) => el.type === event && el.date.substring(0, 10) === date.substring(0, 10))
-			.length;
-	}
-
 	const appContainerStyle = {
 		display: 'grid',
 		gridTemplateColumns: '1fr',
@@ -55,20 +50,7 @@ function App() {
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
 			<div style={appContainerStyle}>
-				<div>
-					<h1>
-						Pomodoros for {parseISOToLittleEndian(filterOptions.date).replace(new RegExp('/', 'g'), '-')}
-					</h1>
-					<h3>
-						Total{' '}
-						{filterOptions.date.substring(0, 10) === new Date().toISOString().substring(0, 10) ? (
-							'for today'
-						) : (
-							''
-						)}:{' '}
-					</h3>
-					<h2>Pomodoros: {getEventCountForDay('pomodoro', filterOptions.date)}</h2>
-				</div>
+				<TopPageText entriesData={entriesData} filterOptions={filterOptions} />
 				<DayTimeline
 					entries={filterEntries(entriesData)}
 					eventLengths={{
