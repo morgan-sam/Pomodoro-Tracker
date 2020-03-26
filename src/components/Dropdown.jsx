@@ -7,6 +7,7 @@ import {
 	dropdownBoxStyle,
 	dropdownClosedStyle,
 	dropdownOpenStyle,
+	selectedOptionStyle,
 	finalOptionStyle,
 	optionStyle,
 	DROPDOWN_HEIGHT_REMS
@@ -16,15 +17,15 @@ const Dropdown = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
 	const dropdownRef = useRef(null);
 
-	const getCurrentOptionStyle = (index, options) => {
-		const max = options.length - 1;
-		if (index === max) return { ...optionStyle, ...finalOptionStyle };
+	const getCurrentOptionStyle = (el, options) => {
+		if (el === props.default) return { ...optionStyle, ...selectedOptionStyle };
+		if (el === options[options.length - 1]) return { ...optionStyle, ...finalOptionStyle };
 		else return optionStyle;
 	};
 
 	const optionDivs = props.options
 		? props.options.map(function(el, i) {
-				const currentOptionStyle = getCurrentOptionStyle(i, props.options);
+				const currentOptionStyle = getCurrentOptionStyle(el, props.options);
 				const display = typeof el === 'string' ? capitalizeFirstLetter(el) : el;
 				return (
 					<div

@@ -54,6 +54,10 @@ export const optionStyle = {
 	width: 'inherit'
 };
 
+export const selectedOptionStyle = {
+	backgroundColor: '#eee'
+};
+
 export const finalOptionStyle = {
 	borderBottom: 'none',
 	width: 'inherit'
