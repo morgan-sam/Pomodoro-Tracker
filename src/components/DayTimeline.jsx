@@ -78,7 +78,7 @@ function DayTimeline(props) {
 	}
 
 	function getEventBoxStyle(el) {
-		const hourPosition = calculateHourPosition(el);
+		const hourPosition = calculateEventHourPosition(el);
 		const remPosition = (hourPosition - props.timeOptions.startTime) * props.timeOptions.hourWidth;
 		const eventWidth = props.timeOptions.hourWidth / 60 * eventLengths[el.type];
 		const overflow = calculateEventOverflow(eventWidth, remPosition);
@@ -90,7 +90,7 @@ function DayTimeline(props) {
 		};
 	}
 
-	function calculateHourPosition(el) {
+	function calculateEventHourPosition(el) {
 		const time = convertISOToTimeObj(el.date);
 		return time.hours + time.minutes / 60 - eventLengths[el.type] / 60;
 	}
