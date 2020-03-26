@@ -78,8 +78,7 @@ function DayTimeline(props) {
 	}
 
 	function getEventBoxStyle(el) {
-		const time = convertISOToTimeObj(el.date);
-		const hourPosition = time.hours + time.minutes / 60 - eventLengths[el.type] / 60;
+		const hourPosition = calculateHourPosition(el);
 		const remPosition = (hourPosition - props.timeOptions.startTime) * props.timeOptions.hourWidth;
 		const eventWidth = props.timeOptions.hourWidth / 60 * eventLengths[el.type];
 		const overflow = calculateEventOverflow(eventWidth, remPosition);
@@ -89,6 +88,11 @@ function DayTimeline(props) {
 			width: `calc(${eventWidth - overflow}rem - ${overflow > 0 ? '2' : '0'}px)`,
 			display: props.timeOptions.endTime < hourPosition ? 'none' : 'inline-block'
 		};
+	}
+
+	function calculateHourPosition(el) {
+		const time = convertISOToTimeObj(el.date);
+		return time.hours + time.minutes / 60 - eventLengths[el.type] / 60;
 	}
 
 	function calculateEventOverflow(eventWidth, remPosition) {
