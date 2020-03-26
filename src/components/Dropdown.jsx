@@ -9,6 +9,7 @@ import {
 	dropdownOpenStyle,
 	selectedOptionStyle,
 	finalOptionStyle,
+	dropdownEndNode,
 	optionStyle,
 	DROPDOWN_HEIGHT_REMS
 } from 'styles/dropdown';
@@ -103,6 +104,7 @@ const Dropdown = (props) => {
 					className={`${props.className} dropdownEndNode`}
 					style={{
 						...dropdownBoxStyle,
+						...dropdownEndNode,
 						display: listOpen ? 'block' : 'none'
 					}}
 				>

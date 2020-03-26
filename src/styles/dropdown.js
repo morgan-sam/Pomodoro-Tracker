@@ -9,11 +9,13 @@ export const dropdownParentStyle = {
 };
 
 export const dropdownElementStyle = {
-	borderTop: '1px solid black',
 	width: 'inherit',
 	position: 'absolute',
 	top: '50%',
-	transform: `translateY(-${DROPDOWN_HEIGHT_REMS / 2}rem)`
+	transform: `translateY(-${DROPDOWN_HEIGHT_REMS / 2}rem)`,
+	borderRadius: '1rem',
+	overflow: 'hidden',
+	border: '1px solid black'
 };
 
 export const dropdownHeaderStyle = {
@@ -30,7 +32,7 @@ export const dropdownClosedStyle = {
 
 export const dropdownOpenStyle = {
 	cursor: 'pointer',
-	maxHeight: '20rem',
+	maxHeight: 'calc(20rem - 1px)',
 	overflowY: 'scroll',
 	width: 'inherit'
 };
@@ -41,7 +43,6 @@ export const dropdownBoxStyle = {
 	justifyContent: 'center',
 	boxSizing: 'border-box',
 	height: `${DROPDOWN_HEIGHT_REMS}rem`,
-	border: '1px solid black',
 	backgroundColor: '#ccc',
 	zIndex: '0',
 	textAlign: 'center',
@@ -50,7 +51,7 @@ export const dropdownBoxStyle = {
 };
 
 export const optionStyle = {
-	borderTop: 'none',
+	borderBottom: '1px solid black',
 	width: 'inherit'
 };
 
@@ -63,10 +64,7 @@ export const finalOptionStyle = {
 	width: 'inherit'
 };
 
-/*
-
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center'
-
-*/
+export const dropdownEndNode = {
+	borderTop: '1px solid black',
+	zIndex: '1'
+};
