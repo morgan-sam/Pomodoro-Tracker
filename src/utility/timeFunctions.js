@@ -20,6 +20,7 @@ export const getISODateXDaysAway = (date, dayChange) => {
 
 export const convert12hrTo24hrTime = (i) => {
 	if (i === '12am') return 0;
+	if (i === '12pm') return 12;
 	if (i.includes('am')) return parseInt(i.match(/[0-9]+/g));
 	if (i.includes('pm')) return parseInt(i.match(/[0-9]+/g)) + 12;
 };
