@@ -1,3 +1,5 @@
+export const EVENT_HEIGHT_REM = 5;
+
 export const containerStyle = {
 	height: '10rem',
 	overflowX: 'auto'
@@ -16,7 +18,7 @@ export const scrollbarStyle = {
 export const boxStyle = {
 	position: 'relative',
 	display: 'flex',
-	height: '8rem',
+	height: `${EVENT_HEIGHT_REM + 3}rem`,
 	flexDirection: 'row',
 	border: '1px solid black',
 	boxSizing: 'border-box',
@@ -34,7 +36,7 @@ export const innerGridStyle = {
 	position: 'absolute',
 	bottom: '0',
 	width: '25%',
-	height: 'calc(5rem + 1px)',
+	height: `calc(${EVENT_HEIGHT_REM}rem + 1px)`,
 	border: '1px solid #555',
 	borderBottom: 'none',
 	borderRight: 'none',
@@ -45,7 +47,7 @@ export const innerGridStyle = {
 
 export const defaultEventBoxStyle = {
 	display: 'inline-block',
-	height: '5rem',
+	height: `${EVENT_HEIGHT_REM}rem`,
 	border: '1px solid black',
 	position: 'absolute',
 	bottom: '0'
@@ -56,7 +58,7 @@ export const eventBoxTypeStyle = {
 		backgroundColor: '#eee',
 		border: '1px dashed #ddd',
 		bottom: '1px',
-		height: 'calc(5rem - 1px)',
+		height: `calc(${EVENT_HEIGHT_REM}rem - 1px)`,
 		zIndex: '-1'
 	},
 	pomodoro: {
