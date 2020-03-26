@@ -1,24 +1,9 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
 import { convert24hrTo12hrTime, convert12hrTo24hrTime, getArrayTimes } from 'utility/timeFunctions';
+import { containerStyle, timeOptionLabelStyle } from 'styles/timeOptionSelect';
 
 function TimeOptionSelect(props) {
-	const containerStyle = {
-		display: 'grid',
-		gap: '1rem',
-		gridAutoFlow: 'column',
-		gridTemplateColumns: 'repeat(6, 5rem)',
-		zIndex: '1'
-	};
-
-	const timeOptionLabelStyle = {
-		display: 'flex',
-		justifyContent: 'center',
-		flexDirection: 'column',
-		height: '2rem',
-		textAlign: 'center'
-	};
-
 	return (
 		<div style={containerStyle}>
 			<span style={timeOptionLabelStyle}>Start Hour:</span>
