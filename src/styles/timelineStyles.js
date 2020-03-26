@@ -2,8 +2,8 @@ export const containerStyle = {
 	display: 'flex',
 	whiteSpace: 'nowrap',
 	width: 'auto',
-	maxWidth: '50%',
-	overflowX: 'scroll',
+	maxWidth: '100%',
+	overflowX: 'auto',
 	position: 'relative',
 	flexDirection: 'row'
 };
