@@ -59,7 +59,14 @@ function App() {
 					<h1>
 						Pomodoros for {parseISOToLittleEndian(filterOptions.date).replace(new RegExp('/', 'g'), '-')}
 					</h1>
-					<h3>Total for today: </h3>
+					<h3>
+						Total{' '}
+						{filterOptions.date.substring(0, 10) === new Date().toISOString().substring(0, 10) ? (
+							'for today'
+						) : (
+							''
+						)}:{' '}
+					</h3>
 					<h2>Pomodoros: {getEventCountForDay('pomodoro', filterOptions.date)}</h2>
 				</div>
 				<DayTimeline
