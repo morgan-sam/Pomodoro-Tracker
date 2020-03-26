@@ -18,24 +18,26 @@ function DayTimeline(props) {
 		start: 1
 	};
 
-	const timelineBoxes = [ ...Array(24).keys() ].map((i) => {
-		return (
-			<div
-				key={i}
-				style={{
-					...boxStyle,
-					maxWidth: `${props.timeOptions.hourWidth}rem`,
-					minWidth: `${props.timeOptions.hourWidth}rem`,
-					zIndex: props.displayOptions.visibility.grid ? '1' : '0'
-				}}
-			>
-				<span style={textStyle}>
-					{props.timeOptions.twelveHourClock ? convert24hrTo12hrTime(i) : `${i}:00`}
-				</span>
-				{getBoxGrid()}
-			</div>
-		);
-	});
+	function getTimelineBoxSelection(start, end) {
+		return [ ...Array(end - start).keys() ].map((i) => {
+			return (
+				<div
+					key={i}
+					style={{
+						...boxStyle,
+						maxWidth: `${props.timeOptions.hourWidth}rem`,
+						minWidth: `${props.timeOptions.hourWidth}rem`,
+						zIndex: props.displayOptions.visibility.grid ? '1' : '0'
+					}}
+				>
+					<span style={textStyle}>
+						{props.timeOptions.twelveHourClock ? convert24hrTo12hrTime(i + start) : `${i + start}:00`}
+					</span>
+					{getBoxGrid()}
+				</div>
+			);
+		});
+	}
 
 	function getBoxGrid() {
 		return [ ...Array(4).keys() ].map((i) => {
@@ -95,7 +97,7 @@ function DayTimeline(props) {
 	return (
 		<div style={containerStyle}>
 			<div style={scrollbarStyle}>
-				{timelineBoxes.slice(props.timeOptions.startTime, props.timeOptions.endTime)}
+				{getTimelineBoxSelection(props.timeOptions.startTime, props.timeOptions.endTime)}
 				{getEventBoxes('start')}
 				{getEventBoxes('pomodoro')}
 				{getEventBoxes('encore')}
