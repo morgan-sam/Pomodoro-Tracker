@@ -35,7 +35,8 @@ export const dropdownOpenStyle = {
 	cursor: 'pointer',
 	maxHeight: 'calc(20rem - 1px)',
 	overflowY: 'scroll',
-	width: 'inherit'
+	width: 'inherit',
+	transition: '0.65s cubic-bezier(1,.04,0,.97)'
 };
 
 export const dropdownBoxStyle = {
