@@ -3,7 +3,8 @@ export const containerStyle = {
 	gap: '1rem',
 	gridAutoFlow: 'column',
 	gridTemplateColumns: 'repeat(3, 10rem)',
-	zIndex: '0'
+	zIndex: '0',
+	padding: '2rem 0'
 };
 
 export const toggleButtonStyle = {

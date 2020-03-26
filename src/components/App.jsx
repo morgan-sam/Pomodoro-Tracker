@@ -44,7 +44,7 @@ function App() {
 		display: 'grid',
 		gridTemplateColumns: '1fr',
 		gridTemplateRows: 'auto auto auto auto',
-		gridRowGap: '3.5rem'
+		gridRowGap: '.5rem'
 	};
 
 	return (

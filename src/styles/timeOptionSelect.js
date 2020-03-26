@@ -3,7 +3,8 @@ export const containerStyle = {
 	gap: '1rem',
 	gridAutoFlow: 'column',
 	gridTemplateColumns: 'repeat(6, 5rem)',
-	zIndex: '1'
+	zIndex: '1',
+	padding: '2rem 0'
 };
 
 export const timeOptionLabelStyle = {

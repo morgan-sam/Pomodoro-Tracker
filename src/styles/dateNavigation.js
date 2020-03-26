@@ -5,7 +5,8 @@ export const dateContainerStyle = {
 	width: '0',
 	verticalAlign: 'middle',
 	alignItems: 'center',
-	zIndex: '2'
+	zIndex: '2',
+	padding: '2rem 0'
 };
 
 export const todayBtnStyle = {
