@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { capitalizeFirstLetter } from 'utility/parseText';
 import {
 	dropdownParentStyle,
@@ -8,12 +8,13 @@ import {
 	dropdownClosedStyle,
 	dropdownOpenStyle,
 	finalOptionStyle,
-	optionStyle
+	optionStyle,
+	DROPDOWN_HEIGHT_REMS
 } from 'styles/dropdown';
 
 const Dropdown = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
-	const [ scrollPosition, setScrollPosition ] = useState(0);
+	const dropdownRef = useRef(null);
 
 	const getCurrentOptionStyle = (index, options) => {
 		const max = options.length - 1;
@@ -50,6 +51,12 @@ const Dropdown = (props) => {
 		return () => document.removeEventListener('mousedown', whileDropdownOpenClick);
 	});
 
+	const setDropdownStartPosition = () => {
+		const currentIndex = props.options.indexOf(props.default);
+		dropdownRef.current.scrollTop =
+			DROPDOWN_HEIGHT_REMS * (currentIndex + 1) * parseFloat(getComputedStyle(dropdownRef.current).fontSize);
+	};
+
 	const whileDropdownOpenClick = (e) => {
 		if (e.target.classList.contains(`${props.className}`)) {
 			return;
@@ -57,18 +64,28 @@ const Dropdown = (props) => {
 		setListOpen(false);
 	};
 
+	useEffect(
+		() => {
+			setDropdownStartPosition();
+		},
+		[ listOpen ]
+	);
+
 	return (
 		<div className={`${props.className}`} style={{ ...dropdownParentStyle, ...props.style }}>
 			<div className={`${props.className} dropdownElement`} style={dropdownElementStyle}>
 				<div
 					className={`${props.className} dropdownOptionContainer`}
 					style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}
+					ref={dropdownRef}
 				>
 					<div
 						className={`${props.className} dropdownHeader`}
 						style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle }}
 						onMouseDown={(e) => {
-							if (e.buttons === 1) setListOpen(!listOpen);
+							if (e.buttons === 1) {
+								setListOpen(!listOpen);
+							}
 						}}
 						onContextMenu={(e) => e.preventDefault()}
 					>

@@ -1,4 +1,4 @@
-const DROPDOWN_HEIGHT_REMS = 2;
+export const DROPDOWN_HEIGHT_REMS = 2;
 
 export const dropdownParentStyle = {
 	width: '100%',
