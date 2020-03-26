@@ -48,7 +48,9 @@ const DateNavigation = (props) => {
 						date: getISODateXDaysAway(props.filterOptions.date, -1)
 					})}
 			>
-				⬅️
+				<span role="img" aria-label="left-arrow">
+					⬅️
+				</span>
 			</button>
 			<div style={centerContainer}>
 				<DateSelect
@@ -79,7 +81,9 @@ const DateNavigation = (props) => {
 						date: getISODateXDaysAway(props.filterOptions.date, 1)
 					})}
 			>
-				➡️
+				<span role="img" aria-label="right-arrow">
+					➡️
+				</span>
 			</button>
 		</div>
 	);
