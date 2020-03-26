@@ -1,28 +1,15 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import DateSelect from 'components/DateSelect';
-import { getISODateXDaysAway } from 'utility/timeFunctions';
 import { parseISOToDateObj, parseDateObjToISO } from 'utility/parseDates';
 import { getDayFromTodayAsISO } from 'data/dates';
-import { arrowButtonDefaultStyle } from 'styles/standard.js';
 import { dateContainerStyle, todayBtnStyle, centerContainer } from 'styles/dateNavigation';
 import BounceButton from './BounceButton';
+import DateArrowButton from './DateArrowButton';
 
 const DateNavigation = (props) => {
 	return (
 		<div style={dateContainerStyle} className={'dateNavigation'}>
-			<button
-				className={'arrowbutton'}
-				style={arrowButtonDefaultStyle}
-				onClick={() =>
-					props.setFilterOptions({
-						...props.filterOptions,
-						date: getISODateXDaysAway(props.filterOptions.date, -1)
-					})}
-			>
-				<span role="img" aria-label="left-arrow">
-					⬅️
-				</span>
-			</button>
+			<DateArrowButton {...props} direction={'left'} />
 			<div style={centerContainer}>
 				<DateSelect
 					date={parseISOToDateObj(props.filterOptions.date)}
@@ -44,19 +31,7 @@ const DateNavigation = (props) => {
 					text={'Reset To Today'}
 				/>
 			</div>
-			<button
-				className={'arrowbutton'}
-				style={arrowButtonDefaultStyle}
-				onClick={() =>
-					props.setFilterOptions({
-						...props.filterOptions,
-						date: getISODateXDaysAway(props.filterOptions.date, 1)
-					})}
-			>
-				<span role="img" aria-label="right-arrow">
-					➡️
-				</span>
-			</button>
+			<DateArrowButton {...props} direction={'right'} />
 		</div>
 	);
 };
