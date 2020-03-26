@@ -50,9 +50,10 @@ function TimeOptionSelect(props) {
 					)
 				}
 				onClick={(el) => {
+					const endTime = props.timeOptions.twelveHourClock ? convert12hrTo24hrTime(el) : el;
 					props.setTimeOptions({
 						...props.timeOptions,
-						endTime: props.timeOptions.twelveHourClock ? convert12hrTo24hrTime(el) : el
+						endTime: endTime === 0 ? 24 : endTime
 					});
 				}}
 				options={getArrayTimes(props.timeOptions.twelveHourClock, 1).slice(props.timeOptions.startTime)}

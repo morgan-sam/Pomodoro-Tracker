@@ -1,5 +1,6 @@
 export const convert24hrTo12hrTime = (i) => {
-	const period = i < 12 ? 'am' : 'pm';
+	let period = i < 12 ? 'am' : 'pm';
+	if (i === 24) period = 'am';
 	let newTime = i % 12;
 	if (newTime === 0) newTime = 12;
 	return newTime + period;
