@@ -37,3 +37,7 @@ code {
 		box-shadow: 0 2px 1px #ccc, 0 0.3rem #ccc;
 	}
 }
+
+.arrowbutton:active {
+	top: 2px;
+}

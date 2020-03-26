@@ -1,22 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import DateSelect from 'components/DateSelect';
 import { getISODateXDaysAway } from 'utility/timeFunctions';
 import { parseISOToDateObj, parseDateObjToISO } from 'utility/parseDates';
 import { getDayFromTodayAsISO } from 'data/dates';
-import { standardButtonStyle } from 'styles/standard.js';
+import { arrowButtonDefaultStyle } from 'styles/standard.js';
 import BounceButton from './BounceButton';
 
 const DateNavigation = (props) => {
-	const arrowIconStyle = {
-		height: '2rem',
-		width: '2.5rem',
-		fontSize: '1.3rem',
-		verticalAlign: 'middle',
-		textAlign: 'center',
-		lineHeight: '0',
-		transform: 'translateY(-10%)'
-	};
-
 	const dateContainerStyle = {
 		position: 'relative',
 		display: 'flex',
@@ -44,7 +34,8 @@ const DateNavigation = (props) => {
 	return (
 		<div style={dateContainerStyle} className={'dateNavigation'}>
 			<button
-				style={{ ...arrowIconStyle, ...standardButtonStyle }}
+				className={'arrowbutton'}
+				style={arrowButtonDefaultStyle}
 				onClick={() =>
 					props.setFilterOptions({
 						...props.filterOptions,
@@ -66,7 +57,7 @@ const DateNavigation = (props) => {
 					}}
 				/>
 				<BounceButton
-					style={{ ...todayBtnStyle, ...standardButtonStyle }}
+					style={{ ...todayBtnStyle }}
 					onClick={() =>
 						props.setFilterOptions({
 							...props.filterOptions,
@@ -77,7 +68,8 @@ const DateNavigation = (props) => {
 				/>
 			</div>
 			<button
-				style={{ ...arrowIconStyle, ...standardButtonStyle }}
+				className={'arrowbutton'}
+				style={arrowButtonDefaultStyle}
 				onClick={() =>
 					props.setFilterOptions({
 						...props.filterOptions,
