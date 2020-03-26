@@ -4,34 +4,10 @@ import { getISODateXDaysAway } from 'utility/timeFunctions';
 import { parseISOToDateObj, parseDateObjToISO } from 'utility/parseDates';
 import { getDayFromTodayAsISO } from 'data/dates';
 import { arrowButtonDefaultStyle } from 'styles/standard.js';
+import { dateContainerStyle, todayBtnStyle, centerContainer } from 'styles/dateNavigation';
 import BounceButton from './BounceButton';
 
 const DateNavigation = (props) => {
-	const dateContainerStyle = {
-		position: 'relative',
-		display: 'flex',
-		justifyContent: 'space-between',
-		width: '0',
-		verticalAlign: 'middle',
-		alignItems: 'center',
-		zIndex: '2'
-	};
-
-	const todayBtnStyle = {
-		height: '2rem',
-		width: 'auto',
-		padding: '0 1rem',
-		verticalAlign: 'middle',
-		textAlign: 'center'
-	};
-
-	const centerContainer = {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		padding: '0 1rem'
-	};
-
 	return (
 		<div style={dateContainerStyle} className={'dateNavigation'}>
 			<button
