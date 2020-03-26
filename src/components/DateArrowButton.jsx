@@ -1,5 +1,5 @@
 import React from 'react';
-import { arrowButtonDefaultStyle } from 'styles/standard.js';
+import { arrowButtonDefaultStyle } from 'styles/dateArrowButton.js';
 import { getISODateXDaysAway } from 'utility/timeFunctions';
 
 const DateArrowButton = (props) => {
