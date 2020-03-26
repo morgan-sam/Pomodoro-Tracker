@@ -39,3 +39,7 @@ export const getDayFromTodayAsISO = (dayDifference = 0) => {
 	const stringDate = day.toISOString().match(/.+?(?=T)/g)[0];
 	return `${stringDate}T00:00:00.000Z`;
 };
+
+export const addOrSubtractDaysFromISODate = (date, dayChange) => {
+	return new Date(Date.parse(date) + dayChange * 86400000).toISOString();
+};

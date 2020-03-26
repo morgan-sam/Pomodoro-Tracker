@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
-import { convert24hrTo12hrTime, convert12hrTo24hrTime, getArrayTimes } from 'utility/timeFunctions';
+import { convert24hrTo12hrTime, convert12hrTo24hrTime, getArrayTimes } from 'utility/parseTime';
 import { containerStyle, timeOptionLabelStyle } from 'styles/timeOptionSelect';
 
 function TimeOptionSelect(props) {

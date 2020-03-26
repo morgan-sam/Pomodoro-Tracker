@@ -10,7 +10,7 @@ import {
 	eventBoxTypeStyle
 } from '../styles/dayTimeline';
 
-import { convert24hrTo12hrTime, convertISOToTimeObj } from '../utility/timeFunctions';
+import { convert24hrTo12hrTime, convertISOToTimeObj } from '../utility/parseTime';
 
 function DayTimeline(props) {
 	const eventLengths = {
