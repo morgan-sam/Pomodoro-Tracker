@@ -3,6 +3,7 @@ import DayTimeline from './DayTimeline';
 import TimelineToggles from 'components/TimelineToggles';
 import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
 import DateNavigation from 'components/DateNavigation';
+import { parseISOToLittleEndian } from 'utility/parseDates';
 
 const URL = 'ws://localhost:8080';
 const ws = new WebSocket(URL);
@@ -49,6 +50,7 @@ function App() {
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
 			<div style={appContainerStyle}>
+				<h1>Pomodoros for {parseISOToLittleEndian(filterOptions.date).replace(new RegExp('/', 'g'), '-')}</h1>
 				<DayTimeline
 					entries={filterEntries(entriesData)}
 					eventLengths={{
