@@ -4,6 +4,7 @@ import { getISODateXDaysAway } from 'utility/timeFunctions';
 import { parseISOToDateObj, parseDateObjToISO } from 'utility/parseDates';
 import { getDayFromTodayAsISO } from 'data/dates';
 import { standardButtonStyle } from 'styles/standard.js';
+import BounceButton from './BounceButton';
 
 const DateNavigation = (props) => {
 	const arrowIconStyle = {
@@ -64,16 +65,16 @@ const DateNavigation = (props) => {
 						});
 					}}
 				/>
-				<button
+				<BounceButton
 					style={{ ...todayBtnStyle, ...standardButtonStyle }}
 					onClick={() =>
 						props.setFilterOptions({
 							...props.filterOptions,
 							date: getDayFromTodayAsISO()
 						})}
-				>
-					Reset To Today
-				</button>
+					delay={500}
+					text={'Reset To Today'}
+				/>
 			</div>
 			<button
 				style={{ ...arrowIconStyle, ...standardButtonStyle }}

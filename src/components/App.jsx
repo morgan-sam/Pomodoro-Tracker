@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import BounceButton from './BounceButton';
 import DayTimeline from './DayTimeline';
 import TimelineToggles from 'components/TimelineToggles';
 import TimeOptionSelect from 'components/TimeOptionSelect.jsx';

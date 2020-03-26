@@ -10,7 +10,7 @@ function BounceButton(props) {
 		cursor: 'pointer',
 		outline: '0',
 		border: '1px solid black',
-		boxShadow: '0 2px 1px #ccc, 0 0.5rem #ccc'
+		boxShadow: '0 2px 1px #ccc, 0 0.3rem #ccc'
 	};
 
 	const animationStyle = {
