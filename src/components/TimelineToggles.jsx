@@ -1,5 +1,5 @@
 import React from 'react';
-import { containerStyle } from '../styles/timelineStyles';
+import { standardButtonStyle } from 'styles/standard';
 
 function TimelineToggles(props) {
 	const containerStyle = {
@@ -9,10 +9,15 @@ function TimelineToggles(props) {
 		gridTemplateColumns: 'repeat(3, 10rem)'
 	};
 
+	const toggleButtonStyle = {
+		height: '2rem',
+		width: '10rem'
+	};
+
 	return (
 		<div style={containerStyle}>
 			<button
-				style={{ height: '2rem', width: '10rem' }}
+				style={{ ...toggleButtonStyle, ...standardButtonStyle }}
 				onClick={() =>
 					props.setDisplayOptions({
 						...props.displayOptions,
@@ -25,7 +30,7 @@ function TimelineToggles(props) {
 				Turn {props.displayOptions.visibility.encore ? 'Off' : 'On'} Encores
 			</button>
 			<button
-				style={{ height: '2rem', width: '10rem' }}
+				style={{ ...toggleButtonStyle, ...standardButtonStyle }}
 				onClick={() =>
 					props.setDisplayOptions({
 						...props.displayOptions,
@@ -38,7 +43,7 @@ function TimelineToggles(props) {
 				Turn {props.displayOptions.visibility.start ? 'Off' : 'On'} Start Markers
 			</button>
 			<button
-				style={{ height: '2rem', width: '10rem' }}
+				style={{ ...toggleButtonStyle, ...standardButtonStyle }}
 				onClick={() =>
 					props.setDisplayOptions({
 						...props.displayOptions,

@@ -15,7 +15,8 @@ export const dropdownElementStyle = {
 	transform: `translateY(-${DROPDOWN_HEIGHT_REMS / 2}rem)`,
 	borderRadius: '1rem',
 	overflow: 'hidden',
-	border: '1px solid black'
+	border: '1px solid black',
+	boxShadow: '0 0 2px 2px #ccc'
 };
 
 export const dropdownHeaderStyle = {
