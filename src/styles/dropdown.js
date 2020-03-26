@@ -43,7 +43,7 @@ export const dropdownBoxStyle = {
 	justifyContent: 'center',
 	boxSizing: 'border-box',
 	height: `${DROPDOWN_HEIGHT_REMS}rem`,
-	backgroundColor: '#ccc',
+	backgroundImage: 'linear-gradient(#fff, #eee)',
 	zIndex: '0',
 	textAlign: 'center',
 	userSelect: 'none',
@@ -56,7 +56,8 @@ export const optionStyle = {
 };
 
 export const selectedOptionStyle = {
-	backgroundColor: '#eee'
+	backgroundImage: 'linear-gradient(#96CDCD,#668B8B)',
+	color: 'white'
 };
 
 export const finalOptionStyle = {
