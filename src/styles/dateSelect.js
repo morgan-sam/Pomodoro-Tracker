@@ -6,5 +6,6 @@ export const dateSelectStyle = {
 	textAlign: 'center',
 	verticalAlign: 'middle',
 	gridColumnGap: '1rem',
-	padding: '0.5rem 1rem'
+	padding: '0.5rem 1rem',
+	zIndex: '2'
 };

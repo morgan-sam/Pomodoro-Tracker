@@ -6,7 +6,8 @@ function TimelineToggles(props) {
 		display: 'grid',
 		gap: '1rem',
 		gridAutoFlow: 'column',
-		gridTemplateColumns: 'repeat(3, 10rem)'
+		gridTemplateColumns: 'repeat(3, 10rem)',
+		zIndex: '-1'
 	};
 
 	const toggleButtonStyle = {

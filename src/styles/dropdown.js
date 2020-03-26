@@ -5,7 +5,8 @@ export const dropdownParentStyle = {
 	display: 'flex',
 	flexDirection: 'column',
 	justifyContent: 'center',
-	position: 'relative'
+	position: 'relative',
+	zIndex: '1'
 };
 
 export const dropdownElementStyle = {

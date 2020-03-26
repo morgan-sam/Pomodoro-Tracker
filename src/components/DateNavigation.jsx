@@ -13,7 +13,8 @@ const DateNavigation = (props) => {
 		justifyContent: 'space-between',
 		width: '20rem',
 		verticalAlign: 'middle',
-		alignItems: 'center'
+		alignItems: 'center',
+		zIndex: '2'
 	};
 
 	const todayBtnStyle = {
@@ -21,7 +22,8 @@ const DateNavigation = (props) => {
 		width: 'auto',
 		padding: '0 1rem',
 		verticalAlign: 'middle',
-		textAlign: 'center'
+		textAlign: 'center',
+		zIndex: '-1'
 	};
 
 	const centerContainer = {

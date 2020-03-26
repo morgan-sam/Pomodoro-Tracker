@@ -7,7 +7,8 @@ function TimeOptionSelect(props) {
 		display: 'grid',
 		gap: '1rem',
 		gridAutoFlow: 'column',
-		gridTemplateColumns: 'repeat(6, 5rem)'
+		gridTemplateColumns: 'repeat(6, 5rem)',
+		zIndex: '1'
 	};
 
 	const timeOptionLabelStyle = {
