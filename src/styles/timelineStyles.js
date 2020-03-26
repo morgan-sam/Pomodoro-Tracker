@@ -43,7 +43,7 @@ export const innerGridStyle = {
 	zIndex: '1'
 };
 
-export const eventBoxStyle = {
+export const defaultEventBoxStyle = {
 	display: 'inline-block',
 	height: '5rem',
 	border: '1px solid black',

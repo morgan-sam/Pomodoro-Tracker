@@ -6,7 +6,7 @@ import {
 	boxStyle,
 	textStyle,
 	innerGridStyle,
-	eventBoxStyle,
+	defaultEventBoxStyle,
 	eventBoxTypeStyle
 } from '../styles/timelineStyles';
 
@@ -65,27 +65,30 @@ function DayTimeline(props) {
 	}
 
 	function convertEventToBox(el, i) {
+		return (
+			<div
+				key={i}
+				style={{
+					...defaultEventBoxStyle,
+					...eventBoxTypeStyle[el.type],
+					...getEventBoxStyle(el)
+				}}
+			/>
+		);
+	}
+
+	function getEventBoxStyle(el) {
 		const time = convertISOToTimeObj(el.date);
 		const hourPosition = time.hours + time.minutes / 60 - eventLengths[el.type] / 60;
 		const remPosition = (hourPosition - props.timeOptions.startTime) * props.timeOptions.hourWidth;
 		const eventWidth = props.timeOptions.hourWidth / 60 * eventLengths[el.type];
 		const overflow = calculateEventOverflow(eventWidth, remPosition);
 
-		const currentEventStyle = {
+		return {
 			left: `${remPosition}rem`,
 			width: `calc(${eventWidth - overflow}rem - ${overflow > 0 ? '2' : '0'}px)`,
 			display: props.timeOptions.endTime < hourPosition ? 'none' : 'inline-block'
 		};
-		return (
-			<div
-				key={i}
-				style={{
-					...eventBoxStyle,
-					...eventBoxTypeStyle[el.type],
-					...currentEventStyle
-				}}
-			/>
-		);
 	}
 
 	function calculateEventOverflow(eventWidth, remPosition) {
