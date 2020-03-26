@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import {
 	containerStyle,
+	scrollbarStyle,
 	boxStyle,
 	textStyle,
 	innerGridStyle,
@@ -93,10 +94,12 @@ function DayTimeline(props) {
 
 	return (
 		<div style={containerStyle}>
-			{timelineBoxes.slice(props.timeOptions.startTime, props.timeOptions.endTime)}
-			{getEventBoxes('start')}
-			{getEventBoxes('pomodoro')}
-			{getEventBoxes('encore')}
+			<div style={scrollbarStyle}>
+				{timelineBoxes.slice(props.timeOptions.startTime, props.timeOptions.endTime)}
+				{getEventBoxes('start')}
+				{getEventBoxes('pomodoro')}
+				{getEventBoxes('encore')}
+			</div>
 		</div>
 	);
 }

@@ -1,4 +1,9 @@
 export const containerStyle = {
+	height: '10rem',
+	overflowX: 'auto'
+};
+
+export const scrollbarStyle = {
 	display: 'flex',
 	whiteSpace: 'nowrap',
 	width: 'auto',
