@@ -11,7 +11,7 @@ const DateNavigation = (props) => {
 		position: 'relative',
 		display: 'flex',
 		justifyContent: 'space-between',
-		width: '20rem',
+		width: '0',
 		verticalAlign: 'middle',
 		alignItems: 'center',
 		zIndex: '2'
@@ -22,8 +22,7 @@ const DateNavigation = (props) => {
 		width: 'auto',
 		padding: '0 1rem',
 		verticalAlign: 'middle',
-		textAlign: 'center',
-		zIndex: '-1'
+		textAlign: 'center'
 	};
 
 	const centerContainer = {
