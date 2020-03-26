@@ -8,7 +8,7 @@ import {
 	innerGridStyle,
 	defaultEventBoxStyle,
 	eventBoxTypeStyle
-} from '../styles/timelineStyles';
+} from '../styles/dayTimeline';
 
 import { convert24hrTo12hrTime, convertISOToTimeObj } from '../utility/timeFunctions';
 
