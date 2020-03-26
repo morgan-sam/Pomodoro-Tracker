@@ -1,5 +1,5 @@
 import React from 'react';
-import { standardButtonStyle } from 'styles/standard';
+import BounceButton from './BounceButton';
 
 function TimelineToggles(props) {
 	const containerStyle = {
@@ -16,8 +16,7 @@ function TimelineToggles(props) {
 
 	return (
 		<div style={containerStyle}>
-			<button
-				style={{ ...toggleButtonStyle, ...standardButtonStyle }}
+			<BounceButton
 				onClick={() =>
 					props.setDisplayOptions({
 						...props.displayOptions,
@@ -26,11 +25,11 @@ function TimelineToggles(props) {
 							encore: !props.displayOptions.visibility.encore
 						}
 					})}
-			>
-				Turn {props.displayOptions.visibility.encore ? 'Off' : 'On'} Encores
-			</button>
-			<button
-				style={{ ...toggleButtonStyle, ...standardButtonStyle }}
+				delay={300}
+				style={toggleButtonStyle}
+				text={`Turn ${props.displayOptions.visibility.encore ? 'Off' : 'On'} Encores`}
+			/>
+			<BounceButton
 				onClick={() =>
 					props.setDisplayOptions({
 						...props.displayOptions,
@@ -39,11 +38,12 @@ function TimelineToggles(props) {
 							start: !props.displayOptions.visibility.start
 						}
 					})}
-			>
-				Turn {props.displayOptions.visibility.start ? 'Off' : 'On'} Start Markers
-			</button>
-			<button
-				style={{ ...toggleButtonStyle, ...standardButtonStyle }}
+				delay={300}
+				style={toggleButtonStyle}
+				text={`Turn ${props.displayOptions.visibility.start ? 'Off' : 'On'} Start Markers`}
+			/>
+
+			<BounceButton
 				onClick={() =>
 					props.setDisplayOptions({
 						...props.displayOptions,
@@ -52,9 +52,10 @@ function TimelineToggles(props) {
 							grid: !props.displayOptions.visibility.grid
 						}
 					})}
-			>
-				Turn {props.displayOptions.visibility.grid ? 'Off' : 'On'} Grid
-			</button>
+				delay={300}
+				style={toggleButtonStyle}
+				text={`Turn ${props.displayOptions.visibility.grid ? 'Off' : 'On'} Grid`}
+			/>
 		</div>
 	);
 }

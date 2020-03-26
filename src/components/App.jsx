@@ -82,12 +82,6 @@ function App() {
 				<DateNavigation filterOptions={filterOptions} setFilterOptions={setFilterOptions} />
 				<TimeOptionSelect timeOptions={timeOptions} setTimeOptions={setTimeOptions} />
 				<TimelineToggles setDisplayOptions={setDisplayOptions} displayOptions={displayOptions} />
-				<BounceButton
-					onClick={() => console.log('hello')}
-					delay={500}
-					style={{ width: '8rem', height: '2rem' }}
-					text={'Bounce Button'}
-				/>
 			</div>
 		</div>
 	);
