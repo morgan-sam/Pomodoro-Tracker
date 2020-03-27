@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import DayTimeline from './DayTimeline';
-import TimelineToggles from 'components/TimelineToggles';
-import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
 import TopPageText from 'components/TopPageText.jsx';
-import DateNavigation from 'components/DateNavigation';
+import OptionsGraphPanel from 'components/OptionsGraphPanel.jsx';
 
 const URL = 'ws://localhost:8080';
 const ws = new WebSocket(URL);
@@ -17,7 +15,8 @@ function App() {
 	const [ displayOptions, setDisplayOptions ] = useState({
 		visibility: {
 			start: false,
-			encore: true
+			encore: true,
+			graph: 'none'
 		}
 	});
 	const [ timeOptions, setTimeOptions ] = useState({
@@ -61,9 +60,16 @@ function App() {
 					displayOptions={displayOptions}
 					timeOptions={timeOptions}
 				/>
-				<DateNavigation filterOptions={filterOptions} setFilterOptions={setFilterOptions} />
-				<TimeOptionSelect timeOptions={timeOptions} setTimeOptions={setTimeOptions} />
-				<TimelineToggles setDisplayOptions={setDisplayOptions} displayOptions={displayOptions} />
+				<OptionsGraphPanel
+					entriesData={entriesData}
+					setEntriesData={setEntriesData}
+					filterOptions={filterOptions}
+					setFilterOptions={setFilterOptions}
+					displayOptions={displayOptions}
+					setDisplayOptions={setDisplayOptions}
+					timeOptions={timeOptions}
+					setTimeOptions={setTimeOptions}
+				/>
 			</div>
 		</div>
 	);

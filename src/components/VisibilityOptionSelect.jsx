@@ -1,8 +1,14 @@
 import React from 'react';
 import BounceButton from './BounceButton';
-import { containerStyle, toggleButtonStyle } from 'styles/timelineToggles';
+import {
+	containerStyle,
+	toggleButtonStyle,
+	visibilityOptionLabelStyle,
+	graphSelectionDropdownStyle
+} from 'styles/visibilityOptionSelect';
+import Dropdown from 'components/Dropdown';
 
-function TimelineToggles(props) {
+function VisibilityOptionSelect(props) {
 	return (
 		<div style={containerStyle}>
 			<BounceButton
@@ -45,8 +51,22 @@ function TimelineToggles(props) {
 				style={toggleButtonStyle}
 				text={`Turn ${props.displayOptions.visibility.grid ? 'Off' : 'On'} Grid`}
 			/>
+			<span style={visibilityOptionLabelStyle}>Graph Selection:</span>
+			<Dropdown
+				style={graphSelectionDropdownStyle}
+				options={[ 'none', 'week', 'month' ]}
+				default={props.displayOptions.visibility.graph}
+				onClick={(el) =>
+					props.setDisplayOptions({
+						...props.displayOptions,
+						visibility: {
+							...props.displayOptions.visibility,
+							graph: el
+						}
+					})}
+			/>
 		</div>
 	);
 }
 
-export default TimelineToggles;
+export default VisibilityOptionSelect;
