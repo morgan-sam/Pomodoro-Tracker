@@ -1,7 +1,7 @@
 export const EVENT_HEIGHT_REM = 5;
 
 export const containerStyle = {
-	height: '10rem',
+	height: '9rem',
 	overflowX: 'auto'
 };
 
