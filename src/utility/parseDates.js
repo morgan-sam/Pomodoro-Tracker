@@ -15,3 +15,8 @@ export const parseDateObjToISO = (obj) => {
 	const monthString = obj.month >= 10 ? obj.month.toString() : '0' + obj.month.toString();
 	return `${obj.year}-${monthString}-${dayString}T00:00:00.000Z`;
 };
+
+export const parseLittleEndianToObj = (string) => {
+	const dateArray = string.split('-');
+	return { day: dateArray[0], month: dateArray[1], year: dateArray[2] };
+};

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { parseISOToLittleEndian } from 'utility/parseDates';
+import { parseISOToLittleEndian, parseLittleEndianToObj } from 'utility/parseDates';
 
 const GraphDisplay = (props) => {
 	function drawX(coordinate, size) {
@@ -33,7 +33,8 @@ const GraphDisplay = (props) => {
 			else counts[el] = 1;
 		});
 		console.log(counts);
-		// const dates = Object.keys(counts).map((el) => parseISOToDateObj(el));
+		const dates = Object.keys(counts).map((el) => parseLittleEndianToObj(el));
+		console.log(dates);
 		return counts;
 	};
 
