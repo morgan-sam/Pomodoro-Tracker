@@ -18,7 +18,7 @@ const GraphDisplay = (props) => {
 		() => {
 			canvasRef.current.width = 750;
 			canvasRef.current.height = 500;
-			getPomodoroDayCount();
+			addDataToGraph();
 		},
 		[ props.entriesData ]
 	);
@@ -32,10 +32,17 @@ const GraphDisplay = (props) => {
 			if (counts[el]) counts[el] += 1;
 			else counts[el] = 1;
 		});
-		console.log(counts);
-		const dates = Object.keys(counts).map((el) => parseLittleEndianToObj(el));
-		console.log(dates);
 		return counts;
+	};
+
+	const addDataToGraph = () => {
+		const counts = getPomodoroDayCount();
+		console.log(counts);
+		const xUnit = canvasRef.current.width / Object.values(counts).length;
+		const YUnit = canvasRef.current.height / Math.max(...Object.values(counts));
+		Object.entries(counts).forEach((el, i) => {
+			drawX({ x: xUnit * i, y: canvasRef.current.height - YUnit * el[1] }, 10);
+		});
 	};
 
 	const graphStyle = {
@@ -45,15 +52,7 @@ const GraphDisplay = (props) => {
 		border: '1px solid black'
 	};
 
-	return (
-		<canvas
-			ref={canvasRef}
-			style={graphStyle}
-			onClick={(e) => {
-				drawX({ x: 50, y: 50 }, 10);
-			}}
-		/>
-	);
+	return <canvas ref={canvasRef} style={graphStyle} onClick={(e) => {}} />;
 };
 
 export default GraphDisplay;
