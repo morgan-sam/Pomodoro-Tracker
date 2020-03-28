@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { parseISOToLittleEndian } from 'utility/parseDates';
 
 const GraphDisplay = (props) => {
 	function drawX(coordinate, size) {
@@ -24,7 +25,7 @@ const GraphDisplay = (props) => {
 
 	const getPomodoroDayCount = () => {
 		const dateArray = props.entriesData.flatMap(
-			(el) => (el.type === 'pomodoro' ? [ el.date.substring(0, 10) ] : [])
+			(el) => (el.type === 'pomodoro' ? [ parseISOToLittleEndian(el.date) ] : [])
 		);
 		let counts = {};
 		dateArray.forEach((el) => {
@@ -32,6 +33,7 @@ const GraphDisplay = (props) => {
 			else counts[el] = 1;
 		});
 		console.log(counts);
+		// const dates = Object.keys(counts).map((el) => parseISOToDateObj(el));
 		return counts;
 	};
 

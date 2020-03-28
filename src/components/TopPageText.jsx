@@ -13,7 +13,7 @@ function TimelineToggles(props) {
 				padding: '0 0 2rem 0'
 			}}
 		>
-			<h1>Pomodoros for {parseISOToLittleEndian(props.filterOptions.date).replace(new RegExp('/', 'g'), '-')}</h1>
+			<h1>Pomodoros for {parseISOToLittleEndian(props.filterOptions.date)}</h1>
 			<h3>
 				Total{' '}
 				{props.filterOptions.date.substring(0, 10) === new Date().toISOString().substring(0, 10) ? (
