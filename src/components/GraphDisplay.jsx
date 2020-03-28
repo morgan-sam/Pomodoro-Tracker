@@ -17,17 +17,22 @@ const GraphDisplay = (props) => {
 		() => {
 			canvasRef.current.width = 750;
 			canvasRef.current.height = 500;
-			getArrayOfPomodoroDates();
+			getPomodoroDayCount();
 		},
 		[ props.entriesData ]
 	);
 
-	const getArrayOfPomodoroDates = () => {
+	const getPomodoroDayCount = () => {
 		const dateArray = props.entriesData.flatMap(
 			(el) => (el.type === 'pomodoro' ? [ el.date.substring(0, 10) ] : [])
 		);
-		console.log(dateArray);
-		return dateArray;
+		let counts = {};
+		dateArray.forEach((el) => {
+			if (counts[el]) counts[el] += 1;
+			else counts[el] = 1;
+		});
+		console.log(counts);
+		return counts;
 	};
 
 	const graphStyle = {
