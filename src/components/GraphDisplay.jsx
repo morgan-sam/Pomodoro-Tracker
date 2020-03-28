@@ -15,12 +15,20 @@ const GraphDisplay = (props) => {
 
 	useEffect(
 		() => {
-			console.log(props.entriesData);
 			canvasRef.current.width = 750;
 			canvasRef.current.height = 500;
+			getArrayOfPomodoroDates();
 		},
 		[ props.entriesData ]
 	);
+
+	const getArrayOfPomodoroDates = () => {
+		const dateArray = props.entriesData.flatMap(
+			(el) => (el.type === 'pomodoro' ? [ el.date.substring(0, 10) ] : [])
+		);
+		console.log(dateArray);
+		return dateArray;
+	};
 
 	const graphStyle = {
 		display: 'flex',
