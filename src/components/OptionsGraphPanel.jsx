@@ -25,7 +25,7 @@ function OptionsGraphPanel(props) {
 			</div>
 			<div style={optionPanelStyle}>
 				{props.displayOptions.visibility.graph !== 'none' ? (
-					<GraphDisplay entriesData={props.entriesData} />
+					<GraphDisplay entriesData={props.entriesData} filterOptions={props.filterOptions} />
 				) : null}
 			</div>
 		</div>

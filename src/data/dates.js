@@ -43,3 +43,11 @@ export const getDayFromTodayAsISO = (dayDifference = 0) => {
 export const addOrSubtractDaysFromISODate = (date, dayChange) => {
 	return new Date(Date.parse(date) + dayChange * 86400000).toISOString();
 };
+
+export const daysBetweenISODates = (firstDate, secondDate) => {
+	const a = new Date(firstDate.substring(0, 10));
+	const b = new Date(secondDate.substring(0, 10));
+	const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+	const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+	return Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24));
+};

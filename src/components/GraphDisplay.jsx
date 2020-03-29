@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { parseISOToLittleEndian, parseLittleEndianToObj } from 'utility/parseDates';
+import { addOrSubtractDaysFromISODate } from 'data/dates';
 
 const GraphDisplay = (props) => {
 	function drawX(coordinate, size) {
@@ -20,7 +20,7 @@ const GraphDisplay = (props) => {
 			canvasRef.current.height = 500;
 			addDataToGraph();
 		},
-		[ props.entriesData ]
+		[ props ]
 	);
 
 	const getPomodoroDayCount = () => {
@@ -35,9 +35,20 @@ const GraphDisplay = (props) => {
 		return counts;
 	};
 
-	const addDataToGraph = () => {
+	const getWeekCount = (startDate) => {
 		const counts = getPomodoroDayCount();
-		console.log(counts);
+		if (!(Object.keys(counts).length === 0 && counts.constructor === Object)) {
+			let weekArray = [];
+			for (let i = 0; i < 7; i++) {
+				const today = addOrSubtractDaysFromISODate(startDate, i).substring(0, 10);
+				weekArray[today] = counts[today] ? counts[today] : 0;
+			}
+			return weekArray;
+		} else return {};
+	};
+
+	const addDataToGraph = () => {
+		const counts = getWeekCount(props.filterOptions.date);
 		const xUnit = canvasRef.current.width / Object.values(counts).length;
 		const YUnit = canvasRef.current.height / Math.max(...Object.values(counts));
 		Object.entries(counts).forEach((el, i) => {
