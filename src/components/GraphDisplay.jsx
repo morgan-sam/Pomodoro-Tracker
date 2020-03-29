@@ -52,7 +52,7 @@ const GraphDisplay = (props) => {
 		const xUnit = canvasRef.current.width / Object.values(counts).length;
 		const YUnit = canvasRef.current.height / Math.max(...Object.values(counts));
 		Object.entries(counts).forEach((el, i) => {
-			drawX({ x: xUnit * i, y: canvasRef.current.height - YUnit * el[1] }, 10);
+			drawX({ x: xUnit * (i + 0.5), y: canvasRef.current.height - YUnit * el[1] }, 10);
 		});
 	};
 
