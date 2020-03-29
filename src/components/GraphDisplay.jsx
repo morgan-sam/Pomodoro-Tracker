@@ -25,7 +25,7 @@ const GraphDisplay = (props) => {
 
 	const getPomodoroDayCount = () => {
 		const dateArray = props.entriesData.flatMap(
-			(el) => (el.type === 'pomodoro' ? [ parseISOToLittleEndian(el.date) ] : [])
+			(el) => (el.type === 'pomodoro' ? [ el.date.substring(0, 10) ] : [])
 		);
 		let counts = {};
 		dateArray.forEach((el) => {
