@@ -4,8 +4,6 @@ export const getMonthIntegers = () => {
 	return Array.from(Array(12).keys()).map((el) => el + 1);
 };
 
-export const shortDayStringArray = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
-
 export const monthStringArray = [
 	'January',
 	'February',
