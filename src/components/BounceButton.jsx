@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 function BounceButton(props) {
 	const [ pressed, setPressed ] = useState(false);

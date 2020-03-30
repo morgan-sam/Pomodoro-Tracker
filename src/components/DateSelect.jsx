@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Dropdown from 'components/Dropdown';
 import { getMonthIntegers, arrayOfMonthDays, get21stCenturyYears } from 'data/dates';
 import { dateSelectStyle } from 'styles/dateSelect';
