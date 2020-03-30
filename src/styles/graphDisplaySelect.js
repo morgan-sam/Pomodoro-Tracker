@@ -20,3 +20,7 @@ export const graphSelectionDropdownStyle = {
 	display: 'flex',
 	width: '7rem'
 };
+
+export const graphOptionLabelStyle = {
+	//
+};

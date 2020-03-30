@@ -1,5 +1,10 @@
 import React from 'react';
-import { containerStyle, graphDisplaySelectLabelStyle, graphSelectionDropdownStyle } from 'styles/graphDisplaySelect';
+import {
+	containerStyle,
+	graphDisplaySelectLabelStyle,
+	graphSelectionDropdownStyle,
+	graphOptionLabelStyle
+} from 'styles/graphDisplaySelect';
 import Dropdown from 'components/Dropdown';
 
 function GraphDisplaySelect(props) {
@@ -32,6 +37,24 @@ function GraphDisplaySelect(props) {
 							type: el
 						}
 					})}
+			/>
+			<span style={graphOptionLabelStyle}>Max Pomodoro:</span>
+			<input
+				type="range"
+				min="1"
+				max="20"
+				value={props.displayOptions.graph.maxPomodoro}
+				onChange={(el) => {
+					props.setDisplayOptions({
+						...props.displayOptions,
+						graph: {
+							...props.displayOptions.graph,
+							maxPomodoro: el.target.value
+						}
+					});
+				}}
+				step="1"
+				style={{ width: '10rem' }}
 			/>
 		</div>
 	);

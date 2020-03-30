@@ -14,7 +14,7 @@ const GraphPanel = (props) => {
 	const GRAPH_LEFT_GAP = remToPx(5);
 	const GRAPH_RIGHT_GAP = remToPx(3);
 	const GRAPH_FONT_SIZE = remToPx(1);
-	const Y_AXIS_MAX = 14;
+	const Y_AXIS_MAX = props.maxPomodoro;
 
 	function getXAxisLabel(date) {
 		const dateObj = parseBigEndianToObj(date);

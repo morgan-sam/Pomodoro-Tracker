@@ -19,7 +19,8 @@ function App() {
 		},
 		graph: {
 			period: 'week passed',
-			type: 'both'
+			type: 'both',
+			maxPomodoro: 14
 		}
 	});
 	const [ timeOptions, setTimeOptions ] = useState({
