@@ -70,21 +70,23 @@ const GraphDisplay = (props) => {
 		});
 	}
 
-	function drawXAxis(entry) {
+	function drawXAxis(graphData) {
 		const context = canvasRef.current.getContext('2d');
-		const x = entry.coordinate.x;
-		context.beginPath();
-		context.moveTo(x, canvasRef.current.height);
-		context.lineTo(x, canvasRef.current.height - 20);
-		context.stroke();
-		const dateText = getXAxisLabel(entry).reverse();
-		context.textAlign = 'center';
-		context.font = getXAxisFont();
-		for (let i = 0; i < dateText.length; i++) {
+		graphData.forEach((el) => {
+			const x = el.coordinate.x;
 			context.beginPath();
-			context.fillText(dateText[i], x, canvasRef.current.height - 40 - 20 * i);
+			context.moveTo(x, canvasRef.current.height);
+			context.lineTo(x, canvasRef.current.height - 20);
 			context.stroke();
-		}
+			const dateText = getXAxisLabel(el).reverse();
+			context.textAlign = 'center';
+			context.font = getXAxisFont();
+			for (let i = 0; i < dateText.length; i++) {
+				context.beginPath();
+				context.fillText(dateText[i], x, canvasRef.current.height - 40 - 20 * i);
+				context.stroke();
+			}
+		});
 	}
 
 	function drawYAxis(counts, YUnit) {
@@ -170,9 +172,7 @@ const GraphDisplay = (props) => {
 		drawGraphTitle(counts);
 		drawYAxis(counts, units.y);
 		drawCoordinateCrosses(graphData, 10);
-		graphData.forEach((el) => {
-			drawXAxis(el);
-		});
+		drawXAxis(graphData);
 		drawGraphLine(graphData);
 	};
 
