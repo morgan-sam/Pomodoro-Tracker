@@ -3,7 +3,7 @@ import React from 'react';
 import TimelineDisplaySelect from 'components/TimelineDisplaySelect';
 import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
 import DateNavigation from 'components/DateNavigation';
-import GraphDisplay from 'components/GraphDisplay';
+import GraphPanel from 'components/GraphPanel';
 
 import { optionPanelStyle } from 'styles/timelineDisplaySelect';
 
@@ -25,7 +25,7 @@ function OptionsGraphPanel(props) {
 			</div>
 			<div style={optionPanelStyle}>
 				{props.displayOptions.graph.period !== 'none' ? (
-					<GraphDisplay
+					<GraphPanel
 						entriesData={props.entriesData}
 						filterOptions={props.filterOptions}
 						{...props.displayOptions.graph}

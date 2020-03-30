@@ -7,7 +7,7 @@ import {
 	parseDateObjToLittleEndian
 } from 'utility/parseDates';
 
-const GraphDisplay = (props) => {
+const GraphPanel = (props) => {
 	const GRAPH_TOP_GAP = 100;
 	const GRAPH_BOTTOM_GAP = 100;
 	const GRAPH_LEFT_GAP = 100;
@@ -213,4 +213,4 @@ const GraphDisplay = (props) => {
 	return <canvas ref={canvasRef} style={graphStyle} onClick={(e) => {}} />;
 };
 
-export default GraphDisplay;
+export default GraphPanel;
