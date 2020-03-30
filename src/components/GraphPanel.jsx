@@ -6,7 +6,7 @@ import {
 	parseDateObjToISO,
 	parseDateObjToLittleEndian
 } from 'utility/parseDates';
-import { remToPx, pxToRem } from 'utility/convertUnit';
+import { remToPx } from 'utility/convertUnit';
 
 const GraphPanel = (props) => {
 	const GRAPH_TOP_GAP = remToPx(5);
@@ -20,9 +20,7 @@ const GraphPanel = (props) => {
 		const dateObj = parseBigEndianToObj(date);
 		const shortDayString = new Date(`${date}T00:00:00.000Z`).toString().substring(0, 3);
 		if (props.period.match(/week/)) return [ shortDayString, `${dateObj.day}/${dateObj.month}` ];
-		if (props.period === 'month') {
-			return [ `${parseInt(dateObj.day)}` ];
-		}
+		if (props.period === 'month') return [ `${parseInt(dateObj.day)}` ];
 	}
 
 	function getXAxisFont() {
@@ -66,9 +64,7 @@ const GraphPanel = (props) => {
 	function drawGraphLine(graphData) {
 		const context = canvasRef.current.getContext('2d');
 		context.beginPath();
-		graphData.forEach((el) => {
-			context.lineTo(el.coordinate.x, el.coordinate.y);
-		});
+		graphData.forEach((el) => context.lineTo(el.coordinate.x, el.coordinate.y));
 		context.stroke();
 	}
 
