@@ -5,6 +5,8 @@ import { parseBigEndianToObj, parseISOToDateObj, parseDateObjToISO } from 'utili
 const GraphDisplay = (props) => {
 	const GRAPH_TOP_GAP = 75;
 	const GRAPH_BOTTOM_GAP = 100;
+	const GRAPH_LEFT_GAP = 100;
+	const GRAPH_RIGHT_GAP = 50;
 
 	function getYAxisLabel(entry) {
 		const dateObj = parseBigEndianToObj(entry.date);
@@ -108,13 +110,16 @@ const GraphDisplay = (props) => {
 
 	const addDataToGraph = () => {
 		const counts = getMonthCount(props.filterOptions.date);
-		const xUnit = canvasRef.current.width / (Object.values(counts).length + 1);
+		const xUnit = (canvasRef.current.width - GRAPH_LEFT_GAP - GRAPH_RIGHT_GAP) / (Object.values(counts).length - 1);
 		const YUnit =
 			(canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / Math.max(...Object.values(counts));
 		const graphData = Object.entries(counts).map((el, i) => {
 			return {
 				date: el[0],
-				coordinate: { x: xUnit * (i + 1), y: canvasRef.current.height - GRAPH_BOTTOM_GAP - YUnit * el[1] }
+				coordinate: {
+					x: GRAPH_LEFT_GAP + xUnit * i,
+					y: canvasRef.current.height - GRAPH_BOTTOM_GAP - YUnit * el[1]
+				}
 			};
 		});
 		drawYAxis(counts, YUnit);
