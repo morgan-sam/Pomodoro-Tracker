@@ -95,11 +95,9 @@ const GraphDisplay = (props) => {
 	const createCountArray = (startDate, amountOfDays) => {
 		const counts = getPomodoroDayCount();
 		let countArray = {};
-		if (!(Object.keys(counts).length === 0 && counts.constructor === Object)) {
-			for (let i = 0; i < amountOfDays; i++) {
-				const today = addOrSubtractDaysFromISODate(startDate, i).substring(0, 10);
-				countArray[today] = counts[today] ? counts[today] : 0;
-			}
+		for (let i = 0; i < amountOfDays; i++) {
+			const today = addOrSubtractDaysFromISODate(startDate, i).substring(0, 10);
+			countArray[today] = counts[today] ? counts[today] : 0;
 		}
 		return countArray;
 	};
