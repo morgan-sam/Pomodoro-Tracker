@@ -117,7 +117,7 @@ const GraphPanel = (props) => {
 		}
 	}
 
-	function drawYAxis(counts, unit) {
+	function drawYAxis(unit) {
 		const context = canvasRef.current.getContext('2d');
 		context.textBaseline = 'middle';
 		context.textAlign = 'center';
@@ -207,7 +207,7 @@ const GraphPanel = (props) => {
 		const units = getUnits(counts);
 		const graphData = getGraphData(counts, units);
 		drawGraphTitle(counts);
-		drawYAxis(counts, units.y);
+		drawYAxis(units.y);
 		drawXAxis(graphData);
 		drawGraphData(graphData);
 	};
