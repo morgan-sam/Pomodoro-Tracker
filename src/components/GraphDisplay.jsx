@@ -3,6 +3,9 @@ import { addOrSubtractDaysFromISODate } from 'data/dates';
 import { parseBigEndianToObj } from 'utility/parseDates';
 
 const GraphDisplay = (props) => {
+	const GRAPH_TOP_GAP = 75;
+	const GRAPH_BOTTOM_GAP = 100;
+
 	function drawX(coordinate, size) {
 		const context = canvasRef.current.getContext('2d');
 		const { x, y } = coordinate;
@@ -33,12 +36,12 @@ const GraphDisplay = (props) => {
 		const context = canvasRef.current.getContext('2d');
 		for (let i = 0; i <= maxValue; i++) {
 			context.beginPath();
-			context.moveTo(0, 100 + i * YUnit);
-			context.lineTo(20, 100 + i * YUnit);
+			context.moveTo(0, GRAPH_TOP_GAP + i * YUnit);
+			context.lineTo(20, GRAPH_TOP_GAP + i * YUnit);
 			context.textBaseline = 'middle';
 			context.textAlign = 'center';
 			context.font = (20 | 0) + 'px sans-serif';
-			context.fillText(maxValue - i, 40, i * YUnit + 100);
+			context.fillText(maxValue - i, 40, i * YUnit + GRAPH_TOP_GAP);
 			context.stroke();
 		}
 	}
@@ -81,11 +84,12 @@ const GraphDisplay = (props) => {
 	const addDataToGraph = () => {
 		const counts = getWeekCount(props.filterOptions.date);
 		const xUnit = canvasRef.current.width / (Object.values(counts).length + 1);
-		const YUnit = (canvasRef.current.height - 200) / Math.max(...Object.values(counts));
+		const YUnit =
+			(canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / Math.max(...Object.values(counts));
 		const graphData = Object.entries(counts).map((el, i) => {
 			return {
 				date: el[0],
-				coordinate: { x: xUnit * (i + 1), y: canvasRef.current.height - 100 - YUnit * el[1] }
+				coordinate: { x: xUnit * (i + 1), y: canvasRef.current.height - GRAPH_BOTTOM_GAP - YUnit * el[1] }
 			};
 		});
 		drawYAxis(counts, YUnit);
