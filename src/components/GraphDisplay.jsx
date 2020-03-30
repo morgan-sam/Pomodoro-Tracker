@@ -46,14 +46,27 @@ const GraphDisplay = (props) => {
 	function drawYAxis(counts, YUnit) {
 		const maxValue = Math.max(...Object.values(counts));
 		const context = canvasRef.current.getContext('2d');
-		for (let i = 0; i <= maxValue; i++) {
+		if (maxValue) {
+			for (let i = 0; i <= maxValue; i++) {
+				context.beginPath();
+				context.moveTo(0, GRAPH_TOP_GAP + i * YUnit);
+				context.lineTo(20, GRAPH_TOP_GAP + i * YUnit);
+				context.textBaseline = 'middle';
+				context.textAlign = 'center';
+				context.font = (20 | 0) + 'px sans-serif';
+				context.fillText(maxValue - i, 40, i * YUnit + GRAPH_TOP_GAP);
+				context.stroke();
+			}
+		} else {
 			context.beginPath();
-			context.moveTo(0, GRAPH_TOP_GAP + i * YUnit);
-			context.lineTo(20, GRAPH_TOP_GAP + i * YUnit);
 			context.textBaseline = 'middle';
 			context.textAlign = 'center';
 			context.font = (20 | 0) + 'px sans-serif';
-			context.fillText(maxValue - i, 40, i * YUnit + GRAPH_TOP_GAP);
+			context.fillText(
+				'No data available for date range',
+				canvasRef.current.width / 2,
+				canvasRef.current.height / 2
+			);
 			context.stroke();
 		}
 	}
