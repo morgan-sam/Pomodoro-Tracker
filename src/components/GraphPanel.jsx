@@ -9,10 +9,11 @@ import {
 import { remToPx, pxToRem } from 'utility/convertUnit';
 
 const GraphPanel = (props) => {
-	const GRAPH_TOP_GAP = 100;
-	const GRAPH_BOTTOM_GAP = 100;
-	const GRAPH_LEFT_GAP = 100;
-	const GRAPH_RIGHT_GAP = 50;
+	const GRAPH_TOP_GAP = remToPx(5);
+	const GRAPH_BOTTOM_GAP = remToPx(5);
+	const GRAPH_LEFT_GAP = remToPx(5);
+	const GRAPH_RIGHT_GAP = remToPx(3);
+	const GRAPH_FONT_SIZE = remToPx(1);
 
 	function getXAxisLabel(date) {
 		const dateObj = parseBigEndianToObj(date);
@@ -22,8 +23,8 @@ const GraphPanel = (props) => {
 	}
 
 	function getXAxisFont() {
-		if (props.period === 'week') return (20 | 0) + 'px sans-serif';
-		if (props.period === 'month') return (13 | 0) + 'px sans-serif';
+		if (props.period === 'week') return ((GRAPH_FONT_SIZE / 1.2) | 0) + 'px sans-serif';
+		if (props.period === 'month') return ((GRAPH_FONT_SIZE / 1.5) | 0) + 'px sans-serif';
 	}
 
 	function drawGraphTitle(counts) {
@@ -31,8 +32,8 @@ const GraphPanel = (props) => {
 		context.beginPath();
 		context.textBaseline = 'middle';
 		context.textAlign = 'center';
-		context.font = (20 | 0) + 'px sans-serif';
-		context.fillText(getGraphTitleText(counts), canvasRef.current.width / 2, 40);
+		context.font = ((GRAPH_FONT_SIZE * 1.2) | 0) + 'px sans-serif';
+		context.fillText(getGraphTitleText(counts), canvasRef.current.width / 2, GRAPH_FONT_SIZE * 2);
 		context.stroke();
 	}
 
@@ -51,14 +52,14 @@ const GraphPanel = (props) => {
 
 	function drawGraphData(graphData) {
 		if (props.type === 'scatter') {
-			drawCoordinateCrosses(graphData, 10);
+			drawCoordinateCrosses(graphData, GRAPH_FONT_SIZE / 3);
 		}
 		if (props.type === 'line') {
 			drawGraphLine(graphData);
 		}
 		if (props.type === 'both') {
 			drawGraphLine(graphData);
-			drawCoordinateCrosses(graphData, 10);
+			drawCoordinateCrosses(graphData, GRAPH_FONT_SIZE / 3);
 		}
 	}
 
@@ -90,14 +91,14 @@ const GraphPanel = (props) => {
 			const x = el.coordinate.x;
 			context.beginPath();
 			context.moveTo(x, canvasRef.current.height);
-			context.lineTo(x, canvasRef.current.height - 20);
+			context.lineTo(x, canvasRef.current.height - GRAPH_FONT_SIZE);
 			context.stroke();
 			const dateText = getXAxisLabel(el.date).reverse();
 			context.textAlign = 'center';
 			context.font = getXAxisFont();
 			for (let i = 0; i < dateText.length; i++) {
 				context.beginPath();
-				context.fillText(dateText[i], x, canvasRef.current.height - 40 - 20 * i);
+				context.fillText(dateText[i], x, canvasRef.current.height - GRAPH_FONT_SIZE * (i + 2));
 				context.stroke();
 			}
 		});
@@ -110,18 +111,18 @@ const GraphPanel = (props) => {
 			for (let i = 0; i <= maxValue; i++) {
 				context.beginPath();
 				context.moveTo(0, GRAPH_TOP_GAP + i * YUnit);
-				context.lineTo(20, GRAPH_TOP_GAP + i * YUnit);
+				context.lineTo(GRAPH_FONT_SIZE, GRAPH_TOP_GAP + i * YUnit);
 				context.textBaseline = 'middle';
 				context.textAlign = 'center';
-				context.font = (20 | 0) + 'px sans-serif';
-				context.fillText(maxValue - i, 40, i * YUnit + GRAPH_TOP_GAP);
+				context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
+				context.fillText(maxValue - i, GRAPH_FONT_SIZE * 2, i * YUnit + GRAPH_TOP_GAP);
 				context.stroke();
 			}
 		} else {
 			context.beginPath();
 			context.textBaseline = 'middle';
 			context.textAlign = 'center';
-			context.font = (20 | 0) + 'px sans-serif';
+			context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
 			context.fillText(
 				'No data available for date range',
 				canvasRef.current.width / 2,
@@ -135,8 +136,8 @@ const GraphPanel = (props) => {
 
 	useEffect(
 		() => {
-			canvasRef.current.width = 750;
-			canvasRef.current.height = 500;
+			canvasRef.current.width = remToPx(graphStyle.width);
+			canvasRef.current.height = remToPx(graphStyle.height);
 			addDataToGraph();
 		},
 		[ props ]
@@ -206,12 +207,12 @@ const GraphPanel = (props) => {
 
 	const graphStyle = {
 		display: 'flex',
-		height: '20rem',
-		width: '30rem',
+		height: '25rem',
+		width: '32rem',
 		border: '1px solid black'
 	};
 
-	return <canvas ref={canvasRef} style={graphStyle} onClick={(e) => {}} />;
+	return <canvas ref={canvasRef} style={graphStyle} />;
 };
 
 export default GraphPanel;
