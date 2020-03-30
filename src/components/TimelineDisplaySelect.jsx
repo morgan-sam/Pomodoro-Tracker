@@ -51,20 +51,6 @@ function TimelineDisplaySelect(props) {
 				style={toggleButtonStyle}
 				text={`Turn ${props.displayOptions.timeline.grid ? 'Off' : 'On'} Grid`}
 			/>
-			<span style={timelineDisplaySelectLabelStyle}>Graph Selection:</span>
-			<Dropdown
-				style={graphSelectionDropdownStyle}
-				options={[ 'none', 'week', 'month' ]}
-				default={props.displayOptions.graph.period}
-				onClick={(el) =>
-					props.setDisplayOptions({
-						...props.displayOptions,
-						graph: {
-							...props.displayOptions.graph,
-							period: el
-						}
-					})}
-			/>
 		</div>
 	);
 }

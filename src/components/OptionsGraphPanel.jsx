@@ -4,6 +4,7 @@ import TimelineDisplaySelect from 'components/TimelineDisplaySelect';
 import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
 import DateNavigation from 'components/DateNavigation';
 import GraphPanel from 'components/GraphPanel';
+import GraphDisplaySelect from 'components/GraphDisplaySelect';
 
 import { optionPanelStyle } from 'styles/timelineDisplaySelect';
 
@@ -12,7 +13,7 @@ function OptionsGraphPanel(props) {
 		display: 'inline-flex',
 		height: 'auto'
 	};
-
+	console.log(props.displayOptions);
 	return (
 		<div style={containerStyle}>
 			<div style={optionPanelStyle}>
@@ -25,11 +26,17 @@ function OptionsGraphPanel(props) {
 			</div>
 			<div style={optionPanelStyle}>
 				{props.displayOptions.graph.period !== 'none' ? (
-					<GraphPanel
-						entriesData={props.entriesData}
-						filterOptions={props.filterOptions}
-						{...props.displayOptions.graph}
-					/>
+					[
+						<GraphPanel
+							entriesData={props.entriesData}
+							filterOptions={props.filterOptions}
+							{...props.displayOptions.graph}
+						/>,
+						<GraphDisplaySelect
+							setDisplayOptions={props.setDisplayOptions}
+							displayOptions={props.displayOptions}
+						/>
+					]
 				) : null}
 			</div>
 		</div>
