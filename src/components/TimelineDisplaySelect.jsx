@@ -3,12 +3,12 @@ import BounceButton from './BounceButton';
 import {
 	containerStyle,
 	toggleButtonStyle,
-	visibilityOptionLabelStyle,
+	timelineDisplaySelectLabelStyle,
 	graphSelectionDropdownStyle
-} from 'styles/visibilityOptionSelect';
+} from 'styles/timelineDisplaySelect';
 import Dropdown from 'components/Dropdown';
 
-function VisibilityOptionSelect(props) {
+function TimelineDisplaySelect(props) {
 	return (
 		<div style={containerStyle}>
 			<BounceButton
@@ -51,7 +51,7 @@ function VisibilityOptionSelect(props) {
 				style={toggleButtonStyle}
 				text={`Turn ${props.displayOptions.timeline.grid ? 'Off' : 'On'} Grid`}
 			/>
-			<span style={visibilityOptionLabelStyle}>Graph Selection:</span>
+			<span style={timelineDisplaySelectLabelStyle}>Graph Selection:</span>
 			<Dropdown
 				style={graphSelectionDropdownStyle}
 				options={[ 'none', 'week', 'month' ]}
@@ -69,4 +69,4 @@ function VisibilityOptionSelect(props) {
 	);
 }
 
-export default VisibilityOptionSelect;
+export default TimelineDisplaySelect;

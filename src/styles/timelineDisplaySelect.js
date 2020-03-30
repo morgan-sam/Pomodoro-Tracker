@@ -13,7 +13,7 @@ export const toggleButtonStyle = {
 	width: '10rem'
 };
 
-export const visibilityOptionLabelStyle = {
+export const timelineDisplaySelectLabelStyle = {
 	display: 'flex',
 	width: 'auto',
 	justifyContent: 'center',

@@ -6,7 +6,6 @@ import {
 	parseDateObjToISO,
 	parseDateObjToLittleEndian
 } from 'utility/parseDates';
-import { isConstructorDeclaration } from 'typescript';
 
 const GraphDisplay = (props) => {
 	const GRAPH_TOP_GAP = 100;

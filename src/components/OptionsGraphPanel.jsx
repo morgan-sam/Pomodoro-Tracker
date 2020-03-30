@@ -1,11 +1,11 @@
 import React from 'react';
 
-import VisibilityOptionSelect from 'components/VisibilityOptionSelect';
+import TimelineDisplaySelect from 'components/TimelineDisplaySelect';
 import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
 import DateNavigation from 'components/DateNavigation';
 import GraphDisplay from 'components/GraphDisplay';
 
-import { optionPanelStyle } from 'styles/visibilityOptionSelect';
+import { optionPanelStyle } from 'styles/timelineDisplaySelect';
 
 function OptionsGraphPanel(props) {
 	const containerStyle = {
@@ -18,7 +18,7 @@ function OptionsGraphPanel(props) {
 			<div style={optionPanelStyle}>
 				<DateNavigation filterOptions={props.filterOptions} setFilterOptions={props.setFilterOptions} />
 				<TimeOptionSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
-				<VisibilityOptionSelect
+				<TimelineDisplaySelect
 					setDisplayOptions={props.setDisplayOptions}
 					displayOptions={props.displayOptions}
 				/>
