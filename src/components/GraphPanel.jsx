@@ -42,12 +42,9 @@ const GraphPanel = (props) => {
 
 	function getGraphTitleText(counts) {
 		const dateObj = parseBigEndianToObj(Object.keys(counts)[0]);
-		if (props.period.match(/week/)) {
-			return getWeekGraphTitleRange(dateObj);
-		}
-		if (props.period === 'month') {
+		if (props.period.match(/week/)) return getWeekGraphTitleRange(dateObj);
+		if (props.period === 'month')
 			return `Pomodoros in ${monthStringArray[parseInt(dateObj.month) - 1]} ${dateObj.year}`;
-		}
 	}
 
 	function getWeekGraphTitleRange(dateObj) {
@@ -58,12 +55,8 @@ const GraphPanel = (props) => {
 	}
 
 	function drawGraphData(graphData) {
-		if (props.type === 'scatter') {
-			drawCoordinateCrosses(graphData, GRAPH_FONT_SIZE / 3);
-		}
-		if (props.type === 'line') {
-			drawGraphLine(graphData);
-		}
+		if (props.type === 'scatter') drawCoordinateCrosses(graphData, GRAPH_FONT_SIZE / 3);
+		if (props.type === 'line') drawGraphLine(graphData);
 		if (props.type === 'both') {
 			drawGraphLine(graphData);
 			drawCoordinateCrosses(graphData, GRAPH_FONT_SIZE / 3);
@@ -150,10 +143,13 @@ const GraphPanel = (props) => {
 		context.stroke();
 	}
 
-	function drawNoDataMessage(context) {
-		context.beginPath();
+	function drawNoDataMessage() {
+		const context = canvasRef.current.getContext('2d');
+		context.textBaseline = 'middle';
+		context.textAlign = 'center';
 		context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
-		context.fillText('No data available for date range', canvasRef.current.width / 2, canvasRef.current.height / 2);
+		context.beginPath();
+		context.fillText('No data available', canvasRef.current.width / 2, canvasRef.current.height / 2);
 		context.stroke();
 	}
 
@@ -163,7 +159,7 @@ const GraphPanel = (props) => {
 		() => {
 			canvasRef.current.width = remToPx(graphStyle.width);
 			canvasRef.current.height = remToPx(graphStyle.height);
-			addDataToGraph();
+			props.entriesData.length ? addDataToGraph() : drawNoDataMessage();
 		},
 		[ props ]
 	);
