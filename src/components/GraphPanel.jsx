@@ -90,25 +90,33 @@ const GraphPanel = (props) => {
 	function drawXAxis(graphData) {
 		const context = canvasRef.current.getContext('2d');
 		graphData.forEach((el, i) => {
-			const x = el.coordinate.x;
-			const raisedMonthLabel = (props.period === 'month') * (i % 2);
-			context.beginPath();
-			context.moveTo(x, canvasRef.current.height);
-			context.lineTo(x, canvasRef.current.height - GRAPH_FONT_SIZE * (1 + raisedMonthLabel));
-			context.stroke();
-			const dateText = getXAxisLabel(el.date).reverse();
+			const labelObj = {
+				x: el.coordinate.x,
+				dateText: getXAxisLabel(el.date).reverse(),
+				raisedMonthLabel: (props.period === 'month') * (i % 2)
+			};
+			drawXLabelLine(context, labelObj);
+			drawXLabelText(context, labelObj);
+		});
+	}
+
+	function drawXLabelLine(context, lineLabelObj) {
+		const { x, raisedMonthLabel } = lineLabelObj;
+		context.beginPath();
+		context.moveTo(x, canvasRef.current.height);
+		context.lineTo(x, canvasRef.current.height - GRAPH_FONT_SIZE * (1 + raisedMonthLabel));
+		context.stroke();
+	}
+
+	function drawXLabelText(context, textLabelObj) {
+		const { x, dateText, raisedMonthLabel } = textLabelObj;
+		for (let i = 0; i < dateText.length; i++) {
 			context.textAlign = 'center';
 			context.font = getXAxisFont();
-			for (let i = 0; i < dateText.length; i++) {
-				context.beginPath();
-				context.fillText(
-					dateText[i],
-					x,
-					canvasRef.current.height - GRAPH_FONT_SIZE * (i + 2 + raisedMonthLabel)
-				);
-				context.stroke();
-			}
-		});
+			context.beginPath();
+			context.fillText(dateText[i], x, canvasRef.current.height - GRAPH_FONT_SIZE * (i + 2 + raisedMonthLabel));
+			context.stroke();
+		}
 	}
 
 	function drawYAxis(counts, YUnit) {
