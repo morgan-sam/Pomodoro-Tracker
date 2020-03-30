@@ -6,6 +6,12 @@ const GraphDisplay = (props) => {
 	const GRAPH_TOP_GAP = 75;
 	const GRAPH_BOTTOM_GAP = 100;
 
+	function getYAxisLabel(entry) {
+		const dateObj = parseBigEndianToObj(entry.date);
+		if (props.graphType === 'week') return `${dateObj.day}/${dateObj.month}`;
+		if (props.graphType === 'month') return `${parseInt(dateObj.day)}`;
+	}
+
 	function drawX(coordinate, size) {
 		const context = canvasRef.current.getContext('2d');
 		const { x, y } = coordinate;
@@ -20,8 +26,7 @@ const GraphDisplay = (props) => {
 	function drawXAxis(entry) {
 		const context = canvasRef.current.getContext('2d');
 		const x = entry.coordinate.x;
-		const dateObj = parseBigEndianToObj(entry.date);
-		const dateText = `${dateObj.day}/${dateObj.month}`;
+		const dateText = getYAxisLabel(entry);
 		context.beginPath();
 		context.moveTo(x, canvasRef.current.height);
 		context.lineTo(x, canvasRef.current.height - 20);

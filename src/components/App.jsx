@@ -16,7 +16,7 @@ function App() {
 		visibility: {
 			start: false,
 			encore: true,
-			graph: 'week'
+			graph: 'month'
 		}
 	});
 	const [ timeOptions, setTimeOptions ] = useState({
