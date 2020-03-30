@@ -1,5 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { addOrSubtractDaysFromISODate, daysInMonth, monthStringArray, addOrSubtractDaysFromDateObj } from 'data/dates';
+import {
+	addOrSubtractDaysFromISODate,
+	daysInMonth,
+	monthStringArray,
+	shortDayStringArray,
+	addOrSubtractDaysFromDateObj
+} from 'data/dates';
 import {
 	parseBigEndianToObj,
 	parseISOToDateObj,
@@ -13,13 +19,13 @@ const GraphDisplay = (props) => {
 	const GRAPH_LEFT_GAP = 100;
 	const GRAPH_RIGHT_GAP = 50;
 
-	function getYAxisLabel(entry) {
+	function getXAxisLabel(entry) {
 		const dateObj = parseBigEndianToObj(entry.date);
 		if (props.graphType === 'week') return `${dateObj.day}/${dateObj.month}`;
 		if (props.graphType === 'month') return `${parseInt(dateObj.day)}`;
 	}
 
-	function getYAxisFont() {
+	function getXAxisFont() {
 		if (props.graphType === 'week') return (20 | 0) + 'px sans-serif';
 		if (props.graphType === 'month') return (13 | 0) + 'px sans-serif';
 	}
@@ -61,12 +67,12 @@ const GraphDisplay = (props) => {
 	function drawXAxis(entry) {
 		const context = canvasRef.current.getContext('2d');
 		const x = entry.coordinate.x;
-		const dateText = getYAxisLabel(entry);
+		const dateText = getXAxisLabel(entry);
 		context.beginPath();
 		context.moveTo(x, canvasRef.current.height);
 		context.lineTo(x, canvasRef.current.height - 20);
 		context.textAlign = 'center';
-		context.font = getYAxisFont();
+		context.font = getXAxisFont();
 		context.fillText(dateText, x, canvasRef.current.height - 40);
 		context.stroke();
 	}
