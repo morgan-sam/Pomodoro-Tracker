@@ -8,7 +8,7 @@ function GraphDisplaySelect(props) {
 			<span style={graphDisplaySelectLabelStyle}>Graph Period:</span>
 			<Dropdown
 				style={graphSelectionDropdownStyle}
-				options={[ 'none', 'week ahead', 'month' ]}
+				options={[ 'none', 'week ahead', 'week passed', 'month' ]}
 				default={props.displayOptions.graph.period}
 				onClick={(el) =>
 					props.setDisplayOptions({

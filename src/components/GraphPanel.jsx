@@ -43,14 +43,18 @@ const GraphPanel = (props) => {
 	function getGraphTitleText(counts) {
 		const dateObj = parseBigEndianToObj(Object.keys(counts)[0]);
 		if (props.period.match(/week/)) {
-			const nextWeekDateObj = addOrSubtractDaysFromDateObj(dateObj, 6);
-			return `Pomodoros from ${parseDateObjToLittleEndian(dateObj)} to ${parseDateObjToLittleEndian(
-				nextWeekDateObj
-			)} `;
+			return getWeekGraphTitleRange(dateObj);
 		}
 		if (props.period === 'month') {
 			return `Pomodoros in ${monthStringArray[parseInt(dateObj.month) - 1]} ${dateObj.year}`;
 		}
+	}
+
+	function getWeekGraphTitleRange(dateObj) {
+		let [ firstDate, secondDate ] = [ dateObj, dateObj ];
+		if (props.period.match(/ahead/)) secondDate = addOrSubtractDaysFromDateObj(dateObj, 6);
+		if (props.period.match(/passed/)) firstDate = addOrSubtractDaysFromDateObj(dateObj, -6);
+		return `Pomodoros from ${parseDateObjToLittleEndian(firstDate)} to ${parseDateObjToLittleEndian(secondDate)} `;
 	}
 
 	function drawGraphData(graphData) {
