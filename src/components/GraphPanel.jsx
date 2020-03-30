@@ -19,7 +19,9 @@ const GraphPanel = (props) => {
 		const dateObj = parseBigEndianToObj(date);
 		const shortDayString = new Date(`${date}T00:00:00.000Z`).toString().substring(0, 3);
 		if (props.period === 'week') return [ shortDayString, `${dateObj.day}/${dateObj.month}` ];
-		if (props.period === 'month') return [ `${parseInt(dateObj.day)}` ];
+		if (props.period === 'month') {
+			return [ `${parseInt(dateObj.day)}` ];
+		}
 	}
 
 	function getXAxisFont() {
@@ -87,18 +89,23 @@ const GraphPanel = (props) => {
 
 	function drawXAxis(graphData) {
 		const context = canvasRef.current.getContext('2d');
-		graphData.forEach((el) => {
+		graphData.forEach((el, i) => {
 			const x = el.coordinate.x;
+			const raisedMonthLabel = (props.period === 'month') * (i % 2);
 			context.beginPath();
 			context.moveTo(x, canvasRef.current.height);
-			context.lineTo(x, canvasRef.current.height - GRAPH_FONT_SIZE);
+			context.lineTo(x, canvasRef.current.height - GRAPH_FONT_SIZE * (1 + raisedMonthLabel));
 			context.stroke();
 			const dateText = getXAxisLabel(el.date).reverse();
 			context.textAlign = 'center';
 			context.font = getXAxisFont();
 			for (let i = 0; i < dateText.length; i++) {
 				context.beginPath();
-				context.fillText(dateText[i], x, canvasRef.current.height - GRAPH_FONT_SIZE * (i + 2));
+				context.fillText(
+					dateText[i],
+					x,
+					canvasRef.current.height - GRAPH_FONT_SIZE * (i + 2 + raisedMonthLabel)
+				);
 				context.stroke();
 			}
 		});

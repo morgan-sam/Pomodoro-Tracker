@@ -13,7 +13,7 @@ function OptionsGraphPanel(props) {
 		display: 'inline-flex',
 		height: 'auto'
 	};
-	console.log(props.displayOptions);
+
 	return (
 		<div style={containerStyle}>
 			<div style={optionPanelStyle}>
