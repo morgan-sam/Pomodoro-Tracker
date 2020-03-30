@@ -48,6 +48,15 @@ const GraphDisplay = (props) => {
 		}
 	}
 
+	function drawGraphLine(graphData) {
+		const context = canvasRef.current.getContext('2d');
+		context.beginPath();
+		graphData.forEach((el) => {
+			context.lineTo(el.coordinate.x, el.coordinate.y);
+		});
+		context.stroke();
+	}
+
 	function drawX(coordinate, size) {
 		const context = canvasRef.current.getContext('2d');
 		const { x, y } = coordinate;
@@ -77,6 +86,7 @@ const GraphDisplay = (props) => {
 	}
 
 	function drawYAxis(counts, YUnit) {
+		console.log(counts);
 		const maxValue = Math.max(...Object.values(counts));
 		const context = canvasRef.current.getContext('2d');
 		if (maxValue) {
@@ -161,6 +171,7 @@ const GraphDisplay = (props) => {
 			drawX(el.coordinate, 10);
 			drawXAxis(el);
 		});
+		drawGraphLine(graphData);
 	};
 
 	function getUnits(counts) {

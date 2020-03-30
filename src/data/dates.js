@@ -41,7 +41,6 @@ export const getDayFromTodayAsISO = (dayDifference = 0) => {
 };
 
 export const addOrSubtractDaysFromISODate = (date, dayChange) => {
-	console.log(dayChange);
 	return new Date(Date.parse(date) + dayChange * 86400000).toISOString();
 };
 
