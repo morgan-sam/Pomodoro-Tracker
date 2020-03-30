@@ -28,7 +28,7 @@ function OptionsGraphPanel(props) {
 					<GraphDisplay
 						entriesData={props.entriesData}
 						filterOptions={props.filterOptions}
-						graphType={props.displayOptions.graph.period}
+						{...props.displayOptions.graph}
 					/>
 				) : null}
 			</div>

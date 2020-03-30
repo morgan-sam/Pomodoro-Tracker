@@ -6,6 +6,7 @@ import {
 	parseDateObjToISO,
 	parseDateObjToLittleEndian
 } from 'utility/parseDates';
+import { isConstructorDeclaration } from 'typescript';
 
 const GraphDisplay = (props) => {
 	const GRAPH_TOP_GAP = 100;
@@ -16,13 +17,13 @@ const GraphDisplay = (props) => {
 	function getXAxisLabel(date) {
 		const dateObj = parseBigEndianToObj(date);
 		const shortDayString = new Date(`${date}T00:00:00.000Z`).toString().substring(0, 3);
-		if (props.graphType === 'week') return [ shortDayString, `${dateObj.day}/${dateObj.month}` ];
-		if (props.graphType === 'month') return [ `${parseInt(dateObj.day)}` ];
+		if (props.period === 'week') return [ shortDayString, `${dateObj.day}/${dateObj.month}` ];
+		if (props.period === 'month') return [ `${parseInt(dateObj.day)}` ];
 	}
 
 	function getXAxisFont() {
-		if (props.graphType === 'week') return (20 | 0) + 'px sans-serif';
-		if (props.graphType === 'month') return (13 | 0) + 'px sans-serif';
+		if (props.period === 'week') return (20 | 0) + 'px sans-serif';
+		if (props.period === 'month') return (13 | 0) + 'px sans-serif';
 	}
 
 	function drawGraphTitle(counts) {
@@ -37,14 +38,27 @@ const GraphDisplay = (props) => {
 
 	function getGraphTitleText(counts) {
 		const dateObj = parseBigEndianToObj(Object.keys(counts)[0]);
-		if (props.graphType === 'week') {
+		if (props.period === 'week') {
 			const nextWeekDateObj = addOrSubtractDaysFromDateObj(dateObj, 6);
 			return `Pomodoros from ${parseDateObjToLittleEndian(dateObj)} to ${parseDateObjToLittleEndian(
 				nextWeekDateObj
 			)} `;
 		}
-		if (props.graphType === 'month') {
+		if (props.period === 'month') {
 			return `Pomodoros in ${monthStringArray[parseInt(dateObj.month) - 1]} ${dateObj.year}`;
+		}
+	}
+
+	function drawGraphData(graphData) {
+		if (props.type === 'scatter') {
+			drawCoordinateCrosses(graphData, 10);
+		}
+		if (props.type === 'line') {
+			drawGraphLine(graphData);
+		}
+		if (props.type === 'both') {
+			drawGraphLine(graphData);
+			drawCoordinateCrosses(graphData, 10);
 		}
 	}
 
@@ -163,16 +177,13 @@ const GraphDisplay = (props) => {
 
 	const addDataToGraph = () => {
 		const counts =
-			props.graphType === 'week'
-				? getWeekCount(props.filterOptions.date)
-				: getMonthCount(props.filterOptions.date);
+			props.period === 'week' ? getWeekCount(props.filterOptions.date) : getMonthCount(props.filterOptions.date);
 		const units = getUnits(counts);
 		const graphData = getGraphData(counts, units);
 		drawGraphTitle(counts);
 		drawYAxis(counts, units.y);
-		drawCoordinateCrosses(graphData, 10);
 		drawXAxis(graphData);
-		drawGraphLine(graphData);
+		drawGraphData(graphData);
 	};
 
 	function getUnits(counts) {
