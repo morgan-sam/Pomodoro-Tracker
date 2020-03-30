@@ -119,25 +119,39 @@ const GraphPanel = (props) => {
 		}
 	}
 
-	function drawYAxis(counts, YUnit) {
-		const maxValue = Math.max(...Object.values(counts));
+	function drawYAxis(counts, unit) {
 		const context = canvasRef.current.getContext('2d');
 		context.textBaseline = 'middle';
 		context.textAlign = 'center';
-		if (maxValue) {
-			for (let i = 0; i <= maxValue; i++) {
-				context.beginPath();
-				context.moveTo(0, GRAPH_TOP_GAP + i * YUnit);
-				context.lineTo(GRAPH_FONT_SIZE, GRAPH_TOP_GAP + i * YUnit);
-				context.textBaseline = 'middle';
-				context.textAlign = 'center';
-				context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
-				context.fillText(maxValue - i, GRAPH_FONT_SIZE * 2, i * YUnit + GRAPH_TOP_GAP);
-				context.stroke();
+		const labelObj = {
+			maxValue: Math.max(...Object.values(counts)),
+			unit
+		};
+		if (labelObj.maxValue) {
+			for (let i = 0; i <= labelObj.maxValue; i++) {
+				labelObj.i = i;
+				drawYLabelLine(context, labelObj);
+				drawYLabelText(context, labelObj);
 			}
 		} else {
 			drawNoDataMessage(context);
 		}
+	}
+
+	function drawYLabelText(context, textLabelObj) {
+		const { i, maxValue, unit } = textLabelObj;
+		context.beginPath();
+		context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
+		context.fillText(maxValue - i, GRAPH_FONT_SIZE * 2, i * unit + GRAPH_TOP_GAP);
+		context.stroke();
+	}
+
+	function drawYLabelLine(context, lineLabelObj) {
+		const { i, unit } = lineLabelObj;
+		context.beginPath();
+		context.moveTo(0, GRAPH_TOP_GAP + i * unit);
+		context.lineTo(GRAPH_FONT_SIZE, GRAPH_TOP_GAP + i * unit);
+		context.stroke();
 	}
 
 	function drawNoDataMessage(context) {
