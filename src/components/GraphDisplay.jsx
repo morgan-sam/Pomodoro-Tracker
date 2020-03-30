@@ -13,9 +13,9 @@ const GraphDisplay = (props) => {
 	const GRAPH_LEFT_GAP = 100;
 	const GRAPH_RIGHT_GAP = 50;
 
-	function getXAxisLabel(entry) {
-		const dateObj = parseBigEndianToObj(entry.date);
-		const shortDayString = new Date(`${entry.date}T00:00:00.000Z`).toString().substring(0, 3);
+	function getXAxisLabel(date) {
+		const dateObj = parseBigEndianToObj(date);
+		const shortDayString = new Date(`${date}T00:00:00.000Z`).toString().substring(0, 3);
 		if (props.graphType === 'week') return [ shortDayString, `${dateObj.day}/${dateObj.month}` ];
 		if (props.graphType === 'month') return [ `${parseInt(dateObj.day)}` ];
 	}
@@ -78,7 +78,7 @@ const GraphDisplay = (props) => {
 			context.moveTo(x, canvasRef.current.height);
 			context.lineTo(x, canvasRef.current.height - 20);
 			context.stroke();
-			const dateText = getXAxisLabel(el).reverse();
+			const dateText = getXAxisLabel(el.date).reverse();
 			context.textAlign = 'center';
 			context.font = getXAxisFont();
 			for (let i = 0; i < dateText.length; i++) {
