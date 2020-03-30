@@ -28,6 +28,18 @@ const GraphDisplay = (props) => {
 		context.stroke();
 	}
 
+	function drawYAxis(counts, YUnit) {
+		const maxValue = Math.max(...Object.values(counts));
+		const context = canvasRef.current.getContext('2d');
+		for (let i = 0; i <= maxValue; i++) {
+			context.beginPath();
+			context.moveTo(0, i * YUnit);
+			context.lineTo(20, i * YUnit);
+			context.stroke();
+		}
+		console.log(YUnit);
+	}
+
 	const canvasRef = React.useRef(null);
 
 	useEffect(
@@ -73,6 +85,7 @@ const GraphDisplay = (props) => {
 				coordinate: { x: xUnit * (i + 1), y: canvasRef.current.height - YUnit * (el[1] + 1) }
 			};
 		});
+		drawYAxis(counts, YUnit);
 		graphData.forEach((el) => {
 			drawX(el.coordinate, 10);
 			drawXAxis(el);
