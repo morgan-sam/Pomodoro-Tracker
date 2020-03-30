@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { addOrSubtractDaysFromISODate } from 'data/dates';
-import { parseBigEndianToObj } from 'utility/parseDates';
+import { addOrSubtractDaysFromISODate, daysInMonth } from 'data/dates';
+import { parseBigEndianToObj, parseISOToDateObj, parseDateObjToISO } from 'utility/parseDates';
 
 const GraphDisplay = (props) => {
 	const GRAPH_TOP_GAP = 75;
@@ -81,8 +81,23 @@ const GraphDisplay = (props) => {
 		} else return {};
 	};
 
+	const getMonthCount = (startDate) => {
+		const counts = getPomodoroDayCount();
+		const dateObj = parseISOToDateObj(startDate);
+		const monthLength = daysInMonth(dateObj.month, dateObj.year);
+		const startOfMonth = parseDateObjToISO({ ...dateObj, day: 1 });
+		if (!(Object.keys(counts).length === 0 && counts.constructor === Object)) {
+			let monthArray = [];
+			for (let i = 0; i < monthLength; i++) {
+				const today = addOrSubtractDaysFromISODate(startOfMonth, i).substring(0, 10);
+				monthArray[today] = counts[today] ? counts[today] : 0;
+			}
+			return monthArray;
+		} else return {};
+	};
+
 	const addDataToGraph = () => {
-		const counts = getWeekCount(props.filterOptions.date);
+		const counts = getMonthCount(props.filterOptions.date);
 		const xUnit = canvasRef.current.width / (Object.values(counts).length + 1);
 		const YUnit =
 			(canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / Math.max(...Object.values(counts));
