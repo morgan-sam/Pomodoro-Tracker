@@ -123,15 +123,11 @@ const GraphPanel = (props) => {
 		const context = canvasRef.current.getContext('2d');
 		context.textBaseline = 'middle';
 		context.textAlign = 'center';
-		const labelObj = {
-			maxValue: Math.max(...Object.values(counts)),
-			unit
-		};
-		if (labelObj.maxValue) {
-			for (let i = 0; i <= labelObj.maxValue; i++) {
-				labelObj.i = i;
-				drawYLabelLine(context, labelObj);
-				drawYLabelText(context, labelObj);
+		const maxValue = Math.max(...Object.values(counts));
+		if (maxValue) {
+			for (let i = 0; i <= maxValue; i++) {
+				drawYLabelLine(context, { i, unit });
+				drawYLabelText(context, { i, unit });
 			}
 		} else {
 			drawNoDataMessage(context);
@@ -139,18 +135,18 @@ const GraphPanel = (props) => {
 	}
 
 	function drawYLabelText(context, textLabelObj) {
-		const { i, maxValue, unit } = textLabelObj;
+		const { i, unit } = textLabelObj;
 		context.beginPath();
 		context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
-		context.fillText(maxValue - i, GRAPH_FONT_SIZE * 2, i * unit + GRAPH_TOP_GAP);
+		context.fillText(i, GRAPH_FONT_SIZE * 2, canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
 		context.stroke();
 	}
 
 	function drawYLabelLine(context, lineLabelObj) {
 		const { i, unit } = lineLabelObj;
 		context.beginPath();
-		context.moveTo(0, GRAPH_TOP_GAP + i * unit);
-		context.lineTo(GRAPH_FONT_SIZE, GRAPH_TOP_GAP + i * unit);
+		context.moveTo(0, canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
+		context.lineTo(GRAPH_FONT_SIZE, canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
 		context.stroke();
 	}
 
@@ -220,7 +216,8 @@ const GraphPanel = (props) => {
 
 	function getUnits(counts) {
 		const x = (canvasRef.current.width - GRAPH_LEFT_GAP - GRAPH_RIGHT_GAP) / (Object.values(counts).length - 1);
-		const y = (canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / Math.max(...Object.values(counts));
+		// const y = (canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / Math.max(...Object.values(counts));
+		const y = (canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / 12;
 		return { x, y };
 	}
 
