@@ -57,15 +57,17 @@ const GraphDisplay = (props) => {
 		context.stroke();
 	}
 
-	function drawX(coordinate, size) {
+	function drawCoordinateCrosses(graphData, size) {
 		const context = canvasRef.current.getContext('2d');
-		const { x, y } = coordinate;
-		context.beginPath();
-		context.moveTo(x - size, y - size);
-		context.lineTo(x + size, y + size);
-		context.moveTo(x + size, y - size);
-		context.lineTo(x - size, y + size);
-		context.stroke();
+		graphData.forEach((el) => {
+			const { x, y } = el.coordinate;
+			context.beginPath();
+			context.moveTo(x - size, y - size);
+			context.lineTo(x + size, y + size);
+			context.moveTo(x + size, y - size);
+			context.lineTo(x - size, y + size);
+			context.stroke();
+		});
 	}
 
 	function drawXAxis(entry) {
@@ -167,8 +169,8 @@ const GraphDisplay = (props) => {
 		const graphData = getGraphData(counts, units);
 		drawGraphTitle(counts);
 		drawYAxis(counts, units.y);
+		drawCoordinateCrosses(graphData, 10);
 		graphData.forEach((el) => {
-			drawX(el.coordinate, 10);
 			drawXAxis(el);
 		});
 		drawGraphLine(graphData);
