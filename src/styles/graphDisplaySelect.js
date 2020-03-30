@@ -2,18 +2,13 @@ export const containerStyle = {
 	display: 'grid',
 	gap: '1rem',
 	gridAutoFlow: 'column',
-	gridTemplateColumns: '10rem 10rem 10rem 10rem auto',
+	gridTemplateColumns: '7rem 7rem 6.25rem auto',
 	zIndex: '0',
 	padding: '2rem 3rem 2rem 0',
 	width: 'auto'
 };
 
-export const toggleButtonStyle = {
-	height: '2rem',
-	width: '10rem'
-};
-
-export const timelineDisplaySelectLabelStyle = {
+export const graphDisplaySelectLabelStyle = {
 	display: 'flex',
 	width: 'auto',
 	justifyContent: 'center',
@@ -21,8 +16,7 @@ export const timelineDisplaySelectLabelStyle = {
 	paddingLeft: '0.5rem'
 };
 
-export const optionPanelStyle = {
+export const graphSelectionDropdownStyle = {
 	display: 'flex',
-	flexDirection: 'column',
-	justifyContent: 'center'
+	width: '7rem'
 };

@@ -1,16 +1,11 @@
 import React from 'react';
-import {
-	containerStyle,
-	toggleButtonStyle,
-	timelineDisplaySelectLabelStyle,
-	graphSelectionDropdownStyle
-} from 'styles/timelineDisplaySelect';
+import { containerStyle, graphDisplaySelectLabelStyle, graphSelectionDropdownStyle } from 'styles/graphDisplaySelect';
 import Dropdown from 'components/Dropdown';
 
 function GraphDisplaySelect(props) {
 	return (
 		<div style={containerStyle}>
-			<span style={timelineDisplaySelectLabelStyle}>Graph Period:</span>
+			<span style={graphDisplaySelectLabelStyle}>Graph Period:</span>
 			<Dropdown
 				style={graphSelectionDropdownStyle}
 				options={[ 'none', 'week', 'month' ]}
@@ -24,7 +19,7 @@ function GraphDisplaySelect(props) {
 						}
 					})}
 			/>
-			<span style={timelineDisplaySelectLabelStyle}>Graph Type:</span>
+			<span style={graphDisplaySelectLabelStyle}>Graph Type:</span>
 			<Dropdown
 				style={graphSelectionDropdownStyle}
 				options={[ 'scatter', 'line', 'both' ]}
