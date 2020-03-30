@@ -12,6 +12,11 @@ const GraphDisplay = (props) => {
 		if (props.graphType === 'month') return `${parseInt(dateObj.day)}`;
 	}
 
+	function getYAxisFont() {
+		if (props.graphType === 'week') return (20 | 0) + 'px sans-serif';
+		if (props.graphType === 'month') return (13 | 0) + 'px sans-serif';
+	}
+
 	function drawX(coordinate, size) {
 		const context = canvasRef.current.getContext('2d');
 		const { x, y } = coordinate;
@@ -31,7 +36,7 @@ const GraphDisplay = (props) => {
 		context.moveTo(x, canvasRef.current.height);
 		context.lineTo(x, canvasRef.current.height - 20);
 		context.textAlign = 'center';
-		context.font = (20 | 0) + 'px sans-serif';
+		context.font = getYAxisFont();
 		context.fillText(dateText, x, canvasRef.current.height - 40);
 		context.stroke();
 	}
