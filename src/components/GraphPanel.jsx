@@ -16,6 +16,13 @@ const GraphPanel = (props) => {
 	const GRAPH_FONT_SIZE = remToPx(1);
 	const Y_AXIS_MAX = props.maxPomodoro;
 
+	function getCanvasContext() {
+		const context = canvasRef.current.getContext('2d');
+		context.textBaseline = 'middle';
+		context.textAlign = 'center';
+		return context;
+	}
+
 	function getXAxisLabel(date) {
 		const dateObj = parseBigEndianToObj(date);
 		const shortDayString = new Date(`${date}T00:00:00.000Z`).toString().substring(0, 3);
@@ -29,11 +36,9 @@ const GraphPanel = (props) => {
 	}
 
 	function drawGraphTitle(counts) {
-		const context = canvasRef.current.getContext('2d');
-		context.beginPath();
-		context.textBaseline = 'middle';
-		context.textAlign = 'center';
+		let context = getCanvasContext();
 		context.font = ((GRAPH_FONT_SIZE * 1.2) | 0) + 'px sans-serif';
+		context.beginPath();
 		context.fillText(getGraphTitleText(counts), canvasRef.current.width / 2, GRAPH_FONT_SIZE * 2);
 		context.stroke();
 	}
@@ -58,14 +63,14 @@ const GraphPanel = (props) => {
 	}
 
 	function drawGraphLine(graphData) {
-		const context = canvasRef.current.getContext('2d');
+		const context = getCanvasContext();
 		context.beginPath();
 		graphData.forEach((el) => context.lineTo(el.coordinate.x, el.coordinate.y));
 		context.stroke();
 	}
 
 	function drawCoordinateCrosses(graphData, size) {
-		const context = canvasRef.current.getContext('2d');
+		const context = getCanvasContext();
 		graphData.forEach((el) => {
 			const { x, y } = el.coordinate;
 			context.beginPath();
@@ -78,7 +83,7 @@ const GraphPanel = (props) => {
 	}
 
 	function drawXAxis(graphData) {
-		const context = canvasRef.current.getContext('2d');
+		const context = getCanvasContext();
 		graphData.forEach((el, i) => {
 			const labelObj = {
 				x: el.coordinate.x,
@@ -101,7 +106,6 @@ const GraphPanel = (props) => {
 	function drawXLabelText(context, textLabelObj) {
 		const { x, dateText, raisedMonthLabel } = textLabelObj;
 		for (let i = 0; i < dateText.length; i++) {
-			context.textAlign = 'center';
 			context.font = getXAxisFont();
 			context.beginPath();
 			context.fillText(dateText[i], x, canvasRef.current.height - GRAPH_FONT_SIZE * (i + 2 + raisedMonthLabel));
@@ -110,9 +114,7 @@ const GraphPanel = (props) => {
 	}
 
 	function drawYAxis(unit) {
-		const context = canvasRef.current.getContext('2d');
-		context.textBaseline = 'middle';
-		context.textAlign = 'center';
+		const context = getCanvasContext();
 		for (let i = 0; i <= Y_AXIS_MAX; i++) {
 			drawYLabelLine(context, { i, unit });
 			drawYLabelText(context, { i, unit });
@@ -136,9 +138,7 @@ const GraphPanel = (props) => {
 	}
 
 	function drawNoDataMessage() {
-		const context = canvasRef.current.getContext('2d');
-		context.textBaseline = 'middle';
-		context.textAlign = 'center';
+		let context = getCanvasContext();
 		context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
 		context.beginPath();
 		context.fillText('No data available', canvasRef.current.width / 2, canvasRef.current.height / 2);
