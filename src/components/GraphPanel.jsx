@@ -173,15 +173,17 @@ const GraphPanel = (props) => {
 	);
 
 	const getPomodoroDayCount = () => {
-		const dateArray = props.entriesData.flatMap(
-			(el) => (el.type === 'pomodoro' ? [ el.date.substring(0, 10) ] : [])
-		);
+		const dateArray = getAllPomodoroEntries();
 		let counts = {};
 		dateArray.forEach((el) => {
 			if (counts[el]) counts[el] += 1;
 			else counts[el] = 1;
 		});
 		return counts;
+	};
+
+	const getAllPomodoroEntries = () => {
+		return props.entriesData.flatMap((el) => (el.type === 'pomodoro' ? [ el.date.substring(0, 10) ] : []));
 	};
 
 	const getWeekCount = (startDate) => {
