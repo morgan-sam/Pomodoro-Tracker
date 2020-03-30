@@ -31,13 +31,12 @@ const GraphDisplay = (props) => {
 	function drawYAxis(counts, YUnit) {
 		const maxValue = Math.max(...Object.values(counts));
 		const context = canvasRef.current.getContext('2d');
-		for (let i = 0; i <= maxValue; i++) {
+		for (let i = 1; i <= maxValue + 1; i++) {
 			context.beginPath();
 			context.moveTo(0, i * YUnit);
 			context.lineTo(20, i * YUnit);
 			context.stroke();
 		}
-		console.log(YUnit);
 	}
 
 	const canvasRef = React.useRef(null);
@@ -78,7 +77,7 @@ const GraphDisplay = (props) => {
 	const addDataToGraph = () => {
 		const counts = getWeekCount(props.filterOptions.date);
 		const xUnit = canvasRef.current.width / (Object.values(counts).length + 1);
-		const YUnit = canvasRef.current.height / (Math.max(...Object.values(counts)) + 1);
+		const YUnit = canvasRef.current.height / (Math.max(...Object.values(counts)) + 2);
 		const graphData = Object.entries(counts).map((el, i) => {
 			return {
 				date: el[0],
