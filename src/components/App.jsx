@@ -18,8 +18,8 @@ function App() {
 			encore: true
 		},
 		graph: {
-			period: 'month',
-			type: 'scatter'
+			period: 'week',
+			type: 'both'
 		}
 	});
 	const [ timeOptions, setTimeOptions ] = useState({

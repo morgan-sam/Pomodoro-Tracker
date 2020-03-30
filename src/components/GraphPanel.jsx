@@ -14,6 +14,7 @@ const GraphPanel = (props) => {
 	const GRAPH_LEFT_GAP = remToPx(5);
 	const GRAPH_RIGHT_GAP = remToPx(3);
 	const GRAPH_FONT_SIZE = remToPx(1);
+	const Y_AXIS_MAX = 14;
 
 	function getXAxisLabel(date) {
 		const dateObj = parseBigEndianToObj(date);
@@ -123,14 +124,9 @@ const GraphPanel = (props) => {
 		const context = canvasRef.current.getContext('2d');
 		context.textBaseline = 'middle';
 		context.textAlign = 'center';
-		const maxValue = Math.max(...Object.values(counts));
-		if (maxValue) {
-			for (let i = 0; i <= maxValue; i++) {
-				drawYLabelLine(context, { i, unit });
-				drawYLabelText(context, { i, unit });
-			}
-		} else {
-			drawNoDataMessage(context);
+		for (let i = 0; i <= Y_AXIS_MAX; i++) {
+			drawYLabelLine(context, { i, unit });
+			drawYLabelText(context, { i, unit });
 		}
 	}
 
@@ -216,8 +212,7 @@ const GraphPanel = (props) => {
 
 	function getUnits(counts) {
 		const x = (canvasRef.current.width - GRAPH_LEFT_GAP - GRAPH_RIGHT_GAP) / (Object.values(counts).length - 1);
-		// const y = (canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / Math.max(...Object.values(counts));
-		const y = (canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / 12;
+		const y = (canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / Y_AXIS_MAX;
 		return { x, y };
 	}
 
