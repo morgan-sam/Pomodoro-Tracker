@@ -19,14 +19,14 @@ const GraphPanel = (props) => {
 	function getXAxisLabel(date) {
 		const dateObj = parseBigEndianToObj(date);
 		const shortDayString = new Date(`${date}T00:00:00.000Z`).toString().substring(0, 3);
-		if (props.period === 'week') return [ shortDayString, `${dateObj.day}/${dateObj.month}` ];
+		if (props.period.match(/week/)) return [ shortDayString, `${dateObj.day}/${dateObj.month}` ];
 		if (props.period === 'month') {
 			return [ `${parseInt(dateObj.day)}` ];
 		}
 	}
 
 	function getXAxisFont() {
-		if (props.period === 'week') return ((GRAPH_FONT_SIZE / 1.2) | 0) + 'px sans-serif';
+		if (props.period.match(/week/)) return ((GRAPH_FONT_SIZE / 1.2) | 0) + 'px sans-serif';
 		if (props.period === 'month') return ((GRAPH_FONT_SIZE / 1.5) | 0) + 'px sans-serif';
 	}
 
@@ -42,7 +42,7 @@ const GraphPanel = (props) => {
 
 	function getGraphTitleText(counts) {
 		const dateObj = parseBigEndianToObj(Object.keys(counts)[0]);
-		if (props.period === 'week') {
+		if (props.period.match(/week/)) {
 			const nextWeekDateObj = addOrSubtractDaysFromDateObj(dateObj, 6);
 			return `Pomodoros from ${parseDateObjToLittleEndian(dateObj)} to ${parseDateObjToLittleEndian(
 				nextWeekDateObj
@@ -200,8 +200,9 @@ const GraphPanel = (props) => {
 	};
 
 	const addDataToGraph = () => {
-		const counts =
-			props.period === 'week' ? getWeekCount(props.filterOptions.date) : getMonthCount(props.filterOptions.date);
+		const counts = props.period.match(/week/)
+			? getWeekCount(props.filterOptions.date)
+			: getMonthCount(props.filterOptions.date);
 		const units = getUnits(counts);
 		const graphData = getGraphData(counts, units);
 		drawGraphTitle(counts);
