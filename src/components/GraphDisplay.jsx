@@ -12,6 +12,16 @@ const GraphDisplay = (props) => {
 		context.lineTo(x - size, y + size);
 		context.stroke();
 	}
+
+	function drawXAxis(coordinate) {
+		const context = canvasRef.current.getContext('2d');
+		const { x, y } = coordinate;
+		context.beginPath();
+		context.moveTo(x, canvasRef.current.height);
+		context.lineTo(x, canvasRef.current.height - 20);
+		context.stroke();
+	}
+
 	const canvasRef = React.useRef(null);
 
 	useEffect(
@@ -49,10 +59,14 @@ const GraphDisplay = (props) => {
 
 	const addDataToGraph = () => {
 		const counts = getWeekCount(props.filterOptions.date);
-		const xUnit = canvasRef.current.width / Object.values(counts).length;
-		const YUnit = canvasRef.current.height / Math.max(...Object.values(counts));
-		Object.entries(counts).forEach((el, i) => {
-			drawX({ x: xUnit * (i + 0.5), y: canvasRef.current.height - YUnit * el[1] }, 10);
+		const xUnit = canvasRef.current.width / (Object.values(counts).length + 1);
+		const YUnit = canvasRef.current.height / (Math.max(...Object.values(counts)) + 1);
+		const graphData = Object.entries(counts).map((el, i) => {
+			return { x: xUnit * (i + 1), y: canvasRef.current.height - YUnit * (el[1] + 1) };
+		});
+		graphData.forEach((el) => {
+			drawX(el, 10);
+			drawXAxis(el);
 		});
 	};
 
