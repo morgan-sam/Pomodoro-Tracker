@@ -24,11 +24,11 @@ function OptionsGraphPanel(props) {
 				/>
 			</div>
 			<div style={optionPanelStyle}>
-				{props.displayOptions.visibility.graph !== 'none' ? (
+				{props.displayOptions.graph.period !== 'none' ? (
 					<GraphDisplay
 						entriesData={props.entriesData}
 						filterOptions={props.filterOptions}
-						graphType={props.displayOptions.visibility.graph}
+						graphType={props.displayOptions.graph.period}
 					/>
 				) : null}
 			</div>

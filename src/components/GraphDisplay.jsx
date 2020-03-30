@@ -90,7 +90,6 @@ const GraphDisplay = (props) => {
 	}
 
 	function drawYAxis(counts, YUnit) {
-		console.log(counts);
 		const maxValue = Math.max(...Object.values(counts));
 		const context = canvasRef.current.getContext('2d');
 		if (maxValue) {

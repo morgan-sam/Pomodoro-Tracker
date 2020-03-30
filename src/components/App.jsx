@@ -13,10 +13,13 @@ function App() {
 		date: new Date().toISOString()
 	});
 	const [ displayOptions, setDisplayOptions ] = useState({
-		visibility: {
+		timeline: {
 			start: false,
-			encore: true,
-			graph: 'month'
+			encore: true
+		},
+		graph: {
+			period: 'week',
+			type: 'scatter'
 		}
 	});
 	const [ timeOptions, setTimeOptions ] = useState({
@@ -57,7 +60,7 @@ function App() {
 						pomodoro: 25,
 						encore: 5
 					}}
-					displayOptions={displayOptions}
+					displayOptions={displayOptions.timeline}
 					timeOptions={timeOptions}
 				/>
 				<OptionsGraphPanel
