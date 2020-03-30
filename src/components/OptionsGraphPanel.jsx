@@ -23,20 +23,15 @@ function OptionsGraphPanel(props) {
 					setDisplayOptions={props.setDisplayOptions}
 					displayOptions={props.displayOptions}
 				/>
+				<GraphDisplaySelect setDisplayOptions={props.setDisplayOptions} displayOptions={props.displayOptions} />
 			</div>
 			<div style={optionPanelStyle}>
 				{props.displayOptions.graph.period !== 'none' ? (
-					[
-						<GraphPanel
-							entriesData={props.entriesData}
-							filterOptions={props.filterOptions}
-							{...props.displayOptions.graph}
-						/>,
-						<GraphDisplaySelect
-							setDisplayOptions={props.setDisplayOptions}
-							displayOptions={props.displayOptions}
-						/>
-					]
+					<GraphPanel
+						entriesData={props.entriesData}
+						filterOptions={props.filterOptions}
+						{...props.displayOptions.graph}
+					/>
 				) : null}
 			</div>
 		</div>
