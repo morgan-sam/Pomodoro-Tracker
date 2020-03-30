@@ -66,7 +66,7 @@ const GraphDisplay = (props) => {
 		context.moveTo(x, canvasRef.current.height);
 		context.lineTo(x, canvasRef.current.height - 20);
 		context.stroke();
-		const dateText = getXAxisLabel(entry);
+		const dateText = getXAxisLabel(entry).reverse();
 		context.textAlign = 'center';
 		context.font = getXAxisFont();
 		for (let i = 0; i < dateText.length; i++) {
