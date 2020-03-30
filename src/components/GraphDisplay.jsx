@@ -83,14 +83,7 @@ const GraphDisplay = (props) => {
 
 	const getWeekCount = (startDate) => {
 		const counts = getPomodoroDayCount();
-		if (!(Object.keys(counts).length === 0 && counts.constructor === Object)) {
-			let weekArray = [];
-			for (let i = 0; i < 7; i++) {
-				const today = addOrSubtractDaysFromISODate(startDate, i).substring(0, 10);
-				weekArray[today] = counts[today] ? counts[today] : 0;
-			}
-			return weekArray;
-		} else return {};
+		return createCountArray(counts, startDate, 7);
 	};
 
 	const getMonthCount = (startDate) => {
@@ -98,13 +91,17 @@ const GraphDisplay = (props) => {
 		const dateObj = parseISOToDateObj(startDate);
 		const monthLength = daysInMonth(dateObj.month, dateObj.year);
 		const startOfMonth = parseDateObjToISO({ ...dateObj, day: 1 });
+		return createCountArray(counts, startOfMonth, monthLength);
+	};
+
+	const createCountArray = (counts, startDate, amountOfDays) => {
 		if (!(Object.keys(counts).length === 0 && counts.constructor === Object)) {
-			let monthArray = [];
-			for (let i = 0; i < monthLength; i++) {
-				const today = addOrSubtractDaysFromISODate(startOfMonth, i).substring(0, 10);
-				monthArray[today] = counts[today] ? counts[today] : 0;
+			let countArray = [];
+			for (let i = 0; i < amountOfDays; i++) {
+				const today = addOrSubtractDaysFromISODate(startDate, i).substring(0, 10);
+				countArray[today] = counts[today] ? counts[today] : 0;
 			}
-			return monthArray;
+			return countArray;
 		} else return {};
 	};
 
