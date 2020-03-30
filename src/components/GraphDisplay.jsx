@@ -77,11 +77,11 @@ const GraphDisplay = (props) => {
 	const addDataToGraph = () => {
 		const counts = getWeekCount(props.filterOptions.date);
 		const xUnit = canvasRef.current.width / (Object.values(counts).length + 1);
-		const YUnit = canvasRef.current.height / (Math.max(...Object.values(counts)) + 2);
+		const YUnit = (canvasRef.current.height - 100) / (Math.max(...Object.values(counts)) + 1);
 		const graphData = Object.entries(counts).map((el, i) => {
 			return {
 				date: el[0],
-				coordinate: { x: xUnit * (i + 1), y: canvasRef.current.height - YUnit * (el[1] + 1) }
+				coordinate: { x: xUnit * (i + 1), y: canvasRef.current.height - 100 - YUnit * (el[1] + 0) }
 			};
 		});
 		drawYAxis(counts, YUnit);
