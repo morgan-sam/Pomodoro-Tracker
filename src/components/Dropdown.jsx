@@ -24,6 +24,11 @@ const Dropdown = (props) => {
 		else return optionStyle;
 	};
 
+	const allWordsCapitalised = (input) => {
+		if (typeof input === 'string') return input.split(' ').map((word) => capitalizeFirstLetter(word)).join(' ');
+		else return input;
+	};
+
 	const optionHeader = () => {
 		return (
 			<div
@@ -36,7 +41,7 @@ const Dropdown = (props) => {
 				}}
 				onContextMenu={(e) => e.preventDefault()}
 			>
-				{capitalizeFirstLetter(props.default)}
+				{allWordsCapitalised(props.default)}
 			</div>
 		);
 	};
@@ -44,7 +49,7 @@ const Dropdown = (props) => {
 	const optionDivs = props.options
 		? props.options.map(function(el, i) {
 				const currentOptionStyle = getCurrentOptionStyle(el, props.options);
-				const display = typeof el === 'string' ? capitalizeFirstLetter(el) : el;
+				const display = typeof el === 'string' ? allWordsCapitalised(el) : el;
 				return (
 					<div
 						key={i}
