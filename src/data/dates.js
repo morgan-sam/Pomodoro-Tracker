@@ -2,22 +2,20 @@ export const getMonthIntegers = () => {
 	return Array.from(Array(12).keys()).map((el) => el + 1);
 };
 
-export const monthStringArray = () => {
-	return [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December'
-	];
-};
+export const monthStringArray = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
 
 export const get21stCenturyYears = () => {
 	return Array.from(Array(100).keys()).map((el) => el + 2000);

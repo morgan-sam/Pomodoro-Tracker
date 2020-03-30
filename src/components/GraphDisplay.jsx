@@ -1,9 +1,14 @@
 import React, { useEffect, useRef } from 'react';
-import { addOrSubtractDaysFromISODate, daysInMonth } from 'data/dates';
-import { parseBigEndianToObj, parseISOToDateObj, parseDateObjToISO } from 'utility/parseDates';
+import { addOrSubtractDaysFromISODate, daysInMonth, monthStringArray } from 'data/dates';
+import {
+	parseBigEndianToObj,
+	parseISOToDateObj,
+	parseDateObjToISO,
+	parseDateObjToLittleEndian
+} from 'utility/parseDates';
 
 const GraphDisplay = (props) => {
-	const GRAPH_TOP_GAP = 75;
+	const GRAPH_TOP_GAP = 100;
 	const GRAPH_BOTTOM_GAP = 100;
 	const GRAPH_LEFT_GAP = 100;
 	const GRAPH_RIGHT_GAP = 50;
@@ -17,6 +22,28 @@ const GraphDisplay = (props) => {
 	function getYAxisFont() {
 		if (props.graphType === 'week') return (20 | 0) + 'px sans-serif';
 		if (props.graphType === 'month') return (13 | 0) + 'px sans-serif';
+	}
+
+	function drawGraphTitle(counts) {
+		const context = canvasRef.current.getContext('2d');
+		context.beginPath();
+		context.textBaseline = 'middle';
+		context.textAlign = 'center';
+		context.font = (20 | 0) + 'px sans-serif';
+		context.fillText(getGraphTitleText(counts), canvasRef.current.width / 2, 40);
+		context.stroke();
+	}
+
+	function getGraphTitleText(counts) {
+		const dateObj = parseBigEndianToObj(Object.keys(counts)[0]);
+		if (props.graphType === 'week') {
+			return `Pomodoros from ${parseDateObjToLittleEndian(dateObj)} to ${Object.keys(counts)[-1]} `;
+		}
+		console.log(parseInt(dateObj.month));
+		console.log(monthStringArray);
+		if (props.graphType === 'month') {
+			return `Pomodoros in ${monthStringArray[parseInt(dateObj.month) - 1]} ${dateObj.year}`;
+		}
 	}
 
 	function drawX(coordinate, size) {
@@ -122,6 +149,7 @@ const GraphDisplay = (props) => {
 				: getMonthCount(props.filterOptions.date);
 		const units = getUnits(counts);
 		const graphData = getGraphData(counts, units);
+		drawGraphTitle(counts);
 		drawYAxis(counts, units.y);
 		graphData.forEach((el) => {
 			drawX(el.coordinate, 10);

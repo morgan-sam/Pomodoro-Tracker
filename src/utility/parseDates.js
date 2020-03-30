@@ -11,8 +11,8 @@ export const parseISOToDateObj = (string) => {
 };
 
 export const parseDateObjToISO = (obj) => {
-	const dayString = obj.day >= 10 ? obj.day.toString() : '0' + obj.day.toString();
-	const monthString = obj.month >= 10 ? obj.month.toString() : '0' + obj.month.toString();
+	const dayString = obj.day >= 10 ? parseInt(obj.day) : '0' + parseInt(obj.day);
+	const monthString = obj.month >= 10 ? parseInt(obj.month) : '0' + parseInt(obj.month);
 	return `${obj.year}-${monthString}-${dayString}T00:00:00.000Z`;
 };
 
@@ -24,4 +24,10 @@ export const parseLittleEndianToObj = (string) => {
 export const parseBigEndianToObj = (string) => {
 	const dateArray = string.split('-');
 	return { day: dateArray[2], month: dateArray[1], year: dateArray[0] };
+};
+
+export const parseDateObjToLittleEndian = (obj) => {
+	const dayString = obj.day >= 10 ? parseInt(obj.day) : '0' + parseInt(obj.day);
+	const monthString = obj.month >= 10 ? parseInt(obj.month) : '0' + parseInt(obj.month);
+	return `${dayString}-${monthString}-${obj.year}`;
 };
