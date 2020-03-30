@@ -122,6 +122,8 @@ const GraphPanel = (props) => {
 	function drawYAxis(counts, YUnit) {
 		const maxValue = Math.max(...Object.values(counts));
 		const context = canvasRef.current.getContext('2d');
+		context.textBaseline = 'middle';
+		context.textAlign = 'center';
 		if (maxValue) {
 			for (let i = 0; i <= maxValue; i++) {
 				context.beginPath();
@@ -134,17 +136,15 @@ const GraphPanel = (props) => {
 				context.stroke();
 			}
 		} else {
-			context.beginPath();
-			context.textBaseline = 'middle';
-			context.textAlign = 'center';
-			context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
-			context.fillText(
-				'No data available for date range',
-				canvasRef.current.width / 2,
-				canvasRef.current.height / 2
-			);
-			context.stroke();
+			drawNoDataMessage(context);
 		}
+	}
+
+	function drawNoDataMessage(context) {
+		context.beginPath();
+		context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
+		context.fillText('No data available for date range', canvasRef.current.width / 2, canvasRef.current.height / 2);
+		context.stroke();
 	}
 
 	const canvasRef = React.useRef(null);
