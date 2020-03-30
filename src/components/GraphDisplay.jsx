@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { addOrSubtractDaysFromISODate, daysInMonth, monthStringArray } from 'data/dates';
+import { addOrSubtractDaysFromISODate, daysInMonth, monthStringArray, addOrSubtractDaysFromDateObj } from 'data/dates';
 import {
 	parseBigEndianToObj,
 	parseISOToDateObj,
@@ -37,10 +37,11 @@ const GraphDisplay = (props) => {
 	function getGraphTitleText(counts) {
 		const dateObj = parseBigEndianToObj(Object.keys(counts)[0]);
 		if (props.graphType === 'week') {
-			return `Pomodoros from ${parseDateObjToLittleEndian(dateObj)} to ${Object.keys(counts)[-1]} `;
+			const nextWeekDateObj = addOrSubtractDaysFromDateObj(dateObj, 6);
+			return `Pomodoros from ${parseDateObjToLittleEndian(dateObj)} to ${parseDateObjToLittleEndian(
+				nextWeekDateObj
+			)} `;
 		}
-		console.log(parseInt(dateObj.month));
-		console.log(monthStringArray);
 		if (props.graphType === 'month') {
 			return `Pomodoros in ${monthStringArray[parseInt(dateObj.month) - 1]} ${dateObj.year}`;
 		}

@@ -1,3 +1,5 @@
+import { parseDateObjToISO, parseISOToDateObj } from 'utility/parseDates';
+
 export const getMonthIntegers = () => {
 	return Array.from(Array(12).keys()).map((el) => el + 1);
 };
@@ -39,6 +41,7 @@ export const getDayFromTodayAsISO = (dayDifference = 0) => {
 };
 
 export const addOrSubtractDaysFromISODate = (date, dayChange) => {
+	console.log(dayChange);
 	return new Date(Date.parse(date) + dayChange * 86400000).toISOString();
 };
 
@@ -48,4 +51,10 @@ export const daysBetweenISODates = (firstDate, secondDate) => {
 	const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
 	const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
 	return Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24));
+};
+
+export const addOrSubtractDaysFromDateObj = (date, dayChange) => {
+	const isoDate = parseDateObjToISO(date);
+	const newDate = addOrSubtractDaysFromISODate(isoDate, dayChange);
+	return parseISOToDateObj(newDate);
 };
