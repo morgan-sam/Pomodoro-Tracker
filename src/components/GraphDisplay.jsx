@@ -85,7 +85,7 @@ const GraphDisplay = (props) => {
 		const graphData = Object.entries(counts).map((el, i) => {
 			return {
 				date: el[0],
-				coordinate: { x: xUnit * (i + 1), y: canvasRef.current.height - 100 - YUnit * (el[1] + 0) }
+				coordinate: { x: xUnit * (i + 1), y: canvasRef.current.height - 100 - YUnit * el[1] }
 			};
 		});
 		drawYAxis(counts, YUnit);
