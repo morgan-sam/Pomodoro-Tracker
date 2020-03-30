@@ -114,15 +114,7 @@ const GraphDisplay = (props) => {
 				? getWeekCount(props.filterOptions.date)
 				: getMonthCount(props.filterOptions.date);
 		const units = getUnits(counts);
-		const graphData = Object.entries(counts).map((el, i) => {
-			return {
-				date: el[0],
-				coordinate: {
-					x: GRAPH_LEFT_GAP + units.x * i,
-					y: canvasRef.current.height - GRAPH_BOTTOM_GAP - units.y * el[1]
-				}
-			};
-		});
+		const graphData = getGraphData(counts, units);
 		drawYAxis(counts, units.y);
 		graphData.forEach((el) => {
 			drawX(el.coordinate, 10);
@@ -134,6 +126,18 @@ const GraphDisplay = (props) => {
 		const x = (canvasRef.current.width - GRAPH_LEFT_GAP - GRAPH_RIGHT_GAP) / (Object.values(counts).length - 1);
 		const y = (canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / Math.max(...Object.values(counts));
 		return { x, y };
+	}
+
+	function getGraphData(counts, units) {
+		return Object.entries(counts).map((el, i) => {
+			return {
+				date: el[0],
+				coordinate: {
+					x: GRAPH_LEFT_GAP + units.x * i,
+					y: canvasRef.current.height - GRAPH_BOTTOM_GAP - units.y * el[1]
+				}
+			};
+		});
 	}
 
 	const graphStyle = {
