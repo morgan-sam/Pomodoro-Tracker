@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { addOrSubtractDaysFromISODate } from 'data/dates';
+import { parseBigEndianToObj } from 'utility/parseDates';
 
 const GraphDisplay = (props) => {
 	function drawX(coordinate, size) {
@@ -13,12 +14,17 @@ const GraphDisplay = (props) => {
 		context.stroke();
 	}
 
-	function drawXAxis(coordinate) {
+	function drawXAxis(entry) {
 		const context = canvasRef.current.getContext('2d');
-		const { x, y } = coordinate;
+		const x = entry.coordinate.x;
+		const dateObj = parseBigEndianToObj(entry.date);
+		const dateText = `${dateObj.day}/${dateObj.month}`;
 		context.beginPath();
 		context.moveTo(x, canvasRef.current.height);
 		context.lineTo(x, canvasRef.current.height - 20);
+		context.textAlign = 'center';
+		context.font = (20 | 0) + 'px sans-serif';
+		context.fillText(dateText, x, canvasRef.current.height - 40);
 		context.stroke();
 	}
 
@@ -69,7 +75,7 @@ const GraphDisplay = (props) => {
 		});
 		graphData.forEach((el) => {
 			drawX(el.coordinate, 10);
-			drawXAxis(el.coordinate);
+			drawXAxis(el);
 		});
 	};
 

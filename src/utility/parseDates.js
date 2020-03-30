@@ -20,3 +20,8 @@ export const parseLittleEndianToObj = (string) => {
 	const dateArray = string.split('-');
 	return { day: dateArray[0], month: dateArray[1], year: dateArray[2] };
 };
+
+export const parseBigEndianToObj = (string) => {
+	const dateArray = string.split('-');
+	return { day: dateArray[2], month: dateArray[1], year: dateArray[0] };
+};
