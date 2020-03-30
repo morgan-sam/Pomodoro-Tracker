@@ -35,6 +35,10 @@ const GraphDisplay = (props) => {
 			context.beginPath();
 			context.moveTo(0, i * YUnit);
 			context.lineTo(20, i * YUnit);
+			context.textBaseline = 'middle';
+			context.textAlign = 'center';
+			context.font = (20 | 0) + 'px sans-serif';
+			context.fillText(maxValue - i + 1, 40, i * YUnit);
 			context.stroke();
 		}
 	}
