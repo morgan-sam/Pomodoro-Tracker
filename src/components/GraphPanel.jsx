@@ -183,6 +183,7 @@ const GraphPanel = (props) => {
 	};
 
 	const getWeekCount = (startDate) => {
+		if (props.period.match(/passed/)) startDate = addOrSubtractDaysFromISODate(startDate, -6);
 		return createCountArray(startDate, 7);
 	};
 

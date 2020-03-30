@@ -18,7 +18,7 @@ function App() {
 			encore: true
 		},
 		graph: {
-			period: 'week ahead',
+			period: 'week passed',
 			type: 'both'
 		}
 	});
