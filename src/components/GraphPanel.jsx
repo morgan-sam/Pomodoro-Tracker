@@ -6,6 +6,7 @@ import {
 	parseDateObjToISO,
 	parseDateObjToLittleEndian
 } from 'utility/parseDates';
+import { remToPx, pxToRem } from 'utility/convertUnit';
 
 const GraphPanel = (props) => {
 	const GRAPH_TOP_GAP = 100;
