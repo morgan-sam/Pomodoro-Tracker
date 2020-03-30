@@ -53,12 +53,8 @@ const GraphPanel = (props) => {
 	}
 
 	function drawGraphData(graphData) {
-		if (props.type === 'scatter') drawCoordinateCrosses(graphData, GRAPH_FONT_SIZE / 3);
-		if (props.type === 'line') drawGraphLine(graphData);
-		if (props.type === 'both') {
-			drawGraphLine(graphData);
-			drawCoordinateCrosses(graphData, GRAPH_FONT_SIZE / 3);
-		}
+		if (props.type === 'scatter' || props.type === 'both') drawCoordinateCrosses(graphData, GRAPH_FONT_SIZE / 3);
+		if (props.type === 'line' || props.type === 'both') drawGraphLine(graphData);
 	}
 
 	function drawGraphLine(graphData) {
