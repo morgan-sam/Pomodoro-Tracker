@@ -109,7 +109,10 @@ const GraphDisplay = (props) => {
 	};
 
 	const addDataToGraph = () => {
-		const counts = getMonthCount(props.filterOptions.date);
+		const counts =
+			props.graphType === 'week'
+				? getWeekCount(props.filterOptions.date)
+				: getMonthCount(props.filterOptions.date);
 		const xUnit = (canvasRef.current.width - GRAPH_LEFT_GAP - GRAPH_RIGHT_GAP) / (Object.values(counts).length - 1);
 		const YUnit =
 			(canvasRef.current.height - GRAPH_TOP_GAP - GRAPH_BOTTOM_GAP) / Math.max(...Object.values(counts));
