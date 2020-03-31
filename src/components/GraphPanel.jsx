@@ -50,10 +50,8 @@ const GraphPanel = (props) => {
 			return `Pomodoros in ${monthStringArray[parseInt(dateObj.month) - 1]} ${dateObj.year}`;
 	}
 
-	function getWeekGraphTitleRange(dateObj) {
-		let [ firstDate, secondDate ] = [ dateObj, dateObj ];
-		if (props.period.match(/ahead/)) secondDate = addOrSubtractDaysFromDateObj(dateObj, 6);
-		if (props.period.match(/passed/)) firstDate = addOrSubtractDaysFromDateObj(dateObj, -6);
+	function getWeekGraphTitleRange(firstDate) {
+		const secondDate = addOrSubtractDaysFromDateObj(firstDate, 6);
 		return `Pomodoros from ${parseDateObjToLittleEndian(firstDate)} to ${parseDateObjToLittleEndian(secondDate)} `;
 	}
 
