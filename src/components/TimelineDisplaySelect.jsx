@@ -1,12 +1,6 @@
 import React from 'react';
 import BounceButton from './BounceButton';
-import {
-	containerStyle,
-	toggleButtonStyle,
-	timelineDisplaySelectLabelStyle,
-	graphSelectionDropdownStyle
-} from 'styles/timelineDisplaySelect';
-import Dropdown from 'components/Dropdown';
+import { containerStyle, toggleButtonStyle } from 'styles/timelineDisplaySelect';
 
 function TimelineDisplaySelect(props) {
 	return (
