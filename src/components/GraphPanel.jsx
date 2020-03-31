@@ -23,7 +23,7 @@ const GraphPanel = (props) => {
 		return context;
 	}
 
-	function getXAxisLabel(date) {
+	function getXAxisLabelText(date) {
 		const dateObj = parseBigEndianToObj(date);
 		const shortDayString = new Date(`${date}T00:00:00.000Z`).toString().substring(0, 3);
 		if (props.period.match(/week/)) return [ shortDayString, `${dateObj.day}/${dateObj.month}` ];
@@ -81,14 +81,18 @@ const GraphPanel = (props) => {
 	function drawXAxis(graphData) {
 		const context = getCanvasContext();
 		graphData.forEach((el, i) => {
-			const labelObj = {
-				x: el.coordinate.x,
-				dateText: getXAxisLabel(el.date).reverse(),
-				raisedMonthLabel: (props.period === 'month') * (i % 2)
-			};
+			const labelObj = getXAxisLabelObj(el, i);
 			drawXLabelLine(context, labelObj);
 			drawXLabelText(context, labelObj);
 		});
+	}
+
+	function getXAxisLabelObj(el, i) {
+		return {
+			x: el.coordinate.x,
+			dateText: getXAxisLabelText(el.date).reverse(),
+			raisedMonthLabel: (props.period === 'month') * (i % 2)
+		};
 	}
 
 	function drawXLabelLine(context, lineLabelObj) {
