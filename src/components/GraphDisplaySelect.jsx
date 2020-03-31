@@ -3,7 +3,8 @@ import {
 	containerStyle,
 	graphDisplaySelectLabelStyle,
 	graphSelectionDropdownStyle,
-	graphOptionLabelStyle
+	graphOptionLabelStyle,
+	graphPeriodSelectStyle
 } from 'styles/graphDisplaySelect';
 import Dropdown from 'components/Dropdown';
 
@@ -12,7 +13,7 @@ function GraphDisplaySelect(props) {
 		<div style={containerStyle}>
 			<span style={graphDisplaySelectLabelStyle}>Graph Period:</span>
 			<Dropdown
-				style={graphSelectionDropdownStyle}
+				style={{ ...graphSelectionDropdownStyle, ...graphPeriodSelectStyle }}
 				options={[ 'none', 'week ahead', 'week passed', 'month' ]}
 				default={props.displayOptions.graph.period}
 				onClick={(el) =>

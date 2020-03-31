@@ -2,7 +2,7 @@ export const containerStyle = {
 	display: 'grid',
 	gap: '1rem',
 	gridAutoFlow: 'column',
-	gridTemplateColumns: '7rem 7rem 6.25rem auto',
+	gridTemplateColumns: '7rem 8rem 6.25rem auto',
 	zIndex: '0',
 	padding: '2rem 3rem 2rem 0',
 	width: 'auto'
@@ -19,6 +19,10 @@ export const graphDisplaySelectLabelStyle = {
 export const graphSelectionDropdownStyle = {
 	display: 'flex',
 	width: '7rem'
+};
+
+export const graphPeriodSelectStyle = {
+	width: '8rem'
 };
 
 export const graphOptionLabelStyle = {
