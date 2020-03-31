@@ -38,9 +38,7 @@ const GraphPanel = (props) => {
 	function drawGraphTitle(counts) {
 		let context = getCanvasContext();
 		context.font = ((GRAPH_FONT_SIZE * 1.2) | 0) + 'px sans-serif';
-		context.beginPath();
 		context.fillText(getGraphTitleText(counts), canvasRef.current.width / 2, GRAPH_FONT_SIZE * 2);
-		context.stroke();
 	}
 
 	function getGraphTitleText(counts) {
@@ -105,9 +103,7 @@ const GraphPanel = (props) => {
 		const { x, dateText, raisedMonthLabel } = textLabelObj;
 		for (let i = 0; i < dateText.length; i++) {
 			context.font = getXAxisFont();
-			context.beginPath();
 			context.fillText(dateText[i], x, canvasRef.current.height - GRAPH_FONT_SIZE * (i + 2 + raisedMonthLabel));
-			context.stroke();
 		}
 	}
 
@@ -121,10 +117,8 @@ const GraphPanel = (props) => {
 
 	function drawYLabelText(context, textLabelObj) {
 		const { i, unit } = textLabelObj;
-		context.beginPath();
 		context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
 		context.fillText(i, GRAPH_FONT_SIZE * 2, canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
-		context.stroke();
 	}
 
 	function drawYLabelLine(context, lineLabelObj) {
@@ -138,9 +132,7 @@ const GraphPanel = (props) => {
 	function drawNoDataMessage() {
 		let context = getCanvasContext();
 		context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
-		context.beginPath();
 		context.fillText('No data available', canvasRef.current.width / 2, canvasRef.current.height / 2);
-		context.stroke();
 	}
 
 	const canvasRef = React.useRef(null);
