@@ -59,30 +59,35 @@ const GraphPanel = (props) => {
 	}
 
 	function drawGraphLine(graphData) {
-		const context = getCanvasContext();
-		context.beginPath();
-		graphData.forEach((el) => context.lineTo(el.coordinate.x, el.coordinate.y));
-		context.stroke();
+		drawPassedLinePath((ctx) => {
+			graphData.forEach((el) => ctx.lineTo(el.coordinate.x, el.coordinate.y));
+		});
 	}
 
 	function drawCoordinateCrosses(graphData, size) {
-		const context = getCanvasContext();
 		graphData.forEach((el) => {
 			const { x, y } = el.coordinate;
-			context.beginPath();
-			context.moveTo(x - size, y - size);
-			context.lineTo(x + size, y + size);
-			context.moveTo(x + size, y - size);
-			context.lineTo(x - size, y + size);
-			context.stroke();
+			drawPassedLinePath((ctx) => {
+				ctx.moveTo(x - size, y - size);
+				ctx.lineTo(x + size, y + size);
+				ctx.moveTo(x + size, y - size);
+				ctx.lineTo(x - size, y + size);
+			});
 		});
+	}
+
+	function drawPassedLinePath(lineFn) {
+		const context = getCanvasContext();
+		context.beginPath();
+		lineFn(context);
+		context.stroke();
 	}
 
 	function drawXAxis(graphData) {
 		const context = getCanvasContext();
 		graphData.forEach((el, i) => {
 			const labelObj = getXAxisLabelObj(el, i);
-			drawXLabelLine(context, labelObj);
+			drawXLabelLine(labelObj);
 			drawXLabelText(context, labelObj);
 		});
 	}
@@ -95,12 +100,12 @@ const GraphPanel = (props) => {
 		};
 	}
 
-	function drawXLabelLine(context, lineLabelObj) {
+	function drawXLabelLine(lineLabelObj) {
 		const { x, raisedMonthLabel } = lineLabelObj;
-		context.beginPath();
-		context.moveTo(x, canvasRef.current.height);
-		context.lineTo(x, canvasRef.current.height - GRAPH_FONT_SIZE * (1 + raisedMonthLabel));
-		context.stroke();
+		drawPassedLinePath((ctx) => {
+			ctx.moveTo(x, canvasRef.current.height);
+			ctx.lineTo(x, canvasRef.current.height - GRAPH_FONT_SIZE * (1 + raisedMonthLabel));
+		});
 	}
 
 	function drawXLabelText(context, textLabelObj) {
@@ -114,7 +119,7 @@ const GraphPanel = (props) => {
 	function drawYAxis(unit) {
 		const context = getCanvasContext();
 		for (let i = 0; i <= Y_AXIS_MAX; i++) {
-			drawYLabelLine(context, { i, unit });
+			drawYLabelLine({ i, unit });
 			drawYLabelText(context, { i, unit });
 		}
 	}
@@ -125,12 +130,12 @@ const GraphPanel = (props) => {
 		context.fillText(i, GRAPH_FONT_SIZE * 2, canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
 	}
 
-	function drawYLabelLine(context, lineLabelObj) {
+	function drawYLabelLine(lineLabelObj) {
 		const { i, unit } = lineLabelObj;
-		context.beginPath();
-		context.moveTo(0, canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
-		context.lineTo(GRAPH_FONT_SIZE, canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
-		context.stroke();
+		drawPassedLinePath((ctx) => {
+			ctx.moveTo(0, canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
+			ctx.lineTo(GRAPH_FONT_SIZE, canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
+		});
 	}
 
 	function drawNoDataMessage() {
