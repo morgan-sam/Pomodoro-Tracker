@@ -8,4 +8,4 @@ const TimerEventSchema = new Schema({
 
 const TimerEvent = mongoose.model('timerEvent', TimerEventSchema);
 
-modules.exports = TimerEvent;
+module.exports = TimerEvent;

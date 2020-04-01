@@ -11,6 +11,7 @@
 		"cors": "^2.8.5",
 		"eslint-plugin-flowtype": "^3.13.0",
 		"express": "^4.17.1",
+		"mocha": "^7.1.1",
 		"mongoose": "^5.9.6",
 		"react": "^16.13.0",
 		"react-dom": "^16.13.0",
@@ -21,22 +22,14 @@
 	"scripts": {
 		"start": "BROWSER=chromium react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test",
+		"test": "mocha --timeout 10000",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
 	},
 	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
+		"production": [ ">0.2%", "not dead", "not op_mini all" ],
+		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
 	}
 }
