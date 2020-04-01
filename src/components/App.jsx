@@ -51,6 +51,8 @@ function App() {
 		padding: '1rem 2.5rem'
 	};
 
+	console.log(entriesData);
+
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
 			<div style={appContainerStyle}>

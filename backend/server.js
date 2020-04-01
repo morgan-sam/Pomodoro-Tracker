@@ -23,7 +23,7 @@ app.post('/api', function(request, response) {
 //Only emits event once connection is established
 wss.on('connection', (ws) => {
 	eventEmitter.on('sendEntryEvent', () => {
-		fs.readFile('./record.json', 'utf8', function(err, data) {
+		fs.readFile('backend/record.json', 'utf8', function(err, data) {
 			if (err) throw err;
 			ws.send(data);
 			console.log('Sent entries to client.');
@@ -32,16 +32,16 @@ wss.on('connection', (ws) => {
 });
 
 function addEntry(entryObj) {
-	fs.readFile('./record.json', 'utf-8', function(err, data) {
+	fs.readFile('backend/record.json', 'utf-8', function(err, data) {
 		if (err) {
-			fs.writeFile('./record.json', '{"entries":[]}', 'utf-8', function(err) {
+			fs.writeFile('backend/record.json', '{"entries":[]}', 'utf-8', function(err) {
 				if (err) throw err;
 				console.log('Created new record file.');
 			});
 		}
 		let entriesObjectArray = data ? JSON.parse(data) : { entries: [] };
 		entriesObjectArray.entries.push(entryObj);
-		fs.writeFile('./record.json', JSON.stringify(entriesObjectArray, null, 4), 'utf-8', function(err) {
+		fs.writeFile('backend/record.json', JSON.stringify(entriesObjectArray, null, 4), 'utf-8', function(err) {
 			if (err) throw err;
 			console.log('Wrote entry to file.');
 			eventEmitter.emit('sendEntryEvent');

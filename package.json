@@ -20,6 +20,7 @@
 		"ws": "^7.2.3"
 	},
 	"scripts": {
+		"server": "nodemon backend/server.js",
 		"start": "BROWSER=chromium react-scripts start",
 		"build": "react-scripts build",
 		"test": "mocha --timeout 10000",
@@ -31,5 +32,8 @@
 	"browserslist": {
 		"production": [ ">0.2%", "not dead", "not op_mini all" ],
 		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.2"
 	}
 }
