@@ -3,6 +3,7 @@ import DayTimeline from './DayTimeline';
 import TopPageText from 'components/TopPageText.jsx';
 import OptionsGraphPanel from 'components/OptionsGraphPanel.jsx';
 import axios from 'axios';
+import { convertISOToCurrentTimeZone } from 'utility/parseTime';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -46,11 +47,9 @@ function App() {
 	useEffect(() => {
 		(async () => {
 			const res = await axios.get('http://localhost:8000/api/entries/');
+			console.log(res.data);
 			setEntriesData(res.data);
 		})();
-
-		var n = new Date().getTimezoneOffset();
-		console.log(n);
 	}, []);
 
 	return (

@@ -1,19 +1,22 @@
-export const parseISOToLittleEndian = (string) => {
-	const stringDate = string.match(/.+?(?=T)/g)[0];
-	return stringDate.split('-').reverse().join('-');
+import { isConstructorDeclaration } from 'typescript';
+
+export const parseISOToLittleEndian = (iso) => {
+	const { day, month, year } = parseISOToDateObj(iso);
+	return `${day}-${month}-${year}`;
 };
 
-export const parseISOToDateObj = (string) => {
-	const stringDate = string.match(/.+?(?=T)/g)[0];
-	const dateSplitString = stringDate.split('-').reverse();
-	const dateArray = dateSplitString.map((el) => parseInt(el));
-	return { day: dateArray[0], month: dateArray[1], year: dateArray[2] };
+export const parseISOToDateObj = (iso) => {
+	const date = new Date(iso);
+	const day = date.getUTCDate();
+	const month = date.getMonth() + 1;
+	const year = date.getFullYear();
+	return { day, month, year };
 };
 
 export const parseDateObjToISO = (obj) => {
-	const dayString = obj.day >= 10 ? parseInt(obj.day) : '0' + parseInt(obj.day);
-	const monthString = obj.month >= 10 ? parseInt(obj.month) : '0' + parseInt(obj.month);
-	return `${obj.year}-${monthString}-${dayString}T00:00:00.000Z`;
+	const { day, month, year } = obj;
+	const date = new Date(year, month - 1, day);
+	return date.toISOString();
 };
 
 export const parseLittleEndianToObj = (string) => {
