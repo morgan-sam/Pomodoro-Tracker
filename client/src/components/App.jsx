@@ -3,7 +3,6 @@ import DayTimeline from './DayTimeline';
 import TopPageText from 'components/TopPageText.jsx';
 import OptionsGraphPanel from 'components/OptionsGraphPanel.jsx';
 import axios from 'axios';
-import { convertISOToCurrentTimeZone } from 'utility/parseTime';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -47,7 +46,7 @@ function App() {
 	useEffect(() => {
 		(async () => {
 			const res = await axios.get('http://localhost:8000/api/entries/');
-			console.log(res.data);
+			console.log(new Date(res.data[0].date).toLocaleString('en-US', { timeZone: 'Europe/London' }));
 			setEntriesData(res.data);
 		})();
 	}, []);
