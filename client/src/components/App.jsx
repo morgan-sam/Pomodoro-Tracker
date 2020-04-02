@@ -44,11 +44,10 @@ function App() {
 	};
 
 	useEffect(() => {
-		async function getData() {
+		(async () => {
 			const res = await axios.get('http://localhost:8000/api/entries/');
 			setEntriesData(res.data);
-		}
-		getData();
+		})();
 	});
 
 	return (
