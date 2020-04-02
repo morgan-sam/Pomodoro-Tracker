@@ -33,11 +33,10 @@ export const parseDateObjToLittleEndian = (obj) => {
 	return `${dayString}-${monthString}-${obj.year}`;
 };
 
-export const convertUTCISOToUKLittleEndian = (iso) => {
+export const convertUTCISOToUKObj = (iso) => {
 	const date = new Date(iso).toLocaleString('en-US', { timeZone: 'Europe/London' });
-	const [ month, day, year ] = date.match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0].split('/');
-	return `${day}-${month}-${year}`;
+	const [ month, day, year ] = date.match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0].split('/').map((el) => parseInt(el));
+	const [ hour, minute, second ] = date.match(/[0-9]+\:[0-9]+\:[0-9]+/g)[0].split(':').map((el) => parseInt(el));
+	const meridiem = date.match(/[a-zA-Z]+/g)[0];
+	return { day, month, year, minute, hour: hour + (meridiem === 'PM' ? 12 : 0) };
 };
-
-const date = convertUTCISOToUKLittleEndian(new Date().toISOString());
-console.log(date);

@@ -3,6 +3,7 @@ import DayTimeline from './DayTimeline';
 import TopPageText from 'components/TopPageText.jsx';
 import OptionsGraphPanel from 'components/OptionsGraphPanel.jsx';
 import axios from 'axios';
+import { convertUTCISOToUKObj } from 'utility/parseDates';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -46,7 +47,13 @@ function App() {
 	useEffect(() => {
 		(async () => {
 			const res = await axios.get('http://localhost:8000/api/entries/');
-			console.log(new Date(res.data[0].date).toLocaleString('en-US', { timeZone: 'Europe/London' }));
+			const correctTimeZoneData = res.data.map((el) => {
+				return {
+					type: el.type,
+					date: convertUTCISOToUKObj(el.date)
+				};
+			});
+			console.log(correctTimeZoneData);
 			setEntriesData(res.data);
 		})();
 	}, []);
