@@ -48,7 +48,10 @@ function App() {
 			const res = await axios.get('http://localhost:8000/api/entries/');
 			setEntriesData(res.data);
 		})();
-	});
+
+		var n = new Date().getTimezoneOffset();
+		console.log(n);
+	}, []);
 
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
