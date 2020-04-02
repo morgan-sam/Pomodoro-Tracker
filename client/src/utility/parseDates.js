@@ -40,3 +40,7 @@ export const convertUTCISOToUKObj = (iso) => {
 	const meridiem = date.match(/[a-zA-Z]+/g)[0];
 	return { day, month, year, minute, hour: hour + (meridiem === 'PM' ? 12 : 0) };
 };
+
+export const getDateHourOffset = () => {
+	return new Date().getTimezoneOffset() / -60;
+};

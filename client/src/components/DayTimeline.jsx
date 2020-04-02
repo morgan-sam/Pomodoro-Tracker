@@ -12,6 +12,8 @@ import {
 
 import { convert24hrTo12hrTime, convertISOToTimeObj } from '../utility/parseTime';
 
+import { getDateHourOffset } from 'utility/parseDates';
+
 function DayTimeline(props) {
 	const eventLengths = {
 		...props.eventLengths,
@@ -92,6 +94,7 @@ function DayTimeline(props) {
 
 	function calculateEventHourPosition(el) {
 		const time = convertISOToTimeObj(el.date);
+
 		return time.hours + time.minutes / 60 - eventLengths[el.type] / 60;
 	}
 
