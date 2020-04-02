@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require('cors');
 
 const items = require('./routes/api/items');
 const db = require('./config/keys').mongodURI;
@@ -11,6 +12,7 @@ mongoose.connect(db, {
 });
 
 const port = process.env.PORT || 8000;
+app.use(cors());
 app.use(express.json());
 app.use('/api/entries', items);
 

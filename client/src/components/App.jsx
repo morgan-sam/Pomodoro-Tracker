@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DayTimeline from './DayTimeline';
 import TopPageText from 'components/TopPageText.jsx';
 import OptionsGraphPanel from 'components/OptionsGraphPanel.jsx';
-
-const URL = 'ws://localhost:8080';
-const ws = new WebSocket(URL);
+import axios from 'axios';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -30,12 +28,6 @@ function App() {
 		hourWidth: 5
 	});
 
-	ws.onmessage = (e) => {
-		const data = JSON.parse(e.data);
-		const entries = data.entries;
-		setEntriesData(entries);
-	};
-
 	function filterEntries(entries) {
 		return entries.filter((el) => {
 			if (el.date.substring(0, 10) === filterOptions.date.substring(0, 10)) return true;
@@ -50,6 +42,14 @@ function App() {
 		gridRowGap: '.5rem',
 		padding: '1rem 2.5rem'
 	};
+
+	useEffect(() => {
+		async function getData() {
+			const res = await axios.get('http://localhost:8000/api/entries/');
+			setEntriesData(res.data);
+		}
+		getData();
+	});
 
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
