@@ -1,37 +1,24 @@
 {
 	"name": "pomodoro-tracker",
-	"version": "0.1.0",
-	"private": true,
-	"proxy": "http://localhost:8080",
-	"dependencies": {
-		"@testing-library/jest-dom": "^4.2.4",
-		"@testing-library/react": "^9.3.2",
-		"@testing-library/user-event": "^7.1.2",
-		"body-parser": "^1.19.0",
-		"cors": "^2.8.5",
-		"eslint-plugin-flowtype": "^3.13.0",
-		"express": "^4.17.1",
-		"mocha": "^7.1.1",
-		"mongoose": "^5.9.6",
-		"react": "^16.13.0",
-		"react-dom": "^16.13.0",
-		"react-scripts": "3.4.0",
-		"typescript": "^3.8.3",
-		"ws": "^7.2.3"
-	},
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
 	"scripts": {
-		"server": "nodemon backend/server.js",
-		"start": "BROWSER=chromium react-scripts start",
-		"build": "react-scripts build",
-		"test": "mocha --timeout 10000",
-		"eject": "react-scripts eject"
+		"server": "nodemon server.js"
 	},
-	"eslintConfig": {
-		"extends": "react-app"
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/morgan-sam/Pomodoro-Tracker.git"
 	},
-	"browserslist": {
-		"production": [ ">0.2%", "not dead", "not op_mini all" ],
-		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/morgan-sam/Pomodoro-Tracker/issues"
+	},
+	"homepage": "https://github.com/morgan-sam/Pomodoro-Tracker#readme",
+	"dependencies": {
+		"express": "^4.17.1",
+		"mongoose": "^5.9.7"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.2"
