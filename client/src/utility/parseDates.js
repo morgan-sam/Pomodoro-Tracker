@@ -32,3 +32,12 @@ export const parseDateObjToLittleEndian = (obj) => {
 	const monthString = obj.month >= 10 ? parseInt(obj.month) : '0' + parseInt(obj.month);
 	return `${dayString}-${monthString}-${obj.year}`;
 };
+
+export const convertUTCISOToUKLittleEndian = (iso) => {
+	const date = new Date(iso).toLocaleString('en-US', { timeZone: 'Europe/London' });
+	const [ month, day, year ] = date.match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0].split('/');
+	return `${day}-${month}-${year}`;
+};
+
+const date = convertUTCISOToUKLittleEndian(new Date().toISOString());
+console.log(date);
