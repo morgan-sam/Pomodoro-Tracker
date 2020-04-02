@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 });
 
 // @route   POST api/entries
-// @desc    Created A Post
+// @desc    Created An Entry
 // @access  Public
 router.post('/', async (req, res) => {
 	try {
@@ -30,6 +30,20 @@ router.post('/', async (req, res) => {
 	} catch (error) {
 		console.log(error);
 		res.status(500).send('Server Error');
+	}
+});
+
+// @route   DELETE api/entries/:id
+// @desc    Delete An Entry
+// @access  Public
+router.delete('/:id', async (req, res) => {
+	try {
+		const data = await Entry.findById(req.params.id);
+		await data.remove();
+		res.json({ success: true });
+	} catch (err) {
+		console.error(err.message);
+		res.status(404).json({ success: false });
 	}
 });
 
