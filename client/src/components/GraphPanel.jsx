@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { monthStringArray, addOrSubtractDaysFromDateObj } from 'data/dates';
 import { parseBigEndianToObj, parseDateObjToLittleEndian } from 'utility/parseDates';
 import { remToPx } from 'utility/convertUnit';
-import { getPomodoroCount } from 'data/graphData';
+import { getPomodoroCount } from 'controller/graphDataProcessing';
 import { graphStyle } from 'styles/graphPanel';
 
 const GraphPanel = (props) => {
