@@ -4,7 +4,7 @@ import TopPageText from 'components/TopPageText.jsx';
 import OptionsGraphPanel from 'components/OptionsGraphPanel.jsx';
 import axios from 'axios';
 
-import { getDateHourOffset } from 'utility/parseDates';
+import { getDateHourOffset, convertUTCISOToUKDateOnly } from 'utility/parseDates';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -33,7 +33,7 @@ function App() {
 
 	function filterEntries(entries) {
 		return entries.filter((el) => {
-			if (el.date.substring(0, 10) === filterOptions.date.substring(0, 10)) return true;
+			if (convertUTCISOToUKDateOnly(el.date) === convertUTCISOToUKDateOnly(filterOptions.date)) return true;
 			else return false;
 		});
 	}
@@ -56,7 +56,7 @@ function App() {
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
 			<div style={appContainerStyle}>
-				<TopPageText entriesData={entriesData} filterOptions={filterOptions} />
+				<TopPageText entriesData={filterEntries(entriesData)} filterOptions={filterOptions} />
 				<DayTimeline
 					entries={filterEntries(entriesData)}
 					eventLengths={{

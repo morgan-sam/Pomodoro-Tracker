@@ -4,7 +4,8 @@ import {
 	parseBigEndianToObj,
 	parseISOToDateObj,
 	parseDateObjToISO,
-	parseDateObjToLittleEndian
+	parseDateObjToLittleEndian,
+	convertUTCISOToUKDateISOSubstring
 } from 'utility/parseDates';
 import { remToPx } from 'utility/convertUnit';
 
@@ -166,7 +167,9 @@ const GraphPanel = (props) => {
 	};
 
 	const getAllPomodoroEntries = () => {
-		return props.entriesData.flatMap((el) => (el.type === 'pomodoro' ? [ el.date.substring(0, 10) ] : []));
+		return props.entriesData.flatMap((el) => {
+			return el.type === 'pomodoro' ? [ convertUTCISOToUKDateISOSubstring(el.date) ] : [];
+		});
 	};
 
 	const getWeekCount = (startDate) => {

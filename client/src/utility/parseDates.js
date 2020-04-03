@@ -33,14 +33,20 @@ export const parseDateObjToLittleEndian = (obj) => {
 	return `${dayString}-${monthString}-${obj.year}`;
 };
 
-export const convertUTCISOToUKObj = (iso) => {
-	const date = new Date(iso).toLocaleString('en-US', { timeZone: 'Europe/London' });
-	const [ month, day, year ] = date.match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0].split('/').map((el) => parseInt(el));
-	const [ hour, minute, second ] = date.match(/[0-9]+\:[0-9]+\:[0-9]+/g)[0].split(':').map((el) => parseInt(el));
-	const meridiem = date.match(/[a-zA-Z]+/g)[0];
-	return { day, month, year, minute, hour: hour + (meridiem === 'PM' ? 12 : 0) };
-};
-
 export const getDateHourOffset = () => {
 	return new Date().getTimezoneOffset() / -60;
+};
+
+export const convertUTCISOToUKDateOnly = (iso) => {
+	return new Date(iso).toLocaleString('en-US', { timeZone: 'Europe/London' }).match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0];
+};
+
+export const convertUTCISOToUKDateISOSubstring = (iso) => {
+	const localeString = new Date(iso)
+		.toLocaleString('en-US', { timeZone: 'Europe/London' })
+		.match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0];
+	const [ month, day, year ] = localeString.split('/');
+	const dayString = day > 9 ? day : `0${day}`;
+	const monthString = month > 9 ? month : `0${month}`;
+	return `${year}-${monthString}-${dayString}`;
 };
