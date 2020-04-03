@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DayTimeline from './DayTimeline';
-import TopPageText from 'components/TopPageText.jsx';
-import OptionsGraphPanel from 'components/OptionsGraphPanel.jsx';
+import TopPageText from 'components/TopPageText';
+import BottomPanel from 'components/BottomPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import axios from 'axios';
 
@@ -80,7 +80,7 @@ function App() {
 					displayOptions={displayOptions.timeline}
 					timeOptions={timeOptions}
 				/>
-				<OptionsGraphPanel
+				<BottomPanel
 					entriesData={entriesData}
 					setEntriesData={setEntriesData}
 					filterOptions={filterOptions}
