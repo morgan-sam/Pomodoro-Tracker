@@ -52,9 +52,13 @@ function App() {
 		(async () => {
 			const res = await axios.get('http://localhost:8000/api/entries/');
 			setEntriesData(res.data);
+			setTimelineToFitWindow();
 		})();
-		setTimeOptions({ ...timeOptions, hourWidth: getAutoHourWidth(timeOptions) });
 	}, []);
+
+	const setTimelineToFitWindow = () => {
+		setTimeOptions({ ...timeOptions, hourWidth: getAutoHourWidth(timeOptions) });
+	};
 
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
