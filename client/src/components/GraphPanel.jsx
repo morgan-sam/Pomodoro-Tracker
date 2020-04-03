@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react';
-import { addOrSubtractDaysFromISODate, daysInMonth, monthStringArray, addOrSubtractDaysFromDateObj } from 'data/dates';
-import {
-	parseBigEndianToObj,
-	parseISOToDateObj,
-	parseDateObjToISO,
-	parseDateObjToLittleEndian,
-	convertUTCISOToUKDateISOSubstring
-} from 'utility/parseDates';
+import { monthStringArray, addOrSubtractDaysFromDateObj } from 'data/dates';
+import { parseBigEndianToObj, parseDateObjToLittleEndian } from 'utility/parseDates';
 import { remToPx } from 'utility/convertUnit';
 import { getPomodoroCount } from 'data/graphData';
+import { graphStyle } from 'styles/graphPanel';
 
 const GraphPanel = (props) => {
 	const GRAPH_TOP_GAP = remToPx(5);
@@ -189,13 +184,6 @@ const GraphPanel = (props) => {
 			};
 		});
 	}
-
-	const graphStyle = {
-		display: 'flex',
-		height: '25rem',
-		width: '32rem',
-		border: '1px solid black'
-	};
 
 	return <canvas ref={canvasRef} style={graphStyle} />;
 };
