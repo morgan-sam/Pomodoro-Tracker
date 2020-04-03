@@ -56,7 +56,7 @@ function App() {
 		})();
 	}, []);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		window.addEventListener('resize', setTimelineToFitWindow);
 		return () => {
 			window.removeEventListener('resize', setTimelineToFitWindow);
