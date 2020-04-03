@@ -8,6 +8,7 @@ import GraphDisplaySelect from 'components/GraphDisplaySelect';
 
 import { optionPanelStyle } from 'styles/timelineDisplaySelect';
 import TimelineZoomSelect from './TimelineZoomSelect';
+import TimelineDateSelect from './TimelineDateSelect';
 
 function OptionsGraphPanel(props) {
 	const containerStyle = {
@@ -18,7 +19,11 @@ function OptionsGraphPanel(props) {
 	return (
 		<div style={containerStyle}>
 			<div style={optionPanelStyle}>
-				<DateNavigation filterOptions={props.filterOptions} setFilterOptions={props.setFilterOptions} />
+				<TimelineDateSelect
+					filterOptions={props.filterOptions}
+					setFilterOptions={props.setFilterOptions}
+					style={{ padding: '0' }}
+				/>
 				<TimeOptionSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
 				<TimelineZoomSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
 				<TimelineDisplaySelect
