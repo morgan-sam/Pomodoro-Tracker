@@ -56,6 +56,13 @@ function App() {
 		})();
 	}, []);
 
+	React.useEffect(() => {
+		window.addEventListener('resize', setTimelineToFitWindow);
+		return () => {
+			window.removeEventListener('resize', setTimelineToFitWindow);
+		};
+	});
+
 	const setTimelineToFitWindow = () => {
 		setTimeOptions({ ...timeOptions, hourWidth: getAutoHourWidth(timeOptions) });
 	};
