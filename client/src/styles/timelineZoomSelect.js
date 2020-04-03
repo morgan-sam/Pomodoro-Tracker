@@ -2,7 +2,7 @@ export const containerStyle = {
 	display: 'grid',
 	gap: '1rem',
 	gridAutoFlow: 'column',
-	gridTemplateColumns: '8rem 15rem 7rem',
+	gridTemplateColumns: '8rem 15rem 7rem 6rem 10rem',
 	zIndex: '1',
 	padding: '1rem 0'
 };
@@ -14,4 +14,12 @@ export const timelineZoomLabelStyle = {
 	height: '2rem',
 	textAlign: 'left',
 	width: 'auto'
+};
+
+export const timelineZoomCheckbox = {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	width: '1rem',
+	borderRadius: '5rem'
 };

@@ -1,6 +1,7 @@
 import React from 'react';
-import { containerStyle, timelineZoomLabelStyle } from 'styles/timelineZoomSelect';
+import { containerStyle, timelineZoomLabelStyle, timelineZoomCheckbox } from 'styles/timelineZoomSelect';
 import BounceButton from './BounceButton';
+import Checkbox from './Checkbox';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 
 function TimelineZoomSelect(props) {
@@ -30,6 +31,17 @@ function TimelineZoomSelect(props) {
 				}}
 				delay={350}
 				text={'Reset Zoom'}
+			/>
+			<span style={timelineZoomLabelStyle}>Auto Adjust:</span>
+			<Checkbox
+				style={timelineZoomCheckbox}
+				default={props.timeOptions.autoAdjust}
+				onChange={(val) => {
+					props.setTimeOptions({
+						...props.timeOptions,
+						autoAdjust: val
+					});
+				}}
 			/>
 		</div>
 	);
