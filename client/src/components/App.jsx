@@ -49,10 +49,17 @@ function App() {
 
 	useEffect(() => {
 		(async () => {
-			const res = await axios.get('http://localhost:8000/api/entries/');
-			setEntriesData(res.data);
-			setTimelineToFitWindow();
+			try {
+				const res = await axios.get('http://localhost:8000/api/entries/');
+				setEntriesData(res.data);
+			} catch (error) {
+				console.log(error);
+			}
 		})();
+	}, []);
+
+	useEffect(() => {
+		setTimelineToFitWindow();
 	}, []);
 
 	useEffect(() => {
