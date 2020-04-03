@@ -22,6 +22,7 @@ export const drawXLabelText = (graph, textLabelObj) => {
 };
 
 export const drawYLabelText = (graph, textLabelObj) => {
+	console.log(textLabelObj);
 	const { i, unit } = textLabelObj;
 	graph.context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
 	graph.context.fillText(i, GRAPH_FONT_SIZE * 2, graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);

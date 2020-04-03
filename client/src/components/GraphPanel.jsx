@@ -7,7 +7,6 @@ import { drawNoDataMessage, drawEntireGraph } from 'controller/canvasDrawing';
 
 const GraphPanel = (props) => {
 	const Y_AXIS_MAX = props.maxPomodoro;
-
 	const canvasRef = React.useRef(null);
 
 	useEffect(
