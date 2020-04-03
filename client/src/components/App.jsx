@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DayTimeline from './DayTimeline';
-import TopPageText from 'components/TopPageText';
+import TopPanel from 'components/TopPanel';
 import BottomPanel from 'components/BottomPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import axios from 'axios';
@@ -70,15 +69,15 @@ function App() {
 	return (
 		<div className="App" style={{ padding: '1rem' }}>
 			<div style={appContainerStyle}>
-				<TopPageText entriesData={filterEntries(entriesData)} filterOptions={filterOptions} />
-				<DayTimeline
-					entries={filterEntries(entriesData)}
+				<TopPanel
+					filteredEntries={filterEntries(entriesData)}
+					filterOptions={filterOptions}
+					displayOptions={displayOptions}
+					timeOptions={timeOptions}
 					eventLengths={{
 						pomodoro: 25,
 						encore: 5
 					}}
-					displayOptions={displayOptions.timeline}
-					timeOptions={timeOptions}
 				/>
 				<BottomPanel
 					entriesData={entriesData}
