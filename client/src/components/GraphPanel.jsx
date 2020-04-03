@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { remToPx } from 'utility/convertUnit';
 import { getPomodoroCount } from 'controller/graphDataProcessing';
 import { graphStyle } from 'styles/graphPanel';
@@ -7,12 +7,12 @@ import { drawNoDataMessage, drawEntireGraph } from 'controller/canvasDrawing';
 
 const GraphPanel = (props) => {
 	const Y_AXIS_MAX = props.maxPomodoro;
-	const canvasRef = React.useRef(null);
+	const canvasRef = useRef(null);
 
 	useEffect(
 		() => {
-			canvasRef.current.width = remToPx(graphStyle.width);
-			canvasRef.current.height = remToPx(graphStyle.height);
+			canvasRef.current.width = canvasRef.current.offsetWidth;
+			canvasRef.current.height = canvasRef.current.offsetHeight;
 			props.entriesData.length ? addDataToGraph() : drawNoDataMessage(canvasRef);
 		},
 		[ props ]

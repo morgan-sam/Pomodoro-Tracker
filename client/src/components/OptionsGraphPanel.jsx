@@ -27,7 +27,14 @@ function OptionsGraphPanel(props) {
 				/>
 				<GraphDisplaySelect setDisplayOptions={props.setDisplayOptions} displayOptions={props.displayOptions} />
 			</div>
-			<div style={optionPanelStyle}>
+			<div
+				style={{
+					...optionPanelStyle,
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center'
+				}}
+			>
 				{props.displayOptions.graph.period !== 'none' ? (
 					<GraphPanel
 						entriesData={props.entriesData}
