@@ -2,7 +2,7 @@ export const containerStyle = {
 	display: 'grid',
 	gap: '1rem',
 	gridAutoFlow: 'column',
-	gridTemplateColumns: 'repeat(6, 5rem)',
+	gridTemplateColumns: '5rem 6rem 5rem 6rem',
 	zIndex: '1',
 	padding: '2rem 0'
 };
@@ -12,5 +12,6 @@ export const timeOptionLabelStyle = {
 	justifyContent: 'center',
 	flexDirection: 'column',
 	height: '2rem',
-	textAlign: 'center'
+	textAlign: 'left',
+	width: 'auto'
 };
