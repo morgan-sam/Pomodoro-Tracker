@@ -1,6 +1,7 @@
 import React from 'react';
 import BounceButton from './BounceButton';
-import { containerStyle, toggleButtonStyle } from 'styles/timelineDisplaySelect';
+import { toggleButtonStyle } from 'styles/timelineDisplaySelect';
+import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineDisplaySelect(props) {
 	return (

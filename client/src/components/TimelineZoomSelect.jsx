@@ -1,8 +1,9 @@
 import React from 'react';
-import { containerStyle, timelineZoomLabelStyle, timelineZoomCheckbox } from 'styles/timelineZoomSelect';
+import { timelineZoomLabelStyle, timelineZoomCheckbox } from 'styles/timelineZoomSelect';
 import BounceButton from './BounceButton';
 import Checkbox from './Checkbox';
 import { getAutoHourWidth } from 'utility/calculateSizing';
+import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineZoomSelect(props) {
 	return (
@@ -23,6 +24,7 @@ function TimelineZoomSelect(props) {
 				style={{ width: 'auto' }}
 			/>
 			<BounceButton
+				style={{ width: '7rem', height: '2rem' }}
 				onClick={() => {
 					props.setTimeOptions({
 						...props.timeOptions,

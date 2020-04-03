@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-	containerStyle,
 	graphDisplaySelectLabelStyle,
 	graphSelectionDropdownStyle,
 	graphOptionLabelStyle,
 	graphPeriodSelectStyle
 } from 'styles/graphDisplaySelect';
+import { containerStyle } from 'styles/optionsPanel';
 import Dropdown from 'components/Dropdown';
 
 function GraphDisplaySelect(props) {
