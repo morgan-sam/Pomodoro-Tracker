@@ -1,10 +1,11 @@
 import { parseBigEndianToObj } from 'utility/parseDates';
 
-export const getXAxisLabelObj = (el, i, period) => {
+export const getXAxisLabelObj = (parameters) => {
+	const { index, period, position, date } = parameters;
 	return {
-		x: el.coordinate.x,
-		dateText: getXAxisLabelText(period, el.date).reverse(),
-		raisedMonthLabel: (period === 'month') * (i % 2)
+		x: position,
+		dateText: getXAxisLabelText(period, date).reverse(),
+		raisedMonthLabel: (period === 'month') * (index % 2)
 	};
 };
 

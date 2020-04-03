@@ -28,8 +28,14 @@ export const drawEntireGraph = (graphDataObj) => {
 //////////////////////////////////////
 
 const drawXAxis = (graph) => {
-	graph.graphData.forEach((el, i) => {
-		const labelObj = getXAxisLabelObj(el, i, graph.period);
+	graph.graphData.forEach((el, index) => {
+		const labelParameters = {
+			index,
+			period: graph.period,
+			position: el.coordinate.x,
+			date: el.date
+		};
+		const labelObj = getXAxisLabelObj(labelParameters);
 		drawXLabelLine(graph, labelObj);
 		drawXLabelText(graph, labelObj);
 	});
