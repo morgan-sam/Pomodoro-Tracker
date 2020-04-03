@@ -8,6 +8,7 @@ import {
 	convertUTCISOToUKDateISOSubstring
 } from 'utility/parseDates';
 import { remToPx } from 'utility/convertUnit';
+import { getPomodoroCount } from 'data/graphData';
 
 const GraphPanel = (props) => {
 	const GRAPH_TOP_GAP = remToPx(5);
@@ -156,48 +157,13 @@ const GraphPanel = (props) => {
 		[ props ]
 	);
 
-	const getPomodoroDayCount = () => {
-		const dateArray = getAllPomodoroEntries();
-		let counts = {};
-		dateArray.forEach((el) => {
-			if (counts[el]) counts[el] += 1;
-			else counts[el] = 1;
-		});
-		return counts;
-	};
-
-	const getAllPomodoroEntries = () => {
-		return props.entriesData.flatMap((el) => {
-			return el.type === 'pomodoro' ? [ convertUTCISOToUKDateISOSubstring(el.date) ] : [];
-		});
-	};
-
-	const getWeekCount = (startDate) => {
-		if (props.period.match(/passed/)) startDate = addOrSubtractDaysFromISODate(startDate, -6);
-		return createCountArray(startDate, 7);
-	};
-
-	const getMonthCount = (startDate) => {
-		const dateObj = parseISOToDateObj(startDate);
-		const monthLength = daysInMonth(dateObj.month, dateObj.year);
-		const startOfMonth = parseDateObjToISO({ ...dateObj, day: 1 });
-		return createCountArray(startOfMonth, monthLength);
-	};
-
-	const createCountArray = (startDate, amountOfDays) => {
-		const counts = getPomodoroDayCount();
-		let countArray = {};
-		for (let i = 0; i < amountOfDays; i++) {
-			const today = addOrSubtractDaysFromISODate(startDate, i).substring(0, 10);
-			countArray[today] = counts[today] ? counts[today] : 0;
-		}
-		return countArray;
-	};
-
 	const addDataToGraph = () => {
-		const counts = props.period.match(/week/)
-			? getWeekCount(props.filterOptions.date)
-			: getMonthCount(props.filterOptions.date);
+		const graphDataParameters = {
+			startDate: props.filterOptions.date,
+			period: props.period,
+			entriesData: props.entriesData
+		};
+		const counts = getPomodoroCount(graphDataParameters);
 		const units = getUnits(counts);
 		const graphData = getGraphData(counts, units);
 		drawGraphTitle(counts);
