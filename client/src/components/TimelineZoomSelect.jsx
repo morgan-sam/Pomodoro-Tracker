@@ -1,10 +1,11 @@
 import React from 'react';
-import { containerStyle, timeOptionLabelStyle } from 'styles/timeOptionSelect';
+import { containerStyle, timelineZoomLabelStyle } from 'styles/timelineZoomSelect';
+import BounceButton from './BounceButton';
 
 function TimelineZoomSelect(props) {
 	return (
 		<div style={containerStyle}>
-			<span style={timeOptionLabelStyle}>Timeline Zoom:</span>
+			<span style={timelineZoomLabelStyle}>Timeline Zoom:</span>
 			<input
 				type="range"
 				min="2"
@@ -17,8 +18,9 @@ function TimelineZoomSelect(props) {
 					});
 				}}
 				step="0.01"
-				style={{ width: '15rem' }}
+				style={{ width: 'auto' }}
 			/>
+			<BounceButton />
 		</div>
 	);
 }

@@ -1,0 +1,17 @@
+export const containerStyle = {
+	display: 'grid',
+	gap: '1rem',
+	gridAutoFlow: 'column',
+	gridTemplateColumns: '8rem 15rem 7rem',
+	zIndex: '1',
+	padding: '1rem 0'
+};
+
+export const timelineZoomLabelStyle = {
+	display: 'flex',
+	justifyContent: 'center',
+	flexDirection: 'column',
+	height: '2rem',
+	textAlign: 'left',
+	width: 'auto'
+};
