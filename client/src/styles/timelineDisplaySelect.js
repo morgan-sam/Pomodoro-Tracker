@@ -2,10 +2,10 @@ export const containerStyle = {
 	display: 'grid',
 	gap: '1rem',
 	gridAutoFlow: 'column',
-	gridTemplateColumns: '10rem 10rem 10rem 10rem auto',
 	zIndex: '0',
-	padding: '2rem 3rem 2rem 0',
-	width: 'auto'
+	padding: '2rem 0',
+	width: 'auto',
+	justifyContent: 'start'
 };
 
 export const toggleButtonStyle = {
