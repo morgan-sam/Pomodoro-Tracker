@@ -15,18 +15,21 @@ function Checkbox(props) {
 		alignItems: 'center',
 		width: '1rem',
 		height: '1rem',
-		border: '1px solid black',
+		border: '2px solid #777',
 		pointer: 'cursor',
 		select: 'none',
 		zIndex: '1',
-		borderRadius: props.style.borderRadius
+		borderRadius: props.style.borderRadius,
+		boxShadow: '0 0 1px 1px #ddd'
 	};
 
 	const checkStyle = {
-		height: '65%',
-		width: '65%',
-		backgroundColor: 'black',
-		borderRadius: props.style.borderRadius
+		height: '100%',
+		width: '100%',
+		transform: 'scale(0.65)',
+		backgroundColor: '#444',
+		borderRadius: props.style.borderRadius,
+		boxShadow: '0 0 1px 1px #ddd'
 	};
 
 	useEffect(
