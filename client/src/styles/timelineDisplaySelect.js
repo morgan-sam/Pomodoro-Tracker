@@ -24,5 +24,7 @@ export const timelineDisplaySelectLabelStyle = {
 export const optionPanelStyle = {
 	display: 'flex',
 	flexDirection: 'column',
-	justifyContent: 'center'
+	justifyContent: 'center',
+	width: '50%',
+	alignItems: 'left'
 };
