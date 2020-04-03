@@ -43,8 +43,9 @@ const drawXAxis = (graph) => {
 
 const drawYAxis = (graph) => {
 	for (let i = 0; i <= graph.yAxisMax; i++) {
-		drawYLabelLine(graph, { i, unit: graph.units.y });
-		drawYLabelText(graph, { i, unit: graph.units.y });
+		const labelParameters = { i, unit: graph.units.y };
+		drawYLabelLine(graph, labelParameters);
+		drawYLabelText(graph, labelParameters);
 	}
 };
 
