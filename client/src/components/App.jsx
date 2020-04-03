@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DayTimeline from './DayTimeline';
 import TopPageText from 'components/TopPageText.jsx';
 import OptionsGraphPanel from 'components/OptionsGraphPanel.jsx';
+import { getAutoHourWidth } from 'utility/calculateSizing';
 import axios from 'axios';
 
 import { getDateHourOffset, convertUTCISOToUKDateOnly } from 'utility/parseDates';
@@ -51,6 +52,7 @@ function App() {
 			const res = await axios.get('http://localhost:8000/api/entries/');
 			setEntriesData(res.data);
 		})();
+		setTimeOptions({ ...timeOptions, hourWidth: getAutoHourWidth(timeOptions) });
 	}, []);
 
 	return (

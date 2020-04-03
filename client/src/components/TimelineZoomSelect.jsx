@@ -1,6 +1,7 @@
 import React from 'react';
 import { containerStyle, timelineZoomLabelStyle } from 'styles/timelineZoomSelect';
 import BounceButton from './BounceButton';
+import { getAutoHourWidth } from 'utility/calculateSizing';
 
 function TimelineZoomSelect(props) {
 	return (
@@ -22,10 +23,9 @@ function TimelineZoomSelect(props) {
 			/>
 			<BounceButton
 				onClick={() => {
-					const hourRange = props.timeOptions.endTime - props.timeOptions.startTime;
 					props.setTimeOptions({
 						...props.timeOptions,
-						hourWidth: getPageWidth() / hourRange - 0.5
+						hourWidth: getAutoHourWidth(props.timeOptions)
 					});
 				}}
 				delay={350}
@@ -33,10 +33,6 @@ function TimelineZoomSelect(props) {
 			/>
 		</div>
 	);
-}
-
-function getPageWidth() {
-	return window.innerWidth / parseFloat(getComputedStyle(document.querySelector('body'))['font-size']);
 }
 
 export default TimelineZoomSelect;
