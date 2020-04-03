@@ -2,10 +2,11 @@ export const containerStyle = {
 	display: 'grid',
 	gap: '1rem',
 	gridAutoFlow: 'column',
-	gridTemplateColumns: '7rem 8rem 6.25rem 8rem 8rem',
 	zIndex: '0',
-	padding: '2rem 3rem 2rem 0',
-	width: 'auto'
+	padding: '2rem 0',
+	width: 'auto',
+	justifyContent: 'start',
+	alignItems: 'center'
 };
 
 export const graphDisplaySelectLabelStyle = {

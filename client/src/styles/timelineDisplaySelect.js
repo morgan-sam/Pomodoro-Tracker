@@ -5,7 +5,8 @@ export const containerStyle = {
 	zIndex: '0',
 	padding: '2rem 0',
 	width: 'auto',
-	justifyContent: 'start'
+	justifyContent: 'start',
+	alignItems: 'center'
 };
 
 export const toggleButtonStyle = {
