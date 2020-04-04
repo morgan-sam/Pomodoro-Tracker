@@ -92,7 +92,10 @@ function App() {
 		gridArea: '2 / 1 / 3 / 2'
 	};
 	const bottomRight = {
-		gridArea: '2 / 2 / 3 / 3'
+		gridArea: '2 / 2 / 3 / 3',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center'
 	};
 
 	return (
