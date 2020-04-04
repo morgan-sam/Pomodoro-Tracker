@@ -50,3 +50,11 @@ export const convertUTCISOToUKDateISOSubstring = (iso) => {
 	const monthString = month > 9 ? month : `0${month}`;
 	return `${year}-${monthString}-${dayString}`;
 };
+
+export const convertUTCISOToUKObj = (iso) => {
+	const date = new Date(iso).toLocaleString('en-US', { timeZone: 'Europe/London' });
+	const [ month, day, year ] = date.match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0].split('/').map((el) => parseInt(el));
+	const [ hour, minute, second ] = date.match(/[0-9]+\:[0-9]+\:[0-9]+/g)[0].split(':').map((el) => parseInt(el));
+	const meridiem = date.match(/[a-zA-Z]+/g)[0];
+	return { date: { day, month, year }, time: { minute, hour: hour + (meridiem === 'PM' ? 12 : 0) } };
+};

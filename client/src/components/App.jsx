@@ -6,7 +6,7 @@ import GraphPanel from 'components/GraphPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import axios from 'axios';
 
-import { getDateHourOffset, convertUTCISOToUKDateOnly } from 'utility/parseDates';
+import { getDateHourOffset, convertUTCISOToUKDateOnly, convertUTCISOToUKObj } from 'utility/parseDates';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -41,10 +41,24 @@ function App() {
 		});
 	}
 
+	function convertDataToUKTimezone(data) {
+		return data.map((el) => {
+			const { date, time } = convertUTCISOToUKObj(el.date);
+			return {
+				id: el._id,
+				type: el.type,
+				date,
+				time
+			};
+		});
+	}
+
 	useEffect(() => {
 		(async () => {
 			try {
 				const res = await axios.get('http://localhost:8000/api/entries/');
+				const correctedTimezoneData = convertDataToUKTimezone(res.data);
+				console.log(correctedTimezoneData);
 				setEntriesData(res.data);
 			} catch (error) {
 				console.log(error);
