@@ -4,7 +4,7 @@ import TopPageText from 'components/TopPageText';
 
 function TopPanel(props) {
 	return (
-		<div>
+		<div style={props.style}>
 			<TopPageText entriesData={props.filteredEntries} filterOptions={props.filterOptions} />
 			<DayTimeline
 				entries={props.filteredEntries}

@@ -11,7 +11,7 @@ export const timelineDisplaySelectLabelStyle = {
 	paddingLeft: '0.5rem'
 };
 
-export const optionPanelStyle = {
+export const quarterPanelStyle = {
 	display: 'flex',
 	flexDirection: 'column',
 	justifyContent: 'center',

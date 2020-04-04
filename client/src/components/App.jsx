@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import TopPanel from 'components/TopPanel';
-import BottomPanel from 'components/BottomPanel';
+import OptionsPanel from 'components/OptionsPanel';
+import GraphPanel from 'components/GraphPanel';
+
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import axios from 'axios';
 
@@ -39,14 +41,6 @@ function App() {
 		});
 	}
 
-	const appContainerStyle = {
-		display: 'grid',
-		gridTemplateColumns: '1fr',
-		gridTemplateRows: 'auto auto auto auto',
-		gridRowGap: '.5rem',
-		padding: '1rem 2.5rem'
-	};
-
 	useEffect(() => {
 		(async () => {
 			try {
@@ -73,10 +67,39 @@ function App() {
 		setTimeOptions({ ...timeOptions, hourWidth: getAutoHourWidth(timeOptions) });
 	};
 
+	const appContainerStyle = {
+		position: 'absolute',
+		top: '0',
+		left: '0',
+		height: '100vh',
+		width: '100vw'
+	};
+
+	const panelContainerStyle = {
+		height: '100%',
+		width: '100%',
+		display: 'grid',
+		gridTemplateColumns: 'repeat(2, 1fr)',
+		gridTemplateRows: 'repeat(2, 1fr)',
+		boxSizing: 'border-box',
+		padding: '4rem'
+	};
+
+	const topHalf = {
+		gridArea: '1 / 1 / 2 / 3'
+	};
+	const bottomLeft = {
+		gridArea: '2 / 1 / 3 / 2'
+	};
+	const bottomRight = {
+		gridArea: '2 / 2 / 3 / 3'
+	};
+
 	return (
-		<div className="App" style={{ padding: '1rem' }}>
-			<div style={appContainerStyle}>
+		<div className="App" style={appContainerStyle}>
+			<div style={panelContainerStyle}>
 				<TopPanel
+					style={topHalf}
 					filteredEntries={filterEntries(entriesData)}
 					filterOptions={filterOptions}
 					displayOptions={displayOptions}
@@ -86,7 +109,8 @@ function App() {
 						encore: 5
 					}}
 				/>
-				<BottomPanel
+				<OptionsPanel
+					style={bottomLeft}
 					entriesData={entriesData}
 					setEntriesData={setEntriesData}
 					filterOptions={filterOptions}
@@ -95,6 +119,12 @@ function App() {
 					setDisplayOptions={setDisplayOptions}
 					timeOptions={timeOptions}
 					setTimeOptions={setTimeOptions}
+				/>
+				<GraphPanel
+					style={bottomRight}
+					entriesData={entriesData}
+					filterOptions={filterOptions}
+					displayOptions={displayOptions}
 				/>
 			</div>
 		</div>
