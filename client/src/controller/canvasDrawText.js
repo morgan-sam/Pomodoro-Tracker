@@ -1,5 +1,5 @@
 import { GRAPH_SIZES } from 'styles/graphSizing';
-import { monthStringArray, addOrSubtractDaysFromDateObj } from 'data/dates';
+import { monthStringArray, addSubtractDaysFromDateObj } from 'data/dates';
 import { parseBigEndianToObj, parseDateObjToLittleEndian } from 'utility/parseDates';
 const GRAPH_FONT_SIZE = GRAPH_SIZES.FONT_SIZE;
 const GRAPH_BOTTOM_GAP = GRAPH_SIZES.BOTTOM_GAP;
@@ -42,6 +42,6 @@ function getGraphTitleText(graph) {
 
 function getWeekGraphTitleRange(firstDate) {
 	console.log(firstDate);
-	const secondDate = addOrSubtractDaysFromDateObj(firstDate, 6);
+	const secondDate = addSubtractDaysFromDateObj(firstDate, 6);
 	return `Pomodoros from ${parseDateObjToLittleEndian(firstDate)} to ${parseDateObjToLittleEndian(secondDate)} `;
 }

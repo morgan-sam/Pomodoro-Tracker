@@ -1,5 +1,5 @@
 import { parseDateObjToISO, parseDateObjToBigEndian } from 'utility/parseDates';
-import { daysInMonth, addOrSubtractDaysFromDateObj } from 'data/dates';
+import { daysInMonth, addSubtractDaysFromDateObj } from 'data/dates';
 
 export const getPomodoroCount = (graphDataParameters) => {
 	const dateArray = getAllPomodoroEntryDates(graphDataParameters.entriesData);
@@ -18,7 +18,7 @@ const getTallyParameters = (graphDataParameters) => {
 };
 
 const getWeekTimeSpanParameters = (startDate, period) => {
-	if (period.match(/passed/)) startDate = addOrSubtractDaysFromDateObj(startDate, -6);
+	if (period.match(/passed/)) startDate = addSubtractDaysFromDateObj(startDate, -6);
 	return {
 		startDate,
 		amountOfDays: 7
@@ -38,7 +38,7 @@ const createPomodoroTally = (counts, tallyParameters) => {
 	const { startDate, amountOfDays } = tallyParameters;
 	let tally = {};
 	for (let i = 0; i < amountOfDays; i++) {
-		const todayObj = addOrSubtractDaysFromDateObj(startDate, i);
+		const todayObj = addSubtractDaysFromDateObj(startDate, i);
 		const today = parseDateObjToBigEndian(todayObj);
 		tally[today] = counts[today] ? counts[today] : 0;
 	}

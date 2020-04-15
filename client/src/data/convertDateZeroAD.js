@@ -62,10 +62,10 @@ const sumOfArray = (arr) => {
 	return result;
 };
 
-const addOrSubtractDaysFromDateObj = (date, dayChange) => {
+const addSubtractDaysFromDateObj = (date, dayChange) => {
 	let numberOfDays = dateToNumberOfDaysFromZeroAD(date);
 	numberOfDays += dayChange;
 	return numberOfDaysFromZeroADToDate(numberOfDays);
 };
 
-console.log(addOrSubtractDaysFromDateObj({ day: 1, month: 1, year: 2000 }, 434535));
+console.log(addSubtractDaysFromDateObj({ day: 1, month: 1, year: 2000 }, 434535));
