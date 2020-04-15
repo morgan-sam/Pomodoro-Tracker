@@ -1,7 +1,6 @@
 import React from 'react';
 import DateSelect from 'components/DateSelect';
-import { parseISOToDateObj, parseDateObjToISO } from 'utility/parseDates';
-import { getDayFromTodayAsISO } from 'data/dates';
+import { getTodaysDateAsObj } from 'data/dates';
 import { dateContainerStyle, todayBtnStyle, centerContainer } from 'styles/dateNavigation';
 import BounceButton from './BounceButton';
 import DateArrowButton from './DateArrowButton';
@@ -12,11 +11,11 @@ const DateNavigation = (props) => {
 			<DateArrowButton {...props} direction={'left'} />
 			<div style={centerContainer}>
 				<DateSelect
-					date={parseISOToDateObj(props.filterOptions.date)}
+					date={props.filterOptions.date}
 					setDate={(dateObj) => {
 						props.setFilterOptions({
 							...props.filterOptions,
-							date: parseDateObjToISO(dateObj)
+							date: dateObj
 						});
 					}}
 				/>
@@ -25,7 +24,7 @@ const DateNavigation = (props) => {
 					onClick={() =>
 						props.setFilterOptions({
 							...props.filterOptions,
-							date: getDayFromTodayAsISO()
+							date: getTodaysDateAsObj()
 						})}
 					delay={500}
 					text={'Reset To Today'}

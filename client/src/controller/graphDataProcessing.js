@@ -1,11 +1,12 @@
-import { parseISOToDateObj, parseDateObjToISO, convertUTCISOToUKDateISOSubstring } from 'utility/parseDates';
-import { addOrSubtractDaysFromISODate, daysInMonth } from 'data/dates';
+import { parseDateObjToISO, parseDateObjToBigEndian } from 'utility/parseDates';
+import { daysInMonth, addOrSubtractDaysFromDateObj } from 'data/dates';
 
 export const getPomodoroCount = (graphDataParameters) => {
 	const dateArray = getAllPomodoroEntryDates(graphDataParameters.entriesData);
 	const entries = getDaysWithEntries(dateArray);
 	const tallyParameters = getTallyParameters(graphDataParameters);
-	return createPomodoroTally(entries, tallyParameters);
+	const pomodoroTally = createPomodoroTally(entries, tallyParameters);
+	return pomodoroTally;
 };
 
 const getTallyParameters = (graphDataParameters) => {
@@ -17,7 +18,7 @@ const getTallyParameters = (graphDataParameters) => {
 };
 
 const getWeekTimeSpanParameters = (startDate, period) => {
-	if (period.match(/passed/)) startDate = addOrSubtractDaysFromISODate(startDate, -6);
+	if (period.match(/passed/)) startDate = addOrSubtractDaysFromDateObj(startDate, -6);
 	return {
 		startDate,
 		amountOfDays: 7
@@ -25,9 +26,8 @@ const getWeekTimeSpanParameters = (startDate, period) => {
 };
 
 const getMonthTimeSpanParameters = (startDate) => {
-	const dateObj = parseISOToDateObj(startDate);
-	const monthLength = daysInMonth(dateObj.month, dateObj.year);
-	const startOfMonth = parseDateObjToISO({ ...dateObj, day: 1 });
+	const monthLength = daysInMonth(startDate.month, startDate.year);
+	const startOfMonth = parseDateObjToISO({ ...startDate, day: 1 });
 	return {
 		startDate: startOfMonth,
 		amountOfDays: monthLength
@@ -38,7 +38,8 @@ const createPomodoroTally = (counts, tallyParameters) => {
 	const { startDate, amountOfDays } = tallyParameters;
 	let tally = {};
 	for (let i = 0; i < amountOfDays; i++) {
-		const today = addOrSubtractDaysFromISODate(startDate, i).substring(0, 10);
+		const todayObj = addOrSubtractDaysFromDateObj(startDate, i);
+		const today = parseDateObjToBigEndian(todayObj);
 		tally[today] = counts[today] ? counts[today] : 0;
 	}
 	return tally;
@@ -55,6 +56,6 @@ const getDaysWithEntries = (dateArray) => {
 
 const getAllPomodoroEntryDates = (entriesData) => {
 	return entriesData.flatMap((el) => {
-		return el.type === 'pomodoro' ? [ convertUTCISOToUKDateISOSubstring(el.date) ] : [];
+		return el.type === 'pomodoro' ? [ el.date ] : [];
 	});
 };

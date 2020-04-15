@@ -32,6 +32,11 @@ export const parseDateObjToLittleEndian = (obj) => {
 	const monthString = obj.month >= 10 ? parseInt(obj.month) : '0' + parseInt(obj.month);
 	return `${dayString}-${monthString}-${obj.year}`;
 };
+export const parseDateObjToBigEndian = (obj) => {
+	const dayString = obj.day >= 10 ? parseInt(obj.day) : '0' + parseInt(obj.day);
+	const monthString = obj.month >= 10 ? parseInt(obj.month) : '0' + parseInt(obj.month);
+	return `${obj.year}-${monthString}-${dayString}`;
+};
 
 export const getDateHourOffset = () => {
 	return new Date().getTimezoneOffset() / -60;

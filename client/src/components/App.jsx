@@ -4,15 +4,16 @@ import OptionsPanel from 'components/OptionsPanel';
 import GraphPanel from 'components/GraphPanel';
 
 import { getAutoHourWidth } from 'utility/calculateSizing';
+import { compareObjs } from 'utility/sortAndCompare';
 import axios from 'axios';
 
-import { getDateHourOffset, convertUTCISOToUKDateOnly, convertUTCISOToUKObj } from 'utility/parseDates';
+import { getDateHourOffset, convertUTCISOToUKObj } from 'utility/parseDates';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ filterOptions, setFilterOptions ] = useState({
 		type: null,
-		date: new Date().toISOString()
+		date: convertUTCISOToUKObj(new Date().toISOString()).date
 	});
 	const [ displayOptions, setDisplayOptions ] = useState({
 		timeline: {
@@ -36,7 +37,7 @@ function App() {
 
 	function filterEntries(entries) {
 		return entries.filter((el) => {
-			if (convertUTCISOToUKDateOnly(el.date) === convertUTCISOToUKDateOnly(filterOptions.date)) return true;
+			if (compareObjs(el.date, filterOptions.date)) return true;
 			else return false;
 		});
 	}
@@ -58,8 +59,7 @@ function App() {
 			try {
 				const res = await axios.get('http://localhost:8000/api/entries/');
 				const correctedTimezoneData = convertDataToUKTimezone(res.data);
-				console.log(correctedTimezoneData);
-				setEntriesData(res.data);
+				setEntriesData(correctedTimezoneData);
 			} catch (error) {
 				console.log(error);
 			}

@@ -1,39 +1,4 @@
-import { convertUTCISOToUKObj } from '../utility/parseDates.js';
-
-export const getMonthIntegers = () => {
-	return Array.from(Array(12).keys()).map((el) => el + 1);
-};
-
-export const monthStringArray = [
-	'January',
-	'February',
-	'March',
-	'April',
-	'May',
-	'June',
-	'July',
-	'August',
-	'September',
-	'October',
-	'November',
-	'December'
-];
-
-export const get21stCenturyYears = () => {
-	return Array.from(Array(100).keys()).map((el) => el + 2000);
-};
-
-export const arrayOfMonthDays = (month, year) => {
-	if (typeof month === 'string') month = monthStringArray().indexOf(month) + 1;
-	const totalDays = daysInMonth(month, year);
-	return Array.from(Array(totalDays).keys()).map((el) => el + 1);
-};
-
-export const getTodaysDateAsObj = () => {
-	return convertUTCISOToUKObj(new Date().toISOString());
-};
-
-export const daysInMonth = (month, year) => {
+const daysInMonth = (month, year) => {
 	const monthDays = [ 31, 28 + (checkIfLeapYear(year) ? 1 : 0), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
 	return monthDays[month - 1];
 };
@@ -59,10 +24,11 @@ const genArrayRange = (a, b) => {
 const dateToNumberOfDaysFromZeroAD = (date) => {
 	const yearDaysTotal = sumOfArray(genArrayRange(0, date.year - 1).map((el) => daysInYear(el)));
 	const monthDaysTotal = sumOfArray(genArrayRange(1, date.month - 1).map((el) => daysInMonth(el, date.year)));
-	return yearDaysTotal + monthDaysTotal + date.day;
+	return yearDaysTotal + monthDaysTotal + date.day + 1;
 };
 
 const numberOfDaysFromZeroADToDate = (numberOfDays) => {
+	numberOfDays--;
 	let yearCount = 0;
 	let daysToRemove = 0;
 
@@ -74,12 +40,13 @@ const numberOfDaysFromZeroADToDate = (numberOfDays) => {
 	let daysLeft = numberOfDays - daysToRemove;
 
 	let monthCount = 1;
-	for (let i = 1; i <= 12; i++) {
+	for (let i = 1; i < 12; i++) {
 		if (daysLeft > daysInMonth(i, yearCount)) {
 			daysLeft -= daysInMonth(i, yearCount);
 			monthCount++;
-		} else break;
+		}
 	}
+
 	const date = {
 		day: daysLeft,
 		month: monthCount,
@@ -95,10 +62,10 @@ const sumOfArray = (arr) => {
 	return result;
 };
 
-export const addDaysToDateObj = (date, dayChange) => {
+const addOrSubtractDaysFromDateObj = (date, dayChange) => {
 	let numberOfDays = dateToNumberOfDaysFromZeroAD(date);
-	console.log(numberOfDays + dayChange);
-	return numberOfDaysFromZeroADToDate(numberOfDays + dayChange);
+	numberOfDays += dayChange;
+	return numberOfDaysFromZeroADToDate(numberOfDays);
 };
 
-console.log(addDaysToDateObj({ day: 1, month: 4, year: 2020 }, 446354));
+console.log(addOrSubtractDaysFromDateObj({ day: 1, month: 1, year: 2000 }, 434535));

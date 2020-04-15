@@ -6,7 +6,7 @@ const GRAPH_BOTTOM_GAP = GRAPH_SIZES.BOTTOM_GAP;
 
 export const drawGraphTitle = (graph) => {
 	graph.context.font = ((GRAPH_FONT_SIZE * 1.2) | 0) + 'px sans-serif';
-	graph.context.fillText(getGraphTitleText(graph), graph.canvasRef.current.width / 2, GRAPH_FONT_SIZE * 2);
+	// graph.context.fillText(getGraphTitleText(graph), graph.canvasRef.current.width / 2, GRAPH_FONT_SIZE * 2);
 };
 
 export const drawXLabelText = (graph, textLabelObj) => {
@@ -33,6 +33,7 @@ function getXAxisFont(period) {
 }
 
 function getGraphTitleText(graph) {
+	console.log(graph);
 	const dateObj = parseBigEndianToObj(Object.keys(graph.counts)[0]);
 	if (graph.period.match(/week/)) return getWeekGraphTitleRange(dateObj);
 	if (graph.period === 'month')
@@ -40,6 +41,7 @@ function getGraphTitleText(graph) {
 }
 
 function getWeekGraphTitleRange(firstDate) {
+	console.log(firstDate);
 	const secondDate = addOrSubtractDaysFromDateObj(firstDate, 6);
 	return `Pomodoros from ${parseDateObjToLittleEndian(firstDate)} to ${parseDateObjToLittleEndian(secondDate)} `;
 }

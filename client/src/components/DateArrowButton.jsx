@@ -1,8 +1,9 @@
 import React from 'react';
 import { arrowButtonDefaultStyle } from 'styles/dateArrowButton.js';
-import { addOrSubtractDaysFromISODate } from 'data/dates';
+import { addOrSubtractDaysFromDateObj } from 'data/dates';
 
 const DateArrowButton = (props) => {
+	const dayDifference = props.direction === 'left' ? -1 : 1;
 	return (
 		<button
 			className={'arrowbutton'}
@@ -10,7 +11,7 @@ const DateArrowButton = (props) => {
 			onClick={() =>
 				props.setFilterOptions({
 					...props.filterOptions,
-					date: addOrSubtractDaysFromISODate(props.filterOptions.date, props.direction === 'left' ? -1 : 1)
+					date: addOrSubtractDaysFromDateObj(props.filterOptions.date, dayDifference)
 				})}
 		>
 			<span role="img" aria-label={`${props.direction}-arrow`}>
