@@ -33,7 +33,6 @@ function getXAxisFont(period) {
 }
 
 function getGraphTitleText(graph) {
-	console.log(graph);
 	const dateObj = parseBigEndianToObj(Object.keys(graph.counts)[0]);
 	if (graph.period.match(/week/)) return getWeekGraphTitleRange(dateObj);
 	if (graph.period === 'month')
@@ -41,8 +40,6 @@ function getGraphTitleText(graph) {
 }
 
 function getWeekGraphTitleRange(firstDate) {
-	console.log(firstDate);
 	const secondDate = addSubtractDaysFromDateObj(firstDate, 6);
-	console.log(secondDate);
 	return `Pomodoros from ${parseDateObjToLittleEndian(firstDate)} to ${parseDateObjToLittleEndian(secondDate)} `;
 }
