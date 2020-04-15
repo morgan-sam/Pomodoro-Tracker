@@ -46,6 +46,7 @@ const createPomodoroTally = (counts, tallyParameters) => {
 };
 
 const getDaysWithEntries = (dateArray) => {
+	console.log(dateArray);
 	let counts = {};
 	dateArray.forEach((el) => {
 		if (counts[el]) counts[el] += 1;
@@ -55,7 +56,7 @@ const getDaysWithEntries = (dateArray) => {
 };
 
 const getAllPomodoroEntryDates = (entriesData) => {
-	return entriesData.flatMap((el) => {
-		return el.type === 'pomodoro' ? [ el.date ] : [];
+	return entriesData.filter((el) => {
+		return el.type === 'pomodoro';
 	});
 };
