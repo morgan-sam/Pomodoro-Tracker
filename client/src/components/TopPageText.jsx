@@ -1,5 +1,5 @@
 import React from 'react';
-import { parseISOToLittleEndian, convertUTCISOToUKObj } from 'utility/parseDates';
+import { parseDateObjToLittleEndian, convertUTCISOToUKObj } from 'utility/parseDates';
 import { compareObjs } from 'utility/sortAndCompare';
 
 function TimelineToggles(props) {
@@ -13,7 +13,7 @@ function TimelineToggles(props) {
 				padding: '0 0 2rem 0'
 			}}
 		>
-			<h1>Pomodoros for {parseISOToLittleEndian(props.filterOptions.date)}</h1>
+			<h1>Pomodoros for {parseDateObjToLittleEndian(props.filterOptions.date)}</h1>
 			<h3>
 				Total{' '}
 				{compareObjs(props.filterOptions.date, convertUTCISOToUKObj(new Date().toISOString())) ? (
