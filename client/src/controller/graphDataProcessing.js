@@ -46,13 +46,16 @@ const createPomodoroTally = (counts, tallyParameters) => {
 };
 
 const getDaysWithEntries = (dateArray) => {
-	console.log(dateArray);
-	let counts = {};
+	let dateObject = {};
 	dateArray.forEach((el) => {
-		if (counts[el]) counts[el] += 1;
-		else counts[el] = 1;
+		const stringDate = parseDateObjToBigEndian(el.date);
+		if (!dateObject[stringDate]) {
+			dateObject[stringDate] = 1;
+		} else {
+			dateObject[stringDate]++;
+		}
 	});
-	return counts;
+	return dateObject;
 };
 
 const getAllPomodoroEntryDates = (entriesData) => {
