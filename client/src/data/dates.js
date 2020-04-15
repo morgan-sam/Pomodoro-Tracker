@@ -1,5 +1,7 @@
 import { convertUTCISOToUKObj } from '../utility/parseDates.js';
 
+const QUADRICENTENARY = 146097;
+
 export const getMonthIntegers = () => {
 	return Array.from(Array(12).keys()).map((el) => el + 1);
 };
@@ -66,6 +68,11 @@ const numberOfDaysFromZeroADToDate = (numberOfDays) => {
 	let yearCount = 0;
 	let daysToRemove = 0;
 
+	while (QUADRICENTENARY < numberOfDays - daysToRemove) {
+		daysToRemove += QUADRICENTENARY;
+		yearCount += 400;
+	}
+
 	while (daysToRemove + daysInYear(yearCount) < numberOfDays) {
 		daysToRemove += daysInYear(yearCount);
 		yearCount++;
@@ -95,10 +102,7 @@ const sumOfArray = (arr) => {
 	return result;
 };
 
-export const addDaysToDateObj = (date, dayChange) => {
+export const addSubtractDaysFromDateObj = (date, dayChange) => {
 	let numberOfDays = dateToNumberOfDaysFromZeroAD(date);
-	console.log(numberOfDays + dayChange);
 	return numberOfDaysFromZeroADToDate(numberOfDays + dayChange);
 };
-
-console.log(addDaysToDateObj({ day: 1, month: 4, year: 2020 }, 446354));
