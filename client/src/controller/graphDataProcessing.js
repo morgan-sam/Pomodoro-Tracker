@@ -14,6 +14,7 @@ const getTallyParameters = (graphDataParameters) => {
 	const tallyParameters = graphDataParameters.period.match(/week/)
 		? getWeekTimeSpanParameters(startDate, period)
 		: getMonthTimeSpanParameters(startDate);
+	console.log(tallyParameters);
 	return tallyParameters;
 };
 
@@ -27,7 +28,7 @@ const getWeekTimeSpanParameters = (startDate, period) => {
 
 const getMonthTimeSpanParameters = (startDate) => {
 	const monthLength = daysInMonth(startDate.month, startDate.year);
-	const startOfMonth = parseDateObjToISO({ ...startDate, day: 1 });
+	const startOfMonth = { ...startDate, day: 1 };
 	return {
 		startDate: startOfMonth,
 		amountOfDays: monthLength
