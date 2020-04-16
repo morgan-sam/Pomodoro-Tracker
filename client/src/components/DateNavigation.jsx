@@ -24,7 +24,7 @@ const DateNavigation = (props) => {
 					onClick={() =>
 						props.setFilterOptions({
 							...props.filterOptions,
-							date: getTodaysDateAsObj()
+							date: getTodaysDateAsObj().date
 						})}
 					delay={500}
 					text={'Reset To Today'}
