@@ -10,7 +10,7 @@ function TimelineToggles(props) {
 	return (
 		<div
 			style={{
-				padding: '0 0 2rem 0'
+				padding: '0 2rem 2rem 0'
 			}}
 		>
 			<h1>
@@ -24,7 +24,8 @@ function TimelineToggles(props) {
 				<span> </span>
 				<span
 					style={{
-						display: 'inline-block'
+						display: 'inline-block',
+						width: '14rem'
 					}}
 				>
 					{parseDateObjToLittleEndian(props.filterOptions.date)}
