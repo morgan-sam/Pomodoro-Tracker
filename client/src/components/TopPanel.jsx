@@ -7,6 +7,7 @@ import TimelineDateSelect from './TimelineDateSelect';
 function TopPanel(props) {
 	const topOptionStyle = {
 		display: 'flex',
+		flexWrap: 'wrap',
 		alignItems: 'center',
 		zIndex: '5'
 	};

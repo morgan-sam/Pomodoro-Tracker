@@ -9,7 +9,8 @@ const timeOptionStyle = {
 	flexDirection: 'row',
 	justifyContent: 'space-between',
 	alignItems: 'center',
-	flexWrap: 'wrap'
+	flexWrap: 'wrap',
+	margin: '2rem 0'
 };
 const subContainers = {
 	display: 'flex',
