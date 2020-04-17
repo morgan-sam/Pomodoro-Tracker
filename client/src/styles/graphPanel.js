@@ -1,7 +1,7 @@
 export const graphStyle = {
 	display: 'flex',
-	height: '20rem',
-	width: '30rem',
+	height: '27rem',
+	width: '35rem',
 	border: '1px solid black',
 	margin: '2rem 0'
 };

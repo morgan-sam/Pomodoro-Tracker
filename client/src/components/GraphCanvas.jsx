@@ -10,14 +10,16 @@ const GraphPanel = (props) => {
 
 	useEffect(
 		() => {
-			canvasRef.current.width = canvasRef.current.offsetWidth;
-			canvasRef.current.height = canvasRef.current.offsetHeight;
-			props.entriesData.length ? addDataToGraph() : drawNoDataMessage(canvasRef);
+			// canvasRef.current.offsetWidth
+			// canvasRef.current.offsetHeight
+			canvasRef.current.width = 620;
+			canvasRef.current.height = 440;
+			props.entriesData.length ? addDataToGraph(canvasRef) : drawNoDataMessage(canvasRef);
 		},
 		[ props ]
 	);
 
-	const addDataToGraph = () => {
+	const addDataToGraph = (canvasRef) => {
 		const entriesParameters = {
 			startDate: props.filterOptions.date,
 			period: props.period,
