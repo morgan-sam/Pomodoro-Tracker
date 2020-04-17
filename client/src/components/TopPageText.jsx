@@ -13,7 +13,23 @@ function TimelineToggles(props) {
 				padding: '0 0 2rem 0'
 			}}
 		>
-			<h1>Pomodoros for {parseDateObjToLittleEndian(props.filterOptions.date)}</h1>
+			<h1>
+				<span
+					style={{
+						display: 'inline-block'
+					}}
+				>
+					Pomodoros for
+				</span>
+				<span> </span>
+				<span
+					style={{
+						display: 'inline-block'
+					}}
+				>
+					{parseDateObjToLittleEndian(props.filterOptions.date)}
+				</span>
+			</h1>
 			<h3>
 				Total{' '}
 				{compareObjs(props.filterOptions.date, convertUTCISOToUKObj(new Date().toISOString())) ? (
