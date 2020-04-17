@@ -7,7 +7,7 @@ const DateArrowButton = (props) => {
 	return (
 		<button
 			className={'arrowbutton'}
-			style={arrowButtonDefaultStyle}
+			style={{ ...arrowButtonDefaultStyle, ...props.style }}
 			onClick={() =>
 				props.setFilterOptions({
 					...props.filterOptions,
