@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { remToPx } from 'utility/convertUnit';
 import { getPomodoroCount } from 'controller/graphDataProcessing';
 import { graphStyle } from 'styles/graphPanel';
 import { GRAPH_SIZES } from 'styles/graphSizing';

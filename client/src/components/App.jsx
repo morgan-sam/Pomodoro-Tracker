@@ -8,6 +8,7 @@ import { compareObjs } from 'utility/sortAndCompare';
 import axios from 'axios';
 
 import { getDateHourOffset, convertUTCISOToUKObj } from 'utility/parseDates';
+import BottomPanel from './BottomPanel';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -92,36 +93,14 @@ function App() {
 	const panelContainerStyle = {
 		height: '100%',
 		width: '100%',
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(2, 1fr)',
 		boxSizing: 'border-box',
 		padding: '4rem'
-	};
-
-	const centering = {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center'
-	};
-
-	const topHalf = {
-		gridArea: '1 / 1 / 2 / 3'
-	};
-	const bottomLeft = {
-		gridArea: '2 / 1 / 3 / 2',
-		...centering
-	};
-	const bottomRight = {
-		gridArea: '2 / 2 / 3 / 3',
-		...centering
 	};
 
 	return (
 		<div className="App" style={appContainerStyle}>
 			<div style={panelContainerStyle}>
 				<TopPanel
-					style={topHalf}
 					filteredEntries={filterEntries(entriesData)}
 					filterOptions={filterOptions}
 					displayOptions={displayOptions}
@@ -137,8 +116,7 @@ function App() {
 					displayOptions={displayOptions}
 					setDisplayOptions={setDisplayOptions}
 				/>
-				<OptionsPanel
-					style={bottomLeft}
+				<BottomPanel
 					entriesData={entriesData}
 					setEntriesData={setEntriesData}
 					filterOptions={filterOptions}
@@ -147,11 +125,6 @@ function App() {
 					setTimeOptions={setTimeOptions}
 					displayOptions={displayOptions}
 					setDisplayOptions={setDisplayOptions}
-				/>
-				<GraphPanel
-					style={bottomRight}
-					entriesData={entriesData}
-					filterOptions={filterOptions}
 					displayOptions={displayOptions}
 				/>
 			</div>
