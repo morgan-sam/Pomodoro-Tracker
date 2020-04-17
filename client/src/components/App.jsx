@@ -99,6 +99,12 @@ function App() {
 		padding: '4rem'
 	};
 
+	const centering = {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center'
+	};
+
 	const topHalf = {
 		gridArea: '1 / 1 / 2 / 3'
 	};
@@ -106,7 +112,8 @@ function App() {
 		gridArea: '2 / 1 / 3 / 2'
 	};
 	const bottomRight = {
-		gridArea: '2 / 2 / 3 / 3'
+		gridArea: '2 / 2 / 3 / 3',
+		...centering
 	};
 
 	return (
