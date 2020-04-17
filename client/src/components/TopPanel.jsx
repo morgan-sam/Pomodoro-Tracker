@@ -9,7 +9,8 @@ function TopPanel(props) {
 		display: 'flex',
 		flexWrap: 'wrap',
 		alignItems: 'center',
-		zIndex: '5'
+		zIndex: '5',
+		padding: '2rem 0'
 	};
 
 	return (
