@@ -9,12 +9,6 @@ const DateNavigation = (props) => {
 	if (window.matchMedia('(max-width: 1000px)').matches) console.log(true);
 	else console.log(false);
 
-	let dateSelectStyle = {
-		//
-	};
-
-	let dayNavigateStyle = {};
-
 	return (
 		<div style={dateContainerStyle} className={'dateNavigation'}>
 			<DateSelect
@@ -25,9 +19,8 @@ const DateNavigation = (props) => {
 						date: dateObj
 					});
 				}}
-				style={dateSelectStyle}
 			/>
-			<div style={dayNavigateStyle}>
+			<div>
 				<DateArrowButton {...props} direction={'left'} />
 				<BounceButton
 					style={{ ...todayBtnStyle }}
