@@ -2,7 +2,8 @@ export const dateContainerStyle = {
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
-	verticalAlign: 'center'
+	verticalAlign: 'center',
+	padding: '0 5rem'
 };
 
 export const todayBtnStyle = {
