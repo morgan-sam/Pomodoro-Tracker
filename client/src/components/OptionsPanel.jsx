@@ -8,9 +8,14 @@ import TimelineZoomSelect from './TimelineZoomSelect';
 function OptionsPanel(props) {
 	return (
 		<div style={props.style}>
-			<TimelineZoomSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
-			<TimelineDisplaySelect setDisplayOptions={props.setDisplayOptions} displayOptions={props.displayOptions} />
-			<GraphDisplaySelect setDisplayOptions={props.setDisplayOptions} displayOptions={props.displayOptions} />
+			<div className="optionsContainer">
+				<TimelineZoomSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
+				<TimelineDisplaySelect
+					setDisplayOptions={props.setDisplayOptions}
+					displayOptions={props.displayOptions}
+				/>
+				<GraphDisplaySelect setDisplayOptions={props.setDisplayOptions} displayOptions={props.displayOptions} />
+			</div>
 		</div>
 	);
 }

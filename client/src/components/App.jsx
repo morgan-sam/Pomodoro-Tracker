@@ -109,7 +109,8 @@ function App() {
 		gridArea: '1 / 1 / 2 / 3'
 	};
 	const bottomLeft = {
-		gridArea: '2 / 1 / 3 / 2'
+		gridArea: '2 / 1 / 3 / 2',
+		...centering
 	};
 	const bottomRight = {
 		gridArea: '2 / 2 / 3 / 3',
