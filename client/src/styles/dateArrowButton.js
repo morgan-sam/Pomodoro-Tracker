@@ -6,7 +6,6 @@ export const arrowButtonDefaultStyle = {
 	verticalAlign: 'middle',
 	textAlign: 'center',
 	lineHeight: '0',
-	transform: 'translateY(-10%)',
 	backgroundImage: 'linear-gradient(#fff, #eee)',
 	borderRadius: '1rem',
 	cursor: 'pointer',

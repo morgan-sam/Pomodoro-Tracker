@@ -1,7 +1,6 @@
 export const dateContainerStyle = {
-	display: 'grid',
-	gridTemplateColumns: 'repeat(3, 1fr)',
-	gridTemplateRows: 'repeat(2, 1fr)',
+	display: 'flex',
+	flexDirection: 'column',
 	alignItems: 'center',
 	verticalAlign: 'center'
 };

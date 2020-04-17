@@ -6,26 +6,17 @@ import TimelineDateSelect from './TimelineDateSelect';
 
 function TopPanel(props) {
 	const topOptionStyle = {
-		display: 'grid',
-		gridTemplateColumns: ' repeat(3, 1fr)',
-		gridTemplateRows: '1fr',
-		gridColumnGap: '0px',
-		gridRowGap: '0px',
+		display: 'flex',
 		zIndex: '5'
 	};
 	return (
 		<div style={props.style}>
 			<div style={topOptionStyle}>
 				<TopPageText entriesData={props.filteredEntries} filterOptions={props.filterOptions} />
-				<TimelineDateSelect
-					filterOptions={props.filterOptions}
-					setFilterOptions={props.setFilterOptions}
-					style={{ padding: '0' }}
-				/>
+				<TimelineDateSelect filterOptions={props.filterOptions} setFilterOptions={props.setFilterOptions} />
 				<TimeOptionSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
 			</div>
 			<DayTimeline
-				style={{ zIndex: '-2' }}
 				entries={props.filteredEntries}
 				eventLengths={props.eventLengths}
 				displayOptions={props.displayOptions.timeline}
