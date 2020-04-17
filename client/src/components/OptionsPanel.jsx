@@ -17,12 +17,21 @@ function OptionsPanel(props) {
 	return (
 		<div style={props.style}>
 			<div className="optionsContainer" style={optionsContainerStyle}>
-				<TimelineZoomSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
+				<TimelineZoomSelect
+					timeOptions={props.timeOptions}
+					setTimeOptions={props.setTimeOptions}
+					style={{ height: '100%' }}
+				/>
 				<TimelineDisplaySelect
 					setDisplayOptions={props.setDisplayOptions}
 					displayOptions={props.displayOptions}
+					style={{ height: '100%' }}
 				/>
-				<GraphDisplaySelect setDisplayOptions={props.setDisplayOptions} displayOptions={props.displayOptions} />
+				<GraphDisplaySelect
+					setDisplayOptions={props.setDisplayOptions}
+					displayOptions={props.displayOptions}
+					style={{ height: '100%' }}
+				/>
 			</div>
 		</div>
 	);

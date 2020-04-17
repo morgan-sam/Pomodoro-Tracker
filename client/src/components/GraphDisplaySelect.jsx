@@ -12,11 +12,11 @@ function GraphDisplaySelect(props) {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		margin: '2rem 0'
+		height: '4rem'
 	};
 
 	return (
-		<div style={{ ...props.style, width: '100%' }}>
+		<div style={{ width: '100%', ...props.style }}>
 			<div style={commonMargin}>
 				<span style={{ ...graphDisplaySelectLabelStyle }}>Graph Period:</span>
 				<Dropdown
