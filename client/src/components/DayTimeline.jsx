@@ -91,7 +91,7 @@ function DayTimeline(props) {
 	}
 
 	function calculateEventHourPosition(el) {
-		return props.timeOptions.offset + el.time.hour + el.time.minute / 60 - eventLengths[el.type] / 60;
+		return el.time.hour + el.time.minute / 60 - eventLengths[el.type] / 60;
 	}
 
 	function calculateEventOverflow(eventWidth, remPosition) {

@@ -38,10 +38,6 @@ export const parseDateObjToBigEndian = (obj) => {
 	return `${obj.year}-${monthString}-${dayString}`;
 };
 
-export const getDateHourOffset = () => {
-	return new Date().getTimezoneOffset() / -60;
-};
-
 export const convertUTCISOToUKDateOnly = (iso) => {
 	return new Date(iso).toLocaleString('en-US', { timeZone: 'Europe/London' }).match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0];
 };
@@ -57,7 +53,9 @@ export const convertUTCISOToUKDateISOSubstring = (iso) => {
 };
 
 export const convertUTCISOToUKObj = (iso) => {
+	console.log(iso);
 	const date = new Date(iso).toLocaleString('en-US', { timeZone: 'Europe/London' });
+	console.log(date);
 	const [ month, day, year ] = date.match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0].split('/').map((el) => parseInt(el));
 	const [ hour, minute, second ] = date.match(/[0-9]+\:[0-9]+\:[0-9]+/g)[0].split(':').map((el) => parseInt(el));
 	const meridiem = date.match(/[a-zA-Z]+/g)[0];

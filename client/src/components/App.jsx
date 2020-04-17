@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import TopPanel from 'components/TopPanel';
-import OptionsPanel from 'components/OptionsPanel';
-import GraphPanel from 'components/GraphPanel';
 
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
 import axios from 'axios';
 
-import { getDateHourOffset, convertUTCISOToUKObj } from 'utility/parseDates';
+import { convertUTCISOToUKObj } from 'utility/parseDates';
 import BottomPanel from './BottomPanel';
 
 function App() {
@@ -31,8 +29,7 @@ function App() {
 		startTime: 8,
 		endTime: 24,
 		twelveHourClock: true,
-		hourWidth: 5,
-		offset: getDateHourOffset()
+		hourWidth: 5
 	});
 
 	function filterEntries(entries) {
@@ -58,7 +55,9 @@ function App() {
 		(async () => {
 			try {
 				const res = await axios.get('http://localhost:8000/api/entries/');
+				console.log(res.data);
 				const correctedTimezoneData = convertDataToUKTimezone(res.data);
+				console.log(correctedTimezoneData);
 				setEntriesData(correctedTimezoneData);
 			} catch (error) {
 				console.log(error);
