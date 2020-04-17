@@ -4,6 +4,8 @@ import { toggleButtonStyle } from 'styles/timelineDisplaySelect';
 import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineDisplaySelect(props) {
+	const commonMargin = { margin: '0 2rem 2rem 0' };
+
 	return (
 		<div style={containerStyle}>
 			<BounceButton
@@ -16,7 +18,7 @@ function TimelineDisplaySelect(props) {
 						}
 					})}
 				delay={300}
-				style={toggleButtonStyle}
+				style={{ ...toggleButtonStyle, ...commonMargin }}
 				text={`Turn ${props.displayOptions.timeline.encore ? 'Off' : 'On'} Encores`}
 			/>
 			<BounceButton
@@ -29,7 +31,7 @@ function TimelineDisplaySelect(props) {
 						}
 					})}
 				delay={300}
-				style={toggleButtonStyle}
+				style={{ ...toggleButtonStyle, ...commonMargin }}
 				text={`Turn ${props.displayOptions.timeline.start ? 'Off' : 'On'} Start Markers`}
 			/>
 
@@ -43,7 +45,7 @@ function TimelineDisplaySelect(props) {
 						}
 					})}
 				delay={300}
-				style={toggleButtonStyle}
+				style={{ ...toggleButtonStyle, ...commonMargin }}
 				text={`Turn ${props.displayOptions.timeline.grid ? 'Off' : 'On'} Grid`}
 			/>
 		</div>

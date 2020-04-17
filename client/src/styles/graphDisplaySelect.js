@@ -3,7 +3,7 @@ export const graphDisplaySelectLabelStyle = {
 	width: 'auto',
 	justifyContent: 'center',
 	flexDirection: 'column',
-	paddingLeft: '0.5rem'
+	paddingRight: '1rem'
 };
 
 export const graphSelectionDropdownStyle = {
@@ -16,5 +16,8 @@ export const graphPeriodSelectStyle = {
 };
 
 export const graphOptionLabelStyle = {
-	//
+	display: 'flex',
+	justifyContent: 'center',
+	flexDirection: 'column',
+	paddingRight: '1rem'
 };

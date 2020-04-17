@@ -6,9 +6,11 @@ import { getAutoHourWidth } from 'utility/calculateSizing';
 import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineZoomSelect(props) {
+	const commonMargin = { margin: '0 2rem 2rem 0' };
+
 	return (
 		<div style={containerStyle}>
-			<span style={timelineZoomLabelStyle}>Timeline Zoom:</span>
+			<span style={{ ...timelineZoomLabelStyle, ...commonMargin }}>Timeline Zoom:</span>
 			<input
 				type="range"
 				min="2"
@@ -21,10 +23,10 @@ function TimelineZoomSelect(props) {
 					});
 				}}
 				step="0.01"
-				style={{ width: 'auto' }}
+				style={{ width: 'auto', ...commonMargin }}
 			/>
 			<BounceButton
-				style={{ width: '7rem', height: '2rem' }}
+				style={{ width: '7rem', height: '2rem', ...commonMargin }}
 				onClick={() => {
 					props.setTimeOptions({
 						...props.timeOptions,
@@ -34,9 +36,9 @@ function TimelineZoomSelect(props) {
 				delay={350}
 				text={'Reset Zoom'}
 			/>
-			<span style={timelineZoomLabelStyle}>Auto Adjust:</span>
+			<span style={{ ...timelineZoomLabelStyle, ...commonMargin }}>Auto Adjust:</span>
 			<Checkbox
-				style={timelineZoomCheckbox}
+				style={{ ...timelineZoomCheckbox, ...commonMargin }}
 				default={props.timeOptions.autoAdjust}
 				onChange={(val) => {
 					props.setTimeOptions({
