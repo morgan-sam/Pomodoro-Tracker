@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/entries', items);
 
-if (process.env.NODE_ENV === 'productive') {
+if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
 }
 
