@@ -10,7 +10,7 @@ import {
 	eventBoxTypeStyle
 } from '../styles/dayTimeline';
 
-import { convert24hrTo12hrTime, convertISOToTimeObj } from '../utility/parseTime';
+import { convert24hrTo12hrTime } from '../utility/parseTime';
 
 function DayTimeline(props) {
 	const eventLengths = {
@@ -101,7 +101,7 @@ function DayTimeline(props) {
 	}
 
 	return (
-		<div style={containerStyle}>
+		<div style={{ ...containerStyle, ...props.style }}>
 			<div style={scrollbarStyle}>
 				{getTimelineBoxSelection(props.timeOptions.startTime, props.timeOptions.endTime)}
 				{getEventBoxes('start')}

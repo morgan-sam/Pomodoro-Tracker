@@ -1,10 +1,10 @@
 import React from 'react';
 import DateNavigation from 'components/DateNavigation';
-import { containerStyle } from 'styles/optionsPanel';
+// import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineDateSelect(props) {
 	return (
-		<div style={{ ...containerStyle, ...props.style }}>
+		<div style={{ ...props.style }}>
 			<DateNavigation filterOptions={props.filterOptions} setFilterOptions={props.setFilterOptions} />
 		</div>
 	);

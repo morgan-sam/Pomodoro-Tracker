@@ -14,7 +14,6 @@ const getTallyParameters = (graphDataParameters) => {
 	const tallyParameters = graphDataParameters.period.match(/week/)
 		? getWeekTimeSpanParameters(startDate, period)
 		: getMonthTimeSpanParameters(startDate);
-	console.log(tallyParameters);
 	return tallyParameters;
 };
 

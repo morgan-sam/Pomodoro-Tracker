@@ -6,6 +6,8 @@ import BounceButton from './BounceButton';
 import DateArrowButton from './DateArrowButton';
 
 const DateNavigation = (props) => {
+	if (window.matchMedia('(max-width: 1000px)').matches) console.log(true);
+	else console.log(false);
 	return (
 		<div style={dateContainerStyle} className={'dateNavigation'}>
 			<DateArrowButton {...props} direction={'left'} />

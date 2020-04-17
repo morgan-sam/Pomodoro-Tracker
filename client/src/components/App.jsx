@@ -122,6 +122,12 @@ function App() {
 						pomodoro: 25,
 						encore: 5
 					}}
+					filterOptions={filterOptions}
+					setFilterOptions={setFilterOptions}
+					timeOptions={timeOptions}
+					setTimeOptions={setTimeOptions}
+					displayOptions={displayOptions}
+					setDisplayOptions={setDisplayOptions}
 				/>
 				<OptionsPanel
 					style={bottomLeft}
@@ -129,10 +135,10 @@ function App() {
 					setEntriesData={setEntriesData}
 					filterOptions={filterOptions}
 					setFilterOptions={setFilterOptions}
-					displayOptions={displayOptions}
-					setDisplayOptions={setDisplayOptions}
 					timeOptions={timeOptions}
 					setTimeOptions={setTimeOptions}
+					displayOptions={displayOptions}
+					setDisplayOptions={setDisplayOptions}
 				/>
 				<GraphPanel
 					style={bottomRight}

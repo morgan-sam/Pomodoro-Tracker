@@ -59,7 +59,6 @@ const genArrayRange = (a, b) => {
 };
 
 const dateToNumberOfDaysFromZeroAD = (date) => {
-	console.log(date);
 	const yearDaysTotal = sumOfArray(genArrayRange(0, date.year - 1).map((el) => daysInYear(el)));
 	const monthDaysTotal = sumOfArray(genArrayRange(1, date.month - 1).map((el) => daysInMonth(el, date.year)));
 	return yearDaysTotal + monthDaysTotal + date.day;
