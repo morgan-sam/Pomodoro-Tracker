@@ -20,7 +20,7 @@ function GraphDisplaySelect(props) {
 			<div style={commonMargin}>
 				<span style={{ ...graphDisplaySelectLabelStyle }}>Graph Period:</span>
 				<Dropdown
-					style={{ ...graphSelectionDropdownStyle, ...graphPeriodSelectStyle }}
+					style={{ ...graphSelectionDropdownStyle, ...graphPeriodSelectStyle, zIndex: '2' }}
 					options={[ 'none', 'week ahead', 'week passed', 'month' ]}
 					default={props.displayOptions.graph.period}
 					onClick={(el) =>
