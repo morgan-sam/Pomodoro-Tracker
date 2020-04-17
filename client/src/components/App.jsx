@@ -32,8 +32,7 @@ function App() {
 		endTime: 24,
 		twelveHourClock: true,
 		hourWidth: 5,
-		offset: getDateHourOffset(),
-		autoAdjust: true
+		offset: getDateHourOffset()
 	});
 
 	function filterEntries(entries) {

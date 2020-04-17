@@ -12,7 +12,7 @@ const GraphPanel = (props) => {
 		() => {
 			// canvasRef.current.offsetWidth
 			// canvasRef.current.offsetHeight
-			canvasRef.current.width = 620;
+			canvasRef.current.width = 920;
 			canvasRef.current.height = 440;
 			props.entriesData.length ? addDataToGraph(canvasRef) : drawNoDataMessage(canvasRef);
 		},

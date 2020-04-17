@@ -8,11 +8,7 @@ function TimelineToggles(props) {
 	}
 
 	return (
-		<div
-			style={{
-				padding: '0 2rem 2rem 0'
-			}}
-		>
+		<div>
 			<h1>
 				<span
 					style={{

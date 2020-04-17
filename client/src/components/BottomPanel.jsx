@@ -4,15 +4,26 @@ import GraphPanel from 'components/GraphPanel';
 
 function BottomPanel(props) {
 	const panelContainerStyle = {
-		width: '100%',
+		display: 'grid',
+		gridTemplateColumns: 'repeat(2, 1fr)',
+		gridTemplateRows: '1fr'
+	};
+
+	const graphPanelStyle = null;
+	const optionsPanelStyle = {
 		display: 'flex',
-		flexWrap: 'wrap',
-		flexDirection: 'row',
-		margin: '2rem 0'
+		justifyContent: 'center',
+		alignItems: 'center'
 	};
 
 	return (
 		<div style={panelContainerStyle}>
+			<GraphPanel
+				entriesData={props.entriesData}
+				filterOptions={props.filterOptions}
+				displayOptions={props.displayOptions}
+				style={graphPanelStyle}
+			/>
 			<OptionsPanel
 				entriesData={props.entriesData}
 				setEntriesData={props.setEntriesData}
@@ -22,12 +33,7 @@ function BottomPanel(props) {
 				setTimeOptions={props.setTimeOptions}
 				displayOptions={props.displayOptions}
 				setDisplayOptions={props.setDisplayOptions}
-				style={{ margin: '2rem 8rem 0 0' }}
-			/>
-			<GraphPanel
-				entriesData={props.entriesData}
-				filterOptions={props.filterOptions}
-				displayOptions={props.displayOptions}
+				style={optionsPanelStyle}
 			/>
 		</div>
 	);

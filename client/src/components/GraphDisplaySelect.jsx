@@ -5,7 +5,6 @@ import {
 	graphOptionLabelStyle,
 	graphPeriodSelectStyle
 } from 'styles/graphDisplaySelect';
-import { containerStyle } from 'styles/optionsPanel';
 import Dropdown from 'components/Dropdown';
 
 function GraphDisplaySelect(props) {
@@ -13,11 +12,11 @@ function GraphDisplaySelect(props) {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		margin: '0 2rem 2rem 0'
+		margin: '2rem 0'
 	};
 
 	return (
-		<div style={containerStyle}>
+		<div style={{ ...props.style, width: '100%' }}>
 			<div style={commonMargin}>
 				<span style={{ ...graphDisplaySelectLabelStyle }}>Graph Period:</span>
 				<Dropdown

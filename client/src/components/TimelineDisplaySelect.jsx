@@ -4,7 +4,7 @@ import { toggleButtonStyle } from 'styles/timelineDisplaySelect';
 import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineDisplaySelect(props) {
-	const commonMargin = { margin: '0 2rem 2rem 0' };
+	const commonMargin = { margin: '0.5rem' };
 
 	return (
 		<div style={containerStyle}>

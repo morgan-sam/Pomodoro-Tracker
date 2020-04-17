@@ -6,7 +6,7 @@ import { getAutoHourWidth } from 'utility/calculateSizing';
 import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineZoomSelect(props) {
-	const commonMargin = { margin: '0 2rem 2rem 0' };
+	const commonMargin = { margin: '0 1rem' };
 
 	return (
 		<div style={containerStyle}>
@@ -35,17 +35,6 @@ function TimelineZoomSelect(props) {
 				}}
 				delay={350}
 				text={'Reset Zoom'}
-			/>
-			<span style={{ ...timelineZoomLabelStyle, ...commonMargin }}>Auto Adjust:</span>
-			<Checkbox
-				style={{ ...timelineZoomCheckbox, ...commonMargin }}
-				default={props.timeOptions.autoAdjust}
-				onChange={(val) => {
-					props.setTimeOptions({
-						...props.timeOptions,
-						autoAdjust: val
-					});
-				}}
 			/>
 		</div>
 	);
