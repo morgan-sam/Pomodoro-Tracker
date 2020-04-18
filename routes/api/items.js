@@ -8,7 +8,7 @@ const Entry = require('../../models/Entry');
 // @access  Public
 router.get('/', async (req, res) => {
 	try {
-		const data = await Entry.find().sort({ date: -1 });
+		const data = await Entry.findAll();
 		res.json(data);
 	} catch (error) {
 		console.log(error);
