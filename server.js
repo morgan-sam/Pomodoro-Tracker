@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
+const keys = require('./config/keys');
+
 const items = require('./routes/api/items');
 const app = express();
 
@@ -14,6 +16,8 @@ app.use('/api/entries', items);
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
+} else {
+	app.use(keys.URI);
 }
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
