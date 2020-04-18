@@ -1,17 +1,17 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Sequelize = require('sequelize');
+const db = require('../config/database');
 
-const TimerEventSchema = new Schema({
-	type: {
-		type: String,
-		required: true
+const entry = db.define(
+	'entry',
+	{
+		type: {
+			type: Sequelize.STRING
+		},
+		date: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') }
 	},
-	date: {
-		type: Date,
-		default: Date.now
+	{
+		timestamps: false
 	}
-});
+);
 
-const TimerEvent = mongoose.model('timerEvent', TimerEventSchema);
-
-module.exports = TimerEvent;
+module.exports = entry;
