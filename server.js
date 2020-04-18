@@ -7,7 +7,7 @@ const app = express();
 const db = require('./config/database');
 db.authenticate().then(() => console.log('Database connected')).catch((err) => console.log('Error ' + err));
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5432;
 app.use(cors());
 app.use(express.json());
 app.use('/api/entries', items);
