@@ -5,7 +5,7 @@ for pid in $(pidof -x $script_name); do
         kill -9 $pid
     fi 
 done
-curl -X POST -d "{\"type\": \"start\"}" -H "Content-Type: application/json" http://localhost:8000/api/entries
+curl -X POST -d "{\"type\": \"start\"}" -H "Content-Type: application/json" https://pomodoro-tracker-app.herokuapp.com/api/entries
 seconds=1500; date1=$((`date +%s` + $seconds)); 
 echo -ne 'Pomodoro:\n'
 while [ "$date1" -ge `date +%s` ]; do 
