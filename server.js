@@ -17,3 +17,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.get('/', (req, res) => res.send('Hello World!\n'));
