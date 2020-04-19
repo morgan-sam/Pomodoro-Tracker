@@ -1,8 +1,11 @@
 const { pool } = require('./pool');
-
+console.log(pool);
 const getEntries = (request, response) => {
 	pool.query('SELECT * FROM entries ORDER BY id ASC', (error, results) => {
-		if (error) throw error;
+		if (error) {
+			console.log(error);
+			throw error;
+		}
 		response.status(200).json(results.rows);
 	});
 };

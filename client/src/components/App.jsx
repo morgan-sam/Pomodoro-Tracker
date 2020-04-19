@@ -3,7 +3,6 @@ import TopPanel from 'components/TopPanel';
 
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
-import axios from 'axios';
 
 import { convertUTCISOToUKObj } from 'utility/parseDates';
 import BottomPanel from './BottomPanel';
@@ -54,8 +53,9 @@ function App() {
 	useEffect(() => {
 		(async () => {
 			try {
-				const res = await axios.get('http://localhost:8000/entries');
-				const correctedTimezoneData = convertDataToUKTimezone(res.data);
+				const raw = await fetch('http://localhost:8000/entries');
+				const json = await raw.json();
+				const correctedTimezoneData = convertDataToUKTimezone(json);
 				setEntriesData(correctedTimezoneData);
 			} catch (error) {
 				console.log(error);
