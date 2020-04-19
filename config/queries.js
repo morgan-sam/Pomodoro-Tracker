@@ -24,7 +24,8 @@ const getEntryById = (request, response) => {
 
 const createEntry = (request, response) => {
 	const { type } = request.body;
-	pool.query('INSERT INTO entries (type) VALUES ($1)', [ type ], (error, results) => {
+	const date = new Date().toISOString();
+	pool.query('INSERT INTO entries (type,date ) VALUES ($1, $2)', [ type, date ], (error, results) => {
 		if (error) throw error;
 		response.status(201).send(`Entry added with ID: ${results.insertID}`);
 	});
