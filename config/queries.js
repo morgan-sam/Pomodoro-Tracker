@@ -1,11 +1,4 @@
-const Pool = require('pg').Pool;
-const pool = new Pool({
-	user: 'postgres',
-	host: 'localhost',
-	database: 'pomodorodb',
-	password: '123456',
-	port: '5432'
-});
+const { pool } = require('./pool');
 
 const getEntries = (request, response) => {
 	pool.query('SELECT * FROM entries ORDER BY id ASC', (error, results) => {

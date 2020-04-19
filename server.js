@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
 const cors = require('cors');
-const port = 8000;
 const db = require('./config/queries');
+
+const app = express();
 
 app.use(bodyParser.json());
 app.use(
@@ -17,8 +17,8 @@ app.get('/', (request, response) => {
 	response.json({ info: 'This is a server to store pomodoro entries. The database can be found at /entries' });
 });
 
-app.listen(port, () => {
-	console.log(`App running on port ${port}`);
+app.listen(process.env.port || 8000, () => {
+	console.log(`Server listening...`);
 });
 
 app.get('/entries', db.getEntries);
