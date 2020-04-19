@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const db = require('./config/queries');
 
+var serveStatic = require('serve-static');
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -12,6 +14,7 @@ app.use(
 	})
 );
 app.use(cors());
+app.use(serveStatic(path.join(__dirname, 'dist')));
 
 app.get('/', (request, response) => {
 	response.json({ info: 'This is a server to store pomodoro entries. The database can be found at /entries' });
