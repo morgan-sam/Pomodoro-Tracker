@@ -55,9 +55,7 @@ function App() {
 		(async () => {
 			try {
 				const res = await axios.get('http://localhost:8000/api/entries/');
-				console.log(res.data);
 				const correctedTimezoneData = convertDataToUKTimezone(res.data);
-				console.log(correctedTimezoneData);
 				setEntriesData(correctedTimezoneData);
 			} catch (error) {
 				console.log(error);
