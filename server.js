@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors');
 const port = 8000;
 const db = require('./config/queries');
 
@@ -10,6 +11,7 @@ app.use(
 		extended: true
 	})
 );
+app.use(cors());
 
 app.get('/', (request, response) => {
 	response.json({ info: 'This is a server to store pomodoro entries. The database can be found at /entries' });
