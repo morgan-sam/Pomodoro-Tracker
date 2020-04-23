@@ -23,6 +23,6 @@ app.listen(process.env.port || 8000, () => {
 
 app.get('/entries', db.getEntries);
 app.get('/entries/:id', db.getEntryById);
-app.post('/entries', db.createEntry);
-app.put('entries/:id', db.updateEntry);
-app.delete('/entries/:id', db.deleteEntry);
+// app.post('/entries', db.createEntry);
+// app.put('entries/:id', db.updateEntry);
+// app.delete('/entries/:id', db.deleteEntry);
