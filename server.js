@@ -17,7 +17,7 @@ app.get('/', (request, response) => {
 	response.json({ info: 'This is a server to store pomodoro entries. The database can be found at /entries' });
 });
 
-app.listen(process.env.port || 8000, () => {
+app.listen(process.env.PORT || 8000, () => {
 	console.log(`Server listening...`);
 });
 
