@@ -13,10 +13,6 @@ app.use(
 );
 app.use(cors());
 
-app.get('/', (request, response) => {
-	response.json({ info: 'This is a server to store pomodoro entries. The database can be found at /entries' });
-});
-
 app.listen(process.env.PORT || 8000, () => {
 	console.log(`Server listening...`);
 });
