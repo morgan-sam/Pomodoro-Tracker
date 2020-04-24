@@ -9,7 +9,6 @@ function BottomPanel(props) {
 		gridTemplateRows: '1fr'
 	};
 
-	const graphPanelStyle = null;
 	const optionsPanelStyle = {
 		display: 'flex',
 		justifyContent: 'center',
@@ -22,7 +21,6 @@ function BottomPanel(props) {
 				entriesData={props.entriesData}
 				filterOptions={props.filterOptions}
 				displayOptions={props.displayOptions}
-				style={graphPanelStyle}
 			/>
 			<OptionsPanel
 				entriesData={props.entriesData}
