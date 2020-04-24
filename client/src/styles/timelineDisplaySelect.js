@@ -1,6 +1,6 @@
 export const toggleButtonStyle = {
 	height: '2rem',
-	width: '10rem'
+	width: 'auto'
 };
 
 export const timelineDisplaySelectLabelStyle = {
