@@ -20,6 +20,7 @@ function GraphDisplaySelect(props) {
 			<div style={commonMargin}>
 				<span style={{ ...graphDisplaySelectLabelStyle }}>Graph Period:</span>
 				<Dropdown
+					className={'dropdownGraphPeriod'}
 					style={{ ...graphSelectionDropdownStyle, ...graphPeriodSelectStyle, zIndex: '2' }}
 					options={[ 'none', 'week ahead', 'week passed', 'month' ]}
 					default={props.displayOptions.graph.period}
@@ -36,6 +37,7 @@ function GraphDisplaySelect(props) {
 			<div style={commonMargin}>
 				<span style={{ ...graphDisplaySelectLabelStyle }}>Graph Type:</span>
 				<Dropdown
+					className={'dropdownGraphType'}
 					style={{ ...graphSelectionDropdownStyle }}
 					options={[ 'scatter', 'line', 'both' ]}
 					default={props.displayOptions.graph.type}
