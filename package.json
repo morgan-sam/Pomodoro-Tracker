@@ -5,13 +5,12 @@
 	"main": "server.js",
 	"scripts": {
 		"start": "node server.js",
-		"dev": "npm run server & npm run client",
+		"dev": "npm run server & chromium http://localhost:8000",
 		"server": "nodemon server.js",
-		"client": "npm start --prefix client",
 		"install-all": "npm install & npm install --prefix client",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
 	},
-	"proxy": "http://localhost:5000",
+	"proxy": "http://localhost:8000",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/morgan-sam/Pomodoro-Tracker.git"

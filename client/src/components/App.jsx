@@ -53,7 +53,7 @@ function App() {
 	useEffect(() => {
 		(async () => {
 			try {
-				const raw = await fetch('https://pomodoro-tracker-app.herokuapp.com/entries');
+				const raw = await fetch('/entries');
 				const json = await raw.json();
 				const correctedTimezoneData = convertDataToUKTimezone(json);
 				setEntriesData(correctedTimezoneData);
