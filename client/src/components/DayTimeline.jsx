@@ -104,11 +104,9 @@ function DayTimeline(props) {
 	}
 
 	const currentTimeMarker = () => {
-		const span = props.timeOptions.endTime - props.timeOptions.startTime;
 		const width = props.timeOptions.hourWidth;
-		let hours = getTodaysDateAsObj();
-		const time = width * (hours + props.timeOptions.startTime);
-		console.log(hours);
+		const { hour, minute } = getTodaysDateAsObj().time;
+		const time = width * (minute / 60 + hour - props.timeOptions.startTime);
 		return <div style={{ ...currentTimeMarkerStyle, left: `${time}rem` }} />;
 	};
 
