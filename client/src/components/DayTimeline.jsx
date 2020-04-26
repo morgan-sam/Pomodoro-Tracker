@@ -7,8 +7,11 @@ import {
 	textStyle,
 	innerGridStyle,
 	defaultEventBoxStyle,
-	eventBoxTypeStyle
+	eventBoxTypeStyle,
+	currentTimeMarkerStyle
 } from '../styles/dayTimeline';
+
+import { getTodaysDateAsObj } from '../data/dates';
 
 import { convert24hrTo12hrTime } from '../utility/parseTime';
 
@@ -100,6 +103,15 @@ function DayTimeline(props) {
 		return Math.max(0, eventEndPosition - timelineWidth);
 	}
 
+	const currentTimeMarker = () => {
+		const span = props.timeOptions.endTime - props.timeOptions.startTime;
+		const width = props.timeOptions.hourWidth;
+		let hours = getTodaysDateAsObj();
+		const time = width * (hours + props.timeOptions.startTime);
+		console.log(hours);
+		return <div style={{ ...currentTimeMarkerStyle, left: `${time}rem` }} />;
+	};
+
 	return (
 		<div style={{ ...containerStyle, ...props.style }}>
 			<div style={scrollbarStyle}>
@@ -107,6 +119,7 @@ function DayTimeline(props) {
 				{getEventBoxes('start')}
 				{getEventBoxes('pomodoro')}
 				{getEventBoxes('encore')}
+				{currentTimeMarker()}
 			</div>
 		</div>
 	);

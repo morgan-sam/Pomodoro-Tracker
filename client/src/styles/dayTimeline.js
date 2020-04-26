@@ -68,3 +68,10 @@ export const eventBoxTypeStyle = {
 		backgroundColor: '#95c39f'
 	}
 };
+
+export const currentTimeMarkerStyle = {
+	width: '1px',
+	height: `calc(${EVENT_HEIGHT_REM + 3}rem)`,
+	backgroundColor: 'red',
+	position: 'absolute'
+};
