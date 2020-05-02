@@ -17,6 +17,7 @@ const getEntryById = (request, response) => {
 
 const createEntry = (request, response) => {
 	let { type, date } = request.body;
+	console.log(date);
 	if (date === null) date = new Date().toISOString();
 	pool.query('INSERT INTO entries (type, date) VALUES ($1, $2) RETURNING *', [ type, date ], (error, results) => {
 		if (error) throw error;
