@@ -1,6 +1,5 @@
 import React from 'react';
 import DateNavigation from 'components/DateNavigation';
-// import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineDateSelect(props) {
 	return (
