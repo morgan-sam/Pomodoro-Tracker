@@ -1,28 +1,13 @@
 import React, { useState } from 'react';
+import { getBounceButtonStyle } from 'styles/bounceButton';
 
 function BounceButton(props) {
 	const [ pressed, setPressed ] = useState(false);
 
-	const standardButtonStyle = {
-		position: 'relative',
-		backgroundImage: 'linear-gradient(#fff, #eee)',
-		borderRadius: '1rem',
-		cursor: 'pointer',
-		outline: '0',
-		border: '1px solid black',
-		boxShadow: '0 2px 1px #ccc, 0 0.3rem #ccc'
-	};
-
-	const animationStyle = {
-		animation: `button-bounce ${props.delay / 1000}s 1`
-	};
-
-	const pressButtonStateStyle = pressed ? animationStyle : null;
-
 	return (
 		<button
 			{...props}
-			style={{ ...standardButtonStyle, ...props.style, ...pressButtonStateStyle }}
+			style={{ ...getBounceButtonStyle(pressed, props.delay), ...props.style }}
 			onClick={() => {
 				setPressed(true);
 				setTimeout(() => {
