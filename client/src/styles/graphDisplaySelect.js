@@ -21,3 +21,9 @@ export const graphOptionLabelStyle = {
 	flexDirection: 'column',
 	paddingRight: '1rem'
 };
+export const commonMargin = {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	height: '4rem'
+};

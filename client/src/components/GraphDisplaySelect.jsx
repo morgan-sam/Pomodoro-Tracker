@@ -3,18 +3,12 @@ import {
 	graphDisplaySelectLabelStyle,
 	graphSelectionDropdownStyle,
 	graphOptionLabelStyle,
-	graphPeriodSelectStyle
+	graphPeriodSelectStyle,
+	commonMargin
 } from 'styles/graphDisplaySelect';
 import Dropdown from 'components/Dropdown';
 
 function GraphDisplaySelect(props) {
-	const commonMargin = {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		height: '4rem'
-	};
-
 	return (
 		<div style={{ width: '100%', ...props.style }}>
 			<div style={commonMargin}>
