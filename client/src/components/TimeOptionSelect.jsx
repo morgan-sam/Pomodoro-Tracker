@@ -2,7 +2,6 @@ import React from 'react';
 import Dropdown from 'components/Dropdown';
 import { convert24hrTo12hrTime, convert12hrTo24hrTime, getArrayTimes } from 'utility/parseTime';
 import { timeOptionLabelStyle } from 'styles/timeOptionSelect';
-// import { containerStyle } from 'styles/optionsPanel';
 
 const timeOptionStyle = {
 	display: 'flex',
