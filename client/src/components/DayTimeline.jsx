@@ -9,11 +9,11 @@ import {
 	defaultEventBoxStyle,
 	eventBoxTypeStyle,
 	currentTimeMarkerStyle
-} from '../styles/dayTimeline';
+} from 'styles/dayTimeline';
 
-import { getTodaysDateAsObj } from '../data/dates';
+import { getTodaysDateAsObj } from 'data/dates';
 
-import { convert24hrTo12hrTime } from '../utility/parseTime';
+import { convert24hrTo12hrTime } from 'utility/parseTime';
 
 function DayTimeline(props) {
 	const eventLengths = {
