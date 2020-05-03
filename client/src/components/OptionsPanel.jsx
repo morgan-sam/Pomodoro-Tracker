@@ -2,8 +2,7 @@ import React from 'react';
 
 import TimelineDisplaySelect from 'components/TimelineDisplaySelect';
 import GraphDisplaySelect from 'components/GraphDisplaySelect';
-
-import TimelineZoomSelect from './TimelineZoomSelect';
+import TimelineZoomSelect from 'components/TimelineZoomSelect';
 
 function OptionsPanel(props) {
 	const optionsContainerStyle = {
