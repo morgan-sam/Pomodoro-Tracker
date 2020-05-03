@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import TopPanel from 'components/TopPanel';
-
+import BottomPanel from 'components/BottomPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
-
 import { convertUTCISOToUKObj } from 'utility/parseDates';
-import BottomPanel from './BottomPanel';
-
 import { appContainerStyle, panelContainerStyle } from 'styles/app';
 
 function App() {
