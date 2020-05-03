@@ -1,7 +1,6 @@
 import React from 'react';
-import { timelineZoomLabelStyle, timelineZoomCheckbox } from 'styles/timelineZoomSelect';
+import { timelineZoomLabelStyle } from 'styles/timelineZoomSelect';
 import BounceButton from './BounceButton';
-import Checkbox from './Checkbox';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 
 function TimelineZoomSelect(props) {
