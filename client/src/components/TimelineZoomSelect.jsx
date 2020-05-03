@@ -1,7 +1,7 @@
 import React from 'react';
-import { timelineZoomLabelStyle } from 'styles/timelineZoomSelect';
-import BounceButton from './BounceButton';
+import BounceButton from 'components/BounceButton';
 import { getAutoHourWidth } from 'utility/calculateSizing';
+import { timelineZoomLabelStyle } from 'styles/timelineZoomSelect';
 
 function TimelineZoomSelect(props) {
 	const commonMargin = { margin: '0 1rem' };
