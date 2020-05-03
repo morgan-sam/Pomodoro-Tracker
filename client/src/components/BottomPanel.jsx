@@ -1,20 +1,9 @@
 import React from 'react';
 import OptionsPanel from 'components/OptionsPanel';
 import GraphPanel from 'components/GraphPanel';
+import { panelContainerStyle, optionsPanelStyle } from 'styles/bottomPanel';
 
 function BottomPanel(props) {
-	const panelContainerStyle = {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: '1fr'
-	};
-
-	const optionsPanelStyle = {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center'
-	};
-
 	return (
 		<div style={panelContainerStyle}>
 			<GraphPanel
