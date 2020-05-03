@@ -1,5 +1,5 @@
 import React from 'react';
-import GraphCanvas from './GraphCanvas';
+import GraphCanvas from 'components/GraphCanvas';
 
 function GraphPanel(props) {
 	return (
