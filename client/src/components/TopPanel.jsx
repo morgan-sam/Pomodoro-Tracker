@@ -3,16 +3,9 @@ import DayTimeline from './DayTimeline';
 import TopPageText from 'components/TopPageText';
 import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
 import TimelineDateSelect from './TimelineDateSelect';
+import { topOptionStyle } from 'styles/topPanel';
 
 function TopPanel(props) {
-	const topOptionStyle = {
-		display: 'flex',
-		flexWrap: 'wrap',
-		alignItems: 'center',
-		zIndex: '5',
-		padding: '2rem 0'
-	};
-
 	return (
 		<div style={props.style}>
 			<div style={topOptionStyle}>
