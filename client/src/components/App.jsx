@@ -7,6 +7,8 @@ import { compareObjs } from 'utility/sortAndCompare';
 import { convertUTCISOToUKObj } from 'utility/parseDates';
 import BottomPanel from './BottomPanel';
 
+import { appContainerStyle, panelContainerStyle } from 'styles/app';
+
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ filterOptions, setFilterOptions ] = useState({
@@ -85,21 +87,6 @@ function App() {
 
 	const setTimelineToFitWindow = () => {
 		setTimeOptions({ ...timeOptions, hourWidth: getAutoHourWidth(timeOptions) });
-	};
-
-	const appContainerStyle = {
-		position: 'absolute',
-		top: '0',
-		left: '0',
-		height: '100vh',
-		width: '100vw'
-	};
-
-	const panelContainerStyle = {
-		height: '100%',
-		width: '100%',
-		boxSizing: 'border-box',
-		padding: '4rem'
 	};
 
 	return (
