@@ -14,7 +14,7 @@ function BounceButton(props) {
 	};
 
 	const animationStyle = {
-		animation: `infinite-spinning ${props.delay / 1000}s 1`
+		animation: `button-bounce ${props.delay / 1000}s 1`
 	};
 
 	const pressButtonStateStyle = pressed ? animationStyle : null;

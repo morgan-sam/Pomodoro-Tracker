@@ -23,7 +23,7 @@ code {
 	z-index: 1;
 }
 
-@keyframes infinite-spinning {
+@keyframes button-bounce {
 	0% {
 		top: 0;
 		box-shadow: 0 2px 1px #ccc, 0 0.3rem #ccc;
