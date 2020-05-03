@@ -1,9 +1,9 @@
 import React from 'react';
 import DateSelect from 'components/DateSelect';
+import BounceButton from 'components/BounceButton';
+import DateArrowButton from 'components/DateArrowButton';
 import { getTodaysDateAsObj } from 'data/dates';
 import { dateContainerStyle, todayBtnStyle } from 'styles/dateNavigation';
-import BounceButton from './BounceButton';
-import DateArrowButton from './DateArrowButton';
 
 const DateNavigation = (props) => {
 	return (
