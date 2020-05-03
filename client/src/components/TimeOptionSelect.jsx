@@ -1,28 +1,13 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
 import { convert24hrTo12hrTime, convert12hrTo24hrTime, getArrayTimes } from 'utility/parseTime';
-import { timeOptionLabelStyle } from 'styles/timeOptionSelect';
-
-const timeOptionStyle = {
-	display: 'flex',
-	flexDirection: 'row',
-	justifyContent: 'space-between',
-	alignItems: 'center',
-	flexWrap: 'wrap',
-	margin: '2rem 0'
-};
-const subContainers = {
-	display: 'flex',
-	flexDirection: 'row',
-	alignItems: 'center',
-	justifyContent: 'stretch',
-	width: '1fr',
-	margin: '1rem',
-	height: 'auto',
-	boxSizing: 'border-box'
-};
-const elementStyle = { margin: '1rem' };
-const dropDownStyle = { ...elementStyle, width: '5rem' };
+import {
+	timeOptionLabelStyle,
+	timeOptionStyle,
+	subContainers,
+	elementStyle,
+	dropDownStyle
+} from 'styles/timeOptionSelect';
 
 function TimeOptionSelect(props) {
 	return (
