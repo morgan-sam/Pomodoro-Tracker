@@ -3,13 +3,12 @@ import { timelineZoomLabelStyle, timelineZoomCheckbox } from 'styles/timelineZoo
 import BounceButton from './BounceButton';
 import Checkbox from './Checkbox';
 import { getAutoHourWidth } from 'utility/calculateSizing';
-import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineZoomSelect(props) {
 	const commonMargin = { margin: '0 1rem' };
 
 	return (
-		<div style={containerStyle}>
+		<div style={{ ...props.style }}>
 			<span style={{ ...timelineZoomLabelStyle, ...commonMargin }}>Timeline Zoom:</span>
 			<input
 				type="range"

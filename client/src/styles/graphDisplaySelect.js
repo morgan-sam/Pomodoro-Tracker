@@ -3,7 +3,7 @@ export const graphDisplaySelectLabelStyle = {
 	width: 'auto',
 	justifyContent: 'center',
 	flexDirection: 'column',
-	paddingRight: '1rem'
+	padding: '1rem'
 };
 
 export const graphSelectionDropdownStyle = {

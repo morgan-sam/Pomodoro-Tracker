@@ -10,7 +10,7 @@ import Dropdown from 'components/Dropdown';
 
 function GraphDisplaySelect(props) {
 	return (
-		<div style={{ width: '100%', ...props.style }}>
+		<div style={{ ...props.style }}>
 			<div style={commonMargin}>
 				<span style={{ ...graphDisplaySelectLabelStyle }}>Graph Period:</span>
 				<Dropdown

@@ -1,13 +1,12 @@
 import React from 'react';
 import BounceButton from './BounceButton';
 import { toggleButtonStyle } from 'styles/timelineDisplaySelect';
-import { containerStyle } from 'styles/optionsPanel';
 
 function TimelineDisplaySelect(props) {
 	const commonMargin = { margin: '0.5rem' };
 
 	return (
-		<div style={containerStyle}>
+		<div style={{ ...props.style }}>
 			<BounceButton
 				onClick={() =>
 					props.setDisplayOptions({

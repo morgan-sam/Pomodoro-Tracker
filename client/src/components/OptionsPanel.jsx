@@ -4,6 +4,8 @@ import TimelineDisplaySelect from 'components/TimelineDisplaySelect';
 import GraphDisplaySelect from 'components/GraphDisplaySelect';
 import TimelineZoomSelect from 'components/TimelineZoomSelect';
 
+import { optionsPanelItem } from 'styles/optionsPanel';
+
 function OptionsPanel(props) {
 	const optionsContainerStyle = {
 		margin: 'auto 4rem',
@@ -19,17 +21,17 @@ function OptionsPanel(props) {
 				<TimelineZoomSelect
 					timeOptions={props.timeOptions}
 					setTimeOptions={props.setTimeOptions}
-					style={{ height: '100%' }}
+					style={optionsPanelItem}
 				/>
 				<TimelineDisplaySelect
 					setDisplayOptions={props.setDisplayOptions}
 					displayOptions={props.displayOptions}
-					style={{ height: '100%' }}
+					style={optionsPanelItem}
 				/>
 				<GraphDisplaySelect
 					setDisplayOptions={props.setDisplayOptions}
 					displayOptions={props.displayOptions}
-					style={{ height: '100%' }}
+					style={optionsPanelItem}
 				/>
 			</div>
 		</div>
