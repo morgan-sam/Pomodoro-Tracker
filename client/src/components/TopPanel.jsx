@@ -1,8 +1,8 @@
 import React from 'react';
-import DayTimeline from './DayTimeline';
+import DayTimeline from 'components/DayTimeline';
 import TopPageText from 'components/TopPageText';
 import TimeOptionSelect from 'components/TimeOptionSelect.jsx';
-import TimelineDateSelect from './TimelineDateSelect';
+import TimelineDateSelect from 'components/TimelineDateSelect';
 import { topOptionStyle } from 'styles/topPanel';
 
 function TopPanel(props) {
