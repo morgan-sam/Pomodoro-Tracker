@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
 	containerStyle,
 	scrollbarStyle,
@@ -10,9 +9,7 @@ import {
 	eventBoxTypeStyle,
 	currentTimeMarkerStyle
 } from 'styles/dayTimeline';
-
 import { getTodaysDateAsObj } from 'data/dates';
-
 import { convert24hrTo12hrTime } from 'utility/parseTime';
 
 function DayTimeline(props) {
