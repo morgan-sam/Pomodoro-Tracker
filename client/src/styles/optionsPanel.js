@@ -1,3 +1,11 @@
+export const optionsContainerStyle = {
+	margin: 'auto 4rem',
+	display: 'flex',
+	flexDirection: 'column',
+	justifyContent: 'center',
+	alignItems: 'center'
+};
+
 export const optionsPanelItem = {
 	display: 'flex',
 	flexWrap: 'wrap',
