@@ -1,5 +1,5 @@
 import React from 'react';
-import BounceButton from './BounceButton';
+import BounceButton from 'components/BounceButton';
 import { toggleButtonStyle } from 'styles/timelineDisplaySelect';
 
 function TimelineDisplaySelect(props) {
