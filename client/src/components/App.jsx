@@ -64,6 +64,8 @@ function App() {
 	}, []);
 
 	useEffect(() => {
+		const localDisplayOptions = JSON.parse(window.localStorage.getItem('displayOptions'));
+		if (localDisplayOptions) setDisplayOptions(localDisplayOptions);
 		setTimelineToFitWindow();
 	}, []);
 
@@ -73,6 +75,13 @@ function App() {
 			window.removeEventListener('resize', setTimelineToFitWindow);
 		};
 	});
+
+	useEffect(
+		() => {
+			window.localStorage.setItem('displayOptions', JSON.stringify(displayOptions));
+		},
+		[ displayOptions ]
+	);
 
 	const setTimelineToFitWindow = () => {
 		setTimeOptions({ ...timeOptions, hourWidth: getAutoHourWidth(timeOptions) });
