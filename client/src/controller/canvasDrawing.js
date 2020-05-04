@@ -4,12 +4,12 @@ import { getXAxisLabelObj } from 'controller/graphAxisLabels';
 import { GRAPH_SIZES } from 'styles/graphSizing';
 const GRAPH_FONT_SIZE = GRAPH_SIZES.FONT_SIZE;
 
-function getCanvasContext(canvasRef) {
+const getCanvasContext = (canvasRef) => {
 	const context = canvasRef.current.getContext('2d');
 	context.textBaseline = 'middle';
 	context.textAlign = 'center';
 	return context;
-}
+};
 
 export const drawNoDataMessage = (canvasRef) => {
 	const context = getCanvasContext(canvasRef);
