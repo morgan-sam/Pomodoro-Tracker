@@ -10,14 +10,8 @@ export const drawGraphLine = (graph) => {
 };
 
 export const drawCoordinateCrosses = (graph, size) => {
-	let todayIndex;
-	if (graph) {
-		if (graph.period === 'week ahead') todayIndex = 0;
-		if (graph.period === 'week passed') todayIndex = 6;
-		if (graph.period === 'month') todayIndex = graph.graphData.length - 1;
-	}
+	const todayIndex = getTodayIndex(graph);
 	graph.graphData.forEach((el, i) => {
-		console.log(todayIndex);
 		const { x, y } = el.coordinate;
 		drawPassedLinePath(graph.context, (ctx) => {
 			ctx.strokeStyle = todayIndex === i ? '#FF0000' : '#000000';
@@ -27,6 +21,14 @@ export const drawCoordinateCrosses = (graph, size) => {
 			ctx.lineTo(x - size, y + size);
 		});
 	}, todayIndex);
+};
+
+const getTodayIndex = (graph) => {
+	const { period, graphData } = graph;
+	if (period === 'week ahead') return 0;
+	else if (period === 'week passed') return 6;
+	else if (period === 'month') return graphData.length - 1;
+	else return null;
 };
 
 export const drawXLabelLine = (graph, lineLabelObj) => {
