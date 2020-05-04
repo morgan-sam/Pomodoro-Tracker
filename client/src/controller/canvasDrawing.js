@@ -25,8 +25,6 @@ export const drawEntireGraph = (graphDataObj) => {
 	drawGraphPlot(graph);
 };
 
-//////////////////////////////////////
-
 const drawXAxis = (graph) => {
 	graph.graphData.forEach((el, index) => {
 		const labelParameters = {
@@ -53,5 +51,3 @@ const drawGraphPlot = (graph) => {
 	if (graph.type === 'line' || graph.type === 'both') drawGraphLine(graph);
 	if (graph.type === 'scatter' || graph.type === 'both') drawCoordinateCrosses(graph, GRAPH_FONT_SIZE / 3);
 };
-
-//////////////////////////////////////
