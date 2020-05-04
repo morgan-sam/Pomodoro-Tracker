@@ -2,6 +2,10 @@ export const parseISOToLittleEndian = (iso) => {
 	const { day, month, year } = parseISOToDateObj(iso);
 	return `${day}-${month}-${year}`;
 };
+export const parseISOToBigEndian = (iso) => {
+	const dateObj = convertUTCISOToUKObj(iso).date;
+	return parseDateObjToBigEndian(dateObj);
+};
 
 export const parseISOToDateObj = (iso) => {
 	const date = new Date(iso);

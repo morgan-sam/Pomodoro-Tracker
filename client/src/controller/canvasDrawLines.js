@@ -1,4 +1,5 @@
 import { GRAPH_SIZES } from 'styles/graphSizing';
+import { parseISOToBigEndian } from 'utility/parseDates';
 const GRAPH_SCALE = GRAPH_SIZES.FONT_SIZE;
 const GRAPH_BOTTOM_GAP = GRAPH_SIZES.BOTTOM_GAP;
 
@@ -10,25 +11,18 @@ export const drawGraphLine = (graph) => {
 };
 
 export const drawCoordinateCrosses = (graph, size) => {
-	const todayIndex = getTodayIndex(graph);
+	const today = parseISOToBigEndian(new Date().toISOString());
 	graph.graphData.forEach((el, i) => {
 		const { x, y } = el.coordinate;
+		const crossColor = today === el.date ? '#FF0000' : '#000000';
 		drawPassedLinePath(graph.context, (ctx) => {
-			ctx.strokeStyle = todayIndex === i ? '#FF0000' : '#000000';
+			ctx.strokeStyle = crossColor;
 			ctx.moveTo(x - size, y - size);
 			ctx.lineTo(x + size, y + size);
 			ctx.moveTo(x + size, y - size);
 			ctx.lineTo(x - size, y + size);
 		});
-	}, todayIndex);
-};
-
-const getTodayIndex = (graph) => {
-	const { period, graphData } = graph;
-	if (period === 'week ahead') return 0;
-	else if (period === 'week passed') return 6;
-	else if (period === 'month') return graphData.length - 1;
-	else return null;
+	});
 };
 
 export const drawXLabelLine = (graph, lineLabelObj) => {
