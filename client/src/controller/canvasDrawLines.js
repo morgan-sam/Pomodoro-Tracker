@@ -9,6 +9,7 @@ export const drawGraphLine = (graph) => {
 };
 
 export const drawCoordinateCrosses = (graph, size) => {
+	console.log(graph);
 	graph.graphData.forEach((el) => {
 		const { x, y } = el.coordinate;
 		drawPassedLinePath(graph.context, (ctx) => {
