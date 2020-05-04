@@ -4,21 +4,29 @@ const GRAPH_BOTTOM_GAP = GRAPH_SIZES.BOTTOM_GAP;
 
 export const drawGraphLine = (graph) => {
 	drawPassedLinePath(graph.context, (ctx) => {
+		ctx.strokeStyle = '#000000';
 		graph.graphData.forEach((el) => ctx.lineTo(el.coordinate.x, el.coordinate.y));
 	});
 };
 
 export const drawCoordinateCrosses = (graph, size) => {
-	console.log(graph);
-	graph.graphData.forEach((el) => {
+	let todayIndex;
+	if (graph) {
+		if (graph.period === 'week ahead') todayIndex = 0;
+		if (graph.period === 'week passed') todayIndex = 6;
+		if (graph.period === 'month') todayIndex = graph.graphData.length - 1;
+	}
+	graph.graphData.forEach((el, i) => {
+		console.log(todayIndex);
 		const { x, y } = el.coordinate;
 		drawPassedLinePath(graph.context, (ctx) => {
+			ctx.strokeStyle = todayIndex === i ? '#FF0000' : '#000000';
 			ctx.moveTo(x - size, y - size);
 			ctx.lineTo(x + size, y + size);
 			ctx.moveTo(x + size, y - size);
 			ctx.lineTo(x - size, y + size);
 		});
-	});
+	}, todayIndex);
 };
 
 export const drawXLabelLine = (graph, lineLabelObj) => {
