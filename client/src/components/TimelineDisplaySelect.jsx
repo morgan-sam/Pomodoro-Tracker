@@ -3,7 +3,7 @@ import BounceButton from 'components/BounceButton';
 import { toggleButtonStyle } from 'styles/timelineDisplaySelect';
 
 function TimelineDisplaySelect(props) {
-	const commonMargin = { margin: '0.5rem' };
+	const commonMargin = { margin: '0.5rem', padding: '1rem' };
 
 	return (
 		<div style={{ ...props.style }}>
