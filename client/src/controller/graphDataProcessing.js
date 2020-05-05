@@ -1,4 +1,4 @@
-import { parseDateObjToISO, parseDateObjToBigEndian } from 'utility/parseDates';
+import { parseDateObjToBigEndian } from 'utility/parseDates';
 import { daysInMonth, addSubtractDaysFromDateObj } from 'data/dates';
 
 export const getPomodoroCount = (graphDataParameters) => {

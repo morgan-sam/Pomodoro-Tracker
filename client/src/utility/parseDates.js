@@ -15,12 +15,6 @@ export const parseISOToDateObj = (iso) => {
 	return { day, month, year };
 };
 
-export const parseDateObjToISO = (obj) => {
-	const { day, month, year } = obj;
-	const date = new Date(year, month - 1, day);
-	return date.toISOString();
-};
-
 export const parseLittleEndianToObj = (string) => {
 	const dateArray = string.split('-');
 	return { day: dateArray[0], month: dateArray[1], year: dateArray[2] };
