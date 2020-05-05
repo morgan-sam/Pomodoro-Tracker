@@ -2,6 +2,7 @@ import { GRAPH_SIZES } from 'styles/graphSizing';
 import { parseISOToBigEndian } from 'utility/parseDates';
 const GRAPH_SCALE = GRAPH_SIZES.FONT_SIZE;
 const GRAPH_BOTTOM_GAP = GRAPH_SIZES.BOTTOM_GAP;
+let CROSS_WIDTH = 3;
 
 export const drawGraphLine = (graph) => {
 	drawPassedLinePath(graph.context, (ctx) => {
@@ -16,7 +17,6 @@ export const drawCoordinateCrosses = (graph, size) => {
 		let { x, y } = el.coordinate;
 		const crossColor = today === el.date ? '#FF0000' : '#000000';
 		drawPassedLinePath(graph.context, (ctx) => {
-			let width = 3;
 			ctx.strokeStyle = crossColor;
 			ctx.beginPath();
 			x -= size;
@@ -27,8 +27,8 @@ export const drawCoordinateCrosses = (graph, size) => {
 				const widthY = Math.floor(((i + 3) % 4) / 2) * -2 + 1;
 				const sizeX = widthY * -1;
 				const sizeY = widthX;
-				x += width / 2 * widthX;
-				y += width / 2 * widthY;
+				x += CROSS_WIDTH / 2 * widthX;
+				y += CROSS_WIDTH / 2 * widthY;
 				ctx.lineTo(x, y);
 				x += size * sizeX;
 				y += size * sizeY;
