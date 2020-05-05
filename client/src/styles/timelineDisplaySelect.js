@@ -3,6 +3,8 @@ export const toggleButtonStyle = {
 	width: 'auto'
 };
 
+export const commonMargin = { margin: '0.5rem', padding: '1rem' };
+
 export const timelineDisplaySelectLabelStyle = {
 	display: 'flex',
 	width: 'auto',

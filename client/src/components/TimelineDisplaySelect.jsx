@@ -1,10 +1,8 @@
 import React from 'react';
 import BounceButton from 'components/BounceButton';
-import { toggleButtonStyle } from 'styles/timelineDisplaySelect';
+import { toggleButtonStyle, commonMargin } from 'styles/timelineDisplaySelect';
 
 function TimelineDisplaySelect(props) {
-	const commonMargin = { margin: '0.5rem', padding: '1rem' };
-
 	return (
 		<div style={{ ...props.style }}>
 			<BounceButton
