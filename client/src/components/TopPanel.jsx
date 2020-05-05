@@ -13,7 +13,7 @@ function TopPanel(props) {
 				<TopPageText entriesData={props.filteredEntries} filterOptions={props.filterOptions} />
 				<TimelineDateSelect filterOptions={props.filterOptions} setFilterOptions={props.setFilterOptions} />
 				<TimeOptionSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
-				<GraphToggle />
+				<GraphToggle displayOptions={props.displayOptions} setDisplayOptions={props.setDisplayOptions} />
 			</div>
 			<DayTimeline
 				entries={props.filteredEntries}

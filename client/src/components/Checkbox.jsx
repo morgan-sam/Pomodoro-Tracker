@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 function Checkbox(props) {
-	const { style, onChange } = props;
-	const [ checked, setChecked ] = useState(true);
+	const { style } = props;
 
 	const checkboxContainerStyle = {
 		display: 'flex',
@@ -33,17 +32,10 @@ function Checkbox(props) {
 		boxShadow: '0 0 1px 1px #ddd'
 	};
 
-	useEffect(
-		() => {
-			props.onChange(checked);
-		},
-		[ checked ]
-	);
-
 	return (
 		<div style={{ ...checkboxContainerStyle, ...style }}>
-			<div style={{ ...checkboxIconStyle }} onClick={() => setChecked(!checked)}>
-				{checked ? <div style={checkStyle} /> : null}
+			<div style={{ ...checkboxIconStyle }} onClick={() => props.onChange()}>
+				{props.default ? <div style={checkStyle} /> : null}
 			</div>
 		</div>
 	);
