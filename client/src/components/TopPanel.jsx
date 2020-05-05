@@ -2,7 +2,7 @@ import React from 'react';
 import TopPageText from 'components/TopPageText';
 import TimelineDateSelect from 'components/TimelineDateSelect';
 import TimeOptionSelect from 'components/TimeOptionSelect';
-import Checkbox from 'components/Checkbox';
+import GraphToggle from 'components/GraphToggle';
 import DayTimeline from 'components/DayTimeline';
 import { topOptionStyle } from 'styles/topPanel';
 
@@ -13,7 +13,7 @@ function TopPanel(props) {
 				<TopPageText entriesData={props.filteredEntries} filterOptions={props.filterOptions} />
 				<TimelineDateSelect filterOptions={props.filterOptions} setFilterOptions={props.setFilterOptions} />
 				<TimeOptionSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
-				<Checkbox style={{ borderRadius: '100%' }} onChange={() => null} />
+				<GraphToggle />
 			</div>
 			<DayTimeline
 				entries={props.filteredEntries}
