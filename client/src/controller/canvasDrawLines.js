@@ -23,19 +23,9 @@ export const drawCoordinateCrosses = (graph, size) => {
 			y -= size;
 			ctx.moveTo(x, y);
 			for (let i = 0; i < 4; i++) {
-				const widthX = Math.floor((i % 4) / 2) * -2 + 1;
-				const widthY = Math.floor(((i + 3) % 4) / 2) * -2 + 1;
-				const sizeX = widthY * -1;
-				const sizeY = widthX;
-				x += CROSS_WIDTH / 2 * widthX;
-				y += CROSS_WIDTH / 2 * widthY;
-				ctx.lineTo(x, y);
-				x += size * sizeX;
-				y += size * sizeY;
-				ctx.lineTo(x, y);
-				x += size * widthX;
-				y += size * widthY;
-				ctx.lineTo(x, y);
+				ctx.lineTo((x += CROSS_WIDTH / 2 * crossMod(i)), (y += CROSS_WIDTH / 2 * crossMod(i, 3)));
+				ctx.lineTo((x += size * crossMod(i, 3) * -1), (y += size * crossMod(i)));
+				ctx.lineTo((x += size * crossMod(i)), (y += size * crossMod(i, 3)));
 			}
 			ctx.stroke();
 			ctx.closePath();
@@ -43,6 +33,10 @@ export const drawCoordinateCrosses = (graph, size) => {
 			ctx.fill();
 		});
 	});
+};
+
+const crossMod = (index, offset = 0) => {
+	return Math.floor(((index + offset) % 4) / 2) * -2 + 1;
 };
 
 export const drawXLabelLine = (graph, lineLabelObj) => {
