@@ -27,7 +27,7 @@ const DateNavigation = (props) => {
 						})}
 					delay={500}
 					text={'Reset To Today'}
-					style={{ margin: '1rem', padding: '0.6rem 1rem' }}
+					style={{ margin: '1rem', padding: '1rem' }}
 				/>
 				<DateArrowButton {...props} direction={'right'} />
 			</div>
