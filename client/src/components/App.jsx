@@ -91,9 +91,6 @@ function App() {
 			<div style={panelContainerStyle}>
 				<TopPanel
 					filteredEntries={filterEntries(entriesData)}
-					filterOptions={filterOptions}
-					displayOptions={displayOptions}
-					timeOptions={timeOptions}
 					eventLengths={{
 						pomodoro: 25,
 						encore: 5
@@ -114,7 +111,6 @@ function App() {
 					setTimeOptions={setTimeOptions}
 					displayOptions={displayOptions}
 					setDisplayOptions={setDisplayOptions}
-					displayOptions={displayOptions}
 				/>
 			</div>
 		</div>
