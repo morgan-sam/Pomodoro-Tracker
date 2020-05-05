@@ -36,7 +36,6 @@ function TimeOptionSelect(props) {
 			<div style={subContainers}>
 				<span style={{ ...timeOptionLabelStyle, ...elementStyle }}>End Hour:</span>
 				<Dropdown
-					style={elementStyle}
 					className={'dropdownEndHour'}
 					default={
 						props.timeOptions.twelveHourClock ? (
