@@ -13,14 +13,34 @@ export const drawGraphLine = (graph) => {
 export const drawCoordinateCrosses = (graph, size) => {
 	const today = parseISOToBigEndian(new Date().toISOString());
 	graph.graphData.forEach((el, i) => {
-		const { x, y } = el.coordinate;
+		let { x, y } = el.coordinate;
 		const crossColor = today === el.date ? '#FF0000' : '#000000';
 		drawPassedLinePath(graph.context, (ctx) => {
+			let width = 3;
 			ctx.strokeStyle = crossColor;
-			ctx.moveTo(x - size, y - size);
-			ctx.lineTo(x + size, y + size);
-			ctx.moveTo(x + size, y - size);
-			ctx.lineTo(x - size, y + size);
+			ctx.beginPath();
+			x -= size;
+			y -= size;
+			ctx.moveTo(x, y);
+			for (let i = 0; i < 4; i++) {
+				const widthX = Math.floor(i / 2) * -2 + 1;
+				const widthY = Math.ceil((i % 3) / 2) * 2 - 1;
+				const sizeX = widthY * -1;
+				const sizeY = widthX;
+				x += width / 2 * widthX;
+				y += width / 2 * widthY;
+				ctx.lineTo(x, y);
+				x += size * sizeX;
+				y += size * sizeY;
+				ctx.lineTo(x, y);
+				x += size * widthX;
+				y += size * widthY;
+				ctx.lineTo(x, y);
+			}
+			ctx.stroke();
+			ctx.closePath();
+			ctx.fillStyle = crossColor;
+			ctx.fill();
 		});
 	});
 };
