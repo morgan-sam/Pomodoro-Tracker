@@ -23,8 +23,8 @@ export const drawCoordinateCrosses = (graph, size) => {
 			y -= size;
 			ctx.moveTo(x, y);
 			for (let i = 0; i < 4; i++) {
-				const widthX = Math.floor(i / 2) * -2 + 1;
-				const widthY = Math.ceil((i % 3) / 2) * 2 - 1;
+				const widthX = Math.floor((i % 4) / 2) * -2 + 1;
+				const widthY = Math.floor(((i + 3) % 4) / 2) * -2 + 1;
 				const sizeX = widthY * -1;
 				const sizeY = widthX;
 				x += width / 2 * widthX;
