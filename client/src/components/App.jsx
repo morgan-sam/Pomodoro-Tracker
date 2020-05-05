@@ -86,6 +86,15 @@ function App() {
 		setTimeOptions({ ...timeOptions, hourWidth: getAutoHourWidth(timeOptions) });
 	};
 
+	const optionProps = {
+		filterOptions,
+		setFilterOptions,
+		timeOptions,
+		setTimeOptions,
+		displayOptions,
+		setDisplayOptions
+	};
+
 	return (
 		<div className="App" style={appContainerStyle}>
 			<div style={panelContainerStyle}>
@@ -95,23 +104,9 @@ function App() {
 						pomodoro: 25,
 						encore: 5
 					}}
-					filterOptions={filterOptions}
-					setFilterOptions={setFilterOptions}
-					timeOptions={timeOptions}
-					setTimeOptions={setTimeOptions}
-					displayOptions={displayOptions}
-					setDisplayOptions={setDisplayOptions}
+					{...optionProps}
 				/>
-				<BottomPanel
-					entriesData={entriesData}
-					setEntriesData={setEntriesData}
-					filterOptions={filterOptions}
-					setFilterOptions={setFilterOptions}
-					timeOptions={timeOptions}
-					setTimeOptions={setTimeOptions}
-					displayOptions={displayOptions}
-					setDisplayOptions={setDisplayOptions}
-				/>
+				<BottomPanel entriesData={entriesData} setEntriesData={setEntriesData} {...optionProps} />
 			</div>
 		</div>
 	);
