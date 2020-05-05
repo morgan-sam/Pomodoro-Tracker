@@ -3,7 +3,7 @@ import DateSelect from 'components/DateSelect';
 import BounceButton from 'components/BounceButton';
 import DateArrowButton from 'components/DateArrowButton';
 import { getTodaysDateAsObj } from 'data/dates';
-import { dateContainerStyle, todayBtnStyle } from 'styles/dateNavigation';
+import { dateContainerStyle } from 'styles/dateNavigation';
 
 const DateNavigation = (props) => {
 	return (
@@ -20,7 +20,6 @@ const DateNavigation = (props) => {
 			<div>
 				<DateArrowButton {...props} direction={'left'} />
 				<BounceButton
-					style={{ ...todayBtnStyle }}
 					onClick={() =>
 						props.setFilterOptions({
 							...props.filterOptions,
