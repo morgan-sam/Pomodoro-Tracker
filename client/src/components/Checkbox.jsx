@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function Checkbox(props) {
+	const { style, onChange } = props;
 	const [ checked, setChecked ] = useState(true);
 
 	const checkboxContainerStyle = {
@@ -19,7 +20,7 @@ function Checkbox(props) {
 		pointer: 'cursor',
 		select: 'none',
 		zIndex: '1',
-		borderRadius: props.style.borderRadius,
+		borderRadius: style ? style.borderRadius : null,
 		boxShadow: '0 0 1px 1px #ddd'
 	};
 
@@ -28,7 +29,7 @@ function Checkbox(props) {
 		width: '100%',
 		transform: 'scale(0.65)',
 		backgroundColor: '#444',
-		borderRadius: props.style.borderRadius,
+		borderRadius: style ? style.borderRadius : null,
 		boxShadow: '0 0 1px 1px #ddd'
 	};
 
@@ -40,7 +41,7 @@ function Checkbox(props) {
 	);
 
 	return (
-		<div style={{ ...checkboxContainerStyle, ...props.style }}>
+		<div style={{ ...checkboxContainerStyle, ...style }}>
 			<div style={{ ...checkboxIconStyle }} onClick={() => setChecked(!checked)}>
 				{checked ? <div style={checkStyle} /> : null}
 			</div>

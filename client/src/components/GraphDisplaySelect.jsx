@@ -16,7 +16,7 @@ function GraphDisplaySelect(props) {
 				<Dropdown
 					className={'dropdownGraphPeriod'}
 					style={{ ...graphSelectionDropdownStyle, ...graphPeriodSelectStyle, zIndex: '2' }}
-					options={[ 'none', 'week ahead', 'week passed', 'month' ]}
+					options={[ 'week ahead', 'week passed', 'month' ]}
 					default={props.displayOptions.graph.period}
 					onClick={(el) =>
 						props.setDisplayOptions({

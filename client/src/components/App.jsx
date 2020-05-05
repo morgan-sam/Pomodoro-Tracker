@@ -18,6 +18,7 @@ function App() {
 			encore: true
 		},
 		graph: {
+			visible: true,
 			period: 'week passed',
 			type: 'both',
 			maxPomodoro: 14
