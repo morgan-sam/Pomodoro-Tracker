@@ -11,16 +11,7 @@ function BottomPanel(props) {
 				filterOptions={props.filterOptions}
 				displayOptions={props.displayOptions}
 			/>
-			<OptionsPanel
-				entriesData={props.entriesData}
-				filterOptions={props.filterOptions}
-				setFilterOptions={props.setFilterOptions}
-				timeOptions={props.timeOptions}
-				setTimeOptions={props.setTimeOptions}
-				displayOptions={props.displayOptions}
-				setDisplayOptions={props.setDisplayOptions}
-				style={optionsPanelStyle}
-			/>
+			<OptionsPanel {...props} style={optionsPanelStyle} />
 		</div>
 	);
 }
