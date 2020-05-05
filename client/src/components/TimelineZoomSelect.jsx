@@ -1,11 +1,9 @@
 import React from 'react';
 import BounceButton from 'components/BounceButton';
 import { getAutoHourWidth } from 'utility/calculateSizing';
-import { timelineZoomLabelStyle } from 'styles/timelineZoomSelect';
+import { timelineZoomLabelStyle, commonMargin } from 'styles/timelineZoomSelect';
 
 function TimelineZoomSelect(props) {
-	const commonMargin = { margin: '0 1rem' };
-
 	return (
 		<div style={{ ...props.style }}>
 			<span style={{ ...timelineZoomLabelStyle, ...commonMargin }}>Timeline Zoom:</span>

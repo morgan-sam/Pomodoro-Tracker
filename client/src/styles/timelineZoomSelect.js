@@ -14,3 +14,6 @@ export const timelineZoomCheckbox = {
 	width: '2rem',
 	borderRadius: '100%'
 };
+export const commonMargin = {
+	margin: '0.5rem'
+};
