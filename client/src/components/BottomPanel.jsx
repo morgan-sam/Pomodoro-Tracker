@@ -13,7 +13,6 @@ function BottomPanel(props) {
 			/>
 			<OptionsPanel
 				entriesData={props.entriesData}
-				setEntriesData={props.setEntriesData}
 				filterOptions={props.filterOptions}
 				setFilterOptions={props.setFilterOptions}
 				timeOptions={props.timeOptions}

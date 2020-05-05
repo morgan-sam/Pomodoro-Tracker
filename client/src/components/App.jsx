@@ -106,7 +106,7 @@ function App() {
 					}}
 					{...optionProps}
 				/>
-				<BottomPanel entriesData={entriesData} setEntriesData={setEntriesData} {...optionProps} />
+				<BottomPanel entriesData={entriesData} {...optionProps} />
 			</div>
 		</div>
 	);
