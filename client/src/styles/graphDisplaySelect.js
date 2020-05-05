@@ -19,7 +19,7 @@ export const graphOptionLabelStyle = {
 	display: 'flex',
 	justifyContent: 'center',
 	flexDirection: 'column',
-	paddingRight: '1rem'
+	padding: '1rem'
 };
 export const commonMargin = {
 	display: 'flex',
