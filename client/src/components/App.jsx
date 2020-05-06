@@ -73,8 +73,7 @@ function App() {
 		const json = await raw.json();
 		const repos = json.map((el) => el.name);
 
-		let urls = repos.map((el) => `https://api.github.com/repos/morgan-sam/${el}/commits`);
-
+		let urls = repos.map((el) => `https://api.github.com/repos/morgan-sam/${el}/commits?page=1&per_page=100`);
 		let commits = await Promise.all(
 			urls.map(
 				async (url) =>
