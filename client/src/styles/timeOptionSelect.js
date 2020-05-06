@@ -9,11 +9,10 @@ export const timeOptionLabelStyle = {
 
 export const timeOptionStyle = {
 	display: 'flex',
-	flexDirection: 'row',
+	flexDirection: 'column',
 	justifyContent: 'space-between',
 	alignItems: 'center',
-	flexWrap: 'wrap',
-	margin: '2rem 0'
+	flexWrap: 'wrap'
 };
 
 export const subContainers = {

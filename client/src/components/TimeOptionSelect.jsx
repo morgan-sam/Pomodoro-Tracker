@@ -30,7 +30,7 @@ function TimeOptionSelect(props) {
 						});
 					}}
 					options={getArrayTimes(props.timeOptions.twelveHourClock, 0).slice(0, props.timeOptions.endTime)}
-					style={dropDownStyle}
+					style={{ ...dropDownStyle, zIndex: '2' }}
 				/>
 			</div>
 			<div style={subContainers}>
@@ -52,7 +52,7 @@ function TimeOptionSelect(props) {
 						});
 					}}
 					options={getArrayTimes(props.timeOptions.twelveHourClock, 1).slice(props.timeOptions.startTime)}
-					style={dropDownStyle}
+					style={{ ...dropDownStyle, zIndex: '1' }}
 				/>
 			</div>
 		</div>
