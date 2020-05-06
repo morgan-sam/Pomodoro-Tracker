@@ -1,11 +1,12 @@
 import React from 'react';
-import { parseDateObjToLittleEndian, convertUTCISOToUKObj } from 'utility/parseDates';
+import { parseDateObjToLittleEndian, parseDateObjToBigEndian, convertUTCISOToUKObj } from 'utility/parseDates';
 import { compareObjs } from 'utility/sortAndCompare';
 
 function TimelineToggles(props) {
 	function getEventCountForDay(event, date) {
 		return props.entriesData.filter((el) => el.type === event && compareObjs(el.date, date)).length;
 	}
+	const isToday = parseDateObjToBigEndian(props.filterOptions.date) === new Date().toISOString().substring(0, 10);
 
 	return (
 		<div>
@@ -15,7 +16,7 @@ function TimelineToggles(props) {
 						display: 'inline-block'
 					}}
 				>
-					Pomodoros for
+					Data for
 				</span>
 				<span> </span>
 				<span
@@ -36,6 +37,11 @@ function TimelineToggles(props) {
 				)}:{' '}
 			</h3>
 			<h2>Pomodoros: {getEventCountForDay('pomodoro', props.filterOptions.date)}</h2>
+			{props.todaysCommits && isToday ? (
+				<h2>Github Commits: {props.todaysCommits}</h2>
+			) : (
+				<h2>______________________________</h2>
+			)}
 		</div>
 	);
 }

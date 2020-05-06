@@ -10,7 +10,11 @@ function TopPanel(props) {
 	return (
 		<div style={props.style}>
 			<div style={topOptionStyle}>
-				<TopPageText entriesData={props.filteredEntries} filterOptions={props.filterOptions} />
+				<TopPageText
+					entriesData={props.filteredEntries}
+					filterOptions={props.filterOptions}
+					todaysCommits={props.todaysCommits}
+				/>
 				<TimelineDateSelect filterOptions={props.filterOptions} setFilterOptions={props.setFilterOptions} />
 				<TimeOptionSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
 				<GraphToggle displayOptions={props.displayOptions} setDisplayOptions={props.setDisplayOptions} />

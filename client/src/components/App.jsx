@@ -8,6 +8,7 @@ import { appContainerStyle, panelContainerStyle } from 'styles/app';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
+	const [ todaysCommits, setTodaysCommits ] = useState(null);
 	const [ filterOptions, setFilterOptions ] = useState({
 		type: null,
 		date: convertUTCISOToUKObj(new Date().toISOString()).date
@@ -58,7 +59,7 @@ function App() {
 				const correctedTimezoneData = convertDataToUKTimezone(json);
 				setEntriesData(correctedTimezoneData);
 				const todaysCommits = await getTodaysGithubCommits();
-				console.log(todaysCommits);
+				setTodaysCommits(todaysCommits);
 			} catch (error) {
 				console.log(error);
 			}
@@ -117,6 +118,7 @@ function App() {
 			<div style={panelContainerStyle}>
 				<TopPanel
 					filteredEntries={filterEntries(entriesData)}
+					todaysCommits={todaysCommits}
 					eventLengths={{
 						pomodoro: 25,
 						encore: 5
