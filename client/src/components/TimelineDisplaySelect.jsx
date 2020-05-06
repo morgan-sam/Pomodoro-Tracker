@@ -11,12 +11,12 @@ function TimelineDisplaySelect(props) {
 						...props.displayOptions,
 						timeline: {
 							...props.displayOptions.timeline,
-							encore: !props.displayOptions.timeline.encore
+							start: !props.displayOptions.timeline.start
 						}
 					})}
 				delay={300}
 				style={{ ...toggleButtonStyle, ...commonMargin }}
-				text={`Turn ${props.displayOptions.timeline.encore ? 'Off' : 'On'} Encores`}
+				text={`Turn ${props.displayOptions.timeline.start ? 'Off' : 'On'} Start Markers`}
 			/>
 			<BounceButton
 				onClick={() =>
@@ -24,12 +24,12 @@ function TimelineDisplaySelect(props) {
 						...props.displayOptions,
 						timeline: {
 							...props.displayOptions.timeline,
-							start: !props.displayOptions.timeline.start
+							encore: !props.displayOptions.timeline.encore
 						}
 					})}
 				delay={300}
 				style={{ ...toggleButtonStyle, ...commonMargin }}
-				text={`Turn ${props.displayOptions.timeline.start ? 'Off' : 'On'} Start Markers`}
+				text={`Turn ${props.displayOptions.timeline.encore ? 'Off' : 'On'} Encores`}
 			/>
 
 			<BounceButton

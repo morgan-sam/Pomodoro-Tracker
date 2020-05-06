@@ -5,15 +5,15 @@ import { optionsPanelItem } from 'styles/optionsPanel';
 
 function TimelineOptions(props) {
 	return (
-		<div style={props.style}>
-			<TimelineZoomSelect
-				timeOptions={props.timeOptions}
-				setTimeOptions={props.setTimeOptions}
-				style={optionsPanelItem}
-			/>
+		<div style={{ ...props.style, width: '20rem', margin: '0 2rem' }}>
 			<TimelineDisplaySelect
 				setDisplayOptions={props.setDisplayOptions}
 				displayOptions={props.displayOptions}
+				style={optionsPanelItem}
+			/>
+			<TimelineZoomSelect
+				timeOptions={props.timeOptions}
+				setTimeOptions={props.setTimeOptions}
 				style={optionsPanelItem}
 			/>
 		</div>
