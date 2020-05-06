@@ -65,27 +65,12 @@ function App() {
 	}, []);
 
 	const getGithubCommits = async () => {
-		const raw = await fetch('https://api.github.com/users/morgan-sam/repos', {
+		const events = await fetch('https://api.github.com/users/morgan-sam/events?per_page=100', {
 			headers: new Headers({
 				Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
 			})
-		});
-		const json = await raw.json();
-		const repos = json.map((el) => el.name);
-
-		let urls = repos.map((el) => `https://api.github.com/repos/morgan-sam/${el}/commits?page=1&per_page=100`);
-		let commits = await Promise.all(
-			urls.map(
-				async (url) =>
-					await fetch(url, {
-						headers: new Headers({
-							Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
-						})
-					}).then((response) => response.json())
-			)
-		);
-
-		console.log(commits);
+		}).then((response) => response.json());
+		console.log(events);
 	};
 
 	useEffect(() => {
