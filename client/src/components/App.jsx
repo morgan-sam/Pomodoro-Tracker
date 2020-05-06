@@ -57,20 +57,28 @@ function App() {
 				const json = await raw.json();
 				const correctedTimezoneData = convertDataToUKTimezone(json);
 				setEntriesData(correctedTimezoneData);
-				getGithubCommits();
+				const todaysCommits = await getTodaysGithubCommits();
+				console.log(todaysCommits);
 			} catch (error) {
 				console.log(error);
 			}
 		})();
 	}, []);
 
-	const getGithubCommits = async () => {
+	const getTodaysGithubCommits = async () => {
 		const events = await fetch('https://api.github.com/users/morgan-sam/events?per_page=100', {
 			headers: new Headers({
 				Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
 			})
 		}).then((response) => response.json());
-		console.log(events);
+		const today = new Date().toISOString().substring(0, 10);
+		const todayEvents = events.filter((el) => {
+			return el.created_at.substring(0, 10) === today;
+		});
+		const commitsTotal = todayEvents.reduce((total, el) => {
+			return el.payload.commits.length + total;
+		}, 0);
+		return commitsTotal;
 	};
 
 	useEffect(() => {
