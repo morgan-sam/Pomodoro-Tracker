@@ -37,11 +37,7 @@ function TimelineToggles(props) {
 				)}:{' '}
 			</h3>
 			<h2>Pomodoros: {getEventCountForDay('pomodoro', props.filterOptions.date)}</h2>
-			{props.todaysCommits && isToday ? (
-				<h2>Github Commits: {props.todaysCommits}</h2>
-			) : (
-				<h2>______________________________</h2>
-			)}
+			{props.todaysCommits && isToday ? <h2>Github Commits: {props.todaysCommits}</h2> : <h2>&nbsp;</h2>}
 		</div>
 	);
 }
