@@ -73,22 +73,20 @@ function App() {
 		const json = await raw.json();
 		const repos = json.map((el) => el.name);
 
-		let urls = repos.map((el) => `https://api.github.com/repos/morgan-sam/${el}/events`);
+		let urls = repos.map((el) => `https://api.github.com/repos/morgan-sam/${el}/commits`);
 
-		// map every url to the promise of the fetch
-		// let requests = urls.map((url) =>
-		// 	fetch(url, {
-		// 		headers: new Headers({
-		// 			Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
-		// 		})
-		// 	})
-		// );
+		let commits = await Promise.all(
+			urls.map(
+				async (url) =>
+					await fetch(url, {
+						headers: new Headers({
+							Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
+						})
+					}).then((response) => response.json())
+			)
+		);
 
-		// // Promise.all waits until all jobs are resolved
-		// let commits = await Promise.all(requests);
-
-		// commits = commits.map(async (el) => await el.json());
-		// console.log(commits[4]);
+		console.log(commits);
 	};
 
 	useEffect(() => {
