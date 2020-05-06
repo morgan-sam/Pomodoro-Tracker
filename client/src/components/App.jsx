@@ -125,7 +125,8 @@ function App() {
 					}}
 					{...optionProps}
 				/>
-				<BottomPanel entriesData={entriesData} {...optionProps} />
+
+				{displayOptions.graph.visible && <BottomPanel entriesData={entriesData} {...optionProps} />}
 			</div>
 		</div>
 	);
