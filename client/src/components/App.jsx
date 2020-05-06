@@ -72,9 +72,7 @@ function App() {
 			})
 		}).then((response) => response.json());
 		const today = new Date().toISOString().substring(0, 10);
-		const todayEvents = events.filter((el) => {
-			return el.created_at.substring(0, 10) === today;
-		});
+		const todayEvents = events.filter((el) => el.created_at.substring(0, 10) === today);
 		const commitsTotal = todayEvents.reduce((total, el) => {
 			return el.payload.commits.length + total;
 		}, 0);
