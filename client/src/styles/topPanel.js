@@ -3,5 +3,5 @@ export const topOptionStyle = {
 	flexWrap: 'wrap',
 	alignItems: 'center',
 	zIndex: '5',
-	padding: '2rem 0'
+	padding: '0'
 };
