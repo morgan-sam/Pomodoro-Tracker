@@ -3,7 +3,7 @@ export const EVENT_HEIGHT_REM = 5;
 export const containerStyle = {
 	height: '9rem',
 	overflowX: 'auto',
-	padding: '1rem 0'
+	margin: '1.2rem 0'
 };
 
 export const scrollbarStyle = {
