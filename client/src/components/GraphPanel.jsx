@@ -3,7 +3,7 @@ import GraphCanvas from 'components/GraphCanvas';
 
 function GraphPanel(props) {
 	return (
-		<div style={props.style}>
+		<div className={'canvasContainer'} style={props.style}>
 			<GraphCanvas
 				entriesData={props.entriesData}
 				filterOptions={props.filterOptions}
