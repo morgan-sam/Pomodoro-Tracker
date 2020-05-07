@@ -5,7 +5,7 @@ import { optionsPanelItem } from 'styles/optionsPanel';
 
 function TimelineOptions(props) {
 	return (
-		<div style={{ ...props.style, width: '20rem', margin: '0 2rem' }}>
+		<div style={{ ...props.style, width: '20rem', margin: '0 4rem 0 3rem' }}>
 			<TimelineDisplaySelect
 				setDisplayOptions={props.setDisplayOptions}
 				displayOptions={props.displayOptions}
