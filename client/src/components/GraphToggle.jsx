@@ -5,7 +5,8 @@ function GraphToggle(props) {
 	const { displayOptions, setDisplayOptions } = props;
 
 	const containerStyle = {
-		display: 'flex'
+		display: 'flex',
+		margin: '2rem 0'
 	};
 
 	const commonMargin = {
