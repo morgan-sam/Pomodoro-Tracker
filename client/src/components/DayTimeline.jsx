@@ -5,8 +5,8 @@ import {
 	getBoxStyle,
 	textStyle,
 	innerGridStyle,
-	defaultEventBoxStyle,
-	eventBoxTypeStyle,
+	getDefaultEventBoxStyle,
+	getEventBoxTypeStyle,
 	currentTimeMarkerStyle
 } from 'styles/dayTimeline';
 import { getTodaysDateAsObj } from 'data/dates';
@@ -17,7 +17,7 @@ function DayTimeline(props) {
 		...props.eventLengths,
 		start: 1
 	};
-	console.log(props.displayOptions);
+
 	function getTimelineBoxSelection(start, end) {
 		return [ ...Array(end - start).keys() ].map((i) => {
 			return (
@@ -69,8 +69,8 @@ function DayTimeline(props) {
 			<div
 				key={i}
 				style={{
-					...defaultEventBoxStyle,
-					...eventBoxTypeStyle[el.type],
+					...getDefaultEventBoxStyle(props.displayOptions.darkTheme),
+					...getEventBoxTypeStyle(props.displayOptions.darkTheme)[el.type],
 					...getEventBoxStyle(el)
 				}}
 			/>

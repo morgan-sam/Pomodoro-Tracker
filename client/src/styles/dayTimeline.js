@@ -48,28 +48,32 @@ export const innerGridStyle = {
 	zIndex: '1'
 };
 
-export const defaultEventBoxStyle = {
-	display: 'inline-block',
-	height: `${EVENT_HEIGHT_REM}rem`,
-	border: '1px solid black',
-	position: 'absolute',
-	bottom: '0'
+export const getDefaultEventBoxStyle = (darkTheme) => {
+	return {
+		display: 'inline-block',
+		height: `${EVENT_HEIGHT_REM}rem`,
+		border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+		position: 'absolute',
+		bottom: '0'
+	};
 };
 
-export const eventBoxTypeStyle = {
-	start: {
-		backgroundColor: '#eee',
-		border: '1px dashed #ddd',
-		bottom: '1px',
-		height: `calc(${EVENT_HEIGHT_REM}rem - 1px)`,
-		zIndex: '-1'
-	},
-	pomodoro: {
-		backgroundColor: '#c3e5a7'
-	},
-	encore: {
-		backgroundColor: '#95c39f'
-	}
+export const getEventBoxTypeStyle = (darkTheme) => {
+	return {
+		start: {
+			backgroundColor: '#eee',
+			border: '1px dashed #ddd',
+			bottom: '1px',
+			height: `calc(${EVENT_HEIGHT_REM}rem - 1px)`,
+			zIndex: '-1'
+		},
+		pomodoro: {
+			backgroundColor: darkTheme ? '#ffa500' : '#c3e5a7'
+		},
+		encore: {
+			backgroundColor: darkTheme ? '#e59400' : '#95c39f'
+		}
+	};
 };
 
 const zzwidth = 3;
