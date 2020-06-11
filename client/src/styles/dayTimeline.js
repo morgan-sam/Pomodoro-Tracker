@@ -68,10 +68,10 @@ export const getEventBoxTypeStyle = (darkTheme) => {
 			zIndex: '-1'
 		},
 		pomodoro: {
-			backgroundColor: darkTheme ? '#ffa500' : '#c3e5a7'
+			backgroundColor: darkTheme ? '#e59400' : '#c3e5a7'
 		},
 		encore: {
-			backgroundColor: darkTheme ? '#e59400' : '#95c39f'
+			backgroundColor: darkTheme ? '#a06700' : '#95c39f'
 		}
 	};
 };
