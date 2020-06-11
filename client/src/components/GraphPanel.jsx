@@ -7,6 +7,7 @@ function GraphPanel(props) {
 			<GraphCanvas
 				entriesData={props.entriesData}
 				filterOptions={props.filterOptions}
+				displayOptions={props.displayOptions}
 				{...props.displayOptions.graph}
 			/>
 		</div>

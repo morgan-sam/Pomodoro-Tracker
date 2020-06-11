@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { getPomodoroCount } from 'controller/graphDataProcessing';
-import { graphStyle } from 'styles/graphPanel';
+import { getGraphStyle } from 'styles/graphPanel';
 import { GRAPH_SIZES } from 'styles/graphSizing';
 import { drawNoDataMessage, drawEntireGraph } from 'controller/canvasDrawing';
 
 const GraphPanel = (props) => {
+	const { displayOptions } = props;
 	const Y_AXIS_MAX = props.maxPomodoro;
 	const canvasRef = useRef(null);
 
@@ -12,12 +13,14 @@ const GraphPanel = (props) => {
 		() => {
 			canvasRef.current.width = 920;
 			canvasRef.current.height = 440;
-			props.entriesData.length ? addDataToGraph(canvasRef) : drawNoDataMessage(canvasRef);
+			props.entriesData.length
+				? addDataToGraph(canvasRef, displayOptions.darkTheme)
+				: drawNoDataMessage(canvasRef, displayOptions.darkTheme);
 		},
 		[ props ]
 	);
 
-	const addDataToGraph = (canvasRef) => {
+	const addDataToGraph = (canvasRef, darkTheme) => {
 		const entriesParameters = {
 			startDate: props.filterOptions.date,
 			period: props.period,
@@ -33,7 +36,8 @@ const GraphPanel = (props) => {
 			period: props.period,
 			type: props.type,
 			units,
-			yAxisMax: Y_AXIS_MAX
+			yAxisMax: Y_AXIS_MAX,
+			darkTheme
 		};
 		drawEntireGraph(graphDataObj);
 	};
@@ -58,7 +62,7 @@ const GraphPanel = (props) => {
 		});
 	}
 
-	return <canvas ref={canvasRef} style={graphStyle} />;
+	return <canvas ref={canvasRef} style={getGraphStyle(displayOptions.darkTheme)} />;
 };
 
 export default GraphPanel;

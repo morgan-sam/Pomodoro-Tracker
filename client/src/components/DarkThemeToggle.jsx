@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from 'components/Checkbox';
 
-function GraphToggle(props) {
+function DarkThemeToggle(props) {
 	const { displayOptions, setDisplayOptions } = props;
 
 	const containerStyle = {
@@ -15,22 +15,19 @@ function GraphToggle(props) {
 
 	return (
 		<div style={containerStyle}>
-			<div style={commonMargin}>Graph Visible:</div>
+			<div style={commonMargin}>Dark Theme:</div>
 			<Checkbox
 				style={{ ...commonMargin, borderRadius: '100%', margin: '1rem' }}
-				default={displayOptions.graph.visible}
+				default={displayOptions.darkTheme}
 				displayOptions={displayOptions}
 				onChange={() => {
 					setDisplayOptions({
 						...displayOptions,
-						graph: {
-							...displayOptions.graph,
-							visible: !displayOptions.graph.visible
-						}
+						darkTheme: !displayOptions.darkTheme
 					});
 				}}
 			/>
 		</div>
 	);
 }
-export default GraphToggle;
+export default DarkThemeToggle;

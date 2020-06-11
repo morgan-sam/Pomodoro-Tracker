@@ -5,6 +5,7 @@ const GRAPH_FONT_SIZE = GRAPH_SIZES.FONT_SIZE;
 const GRAPH_BOTTOM_GAP = GRAPH_SIZES.BOTTOM_GAP;
 
 export const drawGraphTitle = (graph) => {
+	graph.context.fillStyle = graph.darkTheme ? 'white' : 'black';
 	graph.context.font = ((GRAPH_FONT_SIZE * 1.2) | 0) + 'px sans-serif';
 	graph.context.fillText(getGraphTitleText(graph), graph.canvasRef.current.width / 2, GRAPH_FONT_SIZE * 2);
 };
@@ -12,6 +13,7 @@ export const drawGraphTitle = (graph) => {
 export const drawXLabelText = (graph, textLabelObj) => {
 	const { x, dateText, raisedMonthLabel } = textLabelObj;
 	for (let i = 0; i < dateText.length; i++) {
+		graph.context.fillStyle = graph.darkTheme ? 'white' : 'black';
 		graph.context.font = getXAxisFont(graph.period);
 		graph.context.fillText(
 			dateText[i],
@@ -23,6 +25,7 @@ export const drawXLabelText = (graph, textLabelObj) => {
 
 export const drawYLabelText = (graph, textLabelObj) => {
 	const { i, unit } = textLabelObj;
+	graph.context.fillStyle = graph.darkTheme ? 'white' : 'black';
 	graph.context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
 	graph.context.fillText(i, GRAPH_FONT_SIZE * 2, graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
 };

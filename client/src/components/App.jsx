@@ -4,7 +4,7 @@ import BottomPanel from 'components/BottomPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
 import { convertUTCISOToUKObj } from 'utility/parseDates';
-import { appContainerStyle, panelContainerStyle } from 'styles/app';
+import { getAppContainerStyle, panelContainerStyle } from 'styles/app';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -23,7 +23,8 @@ function App() {
 			period: 'week passed',
 			type: 'both',
 			maxPomodoro: 14
-		}
+		},
+		darkTheme: true
 	});
 	const [ timeOptions, setTimeOptions ] = useState({
 		startTime: 8,
@@ -114,7 +115,7 @@ function App() {
 	};
 
 	return (
-		<div className="App" style={appContainerStyle}>
+		<div className="App" style={getAppContainerStyle(displayOptions.darkTheme)}>
 			<div style={panelContainerStyle}>
 				<TopPanel
 					filteredEntries={filterEntries(entriesData)}

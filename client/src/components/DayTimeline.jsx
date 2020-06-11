@@ -2,7 +2,7 @@ import React from 'react';
 import {
 	containerStyle,
 	scrollbarStyle,
-	boxStyle,
+	getBoxStyle,
 	textStyle,
 	innerGridStyle,
 	defaultEventBoxStyle,
@@ -17,17 +17,17 @@ function DayTimeline(props) {
 		...props.eventLengths,
 		start: 1
 	};
-
+	console.log(props.displayOptions);
 	function getTimelineBoxSelection(start, end) {
 		return [ ...Array(end - start).keys() ].map((i) => {
 			return (
 				<div
 					key={i}
 					style={{
-						...boxStyle,
+						...getBoxStyle(props.displayOptions.darkTheme),
 						maxWidth: `${props.timeOptions.hourWidth}rem`,
 						minWidth: `${props.timeOptions.hourWidth}rem`,
-						zIndex: props.displayOptions.grid ? '1' : '0'
+						zIndex: props.displayOptions.timeline.grid ? '1' : '0'
 					}}
 				>
 					<span style={textStyle}>
@@ -46,7 +46,7 @@ function DayTimeline(props) {
 					key={i}
 					style={{
 						...innerGridStyle,
-						display: props.displayOptions.grid ? 'flex' : 'none',
+						display: props.displayOptions.timeline.grid ? 'flex' : 'none',
 						left: `${25 * i}%`,
 						borderLeft: i ? '1px solid #555' : 'none'
 					}}
@@ -56,7 +56,7 @@ function DayTimeline(props) {
 	}
 
 	function getEventBoxes(eventType) {
-		if (props.displayOptions[eventType] || eventType === 'pomodoro') {
+		if (props.displayOptions.timeline[eventType] || eventType === 'pomodoro') {
 			const events = props.entries.filter((el) => el.type === eventType);
 			return events ? events.map((el, i) => convertEventToBox(el, i)) : [];
 		} else {

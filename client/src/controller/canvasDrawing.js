@@ -11,9 +11,10 @@ const getCanvasContext = (canvasRef) => {
 	return context;
 };
 
-export const drawNoDataMessage = (canvasRef) => {
+export const drawNoDataMessage = (canvasRef, darkTheme) => {
 	const context = getCanvasContext(canvasRef);
 	context.font = (GRAPH_FONT_SIZE | 0) + 'px sans-serif';
+	context.fillStyle = darkTheme ? 'white' : 'black';
 	context.fillText('No data available', canvasRef.current.width / 2, canvasRef.current.height / 2);
 };
 

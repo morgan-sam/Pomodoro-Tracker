@@ -4,6 +4,7 @@ import TimelineDateSelect from 'components/TimelineDateSelect';
 import TimeOptionSelect from 'components/TimeOptionSelect';
 import TimelineOptions from 'components/TimelineOptions';
 import GraphToggle from 'components/GraphToggle';
+import DarkThemeToggle from 'components/DarkThemeToggle';
 import DayTimeline from 'components/DayTimeline';
 import { topOptionStyle } from 'styles/topPanel';
 import { optionsPanelItem } from 'styles/optionsPanel';
@@ -26,11 +27,12 @@ function TopPanel(props) {
 					setDisplayOptions={props.setDisplayOptions}
 				/>
 				<GraphToggle displayOptions={props.displayOptions} setDisplayOptions={props.setDisplayOptions} />
+				<DarkThemeToggle displayOptions={props.displayOptions} setDisplayOptions={props.setDisplayOptions} />
 			</div>
 			<DayTimeline
 				entries={props.filteredEntries}
 				eventLengths={props.eventLengths}
-				displayOptions={props.displayOptions.timeline}
+				displayOptions={props.displayOptions}
 				timeOptions={props.timeOptions}
 			/>
 		</div>

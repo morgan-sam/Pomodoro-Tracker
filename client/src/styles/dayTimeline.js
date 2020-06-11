@@ -16,14 +16,16 @@ export const scrollbarStyle = {
 	flexDirection: 'row'
 };
 
-export const boxStyle = {
-	position: 'relative',
-	display: 'flex',
-	height: `${EVENT_HEIGHT_REM + 3}rem`,
-	flexDirection: 'row',
-	border: '1px solid black',
-	boxSizing: 'border-box',
-	overflowX: 'hidden'
+export const getBoxStyle = (darkTheme) => {
+	return {
+		position: 'relative',
+		display: 'flex',
+		height: `${EVENT_HEIGHT_REM + 3}rem`,
+		flexDirection: 'row',
+		border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+		boxSizing: 'border-box',
+		overflowX: 'hidden'
+	};
 };
 
 export const textStyle = {
