@@ -6,7 +6,7 @@ export const getAppContainerStyle = (darkTheme) => {
 		left: '0',
 		height: '100vh',
 		width: '100vw',
-		backgroundColor: darkTheme ? 'black' : 'white',
+		backgroundColor: darkTheme ? '#282c34' : 'white',
 		color: darkTheme ? 'white' : 'black'
 	};
 };
