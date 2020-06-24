@@ -5,3 +5,5 @@
 <p>You must first install notify-send.</p>
 <blockquote> For Ubuntu/Debian machines:</blockquote>
 <code>sudo apt-get install notify-send</code>
+<br>
+<p>Next save <code>pomodoro.sh</code> to your computer and assign it to a keyboard shortcut.</p>
