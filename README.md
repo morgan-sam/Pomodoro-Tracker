@@ -3,5 +3,5 @@
 
 <h3>Installation</p>
 <p>You must first install notify-send.</p>
-<blockquote> For Ubuntu/Debian machines:</blockquote>
+<p><blockquote> For Ubuntu/Debian machines:</blockquote></p>
 <code>sudo apt-get install notify-send</code>
