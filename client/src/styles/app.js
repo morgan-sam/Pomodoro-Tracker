@@ -1,5 +1,4 @@
 export const getAppContainerStyle = (darkTheme) => {
-	console.log(darkTheme);
 	return {
 		position: 'absolute',
 		top: '0',
