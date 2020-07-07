@@ -1,37 +1,45 @@
 {
 	"name": "pomodoro-tracker",
-	"version": "1.0.0",
-	"description": "",
-	"main": "server.js",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@testing-library/jest-dom": "^4.2.4",
+		"@testing-library/react": "^9.3.2",
+		"@testing-library/user-event": "^7.1.2",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"eslint-plugin-flowtype": "^3.13.0",
+		"express": "^4.17.1",
+		"mocha": "^7.1.1",
+		"react": "^16.13.0",
+		"react-dom": "^16.13.0",
+		"react-scripts": "3.4.0",
+		"typescript": "^3.8.3",
+		"ws": "^7.2.3"
+	},
 	"scripts": {
-		"start": "node server.js",
-		"dev": "npm run server & chromium http://localhost:8000",
-		"server": "nodemon server.js",
-		"install-all": "npm install & npm install --prefix client"
+		"start": "BROWSER=chromium react-scripts start",
+		"build": "react-scripts build",
+		"test": "mocha --timeout 10000",
+		"eject": "react-scripts eject"
 	},
 	"proxy": "http://localhost:8000",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/morgan-sam/Pomodoro-Tracker.git"
+	"eslintConfig": {
+		"extends": "react-app"
 	},
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/morgan-sam/Pomodoro-Tracker/issues"
-	},
-	"homepage": "https://github.com/morgan-sam/Pomodoro-Tracker#readme",
-	"dependencies": {
-		"cors": "^2.8.5",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"firebase": "^7.15.5",
-		"pg": "^8.0.2",
-		"pg-hstore": "^2.3.3"
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
 	"devDependencies": {
-		"nodemon": "^2.0.3"
-	},
-	"engines": {
-		"node": "12.x"
+		"nodemon": "^2.0.2"
 	}
 }
