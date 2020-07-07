@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+const firebase = require('firebase');
 
 const firebaseApp = firebase.initializeApp({
 	apiKey: process.env.FIREBASE_KEY,
@@ -7,4 +7,6 @@ const firebaseApp = firebase.initializeApp({
 	storageBucket: process.env.FIREBASE_STORAGE_BUCKET
 });
 
-export default firebaseApp;
+module.exports = {
+	firebaseApp
+};

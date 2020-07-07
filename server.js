@@ -16,4 +16,4 @@ app.listen(process.env.PORT || 8000, () => {
 	console.log(`Server listening...`);
 });
 
-console.log(firebaseApp.database());
+console.log(firebaseApp);
