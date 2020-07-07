@@ -7,9 +7,7 @@
 		"start": "node server.js",
 		"dev": "npm run server & chromium http://localhost:8000",
 		"server": "nodemon server.js",
-		"init-db": "cat ./config/init.sql | heroku pg:psql postgresql-sinuous-80299 --app pomodoro-tracker-app",
-		"install-all": "npm install & npm install --prefix client",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+		"install-all": "npm install & npm install --prefix client"
 	},
 	"proxy": "http://localhost:8000",
 	"repository": {
