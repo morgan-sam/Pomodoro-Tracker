@@ -15,15 +15,6 @@ const getEntryById = (request, response) => {
 	});
 };
 
-const createEntry = (request, response) => {
-	let { type, date } = request.body;
-	if (date === undefined) date = new Date().toISOString();
-	pool.query('INSERT INTO entries (type, date) VALUES ($1, $2) RETURNING *', [ type, date ], (error, results) => {
-		if (error) throw error;
-		response.status(201).send(`Entry added with ID: ${results.rows[0].id}\n`);
-	});
-};
-
 const updateEntry = (request, response) => {
 	const id = parseInt(request.params.id);
 	const { type } = request.body;
@@ -44,7 +35,6 @@ const deleteEntry = (request, response) => {
 module.exports = {
 	getEntries,
 	getEntryById,
-	createEntry,
 	updateEntry,
 	deleteEntry
 };
