@@ -5,6 +5,7 @@ import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
 import { convertUTCISOToUKObj } from 'utility/parseDates';
 import { getAppContainerStyle, panelContainerStyle } from 'styles/app';
+import { getEntries } from 'data/queries';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -55,9 +56,8 @@ function App() {
 	useEffect(() => {
 		(async () => {
 			try {
-				const raw = await fetch('/entries');
-				const json = await raw.json();
-				const correctedTimezoneData = convertDataToUKTimezone(json);
+				const entries = await getEntries();
+				const correctedTimezoneData = convertDataToUKTimezone(entries);
 				setEntriesData(correctedTimezoneData);
 				const todaysCommits = await getTodaysGithubCommits();
 				setTodaysCommits(todaysCommits);
