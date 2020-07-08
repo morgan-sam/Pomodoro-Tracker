@@ -7,7 +7,6 @@ import GraphToggle from 'components/GraphToggle';
 import DarkThemeToggle from 'components/DarkThemeToggle';
 import DayTimeline from 'components/DayTimeline';
 import { topOptionStyle } from 'styles/topPanel';
-import { optionsPanelItem } from 'styles/optionsPanel';
 
 function TopPanel(props) {
 	return (
