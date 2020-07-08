@@ -1,5 +1,6 @@
 import time
 import math
+import os
 
 
 def timer(type, length):
@@ -9,6 +10,7 @@ def timer(type, length):
         cur = '{}: {}:{}'.format(type, minutes, seconds)
         print(cur)
         time.sleep(1)
+        os.system('clear')
 
 
 timer('Pomodoro', 1500)
