@@ -1,4 +1,5 @@
 import React from 'react';
+import DownArrow from 'components/DownArrow';
 import splash from 'img/splash.jpeg';
 import terminal from 'img/terminal.gif';
 import keyboard from 'img/keyboard.gif';
@@ -37,7 +38,7 @@ const Home = () => {
 			<img src={splash} style={{ height: '25rem' }} />
 			<p>One simple command line script. </p>
 			<img src={terminal} style={{ height: '10rem' }} />
-
+			<DownArrow />
 			<div style={loginSignUpBtnContainerStyle}>
 				<a href="/signup" style={loginSignUpBtnStyle}>
 					Sign Up
