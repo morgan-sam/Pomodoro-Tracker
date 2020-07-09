@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Form from 'components/Form';
+import firebase from 'config/firebase';
+import { withRouter, useHistory } from 'react-router-dom';
 
 const titleStyle = {
 	padding: '1rem'
@@ -33,17 +35,31 @@ const footerLinkStyle = {
 	padding: '1.4rem'
 };
 
-const handleLogin = () => null;
-const handleSignUp = () => null;
-
 const LoginSignup = (props) => {
+	let history = useHistory();
 	const { type } = props;
+
+	const handleLoginSignUp = useCallback(
+		async (e) => {
+			e.preventDefault();
+			const { email, password } = e.target.elements;
+			try {
+				if (type === 'login') await firebase.auth().signInWithEmailAndPassword(email.value, password.value);
+				else await firebase.auth().createUserWithEmailAndPassword(email.value, password.value);
+				history.push('/');
+			} catch (error) {
+				alert(error);
+			}
+		},
+		[ history ]
+	);
+
 	return (
 		<div style={screenContainerStyle}>
 			<div style={loginSignUpBoxStyle}>
 				<h3 style={titleStyle}>{type === 'login' ? 'Login to your account' : 'Sign up for an account'}</h3>
 				<Form
-					onSubmit={type === 'login' ? handleLogin : handleSignUp}
+					onSubmit={handleLoginSignUp}
 					inputs={[ 'email', 'password' ]}
 					submitText={type === 'login' ? 'Log In' : 'Sign Up'}
 				/>
@@ -55,4 +71,4 @@ const LoginSignup = (props) => {
 	);
 };
 
-export default LoginSignup;
+export default withRouter(LoginSignup);
