@@ -2,7 +2,9 @@ import React, { createRef } from 'react';
 import DownArrow from 'components/DownArrow';
 import splash from 'img/splash.jpeg';
 import terminal from 'img/terminal.gif';
+import terminal_dark from 'img/terminal_dark.gif';
 import keyboard from 'img/keyboard.gif';
+import python from 'img/python.svg';
 
 const homeStyle = {
 	overflowX: 'hidden'
@@ -75,10 +77,35 @@ const Home = () => {
 			</div>
 			<div style={homeSectionStyle} ref={secondRef}>
 				<h1 style={titleStyle}>Why</h1>
-				<p>Because </p>
+				<p />
 				<DownArrow type={'down'} onClick={handleClicks[2]} />
 			</div>
 			<div style={homeSectionStyle} ref={thirdRef}>
+				<h1 style={titleStyle}>How</h1>
+				<div
+					style={{
+						display: 'grid',
+						gridTemplateColumns: 'repeat(2, 1fr)',
+						gridTemplateRows: 'repeat(2, 1fr)',
+						gridGap: '5rem'
+					}}
+				>
+					<div>
+						<p style={{ padding: '1rem' }}>Sign up and download the pomodoro script.</p>
+						<div style={{ display: 'flex', flexDirection: 'column' }}>
+							<img src={python} style={{ height: '4rem' }} />
+							<span style={{ fontSize: '0.8rem' }}>pomodoro.py</span>
+						</div>
+					</div>
+					<div>
+						<p style={{ padding: '1rem' }}>Assign to a keyboard shortcut.</p>
+						<img src={keyboard} style={{ height: '9rem' }} />
+					</div>
+					<div>
+						<p style={{ padding: '1rem' }}>Run the script and get to work. </p>
+						<img src={terminal_dark} style={{ height: '9rem', width: '18rem' }} />
+					</div>
+				</div>
 				<DownArrow type={'down'} onClick={handleClicks[3]} />
 			</div>
 			<div style={homeSectionStyle} ref={fourthRef}>
