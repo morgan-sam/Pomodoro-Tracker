@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TopPanel from 'components/TopPanel';
+import LogOutBtn from 'components/LogOutBtn';
 import BottomPanel from 'components/BottomPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
@@ -113,7 +114,6 @@ function App() {
 		displayOptions,
 		setDisplayOptions
 	};
-
 	return (
 		<div className="App" style={getAppContainerStyle(displayOptions.darkTheme)}>
 			<div style={panelContainerStyle}>
@@ -126,7 +126,7 @@ function App() {
 					}}
 					{...optionProps}
 				/>
-
+				<LogOutBtn {...{ displayOptions }} />
 				{displayOptions.graph.visible && <BottomPanel entriesData={entriesData} {...optionProps} />}
 			</div>
 		</div>
