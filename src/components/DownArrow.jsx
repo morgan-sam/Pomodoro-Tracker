@@ -2,9 +2,10 @@ import React from 'react';
 import arrow from 'img/doubledown.png';
 
 const DownArrow = (props) => {
-	const { type } = props;
+	const { type, onClick } = props;
 	return (
 		<img
+			onClick={onClick}
 			src={arrow}
 			style={{
 				position: 'absolute',
@@ -13,7 +14,8 @@ const DownArrow = (props) => {
 				left: '50vw',
 				transform: `scaleY(${type === 'up' ? -1 : 1}) translateX(-50%)`,
 				top: type === 'up' ? '0' : null,
-				bottom: type === 'down' ? '0' : null
+				bottom: type === 'down' ? '0' : null,
+				cursor: 'pointer'
 			}}
 		/>
 	);
