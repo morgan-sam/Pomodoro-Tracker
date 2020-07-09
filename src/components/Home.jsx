@@ -2,9 +2,10 @@ import React, { createRef } from 'react';
 import DownArrow from 'components/DownArrow';
 import splash from 'img/splash.jpeg';
 import terminal from 'img/terminal.gif';
-import terminal_dark from 'img/terminal_dark.gif';
-import keyboard from 'img/keyboard.gif';
 import python from 'img/python.svg';
+import keyboard from 'img/keyboard.gif';
+import terminal_dark from 'img/terminal_dark.gif';
+import graph from 'img/graph.png';
 
 const homeStyle = {
 	overflowX: 'hidden'
@@ -104,6 +105,10 @@ const Home = () => {
 					<div>
 						<p style={{ padding: '1rem' }}>Run the script and get to work. </p>
 						<img src={terminal_dark} style={{ height: '9rem', width: '18rem' }} />
+					</div>
+					<div>
+						<p style={{ padding: '1rem' }}>View your performance on the web app. </p>
+						<img src={graph} style={{ height: '14rem', borderRadius: '1rem' }} />
 					</div>
 				</div>
 				<DownArrow type={'down'} onClick={handleClicks[3]} />
