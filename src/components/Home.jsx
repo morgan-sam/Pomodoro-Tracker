@@ -1,6 +1,7 @@
 import React from 'react';
 import splash from 'img/splash.jpeg';
 import terminal from 'img/terminal.gif';
+import keyboard from 'img/keyboard.gif';
 
 const homeStyle = {
 	display: 'flex',
@@ -34,7 +35,7 @@ const Home = () => {
 			<h1>Pomodoro Tracker</h1>
 			<p>The simplest way to keep track of your pomodoros.</p>
 			<img src={splash} style={{ height: '25rem' }} />
-
+			<p>One simple command line script. </p>
 			<img src={terminal} style={{ height: '10rem' }} />
 
 			<div style={loginSignUpBtnContainerStyle}>
