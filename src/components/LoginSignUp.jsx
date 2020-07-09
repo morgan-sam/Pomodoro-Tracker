@@ -1,7 +1,9 @@
 import React, { useCallback } from 'react';
 import Form from 'components/Form';
 import firebase from 'config/firebase';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter, useHistory, Redirect } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from 'context/auth';
 
 const titleStyle = {
 	padding: '1rem'
@@ -53,6 +55,9 @@ const LoginSignup = (props) => {
 		},
 		[ history ]
 	);
+
+	const { currentUser } = useContext(AuthContext);
+	if (currentUser) return <Redirect to="/" />;
 
 	return (
 		<div style={screenContainerStyle}>
