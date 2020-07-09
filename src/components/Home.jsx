@@ -34,11 +34,13 @@ const homeSectionStyle = {
 	minHeight: '100vh',
 	width: '100vw',
 	height: '100vh',
-	overflow: 'hidden'
+	overflow: 'hidden',
+	boxSizing: 'border-box',
+	padding: '2rem'
 };
 
 const titleStyle = {
-	padding: '3rem 0 2rem 0'
+	padding: '1rem'
 };
 
 const Home = () => {
@@ -46,7 +48,7 @@ const Home = () => {
 		<div style={homeStyle}>
 			<div style={homeSectionStyle}>
 				<h1 style={titleStyle}>Pomodoro Tracker</h1>
-				<div style={{ padding: '0 0 1rem 0' }}>
+				<div style={{ padding: '1rem' }}>
 					<p style={{ padding: '0 0 2rem 0' }}>The simplest way to keep track of your pomodoros.</p>
 					<img
 						src={splash}
@@ -60,6 +62,8 @@ const Home = () => {
 				<DownArrow type={'down'} />
 			</div>
 			<div style={homeSectionStyle}>
+				<h1 style={titleStyle}>Why</h1>
+				<p>Because </p>
 				<DownArrow type={'down'} />
 			</div>
 			<div style={homeSectionStyle}>

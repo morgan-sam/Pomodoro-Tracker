@@ -8,8 +8,8 @@ const DownArrow = (props) => {
 			src={arrow}
 			style={{
 				position: 'absolute',
-				height: '5rem',
-				margin: '2rem 0',
+				height: '8vh',
+				margin: '3rem 0',
 				left: '50vw',
 				transform: `scaleY(${type === 'up' ? -1 : 1}) translateX(-50%)`,
 				top: type === 'up' ? '0' : null,
