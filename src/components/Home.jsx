@@ -94,14 +94,15 @@ const Home = () => {
 					style={{
 						display: 'grid',
 						gridTemplateColumns: 'repeat(2, 1fr)',
-						gridTemplateRows: 'repeat(2, 1fr)',
-						gridGap: '2rem'
+						gridTemplateRows: 'repeat(2, auto)',
+						gridGap: '2rem',
+						paddingTop: '3rem'
 					}}
 				>
 					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>Sign up and download the pomodoro script.</p>
-						<div style={{ display: 'flex', flexDirection: 'column', padding: '0.5rem' }}>
-							<img src={python} style={{ height: '4rem' }} />
+						<div style={{ display: 'flex', flexDirection: 'column' }}>
+							<img src={python} style={{ height: '4rem', padding: '0.5rem' }} />
 							<span style={{ fontSize: '0.8rem' }}>pomodoro.py</span>
 						</div>
 					</div>
