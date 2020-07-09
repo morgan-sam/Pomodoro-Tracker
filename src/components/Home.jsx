@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { createRef, useState } from 'react';
 import DownArrow from 'components/DownArrow';
 import splash from 'img/splash.jpeg';
 import terminal from 'img/terminal.gif';
@@ -19,12 +19,16 @@ const loginSignUpBtnContainerStyle = {
 	padding: '1rem'
 };
 
-const loginSignUpBtnStyle = {
-	padding: '0.5rem 1rem',
-	marginLeft: '1rem',
-	textDecoration: 'none',
-	border: '1px solid #444',
-	borderRadius: '5px'
+const getLoginSignUpBtnStyle = (hover) => {
+	return {
+		padding: '0.5rem 1rem',
+		marginLeft: '1rem',
+		textDecoration: 'none',
+		border: '1px solid #444',
+		borderRadius: '5px',
+		backgroundColor: hover ? '#00BCD4' : 'white',
+		color: hover ? 'white' : 'black'
+	};
 };
 
 const homeSectionStyle = {
@@ -54,6 +58,8 @@ const titleStyle = {
 };
 
 const Home = () => {
+	const [ hovered, setHovered ] = useState('');
+
 	const firstRef = createRef();
 	const secondRef = createRef();
 	const thirdRef = createRef();
@@ -122,13 +128,47 @@ const Home = () => {
 				<DownArrow type={'down'} onClick={handleClicks[3]} />
 			</div>
 			<div style={homeSectionStyle} ref={fourthRef}>
-				END
+				<div
+					style={{
+						height: '100%',
+						width: '100%',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center'
+					}}
+				>
+					<a
+						href="/signup"
+						style={{
+							fontSize: '2rem',
+							color: '#fff',
+							border: '2px solid #26C6DA',
+							padding: '0.75rem 1.5rem',
+							borderRadius: '10px',
+							textDecoration: 'none',
+							backgroundColor: '#4DD0E1',
+							boxShadow: '0.4rem 0.4rem #00ACC1'
+						}}
+					>
+						Get Started
+					</a>
+				</div>
 			</div>
 			<div style={loginSignUpBtnContainerStyle}>
-				<a href="/signup" style={loginSignUpBtnStyle}>
+				<a
+					onMouseOver={() => setHovered('signup')}
+					onMouseLeave={() => setHovered('')}
+					href="/signup"
+					style={getLoginSignUpBtnStyle(hovered === 'signup')}
+				>
 					Sign Up
 				</a>
-				<a href="/login" style={loginSignUpBtnStyle}>
+				<a
+					onMouseOver={() => setHovered('login')}
+					onMouseLeave={() => setHovered('')}
+					href="/login"
+					style={getLoginSignUpBtnStyle(hovered === 'login')}
+				>
 					Log In
 				</a>
 			</div>
