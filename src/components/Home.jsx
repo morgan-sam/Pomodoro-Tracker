@@ -42,6 +42,13 @@ const homeSectionStyle = {
 	padding: '2rem'
 };
 
+const gridSubContainer = {
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
+	justifyContent: 'center'
+};
+
 const titleStyle = {
 	padding: '1rem'
 };
@@ -88,25 +95,25 @@ const Home = () => {
 						display: 'grid',
 						gridTemplateColumns: 'repeat(2, 1fr)',
 						gridTemplateRows: 'repeat(2, 1fr)',
-						gridGap: '5rem'
+						gridGap: '2rem'
 					}}
 				>
-					<div>
+					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>Sign up and download the pomodoro script.</p>
-						<div style={{ display: 'flex', flexDirection: 'column' }}>
+						<div style={{ display: 'flex', flexDirection: 'column', padding: '0.5rem' }}>
 							<img src={python} style={{ height: '4rem' }} />
 							<span style={{ fontSize: '0.8rem' }}>pomodoro.py</span>
 						</div>
 					</div>
-					<div>
+					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>Assign to a keyboard shortcut.</p>
 						<img src={keyboard} style={{ height: '9rem' }} />
 					</div>
-					<div>
+					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>Run the script and get to work. </p>
 						<img src={terminal_dark} style={{ height: '9rem', width: '18rem' }} />
 					</div>
-					<div>
+					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>View your performance on the web app. </p>
 						<img src={graph} style={{ height: '14rem', borderRadius: '1rem' }} />
 					</div>
