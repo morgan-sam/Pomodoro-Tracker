@@ -14,6 +14,13 @@ export const formLabelStyle = {
 	color: '#888'
 };
 
+export const formTextInputStyle = {
+	borderRadius: '5px',
+	padding: '8px',
+	margin: '3px 10px',
+	border: '1px solid #ddd'
+};
+
 export const formBtnStyle = {
 	margin: '2rem 1rem 1rem 1rem',
 	width: 'fit-content',
