@@ -5,13 +5,7 @@ import terminal from 'img/terminal.gif';
 import keyboard from 'img/keyboard.gif';
 
 const homeStyle = {
-	display: 'flex',
-	flexDirection: 'column',
-	width: '100vw',
-	height: '100vh',
-	alignItems: 'center',
-	boxSizing: 'border-box',
-	padding: '5rem'
+	overflowX: 'hidden'
 };
 
 const loginSignUpBtnContainerStyle = {
@@ -30,15 +24,48 @@ const loginSignUpBtnStyle = {
 	borderRadius: '5px'
 };
 
+const homeSectionStyle = {
+	position: 'relative',
+	display: 'inline-flex',
+	flexDirection: 'column',
+	alignItems: 'center',
+	textAlign: 'center',
+	minWidth: '100vw',
+	minHeight: '100vh',
+	width: '100vw',
+	height: '100vh',
+	overflow: 'hidden'
+};
+
+const titleStyle = {
+	padding: '3rem 0 2rem 0'
+};
+
 const Home = () => {
 	return (
 		<div style={homeStyle}>
-			<h1>Pomodoro Tracker</h1>
-			<p>The simplest way to keep track of your pomodoros.</p>
-			<img src={splash} style={{ height: '25rem' }} />
-			<p>One simple command line script. </p>
-			<img src={terminal} style={{ height: '10rem' }} />
-			<DownArrow />
+			<div style={homeSectionStyle}>
+				<h1 style={titleStyle}>Pomodoro Tracker</h1>
+				<div style={{ padding: '0 0 1rem 0' }}>
+					<p style={{ padding: '0 0 2rem 0' }}>The simplest way to keep track of your pomodoros.</p>
+					<img
+						src={splash}
+						style={{ height: '18rem', width: '35rem', border: '1px solid black', borderRadius: '10px' }}
+					/>
+				</div>
+				<div style={{ padding: '1rem' }}>
+					<p style={{ padding: '1rem' }}>One simple command line script. </p>
+					<img src={terminal} style={{ height: '9rem', width: '18rem' }} />
+				</div>
+				<DownArrow type={'down'} />
+			</div>
+			<div style={homeSectionStyle}>
+				<DownArrow type={'down'} />
+			</div>
+			<div style={homeSectionStyle}>
+				<DownArrow type={'down'} />
+			</div>
+			<div style={homeSectionStyle}>END</div>
 			<div style={loginSignUpBtnContainerStyle}>
 				<a href="/signup" style={loginSignUpBtnStyle}>
 					Sign Up
