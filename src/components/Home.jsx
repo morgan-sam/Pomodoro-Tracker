@@ -30,11 +30,11 @@ const Home = () => {
 		<div style={homeStyle}>
 			<h1>Pomodoro Tracker</h1>
 			<div style={loginSignUpBtnContainerStyle}>
-				<a href="/login" style={loginSignUpBtnStyle}>
-					Log In
-				</a>
 				<a href="/signup" style={loginSignUpBtnStyle}>
 					Sign Up
+				</a>
+				<a href="/login" style={loginSignUpBtnStyle}>
+					Log In
 				</a>
 			</div>
 		</div>
