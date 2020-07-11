@@ -22,9 +22,9 @@ class Time:
         self.second = second
 
 
-def postEvent(iso):
+def postEvent(iso, type):
     url = 'https://pomodoro-tracker-db95f.firebaseio.com/users/23456789/events.json'
-    entry = {"type": "pomodoro", "date": iso}
+    entry = {"type": type, "date": iso}
     requests.post(url, json=entry)
 
 
@@ -36,20 +36,33 @@ def getArrayOfMinutesAfter(num):
     li = [0] * num
     for i in range(1, len(li)):
         breakTime = random.randint(15, 60) if random.randint(0, 1) == 0 else 0
-        offset = 25+random.randint(0, 15)
+        offset = 25+random.randint(5, 15)
         li[i] = li[i-1]+offset+breakTime
     return li
+
+
+def addEncore(date, time):
+    oldDate = datetime.datetime(
+        date.year, date.month, date.day, time.hour, time.minute, time.second)
+    encoreTime = oldDate + datetime.timedelta(minutes=5)
+    encoreIso = convertDateToIso(date, encoreTime)
+    postEvent(encoreIso, 'encore')
+    print('encore')
+    print(encoreIso)
 
 
 def genRandomDayEvents(date, num):
     minArr = getArrayOfMinutesAfter(num)
     for x in range(num):
         hours = math.floor(minArr[x] / 60)
-        if (10+hours < 24):
-            eventTime = Time(10+hours, minArr[x] % 60, 0)
-            iso = convertDateToIso(date, eventTime)
-            postEvent(iso)
-            print(iso)
+        if (10+hours < 22):
+            pomodoroTime = Time(10+hours, minArr[x] % 60, 0)
+            pomodoroIso = convertDateToIso(date, pomodoroTime)
+            postEvent(pomodoroIso, 'pomodoro')
+            print('pomodoro')
+            print(pomodoroIso)
+            if(random.randint(0, 2) == 0):
+                addEncore(date, pomodoroTime)
 
 
 def getOffsetDate(date, days):
