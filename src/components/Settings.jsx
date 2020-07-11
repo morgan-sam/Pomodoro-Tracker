@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { getAccountButtonStyle } from 'styles/accountSettings';
 
 const screenContainer = {
@@ -40,6 +41,7 @@ const returnButtonContainer = {
 };
 
 const Settings = () => {
+	const history = useHistory();
 	const accountButtonStyle = getAccountButtonStyle(false);
 	return (
 		<div style={screenContainer}>
@@ -52,7 +54,9 @@ const Settings = () => {
 					<button style={accountButtonStyle}>Delete Account</button>
 				</div>
 				<div style={returnButtonContainer}>
-					<button style={accountButtonStyle}>Return</button>
+					<button style={accountButtonStyle} onClick={() => history.push('/')}>
+						Return
+					</button>
 				</div>
 			</div>
 		</div>
