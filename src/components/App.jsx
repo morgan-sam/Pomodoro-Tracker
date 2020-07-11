@@ -12,10 +12,10 @@ const App = () => {
 	return (
 		<AuthProvider>
 			<Router>
-				<PrivateRoute exact path="/" authComponent={Main} defaultComponent={Home} />
+				<PrivateRoute exact path="/" AuthComponent={Main} DefaultComponent={Home} />
 				<Route exact path="/login" render={(props) => <LoginSignUp type="login" {...props} />} />
 				<Route exact path="/signup" render={(props) => <LoginSignUp type="signup" {...props} />} />
-				<AuthRedirectRoute exact path="/settings" authComponent={Settings} redirect={'/login'} />
+				<AuthRedirectRoute exact path="/settings" AuthComponent={Settings} redirect={'/login'} />
 			</Router>
 		</AuthProvider>
 	);
