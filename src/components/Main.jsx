@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TopPanel from 'components/TopPanel';
-import LogOutBtn from 'components/LogOutBtn';
+import AccountButtons from 'components/AccountButtons';
 import BottomPanel from 'components/BottomPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
@@ -126,7 +126,7 @@ function App() {
 					}}
 					{...optionProps}
 				/>
-				<LogOutBtn {...{ displayOptions }} />
+				<AccountButtons {...{ displayOptions }} />
 				{displayOptions.graph.visible && <BottomPanel entriesData={entriesData} {...optionProps} />}
 			</div>
 		</div>
