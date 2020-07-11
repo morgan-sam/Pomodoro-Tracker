@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from 'config/firebase';
 import { useHistory } from 'react-router-dom';
 
-const accountActions = {
+const accountButtonsStyle = {
 	position: 'absolute',
 	top: '1rem',
 	right: '1rem'
@@ -22,7 +22,7 @@ const AccountButtons = (props) => {
 	const history = useHistory();
 	const darkTheme = props.displayOptions.darkTheme;
 	return (
-		<div style={accountActions}>
+		<div style={accountButtonsStyle}>
 			<button style={getLogOutButtonStyle(darkTheme)} onClick={() => history.push('/settings')}>
 				Settings
 			</button>
