@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAccountButtonStyle } from 'styles/accountSettings';
-import { deleteAllEntries } from 'data/queries';
+import { deleteAllEntries, printCurrentUser } from 'data/queries';
 
 const screenContainer = {
 	position: 'absolute',
@@ -63,7 +63,9 @@ const Settings = () => {
 					<button style={accountButtonStyle} onClick={resetAccountButtonClick}>
 						Reset Account
 					</button>
-					<button style={accountButtonStyle}>Delete Account</button>
+					<button style={accountButtonStyle} onClick={printCurrentUser}>
+						printCurrentUser
+					</button>
 				</div>
 				<div style={returnButtonContainer}>
 					<button style={accountButtonStyle} onClick={() => history.push('/')}>
