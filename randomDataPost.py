@@ -6,9 +6,6 @@ import math
 curYear = datetime.datetime.now().year
 curMonth = datetime.datetime.now().month
 curDay = datetime.datetime.now().day
-curHour = datetime.datetime.now().hour
-curMinute = datetime.datetime.now().minute
-curSecond = datetime.datetime.now().second
 
 
 class Date:
