@@ -19,7 +19,8 @@ const settingsBox = {
 	display: 'flex',
 	alignItems: 'center',
 	borderRadius: '1rem',
-	flexDirection: 'column'
+	flexDirection: 'column',
+	padding: '2rem'
 };
 
 const buttonGrid = {
@@ -31,11 +32,11 @@ const buttonGrid = {
 };
 
 const titleStyle = {
-	margin: '3rem 0 1rem 0'
+	padding: '1rem'
 };
 
 const returnButtonContainer = {
-	padding: '1rem 0 3rem 0'
+	padding: '1rem'
 };
 
 const Settings = () => {
