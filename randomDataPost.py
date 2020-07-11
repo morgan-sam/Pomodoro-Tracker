@@ -45,10 +45,24 @@ def genRandomDayEvents(date, num):
     minArr = getArrayOfMinutesAfter(num)
     for x in range(num):
         hours = math.floor(minArr[x] / 60)
-        eventTime = Time(9+hours, minArr[x] % 60, 0)
-        iso = convertDateToIso(date, eventTime)
-        postEvent(iso)
+        if (10+hours < 24):
+            eventTime = Time(10+hours, minArr[x] % 60, 0)
+            iso = convertDateToIso(date, eventTime)
+            postEvent(iso)
+            print(iso)
 
 
-eventDate = Date(curDay, curMonth, curYear)
-genRandomDayEvents(eventDate, 10)
+def getOffsetDate(date, days):
+    tomorrow = date + datetime.timedelta(days)
+    return Date(tomorrow.day, tomorrow.month, tomorrow.year)
+
+
+def addRangeOfDates():
+    startingDate = datetime.datetime.now()
+    for i in range(14):
+        newDate = getOffsetDate(startingDate, i)
+        events = random.randint(6, 16)
+        genRandomDayEvents(newDate, events)
+
+
+addRangeOfDates()
