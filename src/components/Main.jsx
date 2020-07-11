@@ -58,6 +58,7 @@ function App() {
 		(async () => {
 			try {
 				const entries = await getEntries();
+				console.log(entries);
 				const correctedTimezoneData = convertDataToUKTimezone(entries);
 				setEntriesData(correctedTimezoneData);
 				const todaysCommits = await getTodaysGithubCommits();
