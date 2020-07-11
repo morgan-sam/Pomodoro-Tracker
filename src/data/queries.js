@@ -7,3 +7,7 @@ export const getEntries = async () => {
 		return values;
 	});
 };
+
+export const deleteAllEntries = async () => {
+	return firebase.database().ref('/users/23456789').remove();
+};

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAccountButtonStyle } from 'styles/accountSettings';
+import { deleteAllEntries } from 'data/queries';
 
 const screenContainer = {
 	position: 'absolute',
@@ -43,6 +44,15 @@ const returnButtonContainer = {
 const Settings = () => {
 	const history = useHistory();
 	const accountButtonStyle = getAccountButtonStyle(false);
+
+	const resetAccountButtonClick = () => {
+		const deleteConfirm = window.confirm('Are you sure you want to delete all data on your account?');
+		if (deleteConfirm) {
+			deleteAllEntries();
+			history.push('/');
+		}
+	};
+
 	return (
 		<div style={screenContainer}>
 			<div style={settingsBox}>
@@ -50,7 +60,9 @@ const Settings = () => {
 				<div style={buttonGrid}>
 					<button style={accountButtonStyle}>Change Password</button>
 					<button style={accountButtonStyle}>Change Email</button>
-					<button style={accountButtonStyle}>Reset Account</button>
+					<button style={accountButtonStyle} onClick={resetAccountButtonClick}>
+						Reset Account
+					</button>
 					<button style={accountButtonStyle}>Delete Account</button>
 				</div>
 				<div style={returnButtonContainer}>
