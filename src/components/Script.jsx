@@ -47,7 +47,7 @@ const Script = () => {
 						display: 'flex',
 						flexDirection: 'row',
 						justifyContent: 'space-between',
-						width: '12rem',
+						width: '14rem',
 						padding: '3rem'
 					}}
 				>
