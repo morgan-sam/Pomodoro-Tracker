@@ -5,9 +5,12 @@ for pid in $(pidof -x $script_name); do
         kill -9 $pid
     fi 
 done
+read localId idToken < <(echo $(curl 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB-j40wdFsSbJ7giMJJwQsymWacOFm0Boo' \
+-H 'Content-Type: application/json' \
+--data-binary '{"email":"gaspedostu@enayu.com","password":"1234567890","returnSecureToken":true}' | jq --raw-output '.localId, .idToken'))
 TIME="$(date -Iseconds)";
 ENTRY='{"type":"start","date":"'${TIME::-6}.000Z'"}';
-curl -X POST -d $ENTRY 'https://pomodoro-tracker-db95f.firebaseio.com/users/23456789/events.json'
+curl -X POST -d $ENTRY "https://pomodoro-tracker-db95f.firebaseio.com/users/${localId}/events.json?auth=${idToken}"
 seconds=1500; date1=$((`date +%s` + $seconds)); 
 echo -ne 'Pomodoro:\n'
 while [ "$date1" -ge `date +%s` ]; do 
@@ -17,7 +20,7 @@ clear
 notify-send "Pomodoro Complete" "$(echo -e "25 minutes have passed")"
 TIME="$(date -Iseconds)Z";
 ENTRY='{"type":"pomodoro","date":"'${TIME::-6}.000Z'"}';
-curl -X POST -d $ENTRY 'https://pomodoro-tracker-db95f.firebaseio.com/users/23456789/events.json'
+curl -X POST -d $ENTRY "https://pomodoro-tracker-db95f.firebaseio.com/users/${localId}/events.json?auth=${idToken}"
 seconds=300; date1=$((`date +%s` + $seconds)); 
 echo -ne 'Encore:\n'
 while [ "$date1" -ge `date +%s` ]; do 
@@ -26,4 +29,4 @@ done
 notify-send "Encore Complete" "$(echo -e "5 minutes have passed")"
 TIME="$(date -Iseconds)Z";
 ENTRY='{"type":"encore","date":"'${TIME::-6}.000Z'"}';
-curl -X POST -d $ENTRY 'https://pomodoro-tracker-db95f.firebaseio.com/users/23456789/events.json'
+curl -X POST -d $ENTRY "https://pomodoro-tracker-db95f.firebaseio.com/users/${localId}/events.json?auth=${idToken}"
