@@ -1,4 +1,6 @@
 import React from 'react';
+import bash from 'img/bash.svg';
+import python from 'img/python.svg';
 
 const screenContainer = {
 	position: 'absolute',
@@ -11,8 +13,29 @@ const screenContainer = {
 	justifyContent: 'center'
 };
 
+const settingsBox = {
+	width: 'fit-content',
+	height: 'fit-content',
+	border: '1px solid black',
+	display: 'flex',
+	alignItems: 'center',
+	borderRadius: '1rem',
+	flexDirection: 'column',
+	padding: '2rem'
+};
+
+const titleStyle = {
+	padding: '1rem'
+};
+
 const Script = () => {
-	return <div style={screenContainer}>Hello</div>;
+	return (
+		<div style={screenContainer}>
+			<div style={settingsBox}>
+				<h2 style={titleStyle}>Download Script</h2>
+			</div>
+		</div>
+	);
 };
 
 export default Script;
