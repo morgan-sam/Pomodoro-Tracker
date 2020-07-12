@@ -35,6 +35,14 @@ const returnButtonContainer = {
 	padding: '3rem 0 2rem 0'
 };
 
+const downloadBashScript = () => {
+	console.log('pomodoro.sh');
+};
+
+const downloadPythonScript = () => {
+	console.log('pomodoro.py');
+};
+
 const Script = () => {
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
@@ -51,8 +59,18 @@ const Script = () => {
 						padding: '3rem'
 					}}
 				>
-					<FileIcon style={{ cursor: 'pointer' }} icon={bash} text={'pomodoro.sh'} />
-					<FileIcon style={{ cursor: 'pointer' }} icon={python} text={'pomodoro.py'} />
+					<FileIcon
+						onClick={downloadBashScript}
+						style={{ cursor: 'pointer' }}
+						icon={bash}
+						text={'pomodoro.sh'}
+					/>
+					<FileIcon
+						onClick={downloadPythonScript}
+						style={{ cursor: 'pointer' }}
+						icon={python}
+						text={'pomodoro.py'}
+					/>
 				</div>
 				<div style={returnButtonContainer}>
 					<button style={accountButtonStyle} onClick={() => history.push('/')}>
