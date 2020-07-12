@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TopPanel from 'components/TopPanel';
-import AccountButtons from 'components/AccountButtons';
+import TopRightButtons from 'components/TopRightButtons';
 import BottomPanel from 'components/BottomPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
@@ -127,7 +127,7 @@ function App() {
 					}}
 					{...optionProps}
 				/>
-				<AccountButtons {...{ displayOptions }} />
+				<TopRightButtons {...{ displayOptions }} />
 				{displayOptions.graph.visible && <BottomPanel entriesData={entriesData} {...optionProps} />}
 			</div>
 		</div>

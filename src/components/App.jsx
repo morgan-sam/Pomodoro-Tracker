@@ -2,6 +2,7 @@ import React from 'react';
 import Main from 'components/Main';
 import Home from 'components/Home';
 import Settings from 'components/Settings';
+import Script from 'components/Script';
 import LoginSignUp from 'components/LoginSignUp';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { AuthProvider } from 'context/auth';
@@ -16,6 +17,7 @@ const App = () => {
 				<Route exact path="/login" render={(props) => <LoginSignUp type="login" {...props} />} />
 				<Route exact path="/signup" render={(props) => <LoginSignUp type="signup" {...props} />} />
 				<AuthRedirectRoute exact path="/settings" AuthComponent={Settings} redirect={'/login'} />
+				<AuthRedirectRoute exact path="/script" AuthComponent={Script} redirect={'/login'} />
 			</Router>
 		</AuthProvider>
 	);

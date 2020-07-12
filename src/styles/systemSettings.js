@@ -1,4 +1,4 @@
-export const getAccountButtonStyle = (darkTheme) => {
+export const getSystemButtonStyle = (darkTheme) => {
 	return {
 		padding: '0.5rem 1rem',
 		borderRadius: '5px',

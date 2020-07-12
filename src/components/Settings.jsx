@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { getAccountButtonStyle } from 'styles/accountSettings';
+import { getSystemButtonStyle } from 'styles/systemSettings';
 import { deleteAllEntries, printCurrentUser } from 'data/queries';
 
 const screenContainer = {
@@ -43,7 +43,7 @@ const returnButtonContainer = {
 
 const Settings = () => {
 	const history = useHistory();
-	const accountButtonStyle = getAccountButtonStyle(false);
+	const accountButtonStyle = getSystemButtonStyle(false);
 
 	const resetAccountButtonClick = () => {
 		const deleteConfirm = window.confirm('Are you sure you want to delete all data on your account?');
