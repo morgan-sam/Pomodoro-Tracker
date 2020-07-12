@@ -1,6 +1,9 @@
 import React from 'react';
 import bash from 'img/bash.svg';
 import python from 'img/python.svg';
+import FileIcon from 'components/FileIcon';
+import { useHistory } from 'react-router-dom';
+import { getSystemButtonStyle } from 'styles/systemSettings';
 
 const screenContainer = {
 	position: 'absolute',
@@ -28,11 +31,34 @@ const titleStyle = {
 	padding: '1rem'
 };
 
+const returnButtonContainer = {
+	padding: '3rem 0 2rem 0'
+};
+
 const Script = () => {
+	const history = useHistory();
+	const accountButtonStyle = getSystemButtonStyle(false);
 	return (
 		<div style={screenContainer}>
 			<div style={settingsBox}>
 				<h2 style={titleStyle}>Download Script</h2>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'row',
+						justifyContent: 'space-between',
+						width: '12rem',
+						padding: '3rem'
+					}}
+				>
+					<FileIcon icon={bash} text={'pomodoro.sh'} />
+					<FileIcon icon={python} text={'pomodoro.py'} />
+				</div>
+				<div style={returnButtonContainer}>
+					<button style={accountButtonStyle} onClick={() => history.push('/')}>
+						Return
+					</button>
+				</div>
 			</div>
 		</div>
 	);
