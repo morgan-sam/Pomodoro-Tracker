@@ -51,8 +51,8 @@ const Script = () => {
 						padding: '3rem'
 					}}
 				>
-					<FileIcon icon={bash} text={'pomodoro.sh'} />
-					<FileIcon icon={python} text={'pomodoro.py'} />
+					<FileIcon style={{ cursor: 'pointer' }} icon={bash} text={'pomodoro.sh'} />
+					<FileIcon style={{ cursor: 'pointer' }} icon={python} text={'pomodoro.py'} />
 				</div>
 				<div style={returnButtonContainer}>
 					<button style={accountButtonStyle} onClick={() => history.push('/')}>
