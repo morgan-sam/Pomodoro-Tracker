@@ -3,6 +3,21 @@ import time
 import math
 import os
 import datetime
+import pyrebase
+import json
+
+config = {
+    "apiKey": "AIzaSyB-j40wdFsSbJ7giMJJwQsymWacOFm0Boo",
+    "authDomain": "pomodoro-tracker-db95f.firebaseapp.com",
+    "databaseURL": "https://pomodoro-tracker-db95f.firebaseio.com",
+    "storageBucket": "pomodoro-tracker-db95f.appspot.com"
+}
+
+firebase = pyrebase.initialize_app(config)
+auth = firebase.auth()
+user = auth.sign_in_with_email_and_password(
+    "gaspedostu@enayu.com", "1234567890")
+db = firebase.database()
 
 
 def timer(type, length):
@@ -16,10 +31,8 @@ def timer(type, length):
 
 
 def postEvent(type):
-    url = 'https://pomodoro-tracker-db95f.firebaseio.com/users/23456789/events.json'
-    entry = {"type": type, "date": str(
-        datetime.datetime.now().isoformat())[:-3]+'Z'}
-    requests.post(url, json=entry)
+    db.child("users").child(user["localId"]).child("events").push({"type": type, "date": str(
+        datetime.datetime.now().isoformat())[:-3]+"Z"}, user["idToken"])
 
 
 os.system('clear')
