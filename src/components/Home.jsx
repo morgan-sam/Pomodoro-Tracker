@@ -36,6 +36,7 @@ const homeSectionStyle = {
 	display: 'inline-flex',
 	flexDirection: 'column',
 	alignItems: 'center',
+	justifyContent: 'center',
 	textAlign: 'center',
 	minWidth: '100vw',
 	minHeight: '100vh',
@@ -54,7 +55,9 @@ const gridSubContainer = {
 };
 
 const titleStyle = {
-	padding: '1rem'
+	margin: '5rem 0',
+	position: 'absolute',
+	top: '0'
 };
 
 const Home = () => {
@@ -91,7 +94,11 @@ const Home = () => {
 			</div>
 			<div style={homeSectionStyle} ref={secondRef}>
 				<h1 style={titleStyle}>Why</h1>
-				<p />
+				<div>
+					<h2>A pomodoro app without the bells and the whistles.</h2>
+					<p>No loud noises. No complex setup.</p>
+					<p>Open with a keystroke. Focus on your work.</p>
+				</div>
 				<DownArrow type={'down'} onClick={handleClicks[2]} />
 			</div>
 			<div style={homeSectionStyle} ref={thirdRef}>
@@ -101,8 +108,7 @@ const Home = () => {
 						display: 'grid',
 						gridTemplateColumns: 'repeat(2, 1fr)',
 						gridTemplateRows: 'repeat(2, auto)',
-						gridGap: '2rem',
-						paddingTop: '3rem'
+						gridGap: '2rem'
 					}}
 				>
 					<div style={gridSubContainer}>
