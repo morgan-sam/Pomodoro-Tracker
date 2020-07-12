@@ -9,6 +9,8 @@ import keyboard from 'img/keyboard.gif';
 import terminal_dark from 'img/terminal_dark.gif';
 import graph from 'img/graph.png';
 
+import FileIcon from 'components/FileIcon';
+
 const homeStyle = {
 	overflowX: 'hidden'
 };
@@ -124,19 +126,8 @@ const Home = () => {
 								width: '12rem'
 							}}
 						>
-							<div
-								style={{
-									display: 'flex',
-									flexDirection: 'column'
-								}}
-							>
-								<img src={bash} style={{ height: '4rem', padding: '0.5rem' }} />
-								<span style={{ fontSize: '0.8rem' }}>pomodoro.sh</span>
-							</div>
-							<div style={{ display: 'flex', flexDirection: 'column' }}>
-								<img src={python} style={{ height: '4rem', padding: '0.5rem' }} />
-								<span style={{ fontSize: '0.8rem' }}>pomodoro.py</span>
-							</div>
+							<FileIcon icon={bash} text={'pomodoro.sh'} />
+							<FileIcon icon={python} text={'pomodoro.py'} />
 						</div>
 					</div>
 					<div style={gridSubContainer}>
