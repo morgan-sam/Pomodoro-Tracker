@@ -3,6 +3,7 @@ import DownArrow from 'components/DownArrow';
 import splash from 'img/splash.jpeg';
 import terminal from 'img/terminal.gif';
 import timeline from 'img/timeline.png';
+import bash from 'img/bash.svg';
 import python from 'img/python.svg';
 import keyboard from 'img/keyboard.gif';
 import terminal_dark from 'img/terminal_dark.gif';
@@ -114,10 +115,28 @@ const Home = () => {
 					}}
 				>
 					<div style={gridSubContainer}>
-						<p style={{ padding: '1rem' }}>Sign up and download the pomodoro script.</p>
-						<div style={{ display: 'flex', flexDirection: 'column' }}>
-							<img src={python} style={{ height: '4rem', padding: '0.5rem' }} />
-							<span style={{ fontSize: '0.8rem' }}>pomodoro.py</span>
+						<p style={{ padding: '1rem' }}>Sign up and download a pomodoro script.</p>
+						<div
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+								width: '12rem'
+							}}
+						>
+							<div
+								style={{
+									display: 'flex',
+									flexDirection: 'column'
+								}}
+							>
+								<img src={bash} style={{ height: '4rem', padding: '0.5rem' }} />
+								<span style={{ fontSize: '0.8rem' }}>pomodoro.sh</span>
+							</div>
+							<div style={{ display: 'flex', flexDirection: 'column' }}>
+								<img src={python} style={{ height: '4rem', padding: '0.5rem' }} />
+								<span style={{ fontSize: '0.8rem' }}>pomodoro.py</span>
+							</div>
 						</div>
 					</div>
 					<div style={gridSubContainer}>
