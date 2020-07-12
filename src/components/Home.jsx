@@ -2,6 +2,7 @@ import React, { createRef, useState } from 'react';
 import DownArrow from 'components/DownArrow';
 import splash from 'img/splash.jpeg';
 import terminal from 'img/terminal.gif';
+import timeline from 'img/timeline.png';
 import python from 'img/python.svg';
 import keyboard from 'img/keyboard.gif';
 import terminal_dark from 'img/terminal_dark.gif';
@@ -98,6 +99,7 @@ const Home = () => {
 					<h2>A pomodoro app without the bells and the whistles.</h2>
 					<p>No loud noises. No complex setup.</p>
 					<p>Open with a keystroke. Focus on your work.</p>
+					<img src={timeline} />
 				</div>
 				<DownArrow type={'down'} onClick={handleClicks[2]} />
 			</div>
