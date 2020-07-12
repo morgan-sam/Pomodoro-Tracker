@@ -94,7 +94,7 @@ const Home = () => {
 			</div>
 			<div style={homeSectionStyle} ref={secondRef}>
 				<h1 style={titleStyle}>Why</h1>
-				<div>
+				<div style={{ textAlign: 'left' }}>
 					<h2>A pomodoro app without the bells and the whistles.</h2>
 					<p>No loud noises. No complex setup.</p>
 					<p>Open with a keystroke. Focus on your work.</p>
