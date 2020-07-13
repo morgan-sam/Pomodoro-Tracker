@@ -57,6 +57,20 @@
 	padding-bottom: 2.5rem;
 }
 
+.keyboard {
+	height: 9rem;
+}
+
+.terminal_dark {
+	height: 9rem;
+	width: 18rem;
+}
+
+.graph {
+	height: 14rem;
+	border-radius: 1rem;
+}
+
 @media only screen and (max-width: 1000px) {
 	.home.section {
 		height: auto;

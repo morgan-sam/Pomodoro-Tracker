@@ -115,15 +115,15 @@ const Home = () => {
 					</div>
 					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>Assign to a keyboard shortcut.</p>
-						<img src={keyboard} style={{ height: '9rem' }} />
+						<img src={keyboard} className="keyboard" />
 					</div>
 					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>Run the script and get to work. </p>
-						<img src={terminal_dark} style={{ height: '9rem', width: '18rem' }} />
+						<img src={terminal_dark} className="terminal_dark" />
 					</div>
 					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>View your performance on the web app. </p>
-						<img src={graph} style={{ height: '14rem', borderRadius: '1rem' }} />
+						<img src={graph} className="graph" />
 					</div>
 				</div>
 				<div className="home footer center">
