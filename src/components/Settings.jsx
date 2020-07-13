@@ -45,32 +45,41 @@ const Settings = () => {
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
 
-	const changePasswordButtonClick = () => {
-		const deleteConfirm = window.confirm('Are you sure you want to change you password?');
-		if (deleteConfirm) {
-			const password = prompt('Please enter your password:');
-			reauthenticate(password);
-			changePassword('asdfghjkl');
-			history.push('/settings');
-		}
+	const userCheckPassword = async (passwordMsg) => {
+		const password = prompt(passwordMsg);
+		if (password) return await reauthenticate(password);
+		else return false;
 	};
 
-	const resetAccountButtonClick = () => {
-		const deleteConfirm = window.confirm('Are you sure you want to delete all data on your account?');
-		if (deleteConfirm) {
-			deleteAllEntries();
-			history.push('/settings');
-		}
+	const accountFunction = async (obj) => {
+		const { confirmMsg, passwordMsg, inputMsg, action } = obj;
+		const confirmed = confirmMsg ? window.confirm(confirmMsg) : true;
+		if (!confirmed) return null;
+		const auth = passwordMsg ? await userCheckPassword(passwordMsg) : true;
+		if (!auth) return alert('Incorrect Password');
+		const input = inputMsg ? window.prompt(inputMsg) : false;
+		return input ? action(input) : action();
 	};
 
-	const deleteAccountButtonClick = () => {
-		const deleteConfirm = window.confirm('Are you sure you want to delete your account?\nTHIS CANNOT BE UNDONE.');
-		if (deleteConfirm) {
-			const password = prompt('Please enter your password:');
-			reauthenticate(password);
-			deleteAccount();
-			history.push('/settings');
-		}
+	const changePasswordTemplate = {
+		confirmMsg: '',
+		passwordMsg: 'Please enter your current password:',
+		inputMsg: 'Please enter your new password:',
+		action: changePassword
+	};
+
+	const resetAccountTemplate = {
+		confirmMsg: 'Are you sure you want to reset your account? This will delete all pomodoro entries.',
+		passwordMsg: 'Please enter your password to reset your account:',
+		inputMsg: '',
+		action: deleteAllEntries
+	};
+
+	const deleteAccountTemplate = {
+		confirmMsg: 'Are you sure you want to delete your account? (THIS CANNOT BE UNDONE)',
+		passwordMsg: 'Please enter your password to PERMANENTLY DELETE your account:',
+		inputMsg: '',
+		action: deleteAccount
 	};
 
 	return (
@@ -78,14 +87,14 @@ const Settings = () => {
 			<div style={settingsBox}>
 				<h2 style={titleStyle}>Settings</h2>
 				<div style={buttonGrid}>
-					<button style={accountButtonStyle} onClick={changePasswordButtonClick}>
+					<button style={accountButtonStyle} onClick={() => accountFunction(changePasswordTemplate)}>
 						Change Password
 					</button>
 					<button style={accountButtonStyle}>Change Email</button>
-					<button style={accountButtonStyle} onClick={resetAccountButtonClick}>
+					<button style={accountButtonStyle} onClick={() => accountFunction(resetAccountTemplate)}>
 						Reset Account
 					</button>
-					<button style={accountButtonStyle} onClick={deleteAccountButtonClick}>
+					<button style={accountButtonStyle} onClick={() => accountFunction(deleteAccountTemplate)}>
 						Delete Account
 					</button>
 				</div>
