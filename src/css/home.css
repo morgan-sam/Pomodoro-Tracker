@@ -53,4 +53,5 @@
 	grid-template-rows: repeat(2, auto);
 	grid-column-gap: 5rem;
 	grid-row-gap: auto;
+	padding-bottom: 2.5rem;
 }
