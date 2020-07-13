@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
-import { deleteAllEntries, printCurrentUser } from 'data/queries';
+import { deleteAllEntries, deleteAccount } from 'data/queries';
 
 const screenContainer = {
 	position: 'absolute',
@@ -53,6 +53,14 @@ const Settings = () => {
 		}
 	};
 
+	const deleteAccountButtonClick = () => {
+		const deleteConfirm = window.confirm('Are you sure you want to delete your account?\nTHIS CANNOT BE UNDONE.');
+		if (deleteConfirm) {
+			deleteAccount();
+			history.push('/');
+		}
+	};
+
 	return (
 		<div style={screenContainer}>
 			<div style={settingsBox}>
@@ -63,8 +71,8 @@ const Settings = () => {
 					<button style={accountButtonStyle} onClick={resetAccountButtonClick}>
 						Reset Account
 					</button>
-					<button style={accountButtonStyle} onClick={printCurrentUser}>
-						printCurrentUser
+					<button style={accountButtonStyle} onClick={deleteAccountButtonClick}>
+						Delete Account
 					</button>
 				</div>
 				<div style={returnButtonContainer}>

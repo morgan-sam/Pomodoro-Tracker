@@ -7,6 +7,7 @@ import { getSystemButtonStyle } from 'styles/systemSettings';
 import bashScript from 'scripts/pomodoro.sh';
 import pythonScript from 'scripts/pomodoro.py';
 import firebase from 'firebase/app';
+import { reauthenticate } from 'data/queries';
 
 const screenContainer = {
 	position: 'absolute',
@@ -46,21 +47,6 @@ const downloadFile = (filename, text) => {
 	document.body.appendChild(element);
 	element.click();
 	document.body.removeChild(element);
-};
-
-const reauthenticate = async (password) => {
-	const user = firebase.auth().currentUser;
-	const credential = firebase.auth.EmailAuthProvider.credential(user.email, password);
-	let success;
-	await user
-		.reauthenticateWithCredential(credential)
-		.then(() => {
-			success = true;
-		})
-		.catch((error) => {
-			success = false;
-		});
-	return success;
 };
 
 const getScriptString = async (file, password) => {
