@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
-import { reauthenticate, changePassword, deleteAllEntries, deleteAccount } from 'data/queries';
+import { reauthenticate, changePassword, changeEmail, deleteAllEntries, deleteAccount } from 'data/queries';
 
 const screenContainer = {
 	position: 'absolute',
@@ -68,6 +68,13 @@ const Settings = () => {
 		action: changePassword
 	};
 
+	const changeEmailTemplate = {
+		confirmMsg: '',
+		passwordMsg: 'Please enter your password:',
+		inputMsg: 'Please enter the new email you would like to use:',
+		action: changeEmail
+	};
+
 	const resetAccountTemplate = {
 		confirmMsg: 'Are you sure you want to reset your account? This will delete all pomodoro entries.',
 		passwordMsg: 'Please enter your password to reset your account:',
@@ -90,7 +97,9 @@ const Settings = () => {
 					<button style={accountButtonStyle} onClick={() => accountFunction(changePasswordTemplate)}>
 						Change Password
 					</button>
-					<button style={accountButtonStyle}>Change Email</button>
+					<button style={accountButtonStyle} onClick={() => accountFunction(changeEmailTemplate)}>
+						Change Email
+					</button>
 					<button style={accountButtonStyle} onClick={() => accountFunction(resetAccountTemplate)}>
 						Reset Account
 					</button>

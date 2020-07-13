@@ -20,15 +20,20 @@ export const reauthenticate = async (password) => {
 	}
 };
 
+export const changePassword = async (newPassword) => {
+	const user = firebase.auth().currentUser;
+	return user.updatePassword(newPassword);
+};
+
+export const changeEmail = async (newEmail) => {
+	const user = firebase.auth().currentUser;
+	return user.updateEmail(newEmail);
+};
+
 export const deleteAllEntries = async () => {
 	return firebase.database().ref(`/users/${firebase.auth().currentUser.uid}`).remove();
 };
 
 export const deleteAccount = async () => {
 	return firebase.auth().currentUser.delete();
-};
-
-export const changePassword = async (newPassword) => {
-	const user = firebase.auth().currentUser;
-	return user.updatePassword(newPassword);
 };
