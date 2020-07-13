@@ -72,7 +72,9 @@ const getScriptString = async (file, password) => {
 };
 
 const downloadPomodoroScript = async (file, extension) => {
-	const password = prompt('Please enter your password:');
+	const password = prompt(
+		'Please enter your password:\n(WARNING: ENCRYPTION IS NOT YET IMPLEMENTED, YOUR PASSWORD WILL BE STORED AS PLAIN TEXT IN THE SCRIPT. PLEASE CANCEL IF THIS IS AN ISSUE.)'
+	);
 	const passCorrect = await reauthenticate(password);
 	if (passCorrect) {
 		const script = await getScriptString(file, password);
