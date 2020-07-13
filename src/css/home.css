@@ -57,6 +57,13 @@
 	padding-bottom: 2.5rem;
 }
 
+.icons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 12rem;
+}
+
 .keyboard {
 	height: 9rem;
 }
@@ -69,6 +76,19 @@
 .graph {
 	height: 14rem;
 	border-radius: 1rem;
+}
+
+@media only screen and (max-width: 1600px) and (min-width: 1000px) {
+	.keyboard {
+		height: 15vh;
+	}
+	.terminal_dark {
+		height: 15vh;
+		width: 15vw;
+	}
+	.graph {
+		height: 20vh;
+	}
 }
 
 @media only screen and (max-width: 1000px) {

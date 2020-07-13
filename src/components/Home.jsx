@@ -101,14 +101,7 @@ const Home = () => {
 				<div className="home content center how-grid">
 					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>Sign up and download a pomodoro script.</p>
-						<div
-							style={{
-								display: 'flex',
-								flexDirection: 'row',
-								justifyContent: 'space-between',
-								width: '12rem'
-							}}
-						>
+						<div className="icons">
 							<FileIcon icon={bash} text={'pomodoro.sh'} />
 							<FileIcon icon={python} text={'pomodoro.py'} />
 						</div>
