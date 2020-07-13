@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
-import { reauthenticate, changePassword, changeEmail, deleteAllEntries, deleteAccount } from 'data/queries';
+import { accountFunctions } from 'controller/accountFunctions';
 
 const screenContainer = {
 	position: 'absolute',
@@ -42,68 +42,25 @@ const returnButtonContainer = {
 };
 
 const Settings = () => {
+	const { changePassword, changeEmail, resetAccount, deleteAccount } = accountFunctions;
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
-
-	const userCheckPassword = async (passwordMsg) => {
-		const password = prompt(passwordMsg);
-		if (password) return await reauthenticate(password);
-		else return false;
-	};
-
-	const accountFunction = async (obj) => {
-		const { confirmMsg, passwordMsg, inputMsg, action } = obj;
-		const confirmed = confirmMsg ? window.confirm(confirmMsg) : true;
-		if (!confirmed) return null;
-		const auth = passwordMsg ? await userCheckPassword(passwordMsg) : true;
-		if (!auth) return alert('Incorrect Password');
-		const input = inputMsg ? window.prompt(inputMsg) : false;
-		return input ? action(input) : action();
-	};
-
-	const changePasswordTemplate = {
-		confirmMsg: '',
-		passwordMsg: 'Please enter your current password:',
-		inputMsg: 'Please enter your new password:',
-		action: changePassword
-	};
-
-	const changeEmailTemplate = {
-		confirmMsg: '',
-		passwordMsg: 'Please enter your password:',
-		inputMsg: 'Please enter the new email you would like to use:',
-		action: changeEmail
-	};
-
-	const resetAccountTemplate = {
-		confirmMsg: 'Are you sure you want to reset your account? This will delete all pomodoro entries.',
-		passwordMsg: 'Please enter your password to reset your account:',
-		inputMsg: '',
-		action: deleteAllEntries
-	};
-
-	const deleteAccountTemplate = {
-		confirmMsg: 'Are you sure you want to delete your account? (THIS CANNOT BE UNDONE)',
-		passwordMsg: 'Please enter your password to PERMANENTLY DELETE your account:',
-		inputMsg: '',
-		action: deleteAccount
-	};
 
 	return (
 		<div style={screenContainer}>
 			<div style={settingsBox}>
 				<h2 style={titleStyle}>Settings</h2>
 				<div style={buttonGrid}>
-					<button style={accountButtonStyle} onClick={() => accountFunction(changePasswordTemplate)}>
+					<button style={accountButtonStyle} onClick={changePassword}>
 						Change Password
 					</button>
-					<button style={accountButtonStyle} onClick={() => accountFunction(changeEmailTemplate)}>
+					<button style={accountButtonStyle} onClick={changeEmail}>
 						Change Email
 					</button>
-					<button style={accountButtonStyle} onClick={() => accountFunction(resetAccountTemplate)}>
+					<button style={accountButtonStyle} onClick={resetAccount}>
 						Reset Account
 					</button>
-					<button style={accountButtonStyle} onClick={() => accountFunction(deleteAccountTemplate)}>
+					<button style={accountButtonStyle} onClick={deleteAccount}>
 						Delete Account
 					</button>
 				</div>
