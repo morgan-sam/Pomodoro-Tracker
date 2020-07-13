@@ -12,16 +12,12 @@ export const getEntries = async () => {
 export const reauthenticate = async (password) => {
 	const user = firebase.auth().currentUser;
 	const credential = firebaseApp.auth.EmailAuthProvider.credential(user.email, password);
-	let success;
-	await user
-		.reauthenticateWithCredential(credential)
-		.then(() => {
-			success = true;
-		})
-		.catch((error) => {
-			success = false;
-		});
-	return success;
+	try {
+		await user.reauthenticateWithCredential(credential);
+		return true;
+	} catch (error) {
+		return false;
+	}
 };
 
 export const deleteAllEntries = async () => {
