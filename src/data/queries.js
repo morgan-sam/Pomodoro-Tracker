@@ -29,3 +29,10 @@ export const deleteAccount = async () => {
 	reauthenticate(password);
 	return firebase.auth().currentUser.delete();
 };
+
+export const changePassword = async (newPassword) => {
+	const password = prompt('Please enter your old password:');
+	reauthenticate(password);
+	const user = firebase.auth().currentUser;
+	user.updatePassword(newPassword);
+};

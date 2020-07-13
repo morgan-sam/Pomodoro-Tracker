@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
-import { deleteAllEntries, deleteAccount } from 'data/queries';
+import { changePassword, deleteAllEntries, deleteAccount } from 'data/queries';
 
 const screenContainer = {
 	position: 'absolute',
@@ -45,6 +45,14 @@ const Settings = () => {
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
 
+	const changePasswordButtonClick = () => {
+		const deleteConfirm = window.confirm('Are you sure you want to change you password?');
+		if (deleteConfirm) {
+			changePassword('hellohello');
+			history.push('/');
+		}
+	};
+
 	const resetAccountButtonClick = () => {
 		const deleteConfirm = window.confirm('Are you sure you want to delete all data on your account?');
 		if (deleteConfirm) {
@@ -66,7 +74,9 @@ const Settings = () => {
 			<div style={settingsBox}>
 				<h2 style={titleStyle}>Settings</h2>
 				<div style={buttonGrid}>
-					<button style={accountButtonStyle}>Change Password</button>
+					<button style={accountButtonStyle} onClick={changePasswordButtonClick}>
+						Change Password
+					</button>
 					<button style={accountButtonStyle}>Change Email</button>
 					<button style={accountButtonStyle} onClick={resetAccountButtonClick}>
 						Reset Account
