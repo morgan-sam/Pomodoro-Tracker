@@ -54,11 +54,16 @@ const reauthenticate = (password) => {
 	return user.reauthenticateAndRetrieveDataWithCredential(credential);
 };
 
-const downloadPomodoroScript = async (file, extension) => {
+const getScriptString = async (file) => {
 	const response = await fetch(file);
 	let script = await response.text();
 	script = script.replace('[EMAIL]', firebase.auth().currentUser.email);
 	// script = script.replace('[PASSWORD]', password);
+	return script;
+};
+
+const downloadPomodoroScript = async (file, extension) => {
+	const script = await getScriptString(file);
 	downloadFile('pomodoro.' + extension, script);
 };
 
