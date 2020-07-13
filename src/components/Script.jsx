@@ -48,26 +48,36 @@ const downloadFile = (filename, text) => {
 	document.body.removeChild(element);
 };
 
-const reauthenticate = (password) => {
+const reauthenticate = async (password) => {
 	const user = firebase.auth().currentUser;
 	const credential = firebase.auth.EmailAuthProvider.credential(user.email, password);
-	return user.reauthenticateAndRetrieveDataWithCredential(credential);
+	let success;
+	await user
+		.reauthenticateWithCredential(credential)
+		.then(() => {
+			success = true;
+		})
+		.catch((error) => {
+			success = false;
+		});
+	return success;
 };
 
-const getScriptString = async (file) => {
+const getScriptString = async (file, password) => {
 	const response = await fetch(file);
 	let script = await response.text();
 	script = script.replace('[EMAIL]', firebase.auth().currentUser.email);
-	// script = script.replace('[PASSWORD]', password);
+	script = script.replace('[PASSWORD]', password);
 	return script;
 };
 
 const downloadPomodoroScript = async (file, extension) => {
 	const password = prompt('Please enter your password:');
-	const auth = reauthenticate(password);
-	console.log(auth);
-	const script = await getScriptString(file);
-	downloadFile('pomodoro.' + extension, script);
+	const passCorrect = await reauthenticate(password);
+	if (passCorrect) {
+		const script = await getScriptString(file, password);
+		downloadFile('pomodoro.' + extension, script);
+	}
 };
 
 const Script = () => {
