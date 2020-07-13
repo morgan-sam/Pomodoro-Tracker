@@ -56,7 +56,7 @@ const Settings = () => {
 	return (
 		<div style={screenContainer}>
 			<div style={settingsBox}>
-				<h2 style={titleStyle}>Account Settings</h2>
+				<h2 style={titleStyle}>Settings</h2>
 				<div style={buttonGrid}>
 					<button style={accountButtonStyle}>Change Password</button>
 					<button style={accountButtonStyle}>Change Email</button>
