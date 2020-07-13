@@ -7,7 +7,7 @@ for pid in $(pidof -x $script_name); do
 done
 read localId idToken < <(echo $(curl 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB-j40wdFsSbJ7giMJJwQsymWacOFm0Boo' \
 -H 'Content-Type: application/json' \
---data-binary '{"email":"gaspedostu@enayu.com","password":"1234567890","returnSecureToken":true}' | jq --raw-output '.localId, .idToken'))
+--data-binary '{"email":"[EMAIL]","password":"[PASSWORD]","returnSecureToken":true}' | jq --raw-output '.localId, .idToken'))
 TIME="$(date -Iseconds)";
 ENTRY='{"type":"start","date":"'${TIME::-6}.000Z'"}';
 curl -X POST -d $ENTRY "https://pomodoro-tracker-db95f.firebaseio.com/users/${localId}/events.json?auth=${idToken}"

@@ -4,6 +4,9 @@ import python from 'img/python.svg';
 import FileIcon from 'components/FileIcon';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
+import bashScript from 'scripts/pomodoro.sh';
+import pythonScript from 'scripts/pomodoro.py';
+import firebase from 'config/firebase';
 
 const screenContainer = {
 	position: 'absolute',
@@ -35,12 +38,22 @@ const returnButtonContainer = {
 	padding: '3rem 0 2rem 0'
 };
 
-const downloadBashScript = () => {
-	console.log('pomodoro.sh');
+const downloadFile = (filename, text) => {
+	const element = document.createElement('a');
+	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	element.setAttribute('download', filename);
+	element.style.display = 'none';
+	document.body.appendChild(element);
+	element.click();
+	document.body.removeChild(element);
 };
 
-const downloadPythonScript = () => {
-	console.log('pomodoro.py');
+const downloadPomodoroScript = async (file, extension) => {
+	const response = await fetch(file);
+	let script = await response.text();
+	script = script.replace('[EMAIL]', firebase.auth().currentUser.email);
+	// script = script.replace('[PASSWORD]', password);
+	downloadFile('pomodoro.' + extension, script);
 };
 
 const Script = () => {
@@ -60,13 +73,13 @@ const Script = () => {
 					}}
 				>
 					<FileIcon
-						onClick={downloadBashScript}
+						onClick={() => downloadPomodoroScript(bashScript, 'sh')}
 						style={{ cursor: 'pointer' }}
 						icon={bash}
 						text={'pomodoro.sh'}
 					/>
 					<FileIcon
-						onClick={downloadPythonScript}
+						onClick={() => downloadPomodoroScript(pythonScript, 'py')}
 						style={{ cursor: 'pointer' }}
 						icon={python}
 						text={'pomodoro.py'}
