@@ -48,6 +48,12 @@ const downloadFile = (filename, text) => {
 	document.body.removeChild(element);
 };
 
+const reauthenticate = (password) => {
+	const user = firebase.auth().currentUser;
+	const credential = firebase.auth.EmailAuthProvider.credential(user.email, password);
+	return user.reauthenticateAndRetrieveDataWithCredential(credential);
+};
+
 const downloadPomodoroScript = async (file, extension) => {
 	const response = await fetch(file);
 	let script = await response.text();
