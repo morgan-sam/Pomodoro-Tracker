@@ -15,6 +15,7 @@
 	grid-area: 2 / 1 / 6 / 2;
 	width: inherit;
 	flex-wrap: wrap;
+	overflow: hidden;
 }
 
 .footer {
@@ -54,4 +55,16 @@
 	grid-column-gap: 5rem;
 	grid-row-gap: auto;
 	padding-bottom: 2.5rem;
+}
+
+@media only screen and (max-width: 1000px) {
+	.home.section {
+		height: auto;
+	}
+
+	.how-grid {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
 }
