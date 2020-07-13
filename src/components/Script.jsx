@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
 import bashScript from 'scripts/pomodoro.sh';
 import pythonScript from 'scripts/pomodoro.py';
-import firebase from 'config/firebase';
+import firebase from 'firebase/app';
 
 const screenContainer = {
 	position: 'absolute',
@@ -63,6 +63,9 @@ const getScriptString = async (file) => {
 };
 
 const downloadPomodoroScript = async (file, extension) => {
+	const password = prompt('Please enter your password:');
+	const auth = reauthenticate(password);
+	console.log(auth);
 	const script = await getScriptString(file);
 	downloadFile('pomodoro.' + extension, script);
 };
