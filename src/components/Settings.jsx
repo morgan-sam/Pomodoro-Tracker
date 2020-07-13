@@ -49,7 +49,7 @@ const Settings = () => {
 		const deleteConfirm = window.confirm('Are you sure you want to change you password?');
 		if (deleteConfirm) {
 			changePassword('hellohello');
-			history.push('/');
+			history.push('/settings');
 		}
 	};
 
@@ -57,7 +57,7 @@ const Settings = () => {
 		const deleteConfirm = window.confirm('Are you sure you want to delete all data on your account?');
 		if (deleteConfirm) {
 			deleteAllEntries();
-			history.push('/');
+			history.push('/settings');
 		}
 	};
 
@@ -65,7 +65,7 @@ const Settings = () => {
 		const deleteConfirm = window.confirm('Are you sure you want to delete your account?\nTHIS CANNOT BE UNDONE.');
 		if (deleteConfirm) {
 			deleteAccount();
-			history.push('/');
+			history.push('/settings');
 		}
 	};
 
