@@ -25,14 +25,10 @@ export const deleteAllEntries = async () => {
 };
 
 export const deleteAccount = async () => {
-	const password = prompt('To DELETE your account, please enter you password:');
-	reauthenticate(password);
 	return firebase.auth().currentUser.delete();
 };
 
 export const changePassword = async (newPassword) => {
-	const password = prompt('Please enter your old password:');
-	reauthenticate(password);
 	const user = firebase.auth().currentUser;
-	user.updatePassword(newPassword);
+	return user.updatePassword(newPassword);
 };

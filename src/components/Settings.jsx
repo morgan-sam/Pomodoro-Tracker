@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
-import { changePassword, deleteAllEntries, deleteAccount } from 'data/queries';
+import { reauthenticate, changePassword, deleteAllEntries, deleteAccount } from 'data/queries';
 
 const screenContainer = {
 	position: 'absolute',
@@ -48,7 +48,9 @@ const Settings = () => {
 	const changePasswordButtonClick = () => {
 		const deleteConfirm = window.confirm('Are you sure you want to change you password?');
 		if (deleteConfirm) {
-			changePassword('hellohello');
+			const password = prompt('Please enter your password:');
+			reauthenticate(password);
+			changePassword('asdfghjkl');
 			history.push('/settings');
 		}
 	};
@@ -64,6 +66,8 @@ const Settings = () => {
 	const deleteAccountButtonClick = () => {
 		const deleteConfirm = window.confirm('Are you sure you want to delete your account?\nTHIS CANNOT BE UNDONE.');
 		if (deleteConfirm) {
+			const password = prompt('Please enter your password:');
+			reauthenticate(password);
 			deleteAccount();
 			history.push('/settings');
 		}
