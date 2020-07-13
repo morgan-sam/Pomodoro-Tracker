@@ -77,6 +77,8 @@ const downloadPomodoroScript = async (file, extension) => {
 	if (passCorrect) {
 		const script = await getScriptString(file, password);
 		downloadFile('pomodoro.' + extension, script);
+	} else {
+		alert('Incorrect Password');
 	}
 };
 
