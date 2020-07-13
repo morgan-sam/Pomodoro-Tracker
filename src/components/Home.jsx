@@ -35,33 +35,11 @@ const getLoginSignUpBtnStyle = (hover) => {
 	};
 };
 
-const homeSectionStyle = {
-	position: 'relative',
-	display: 'inline-flex',
-	flexDirection: 'column',
-	alignItems: 'center',
-	justifyContent: 'center',
-	textAlign: 'center',
-	minWidth: '100vw',
-	minHeight: '100vh',
-	width: '100vw',
-	height: '100vh',
-	overflow: 'hidden',
-	boxSizing: 'border-box',
-	padding: '2rem'
-};
-
 const gridSubContainer = {
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
 	justifyContent: 'center'
-};
-
-const titleStyle = {
-	margin: '5rem 0',
-	position: 'absolute',
-	top: '0'
 };
 
 const Home = () => {
@@ -81,41 +59,46 @@ const Home = () => {
 
 	return (
 		<div style={homeStyle}>
-			<div style={homeSectionStyle} ref={firstRef}>
-				<h1 style={titleStyle}>Pomodoro Tracker</h1>
-				<div style={{ padding: '1rem' }}>
-					<p style={{ padding: '0 0 2rem 0' }}>The simplest way to keep track of your pomodoros.</p>
-					<img
-						src={splash}
-						style={{ height: '18rem', width: '35rem', border: '1px solid black', borderRadius: '10px' }}
-					/>
+			<div className="home section" ref={firstRef}>
+				<h1 className="home header center">Pomodoro Tracker</h1>
+				<div className="home content center spaced">
+					<div>
+						<p style={{ padding: '0 0 2rem 0' }}>The simplest way to keep track of your pomodoros.</p>
+						<img
+							src={splash}
+							style={{ height: '18rem', width: '35rem', border: '1px solid black', borderRadius: '10px' }}
+						/>
+					</div>
+					<div>
+						<p style={{ padding: '1rem' }}>One simple command line script. </p>
+						<img src={terminal} style={{ height: '9rem', width: '18rem' }} />
+					</div>
 				</div>
-				<div style={{ padding: '1rem' }}>
-					<p style={{ padding: '1rem' }}>One simple command line script. </p>
-					<img src={terminal} style={{ height: '9rem', width: '18rem' }} />
+				<div className="home footer center">
+					<DownArrow type={'down'} onClick={handleClicks[1]} />
 				</div>
-				<DownArrow type={'down'} onClick={handleClicks[1]} />
 			</div>
-			<div style={homeSectionStyle} ref={secondRef}>
-				<h1 style={titleStyle}>Why</h1>
-				<div style={{ textAlign: 'left' }}>
+
+			{/* // */}
+
+			<div className="home section" ref={secondRef}>
+				<h1 className="home header center">Why</h1>
+				<div className="home content center why-text">
 					<h2>A pomodoro app without the bells and the whistles.</h2>
 					<p>No loud noises. No complex setup.</p>
 					<p>Open with a keystroke. Focus on your work.</p>
 					<img src={timeline} />
 				</div>
-				<DownArrow type={'down'} onClick={handleClicks[2]} />
+				<div className="home footer center">
+					<DownArrow type={'down'} onClick={handleClicks[2]} />
+				</div>
 			</div>
-			<div style={homeSectionStyle} ref={thirdRef}>
-				<h1 style={titleStyle}>How</h1>
-				<div
-					style={{
-						display: 'grid',
-						gridTemplateColumns: 'repeat(2, 1fr)',
-						gridTemplateRows: 'repeat(2, auto)',
-						gridGap: '2rem'
-					}}
-				>
+
+			{/* // */}
+
+			<div className="home section" ref={thirdRef}>
+				<h1 className="home header center">How</h1>
+				<div className="home content center how-grid">
 					<div style={gridSubContainer}>
 						<p style={{ padding: '1rem' }}>Sign up and download a pomodoro script.</p>
 						<div
@@ -143,10 +126,13 @@ const Home = () => {
 						<img src={graph} style={{ height: '14rem', borderRadius: '1rem' }} />
 					</div>
 				</div>
-				<DownArrow type={'down'} onClick={handleClicks[3]} />
+				<div className="home footer center">
+					<DownArrow type={'down'} onClick={handleClicks[3]} />
+				</div>
 			</div>
-			<div style={homeSectionStyle} ref={fourthRef}>
+			<div className="home section" ref={fourthRef}>
 				<div
+					className="home content center"
 					style={{
 						height: '100%',
 						width: '100%',

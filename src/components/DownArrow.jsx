@@ -8,13 +8,9 @@ const DownArrow = (props) => {
 			onClick={onClick}
 			src={arrow}
 			style={{
-				position: 'absolute',
 				height: '8vh',
 				margin: '3rem 0',
-				left: '50vw',
-				transform: `scaleY(${type === 'up' ? -1 : 1}) translateX(-50%)`,
-				top: type === 'up' ? '0' : null,
-				bottom: type === 'down' ? '0' : null,
+				transform: `scaleY(${type === 'up' ? -1 : 1})`,
 				cursor: 'pointer'
 			}}
 		/>
