@@ -20,12 +20,21 @@
 	padding: 2rem;
 }
 
-.buttonGrid {
+.accountButtonGrid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 	grid-gap: 1rem;
 	padding: 2rem;
+}
+
+.button-column {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+}
+.button-column > * {
+	margin: 0.6rem;
 }
 
 .header {

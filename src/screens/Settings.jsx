@@ -1,10 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
-import { accountFunctions } from 'controller/accountFunctions';
 
 const Settings = () => {
-	const { changePassword, changeEmail, resetAccount, deleteAccount } = accountFunctions;
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
 
@@ -12,18 +10,9 @@ const Settings = () => {
 		<div className="screenContainer">
 			<div className="settingsBox">
 				<h2 className="header">Settings</h2>
-				<div className="buttonGrid">
-					<button style={accountButtonStyle} onClick={changePassword}>
-						Change Password
-					</button>
-					<button style={accountButtonStyle} onClick={changeEmail}>
-						Change Email
-					</button>
-					<button style={accountButtonStyle} onClick={resetAccount}>
-						Reset Account
-					</button>
-					<button style={accountButtonStyle} onClick={deleteAccount}>
-						Delete Account
+				<div className="button-column">
+					<button style={accountButtonStyle} onClick={() => history.push('/settings/account')}>
+						Account Settings
 					</button>
 				</div>
 				<div className="footer">
