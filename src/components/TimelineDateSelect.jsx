@@ -4,7 +4,7 @@ import DateNavigation from 'components/DateNavigation';
 function TimelineDateSelect(props) {
 	return (
 		<div style={{ ...props.style }}>
-			<DateNavigation filterOptions={props.filterOptions} setFilterOptions={props.setFilterOptions} />
+			<DateNavigation date={props.date} setDate={props.setDate} />
 		</div>
 	);
 }

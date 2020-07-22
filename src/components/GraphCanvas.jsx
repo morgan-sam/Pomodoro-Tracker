@@ -22,7 +22,7 @@ const GraphPanel = (props) => {
 
 	const addDataToGraph = (canvasRef, darkTheme) => {
 		const entriesParameters = {
-			startDate: props.filterOptions.date,
+			startDate: props.date,
 			period: props.period,
 			entriesData: props.entriesData
 		};

@@ -5,11 +5,7 @@ import GraphPanel from 'components/GraphPanel';
 function BottomPanel(props) {
 	return (
 		<div className={'bottom-panel-container'}>
-			<GraphPanel
-				entriesData={props.entriesData}
-				filterOptions={props.filterOptions}
-				displayOptions={props.displayOptions}
-			/>
+			<GraphPanel entriesData={props.entriesData} date={props.date} displayOptions={props.displayOptions} />
 			<OptionsPanel {...props} className={'bottom-panel-options-panel'} />
 		</div>
 	);

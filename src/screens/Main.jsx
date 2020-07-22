@@ -11,9 +11,7 @@ import { getEntries } from 'data/queries';
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ todaysCommits, setTodaysCommits ] = useState(null);
-	const [ filterOptions, setFilterOptions ] = useState({
-		date: convertUTCISOToUKObj(new Date().toISOString()).date
-	});
+	const [ date, setDate ] = useState(convertUTCISOToUKObj(new Date().toISOString()).date);
 	const [ displayOptions, setDisplayOptions ] = useState({
 		timeline: {
 			start: false,
@@ -36,7 +34,7 @@ function App() {
 
 	function filterEntries(entries) {
 		return entries.filter((el) => {
-			if (compareObjs(el.date, filterOptions.date)) return true;
+			if (compareObjs(el.date, date)) return true;
 			else return false;
 		});
 	}
@@ -107,8 +105,8 @@ function App() {
 	};
 
 	const optionProps = {
-		filterOptions,
-		setFilterOptions,
+		date,
+		setDate,
 		timeOptions,
 		setTimeOptions,
 		displayOptions,

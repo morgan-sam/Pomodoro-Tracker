@@ -13,10 +13,10 @@ function TopPanel(props) {
 			<div className={'top-panel-option'}>
 				<TopPageText
 					entriesData={props.filteredEntries}
-					filterOptions={props.filterOptions}
+					date={props.date}
 					todaysCommits={props.todaysCommits}
 				/>
-				<TimelineDateSelect filterOptions={props.filterOptions} setFilterOptions={props.setFilterOptions} />
+				<TimelineDateSelect date={props.date} setDate={props.setDate} />
 				<TimeOptionSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
 				<TimelineOptions
 					timeOptions={props.timeOptions}

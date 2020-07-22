@@ -6,7 +6,7 @@ function GraphPanel(props) {
 		<div className={'canvasContainer'} style={props.style}>
 			<GraphCanvas
 				entriesData={props.entriesData}
-				filterOptions={props.filterOptions}
+				date={props.date}
 				displayOptions={props.displayOptions}
 				{...props.displayOptions.graph}
 			/>
