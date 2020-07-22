@@ -1,21 +1,14 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
 import { convert24hrTo12hrTime, convert12hrTo24hrTime, getArrayTimes } from 'utility/parseTime';
-import {
-	timeOptionLabelStyle,
-	timeOptionStyle,
-	subContainers,
-	elementStyle,
-	dropDownStyle
-} from 'styles/timeOptionSelect';
 
 function TimeOptionSelect(props) {
 	return (
-		<div style={timeOptionStyle}>
-			<div style={subContainers}>
-				<span style={{ ...timeOptionLabelStyle, ...elementStyle }}>Start Hour:</span>
+		<div className={'time-option'}>
+			<div>
+				<span className={'time-option-label time-option-element'}>Start Hour:</span>
 				<Dropdown
-					className={'dropdownStartHour'}
+					className={'time-option-drop-down'}
 					default={
 						props.timeOptions.twelveHourClock ? (
 							convert24hrTo12hrTime(props.timeOptions.startTime)
@@ -30,13 +23,13 @@ function TimeOptionSelect(props) {
 						});
 					}}
 					options={getArrayTimes(props.timeOptions.twelveHourClock, 0).slice(0, props.timeOptions.endTime)}
-					style={{ ...dropDownStyle, zIndex: '2' }}
+					style={{ zIndex: '2' }}
 				/>
 			</div>
-			<div style={subContainers}>
-				<span style={{ ...timeOptionLabelStyle, ...elementStyle }}>End Hour:</span>
+			<div>
+				<span className={'time-option-label time-option-element'}>End Hour:</span>
 				<Dropdown
-					className={'dropdownEndHour'}
+					className={'time-option-drop-down'}
 					default={
 						props.timeOptions.twelveHourClock ? (
 							convert24hrTo12hrTime(props.timeOptions.endTime)
@@ -52,7 +45,7 @@ function TimeOptionSelect(props) {
 						});
 					}}
 					options={getArrayTimes(props.timeOptions.twelveHourClock, 1).slice(props.timeOptions.startTime)}
-					style={{ ...dropDownStyle, zIndex: '1' }}
+					style={{ zIndex: '1' }}
 				/>
 			</div>
 		</div>

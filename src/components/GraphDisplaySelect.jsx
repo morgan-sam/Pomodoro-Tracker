@@ -1,21 +1,14 @@
 import React from 'react';
-import {
-	graphDisplaySelectLabelStyle,
-	graphSelectionDropdownStyle,
-	graphOptionLabelStyle,
-	graphPeriodSelectStyle,
-	commonMargin
-} from 'styles/graphDisplaySelect';
 import Dropdown from 'components/Dropdown';
 
 function GraphDisplaySelect(props) {
 	return (
-		<div style={{ ...props.style }}>
-			<div style={commonMargin}>
-				<span style={{ ...graphDisplaySelectLabelStyle }}>Graph Period:</span>
+		<div className={'graph-option-container'} style={{ ...props.style }}>
+			<div>
+				<span className={'graph-display-select-label'}>Graph Period:</span>
 				<Dropdown
-					className={'dropdownGraphPeriod'}
-					style={{ ...graphSelectionDropdownStyle, ...graphPeriodSelectStyle, zIndex: '2' }}
+					className={'graph-selection-dropdown graph-period-select'}
+					style={{ zIndex: '2' }}
 					options={[ 'week ahead', 'week passed', 'month' ]}
 					default={props.displayOptions.graph.period}
 					onClick={(el) =>
@@ -28,11 +21,10 @@ function GraphDisplaySelect(props) {
 						})}
 				/>
 			</div>
-			<div style={commonMargin}>
-				<span style={{ ...graphDisplaySelectLabelStyle }}>Graph Type:</span>
+			<div>
+				<span className={'graph-display-select-label'}>Graph Type:</span>
 				<Dropdown
-					className={'dropdownGraphType'}
-					style={{ ...graphSelectionDropdownStyle }}
+					className={'graph-selection-dropdown'}
 					options={[ 'scatter', 'line', 'both' ]}
 					default={props.displayOptions.graph.type}
 					onClick={(el) =>
@@ -45,8 +37,8 @@ function GraphDisplaySelect(props) {
 						})}
 				/>
 			</div>
-			<div style={commonMargin}>
-				<span style={{ ...graphOptionLabelStyle }}>Max Pomodoro:</span>
+			<div>
+				<span className={'graph-option-label'}>Max Pomodoro:</span>
 				<input
 					type="range"
 					min="1"

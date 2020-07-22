@@ -1,0 +1,35 @@
+.time-option {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.time-option-element {
+	margin: 1rem;
+}
+
+.time-option-drop-down {
+	width: 5rem;
+}
+
+.time-option-label {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	height: 2rem;
+	text-align: left;
+	width: auto;
+}
+
+.time-option > * {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: stretch;
+	width: 1fr;
+	margin: 1rem;
+	height: auto;
+	box-sizing: border-box;
+}

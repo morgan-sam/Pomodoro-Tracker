@@ -1,17 +1,16 @@
 import React from 'react';
 import OptionsPanel from 'components/OptionsPanel';
 import GraphPanel from 'components/GraphPanel';
-import { panelContainerStyle, optionsPanelStyle } from 'styles/bottomPanel';
 
 function BottomPanel(props) {
 	return (
-		<div style={panelContainerStyle}>
+		<div className={'bottom-panel-container'}>
 			<GraphPanel
 				entriesData={props.entriesData}
 				filterOptions={props.filterOptions}
 				displayOptions={props.displayOptions}
 			/>
-			<OptionsPanel {...props} style={optionsPanelStyle} />
+			<OptionsPanel {...props} className={'bottom-panel-options-panel'} />
 		</div>
 	);
 }

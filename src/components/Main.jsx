@@ -117,7 +117,7 @@ function App() {
 	};
 	return (
 		<div className="App" style={getAppContainerStyle(displayOptions.darkTheme)}>
-			<div style={panelContainerStyle}>
+			<div className={'main-container'}>
 				<TopPanel
 					filteredEntries={filterEntries(entriesData)}
 					todaysCommits={todaysCommits}

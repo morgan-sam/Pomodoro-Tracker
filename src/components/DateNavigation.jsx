@@ -3,11 +3,10 @@ import DateSelect from 'components/DateSelect';
 import BounceButton from 'components/BounceButton';
 import DateArrowButton from 'components/DateArrowButton';
 import { getTodaysDateAsObj } from 'data/dates';
-import { dateContainerStyle } from 'styles/dateNavigation';
 
 const DateNavigation = (props) => {
 	return (
-		<div style={dateContainerStyle} className={'dateNavigation'}>
+		<div className={'date-nav-container'}>
 			<DateSelect
 				date={props.filterOptions.date}
 				setDate={(dateObj) => {

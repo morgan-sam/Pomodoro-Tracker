@@ -1,12 +1,11 @@
 import React from 'react';
 import BounceButton from 'components/BounceButton';
 import { getAutoHourWidth } from 'utility/calculateSizing';
-import { timelineZoomLabelStyle, commonMargin } from 'styles/timelineZoomSelect';
 
 function TimelineZoomSelect(props) {
 	return (
-		<div style={{ ...props.style }}>
-			<span style={{ ...timelineZoomLabelStyle, ...commonMargin }}>Timeline Zoom:</span>
+		<div className={'timeline-zoom'} style={{ ...props.style }}>
+			<span className={'timeline-zoom-label-style'}>Timeline Zoom:</span>
 			<input
 				type="range"
 				min="2"
@@ -19,10 +18,10 @@ function TimelineZoomSelect(props) {
 					});
 				}}
 				step="0.01"
-				style={{ width: 'auto', ...commonMargin }}
+				style={{ width: 'auto' }}
 			/>
 			<BounceButton
-				style={{ width: '7rem', height: '2rem', ...commonMargin }}
+				style={{ width: '7rem', height: '2rem' }}
 				onClick={() => {
 					props.setTimeOptions({
 						...props.timeOptions,

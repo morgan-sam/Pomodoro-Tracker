@@ -1,9 +1,9 @@
 export const getSystemButtonStyle = (darkTheme) => {
-	return {
-		padding: '0.5rem 1rem',
-		borderRadius: '5px',
-		border: darkTheme ? 'none' : '1px solid #ccc',
-		boxShadow: '2px 2px #ccc',
-		cursor: 'pointer'
-	};
+    return {
+        padding: '0.5rem 1rem',
+        borderRadius: '5px',
+        border: darkTheme ? 'none' : '1px solid #ccc',
+        boxShadow: '2px 2px #ccc',
+        cursor: 'pointer',
+    };
 };

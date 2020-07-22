@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-	containerStyle,
-	scrollbarStyle,
 	getBoxStyle,
 	textStyle,
 	innerGridStyle,
@@ -30,7 +28,7 @@ function DayTimeline(props) {
 						zIndex: props.displayOptions.timeline.grid ? '1' : '0'
 					}}
 				>
-					<span style={textStyle}>
+					<span className={'daytimeline-text'}>
 						{props.timeOptions.twelveHourClock ? convert24hrTo12hrTime(i + start) : `${i + start}:00`}
 					</span>
 					{getBoxGrid()}
@@ -108,8 +106,8 @@ function DayTimeline(props) {
 	};
 
 	return (
-		<div style={{ ...containerStyle, ...props.style }}>
-			<div style={scrollbarStyle}>
+		<div className={'daytimeline'} style={{ ...props.style }}>
+			<div className={'daytimeline-scrollbar'}>
 				{getTimelineBoxSelection(props.timeOptions.startTime, props.timeOptions.endTime)}
 				{getEventBoxes('start')}
 				{getEventBoxes('pomodoro')}

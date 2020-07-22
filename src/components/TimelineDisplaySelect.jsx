@@ -1,6 +1,5 @@
 import React from 'react';
 import BounceButton from 'components/BounceButton';
-import { toggleButtonStyle, commonMargin } from 'styles/timelineDisplaySelect';
 
 function TimelineDisplaySelect(props) {
 	return (
@@ -15,7 +14,7 @@ function TimelineDisplaySelect(props) {
 						}
 					})}
 				delay={300}
-				style={{ ...toggleButtonStyle, ...commonMargin }}
+				className={'timeline-display-select-toggle-button timeline-display-select-common-margin'}
 				text={`Turn ${props.displayOptions.timeline.start ? 'Off' : 'On'} Start Markers`}
 			/>
 			<BounceButton
@@ -28,7 +27,7 @@ function TimelineDisplaySelect(props) {
 						}
 					})}
 				delay={300}
-				style={{ ...toggleButtonStyle, ...commonMargin }}
+				className={'timeline-display-select-toggle-button timeline-display-select-common-margin'}
 				text={`Turn ${props.displayOptions.timeline.encore ? 'Off' : 'On'} Encores`}
 			/>
 
@@ -42,7 +41,7 @@ function TimelineDisplaySelect(props) {
 						}
 					})}
 				delay={300}
-				style={{ ...toggleButtonStyle, ...commonMargin }}
+				className={'timeline-display-select-toggle-button timeline-display-select-common-margin'}
 				text={`Turn ${props.displayOptions.timeline.grid ? 'Off' : 'On'} Grid`}
 			/>
 		</div>

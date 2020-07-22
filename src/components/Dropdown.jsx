@@ -1,27 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { capitalizeFirstLetter } from 'utility/parseText';
-import {
-	dropdownParentStyle,
-	dropdownElementStyle,
-	dropdownHeaderStyle,
-	dropdownBoxStyle,
-	dropdownClosedStyle,
-	dropdownOpenStyle,
-	selectedOptionStyle,
-	finalOptionStyle,
-	dropdownEndNode,
-	optionStyle,
-	DROPDOWN_HEIGHT_REMS
-} from 'styles/dropdown';
+import { DROPDOWN_HEIGHT_REMS } from 'styles/dropdown';
 
 const Dropdown = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
 	const dropdownRef = useRef(null);
 
-	const getCurrentOptionStyle = (el, options) => {
-		if (el === props.default) return { ...optionStyle, ...selectedOptionStyle };
-		if (el === options[options.length - 1]) return { ...optionStyle, ...finalOptionStyle };
-		else return optionStyle;
+	const getCurrentOptionClass = (el, options) => {
+		if (el === props.default) return 'dropdown-selected-option';
+		if (el === options[options.length - 1]) return 'final-option';
 	};
 
 	const allWordsCapitalised = (input) => {
@@ -32,8 +19,7 @@ const Dropdown = (props) => {
 	const optionHeader = () => {
 		return (
 			<div
-				className={`${props.className} dropdownHeader`}
-				style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle }}
+				className={`${props.className} dropdown-box dropdown-header`}
 				onMouseDown={(e) => {
 					if (e.buttons === 1) {
 						setListOpen(!listOpen);
@@ -48,13 +34,14 @@ const Dropdown = (props) => {
 
 	const optionDivs = props.options
 		? props.options.map(function(el, i) {
-				const currentOptionStyle = getCurrentOptionStyle(el, props.options);
 				const display = typeof el === 'string' ? allWordsCapitalised(el) : el;
 				return (
 					<div
 						key={i}
-						className={`${props.className} dropdownOption`}
-						style={{ ...dropdownBoxStyle, ...currentOptionStyle }}
+						className={`${props.className} dropdown-box dropdown-option ${getCurrentOptionClass(
+							el,
+							props.options
+						)}`}
 						onMouseDown={() => {
 							props.onClick(el);
 							setListOpen(false);
@@ -96,20 +83,19 @@ const Dropdown = (props) => {
 	);
 
 	return (
-		<div className={`${props.className}`} style={{ ...dropdownParentStyle, ...props.style }}>
-			<div className={`${props.className} dropdownElement`} style={dropdownElementStyle}>
+		<div className={`${props.className} dropdown-parent`} style={{ ...props.style }}>
+			<div className={`${props.className} dropdown-element`}>
 				<div
-					className={`${props.className} dropdownOptionContainer`}
-					style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}
+					className={`${props.className} dropdown-option-container ${listOpen
+						? 'dropdown-open'
+						: 'dropdown-closed'}`}
 					ref={dropdownRef}
 				>
 					{listOpen ? optionDivs : optionHeader()}
 				</div>
 				<div
-					className={`${props.className} dropdownEndNode`}
+					className={`${props.className} dropdown-box dropdown-end-node`}
 					style={{
-						...dropdownBoxStyle,
-						...dropdownEndNode,
 						display: listOpen ? 'block' : 'none'
 					}}
 				>

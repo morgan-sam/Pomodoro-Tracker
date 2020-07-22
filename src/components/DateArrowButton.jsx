@@ -1,13 +1,12 @@
 import React from 'react';
-import { arrowButtonDefaultStyle } from 'styles/dateArrowButton.js';
 import { addSubtractDaysFromDateObj } from 'data/dates';
 
 const DateArrowButton = (props) => {
 	const dayDifference = props.direction === 'left' ? -1 : 1;
 	return (
 		<button
-			className={'arrowbutton'}
-			style={{ ...arrowButtonDefaultStyle, ...props.style }}
+			className={'arrow-button'}
+			style={props.style}
 			onClick={() =>
 				props.setFilterOptions({
 					...props.filterOptions,

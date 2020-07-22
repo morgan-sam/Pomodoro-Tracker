@@ -6,12 +6,11 @@ import TimelineOptions from 'components/TimelineOptions';
 import GraphToggle from 'components/GraphToggle';
 import DarkThemeToggle from 'components/DarkThemeToggle';
 import DayTimeline from 'components/DayTimeline';
-import { topOptionStyle } from 'styles/topPanel';
 
 function TopPanel(props) {
 	return (
 		<div style={props.style}>
-			<div style={topOptionStyle}>
+			<div className={'top-panel-option'}>
 				<TopPageText
 					entriesData={props.filteredEntries}
 					filterOptions={props.filterOptions}

@@ -1,0 +1,11 @@
+.bottom-panel-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr;
+}
+
+.bottom-panel-options-panel {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
