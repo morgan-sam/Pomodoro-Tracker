@@ -19,6 +19,6 @@ import 'styles/timelineZoomSelect.css';
 import 'styles/topPanel.css';
 import 'styles/graphDisplaySelect.css';
 
-import App from './components/App';
+import App from './App';
 
 ReactDOM.render(<App />, document.getElementById('root'));
