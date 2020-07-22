@@ -5,7 +5,7 @@ function OptionsPanel(props) {
 	return (
 		<div style={props.style} className={props.className}>
 			<div className="options-panel">
-				<GraphDisplaySelect setDisplayOptions={props.setDisplayOptions} displayOptions={props.displayOptions} />
+				<GraphDisplaySelect setOptions={props.setOptions} options={props.options} />
 			</div>
 		</div>
 	);

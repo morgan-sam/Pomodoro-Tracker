@@ -7,8 +7,8 @@ function GraphPanel(props) {
 			<GraphCanvas
 				entriesData={props.entriesData}
 				date={props.date}
-				displayOptions={props.displayOptions}
-				{...props.displayOptions.graph}
+				options={props.options}
+				{...props.options.graph}
 			/>
 		</div>
 	);

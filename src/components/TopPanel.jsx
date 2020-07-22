@@ -1,7 +1,7 @@
 import React from 'react';
 import TopPageText from 'components/TopPageText';
 import TimelineDateSelect from 'components/TimelineDateSelect';
-import TimeOptionSelect from 'components/TimeOptionSelect';
+import optionselect from 'components/TimeOptionSelect';
 import TimelineOptions from 'components/TimelineOptions';
 import GraphToggle from 'components/GraphToggle';
 import DarkThemeToggle from 'components/DarkThemeToggle';
@@ -17,21 +17,21 @@ function TopPanel(props) {
 					todaysCommits={props.todaysCommits}
 				/>
 				<TimelineDateSelect date={props.date} setDate={props.setDate} />
-				<TimeOptionSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
+				<optionselect options={props.options} setOptions={props.setOptions} />
 				<TimelineOptions
-					timeOptions={props.timeOptions}
-					setTimeOptions={props.setTimeOptions}
-					displayOptions={props.displayOptions}
-					setDisplayOptions={props.setDisplayOptions}
+					options={props.options}
+					setOptions={props.setOptions}
+					options={props.options}
+					setOptions={props.setOptions}
 				/>
-				<GraphToggle displayOptions={props.displayOptions} setDisplayOptions={props.setDisplayOptions} />
-				<DarkThemeToggle displayOptions={props.displayOptions} setDisplayOptions={props.setDisplayOptions} />
+				<GraphToggle options={props.options} setOptions={props.setOptions} />
+				<DarkThemeToggle options={props.options} setOptions={props.setOptions} />
 			</div>
 			<DayTimeline
 				entries={props.filteredEntries}
 				eventLengths={props.eventLengths}
-				displayOptions={props.displayOptions}
-				timeOptions={props.timeOptions}
+				options={props.options}
+				options={props.options}
 			/>
 		</div>
 	);

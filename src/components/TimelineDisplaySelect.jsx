@@ -6,43 +6,43 @@ function TimelineDisplaySelect(props) {
 		<div style={{ ...props.style }}>
 			<BounceButton
 				onClick={() =>
-					props.setDisplayOptions({
-						...props.displayOptions,
+					props.setOptions({
+						...props.options,
 						timeline: {
-							...props.displayOptions.timeline,
-							start: !props.displayOptions.timeline.start
+							...props.options.timeline,
+							start: !props.options.timeline.start
 						}
 					})}
 				delay={300}
 				className={'timeline-display-select-toggle-button timeline-display-select-common-margin'}
-				text={`Turn ${props.displayOptions.timeline.start ? 'Off' : 'On'} Start Markers`}
+				text={`Turn ${props.options.timeline.start ? 'Off' : 'On'} Start Markers`}
 			/>
 			<BounceButton
 				onClick={() =>
-					props.setDisplayOptions({
-						...props.displayOptions,
+					props.setOptions({
+						...props.options,
 						timeline: {
-							...props.displayOptions.timeline,
-							encore: !props.displayOptions.timeline.encore
+							...props.options.timeline,
+							encore: !props.options.timeline.encore
 						}
 					})}
 				delay={300}
 				className={'timeline-display-select-toggle-button timeline-display-select-common-margin'}
-				text={`Turn ${props.displayOptions.timeline.encore ? 'Off' : 'On'} Encores`}
+				text={`Turn ${props.options.timeline.encore ? 'Off' : 'On'} Encores`}
 			/>
 
 			<BounceButton
 				onClick={() =>
-					props.setDisplayOptions({
-						...props.displayOptions,
+					props.setOptions({
+						...props.options,
 						timeline: {
-							...props.displayOptions.timeline,
-							grid: !props.displayOptions.timeline.grid
+							...props.options.timeline,
+							grid: !props.options.timeline.grid
 						}
 					})}
 				delay={300}
 				className={'timeline-display-select-toggle-button timeline-display-select-common-margin'}
-				text={`Turn ${props.displayOptions.timeline.grid ? 'Off' : 'On'} Grid`}
+				text={`Turn ${props.options.timeline.grid ? 'Off' : 'On'} Grid`}
 			/>
 		</div>
 	);

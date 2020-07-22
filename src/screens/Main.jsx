@@ -12,10 +12,14 @@ function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ todaysCommits, setTodaysCommits ] = useState(null);
 	const [ date, setDate ] = useState(convertUTCISOToUKObj(new Date().toISOString()).date);
-	const [ displayOptions, setDisplayOptions ] = useState({
+	const [ options, setOptions ] = useState({
 		timeline: {
 			start: false,
-			encore: true
+			encore: true,
+			startTime: 8,
+			endTime: 24,
+			twelveHourClock: true,
+			hourWidth: 5
 		},
 		graph: {
 			visible: true,
@@ -24,12 +28,6 @@ function App() {
 			maxPomodoro: 14
 		},
 		darkTheme: true
-	});
-	const [ timeOptions, setTimeOptions ] = useState({
-		startTime: 8,
-		endTime: 24,
-		twelveHourClock: true,
-		hourWidth: 5
 	});
 
 	function filterEntries(entries) {
@@ -81,8 +79,8 @@ function App() {
 	};
 
 	useEffect(() => {
-		const localDisplayOptions = JSON.parse(window.localStorage.getItem('displayOptions'));
-		if (localDisplayOptions) setDisplayOptions(localDisplayOptions);
+		const localOptions = JSON.parse(window.localStorage.getItem('options'));
+		if (localOptions) setOptions(localOptions);
 		setTimelineToFitWindow();
 	}, []);
 
@@ -95,25 +93,23 @@ function App() {
 
 	useEffect(
 		() => {
-			window.localStorage.setItem('displayOptions', JSON.stringify(displayOptions));
+			window.localStorage.setItem('options', JSON.stringify(options));
 		},
-		[ displayOptions ]
+		[ options ]
 	);
 
 	const setTimelineToFitWindow = () => {
-		setTimeOptions({ ...timeOptions, hourWidth: getAutoHourWidth(timeOptions) });
+		setOptions({ ...options, timeline: { ...options.timeline, hourWidth: getAutoHourWidth(options.timeline) } });
 	};
 
 	const optionProps = {
 		date,
 		setDate,
-		timeOptions,
-		setTimeOptions,
-		displayOptions,
-		setDisplayOptions
+		options,
+		setOptions
 	};
 	return (
-		<div className="App" style={getAppContainerStyle(displayOptions.darkTheme)}>
+		<div className="App" style={getAppContainerStyle(options.darkTheme)}>
 			<div className={'main-container'}>
 				<TopPanel
 					filteredEntries={filterEntries(entriesData)}
@@ -124,8 +120,8 @@ function App() {
 					}}
 					{...optionProps}
 				/>
-				<TopRightButtons {...{ displayOptions }} />
-				{displayOptions.graph.visible && <BottomPanel entriesData={entriesData} {...optionProps} />}
+				<TopRightButtons {...{ options }} />
+				{options.graph.visible && <BottomPanel entriesData={entriesData} {...optionProps} />}
 			</div>
 		</div>
 	);

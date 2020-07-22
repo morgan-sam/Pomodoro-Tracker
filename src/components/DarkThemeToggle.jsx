@@ -2,7 +2,7 @@ import React from 'react';
 import Checkbox from 'components/Checkbox';
 
 function DarkThemeToggle(props) {
-	const { displayOptions, setDisplayOptions } = props;
+	const { options, setOptions } = props;
 
 	const containerStyle = {
 		display: 'flex',
@@ -18,12 +18,12 @@ function DarkThemeToggle(props) {
 			<div style={commonMargin}>Dark Theme:</div>
 			<Checkbox
 				style={{ ...commonMargin, borderRadius: '100%', margin: '1rem' }}
-				default={displayOptions.darkTheme}
-				displayOptions={displayOptions}
+				default={options.darkTheme}
+				options={options}
 				onChange={() => {
-					setDisplayOptions({
-						...displayOptions,
-						darkTheme: !displayOptions.darkTheme
+					setOptions({
+						...options,
+						darkTheme: !options.darkTheme
 					});
 				}}
 			/>

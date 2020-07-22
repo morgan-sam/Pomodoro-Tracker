@@ -11,7 +11,7 @@ const btnContainerStyle = {
 
 const TopRightButtons = (props) => {
 	const history = useHistory();
-	const darkTheme = props.displayOptions.darkTheme;
+	const darkTheme = props.options.darkTheme;
 	const topRightButtonStyle = { ...getSystemButtonStyle(darkTheme), marginLeft: '1rem' };
 	return (
 		<div style={btnContainerStyle}>

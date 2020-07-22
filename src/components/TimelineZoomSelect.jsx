@@ -10,11 +10,14 @@ function TimelineZoomSelect(props) {
 				type="range"
 				min="2"
 				max="20"
-				value={props.timeOptions.hourWidth}
+				value={props.options.timeline.hourWidth}
 				onChange={(e) => {
-					props.setTimeOptions({
-						...props.timeOptions,
-						hourWidth: e.target.value
+					props.setOptions({
+						...props.options,
+						timeline: {
+							...props.options.timeline,
+							hourWidth: e.target.value
+						}
 					});
 				}}
 				step="0.01"
@@ -23,9 +26,12 @@ function TimelineZoomSelect(props) {
 			<BounceButton
 				style={{ width: '7rem', height: '2rem' }}
 				onClick={() => {
-					props.setTimeOptions({
-						...props.timeOptions,
-						hourWidth: getAutoHourWidth(props.timeOptions)
+					props.setOptions({
+						...props.options,
+						timeline: {
+							...props.options.timeline,
+							hourWidth: getAutoHourWidth(props.options.timeline)
+						}
 					});
 				}}
 				delay={350}

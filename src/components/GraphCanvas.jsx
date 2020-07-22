@@ -5,7 +5,7 @@ import { GRAPH_SIZES } from 'styles/graphSizing';
 import { drawNoDataMessage, drawEntireGraph } from 'controller/canvasDrawing';
 
 const GraphPanel = (props) => {
-	const { displayOptions } = props;
+	const { options } = props;
 	const Y_AXIS_MAX = props.maxPomodoro;
 	const canvasRef = useRef(null);
 
@@ -14,8 +14,8 @@ const GraphPanel = (props) => {
 			canvasRef.current.width = 920;
 			canvasRef.current.height = 440;
 			props.entriesData.length
-				? addDataToGraph(canvasRef, displayOptions.darkTheme)
-				: drawNoDataMessage(canvasRef, displayOptions.darkTheme);
+				? addDataToGraph(canvasRef, options.darkTheme)
+				: drawNoDataMessage(canvasRef, options.darkTheme);
 		},
 		[ props ]
 	);
@@ -62,7 +62,7 @@ const GraphPanel = (props) => {
 		});
 	}
 
-	return <canvas ref={canvasRef} style={getGraphStyle(displayOptions.darkTheme)} />;
+	return <canvas ref={canvasRef} style={getGraphStyle(options.darkTheme)} />;
 };
 
 export default GraphPanel;

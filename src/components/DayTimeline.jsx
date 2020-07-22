@@ -22,14 +22,14 @@ function DayTimeline(props) {
 				<div
 					key={i}
 					style={{
-						...getBoxStyle(props.displayOptions.darkTheme),
-						maxWidth: `${props.timeOptions.hourWidth}rem`,
-						minWidth: `${props.timeOptions.hourWidth}rem`,
-						zIndex: props.displayOptions.timeline.grid ? '1' : '0'
+						...getBoxStyle(props.options.darkTheme),
+						maxWidth: `${props.options.timeline.hourWidth}rem`,
+						minWidth: `${props.options.timeline.hourWidth}rem`,
+						zIndex: props.options.timeline.grid ? '1' : '0'
 					}}
 				>
 					<span className={'daytimeline-text'}>
-						{props.timeOptions.twelveHourClock ? convert24hrTo12hrTime(i + start) : `${i + start}:00`}
+						{props.options.timeline.twelveHourClock ? convert24hrTo12hrTime(i + start) : `${i + start}:00`}
 					</span>
 					{getBoxGrid()}
 				</div>
@@ -44,7 +44,7 @@ function DayTimeline(props) {
 					key={i}
 					style={{
 						...innerGridStyle,
-						display: props.displayOptions.timeline.grid ? 'flex' : 'none',
+						display: props.options.timeline.grid ? 'flex' : 'none',
 						left: `${25 * i}%`,
 						borderLeft: i ? '1px solid #555' : 'none'
 					}}
@@ -54,7 +54,7 @@ function DayTimeline(props) {
 	}
 
 	function getEventBoxes(eventType) {
-		if (props.displayOptions.timeline[eventType] || eventType === 'pomodoro') {
+		if (props.options.timeline[eventType] || eventType === 'pomodoro') {
 			const events = props.entries.filter((el) => el.type === eventType);
 			return events ? events.map((el, i) => convertEventToBox(el, i)) : [];
 		} else {
@@ -67,8 +67,8 @@ function DayTimeline(props) {
 			<div
 				key={i}
 				style={{
-					...getDefaultEventBoxStyle(props.displayOptions.darkTheme),
-					...getEventBoxTypeStyle(props.displayOptions.darkTheme)[el.type],
+					...getDefaultEventBoxStyle(props.options.darkTheme),
+					...getEventBoxTypeStyle(props.options.darkTheme)[el.type],
 					...getEventBoxStyle(el)
 				}}
 			/>
@@ -77,14 +77,14 @@ function DayTimeline(props) {
 
 	function getEventBoxStyle(el) {
 		const hourPosition = calculateEventHourPosition(el);
-		const remPosition = (hourPosition - props.timeOptions.startTime) * props.timeOptions.hourWidth;
-		const eventWidth = props.timeOptions.hourWidth / 60 * eventLengths[el.type];
+		const remPosition = (hourPosition - props.options.timeline.startTime) * props.options.timeline.hourWidth;
+		const eventWidth = props.options.timeline.hourWidth / 60 * eventLengths[el.type];
 		const overflow = calculateEventOverflow(eventWidth, remPosition);
 
 		return {
 			left: `${remPosition}rem`,
 			width: `calc(${eventWidth - overflow}rem - ${overflow > 0 ? '2' : '0'}px)`,
-			display: props.timeOptions.endTime < hourPosition ? 'none' : 'inline-block'
+			display: props.options.timeline.endTime < hourPosition ? 'none' : 'inline-block'
 		};
 	}
 
@@ -93,22 +93,23 @@ function DayTimeline(props) {
 	}
 
 	function calculateEventOverflow(eventWidth, remPosition) {
-		const timelineWidth = (props.timeOptions.endTime - props.timeOptions.startTime) * props.timeOptions.hourWidth;
+		const timelineWidth =
+			(props.options.timeline.endTime - props.options.timeline.startTime) * props.options.timeline.hourWidth;
 		const eventEndPosition = eventWidth + remPosition;
 		return Math.max(0, eventEndPosition - timelineWidth);
 	}
 
 	const currentTimeMarker = () => {
-		const width = props.timeOptions.hourWidth;
+		const width = props.options.timeline.hourWidth;
 		const { hour, minute } = getTodaysDateAsObj().time;
-		const time = width * (minute / 60 + hour - props.timeOptions.startTime);
+		const time = width * (minute / 60 + hour - props.options.timeline.startTime);
 		return <div style={{ ...currentTimeMarkerStyle, left: `${time}rem` }} />;
 	};
 
 	return (
 		<div className={'daytimeline'} style={{ ...props.style }}>
 			<div className={'daytimeline-scrollbar'}>
-				{getTimelineBoxSelection(props.timeOptions.startTime, props.timeOptions.endTime)}
+				{getTimelineBoxSelection(props.options.timeline.startTime, props.options.timeline.endTime)}
 				{getEventBoxes('start')}
 				{getEventBoxes('pomodoro')}
 				{getEventBoxes('encore')}

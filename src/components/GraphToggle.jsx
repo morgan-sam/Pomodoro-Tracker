@@ -2,7 +2,7 @@ import React from 'react';
 import Checkbox from 'components/Checkbox';
 
 function GraphToggle(props) {
-	const { displayOptions, setDisplayOptions } = props;
+	const { options, setOptions } = props;
 
 	const containerStyle = {
 		display: 'flex',
@@ -18,14 +18,14 @@ function GraphToggle(props) {
 			<div style={commonMargin}>Graph Visible:</div>
 			<Checkbox
 				style={{ ...commonMargin, borderRadius: '100%', margin: '1rem' }}
-				default={displayOptions.graph.visible}
-				displayOptions={displayOptions}
+				default={options.graph.visible}
+				options={options}
 				onChange={() => {
-					setDisplayOptions({
-						...displayOptions,
+					setOptions({
+						...options,
 						graph: {
-							...displayOptions.graph,
-							visible: !displayOptions.graph.visible
+							...options.graph,
+							visible: !options.graph.visible
 						}
 					});
 				}}

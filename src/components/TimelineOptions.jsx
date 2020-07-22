@@ -5,8 +5,8 @@ import TimelineDisplaySelect from 'components/TimelineDisplaySelect';
 function TimelineOptions(props) {
 	return (
 		<div className={'options-panel'} style={{ ...props.style, width: '20rem', margin: '0 4rem 0 3rem' }}>
-			<TimelineDisplaySelect setDisplayOptions={props.setDisplayOptions} displayOptions={props.displayOptions} />
-			<TimelineZoomSelect timeOptions={props.timeOptions} setTimeOptions={props.setTimeOptions} />
+			<TimelineDisplaySelect setOptions={props.setOptions} options={props.options} />
+			<TimelineZoomSelect options={props.options} setOptions={props.setOptions} />
 		</div>
 	);
 }

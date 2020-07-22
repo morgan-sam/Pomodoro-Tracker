@@ -10,12 +10,12 @@ function GraphDisplaySelect(props) {
 					className={'graph-period-select graph-selection-dropdown'}
 					style={{ zIndex: '2' }}
 					options={[ 'week ahead', 'week passed', 'month' ]}
-					default={props.displayOptions.graph.period}
+					default={props.options.graph.period}
 					onClick={(el) =>
-						props.setDisplayOptions({
-							...props.displayOptions,
+						props.setOptions({
+							...props.options,
 							graph: {
-								...props.displayOptions.graph,
+								...props.options.graph,
 								period: el
 							}
 						})}
@@ -26,12 +26,12 @@ function GraphDisplaySelect(props) {
 				<Dropdown
 					className={'graph-type-select graph-selection-dropdown'}
 					options={[ 'scatter', 'line', 'both' ]}
-					default={props.displayOptions.graph.type}
+					default={props.options.graph.type}
 					onClick={(el) =>
-						props.setDisplayOptions({
-							...props.displayOptions,
+						props.setOptions({
+							...props.options,
 							graph: {
-								...props.displayOptions.graph,
+								...props.options.graph,
 								type: el
 							}
 						})}
@@ -43,12 +43,12 @@ function GraphDisplaySelect(props) {
 					type="range"
 					min="1"
 					max="20"
-					value={props.displayOptions.graph.maxPomodoro}
+					value={props.options.graph.maxPomodoro}
 					onChange={(el) => {
-						props.setDisplayOptions({
-							...props.displayOptions,
+						props.setOptions({
+							...props.options,
 							graph: {
-								...props.displayOptions.graph,
+								...props.options.graph,
 								maxPomodoro: el.target.value
 							}
 						});
