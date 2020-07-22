@@ -7,7 +7,7 @@ function GraphDisplaySelect(props) {
 			<div>
 				<span className={'graph-display-select-label'}>Graph Period:</span>
 				<Dropdown
-					className={'graph-selection-dropdown graph-period-select'}
+					className={'graph-period-select graph-selection-dropdown'}
 					style={{ zIndex: '2' }}
 					options={[ 'week ahead', 'week passed', 'month' ]}
 					default={props.displayOptions.graph.period}
@@ -24,7 +24,7 @@ function GraphDisplaySelect(props) {
 			<div>
 				<span className={'graph-display-select-label'}>Graph Type:</span>
 				<Dropdown
-					className={'graph-selection-dropdown'}
+					className={'graph-type-select graph-selection-dropdown'}
 					options={[ 'scatter', 'line', 'both' ]}
 					default={props.displayOptions.graph.type}
 					onClick={(el) =>

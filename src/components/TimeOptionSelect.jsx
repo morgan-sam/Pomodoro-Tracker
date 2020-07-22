@@ -8,7 +8,7 @@ function TimeOptionSelect(props) {
 			<div>
 				<span className={'time-option-label time-option-element'}>Start Hour:</span>
 				<Dropdown
-					className={'time-option-drop-down'}
+					className={'start-time-select time-option-drop-down'}
 					default={
 						props.timeOptions.twelveHourClock ? (
 							convert24hrTo12hrTime(props.timeOptions.startTime)
@@ -29,7 +29,7 @@ function TimeOptionSelect(props) {
 			<div>
 				<span className={'time-option-label time-option-element'}>End Hour:</span>
 				<Dropdown
-					className={'time-option-drop-down'}
+					className={'end-time-select time-option-drop-down'}
 					default={
 						props.timeOptions.twelveHourClock ? (
 							convert24hrTo12hrTime(props.timeOptions.endTime)
