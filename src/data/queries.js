@@ -9,6 +9,10 @@ export const getEntries = async () => {
 	});
 };
 
+export const postOptions = async (options) => {
+	return firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/settings').set(options);
+};
+
 export const reauthenticate = async (password) => {
 	const user = firebase.auth().currentUser;
 	const credential = firebaseApp.auth.EmailAuthProvider.credential(user.email, password);

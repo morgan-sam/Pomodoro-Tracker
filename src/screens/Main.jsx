@@ -6,7 +6,7 @@ import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
 import { convertUTCISOToUKObj } from 'utility/parseDates';
 import { getAppContainerStyle } from 'styles/app';
-import { getEntries } from 'data/queries';
+import { getEntries, postOptions } from 'data/queries';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
@@ -92,6 +92,7 @@ function App() {
 
 	useEffect(
 		() => {
+			postOptions(options);
 			window.localStorage.setItem('options', JSON.stringify(options));
 		},
 		[ options ]
