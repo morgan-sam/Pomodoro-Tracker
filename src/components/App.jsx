@@ -1,7 +1,7 @@
 import React from 'react';
 import Main from 'components/Main';
 import Home from 'components/Home';
-import Settings from 'components/Settings';
+import Settings from 'screens/Settings';
 import Script from 'components/Script';
 import LoginSignUp from 'components/LoginSignUp';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
