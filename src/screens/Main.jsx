@@ -5,7 +5,7 @@ import BottomPanel from 'components/BottomPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
 import { convertUTCISOToUKObj } from 'utility/parseDates';
-import { getAppContainerStyle, panelContainerStyle } from 'styles/app';
+import { getAppContainerStyle } from 'styles/app';
 import { getEntries } from 'data/queries';
 
 function App() {
