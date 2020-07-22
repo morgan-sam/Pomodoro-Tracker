@@ -12,7 +12,6 @@ function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ todaysCommits, setTodaysCommits ] = useState(null);
 	const [ filterOptions, setFilterOptions ] = useState({
-		type: null,
 		date: convertUTCISOToUKObj(new Date().toISOString()).date
 	});
 	const [ displayOptions, setDisplayOptions ] = useState({
