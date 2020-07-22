@@ -2,9 +2,9 @@ import firebase from 'config/firebase';
 import firebaseApp from 'firebase/app';
 
 export const getEntries = async () => {
-	return firebase.database().ref('/users/').once('value').then((snapshot) => {
+	return firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then((snapshot) => {
 		const raw = snapshot.val();
-		const values = Object.values(raw[firebase.auth().currentUser.uid].events);
+		const values = Object.values(raw.events);
 		return values;
 	});
 };

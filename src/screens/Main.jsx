@@ -53,11 +53,10 @@ function App() {
 		(async () => {
 			try {
 				const entries = await getEntries();
-				console.log(entries);
 				const correctedTimezoneData = convertDataToUKTimezone(entries);
 				setEntriesData(correctedTimezoneData);
-				const todaysCommits = await getTodaysGithubCommits();
-				setTodaysCommits(todaysCommits);
+				// const todaysCommits = await getTodaysGithubCommits();
+				// setTodaysCommits(todaysCommits);
 			} catch (error) {
 				console.log(error);
 			}
