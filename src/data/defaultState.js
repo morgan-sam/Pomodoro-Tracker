@@ -4,8 +4,7 @@ export const defaultOptions = {
 		encore: true,
 		startTime: 8,
 		endTime: 24,
-		twelveHourClock: true,
-		hourWidth: 5
+		twelveHourClock: true
 	},
 	graph: {
 		visible: true,

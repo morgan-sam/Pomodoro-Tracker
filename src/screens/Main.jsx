@@ -14,6 +14,7 @@ function App() {
 	const [ todaysCommits, setTodaysCommits ] = useState(null);
 	const [ date, setDate ] = useState(convertUTCISOToUKObj(new Date().toISOString()).date);
 	const [ options, setOptions ] = useState(defaultOptions);
+	const [ hourWidth, setHourWidth ] = useState(getAutoHourWidth(options.timeline));
 
 	function filterEntries(entries) {
 		return entries.filter((el) => {
@@ -90,7 +91,7 @@ function App() {
 	);
 
 	const setTimelineToFitWindow = () => {
-		setOptions({ ...options, timeline: { ...options.timeline, hourWidth: getAutoHourWidth(options.timeline) } });
+		setHourWidth(getAutoHourWidth(options.timeline));
 	};
 
 	const optionProps = {
@@ -105,6 +106,7 @@ function App() {
 				<TopPanel
 					filteredEntries={filterEntries(entriesData)}
 					todaysCommits={todaysCommits}
+					hourWidth={hourWidth}
 					eventLengths={{
 						pomodoro: 25,
 						encore: 5

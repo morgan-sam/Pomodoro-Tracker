@@ -23,8 +23,8 @@ function DayTimeline(props) {
 					key={i}
 					style={{
 						...getBoxStyle(props.options.darkTheme),
-						maxWidth: `${props.options.timeline.hourWidth}rem`,
-						minWidth: `${props.options.timeline.hourWidth}rem`,
+						maxWidth: `${props.hourWidth}rem`,
+						minWidth: `${props.hourWidth}rem`,
 						zIndex: props.options.timeline.grid ? '1' : '0'
 					}}
 				>
@@ -77,8 +77,8 @@ function DayTimeline(props) {
 
 	function getEventBoxStyle(el) {
 		const hourPosition = calculateEventHourPosition(el);
-		const remPosition = (hourPosition - props.options.timeline.startTime) * props.options.timeline.hourWidth;
-		const eventWidth = props.options.timeline.hourWidth / 60 * eventLengths[el.type];
+		const remPosition = (hourPosition - props.options.timeline.startTime) * props.hourWidth;
+		const eventWidth = props.hourWidth / 60 * eventLengths[el.type];
 		const overflow = calculateEventOverflow(eventWidth, remPosition);
 
 		return {
@@ -93,14 +93,13 @@ function DayTimeline(props) {
 	}
 
 	function calculateEventOverflow(eventWidth, remPosition) {
-		const timelineWidth =
-			(props.options.timeline.endTime - props.options.timeline.startTime) * props.options.timeline.hourWidth;
+		const timelineWidth = (props.options.timeline.endTime - props.options.timeline.startTime) * props.hourWidth;
 		const eventEndPosition = eventWidth + remPosition;
 		return Math.max(0, eventEndPosition - timelineWidth);
 	}
 
 	const currentTimeMarker = () => {
-		const width = props.options.timeline.hourWidth;
+		const width = props.hourWidth;
 		const { hour, minute } = getTodaysDateAsObj().time;
 		const time = width * (minute / 60 + hour - props.options.timeline.startTime);
 		return <div style={{ ...currentTimeMarkerStyle, left: `${time}rem` }} />;

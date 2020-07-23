@@ -28,6 +28,7 @@ function TopPanel(props) {
 				<DarkThemeToggle options={props.options} setOptions={props.setOptions} />
 			</div>
 			<DayTimeline
+				hourWidth={props.hourWidth}
 				entries={props.filteredEntries}
 				eventLengths={props.eventLengths}
 				options={props.options}

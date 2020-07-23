@@ -14,7 +14,6 @@ import 'css/optionsPanel.css';
 import 'css/dateSelect.css';
 import 'css/dayTimeline.css';
 import 'css/dateArrowButton.css';
-import 'css/timelineZoomSelect.css';
 import 'css/topPanel.css';
 import 'css/graphDisplaySelect.css';
 
