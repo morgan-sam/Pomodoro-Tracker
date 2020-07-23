@@ -18,12 +18,7 @@ function TopPanel(props) {
 				/>
 				<TimelineDateSelect date={props.date} setDate={props.setDate} />
 				<optionselect options={props.options} setOptions={props.setOptions} />
-				<TimelineOptions
-					options={props.options}
-					setOptions={props.setOptions}
-					options={props.options}
-					setOptions={props.setOptions}
-				/>
+				<TimelineOptions options={props.options} setOptions={props.setOptions} />
 				<GraphToggle options={props.options} setOptions={props.setOptions} />
 				<DarkThemeToggle options={props.options} setOptions={props.setOptions} />
 			</div>
@@ -31,7 +26,6 @@ function TopPanel(props) {
 				hourWidth={props.hourWidth}
 				entries={props.filteredEntries}
 				eventLengths={props.eventLengths}
-				options={props.options}
 				options={props.options}
 			/>
 		</div>
