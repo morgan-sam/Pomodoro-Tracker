@@ -6,29 +6,14 @@ import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
 import { convertUTCISOToUKObj } from 'utility/parseDates';
 import { getAppContainerStyle } from 'styles/app';
-import { getEntries, postOptions } from 'data/queries';
+import { getEntries, postOptions, getOptions } from 'data/queries';
+import { defaultOptions } from 'data/defaultState';
 
 function App() {
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ todaysCommits, setTodaysCommits ] = useState(null);
 	const [ date, setDate ] = useState(convertUTCISOToUKObj(new Date().toISOString()).date);
-	const [ options, setOptions ] = useState({
-		timeline: {
-			start: false,
-			encore: true,
-			startTime: 8,
-			endTime: 24,
-			twelveHourClock: true,
-			hourWidth: 5
-		},
-		graph: {
-			visible: true,
-			period: 'week passed',
-			type: 'both',
-			maxPomodoro: 14
-		},
-		darkTheme: true
-	});
+	const [ options, setOptions ] = useState(defaultOptions);
 
 	function filterEntries(entries) {
 		return entries.filter((el) => {
@@ -78,8 +63,11 @@ function App() {
 	};
 
 	useEffect(() => {
-		const localOptions = JSON.parse(window.localStorage.getItem('options'));
-		if (localOptions) setOptions(localOptions);
+		const getOptionsFromDatabase = async () => {
+			const databaseOptions = await getOptions();
+			if (databaseOptions) setOptions(databaseOptions);
+		};
+		getOptionsFromDatabase();
 		setTimelineToFitWindow();
 	}, []);
 
@@ -92,8 +80,11 @@ function App() {
 
 	useEffect(
 		() => {
-			postOptions(options);
-			window.localStorage.setItem('options', JSON.stringify(options));
+			const setDatabaseOptions = async () => {
+				const databaseOptions = await getOptions();
+				if (JSON.stringify(options) !== JSON.stringify(databaseOptions)) postOptions(options);
+			};
+			setDatabaseOptions();
 		},
 		[ options ]
 	);

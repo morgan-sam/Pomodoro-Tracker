@@ -9,6 +9,14 @@ export const getEntries = async () => {
 	});
 };
 
+export const getOptions = async () => {
+	return firebase
+		.database()
+		.ref('/users/' + firebase.auth().currentUser.uid + '/settings')
+		.once('value')
+		.then((snapshot) => snapshot.val());
+};
+
 export const postOptions = async (options) => {
 	return firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/settings').set(options);
 };
