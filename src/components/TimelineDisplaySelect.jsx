@@ -3,7 +3,7 @@ import BounceButton from 'components/BounceButton';
 
 function TimelineDisplaySelect(props) {
 	return (
-		<div style={{ ...props.style }}>
+		<div style={{ ...props.style, display: 'flex', flexDirection: 'column', padding: '2rem' }}>
 			<BounceButton
 				onClick={() =>
 					props.setOptions({

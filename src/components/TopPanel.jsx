@@ -2,7 +2,7 @@ import React from 'react';
 import TopPageText from 'components/TopPageText';
 import DateNavigation from 'components/DateNavigation';
 import TimeOptionSelect from 'components/TimeOptionSelect';
-import TimelineOptions from 'components/TimelineOptions';
+import TimelineDisplaySelect from 'components/TimelineDisplaySelect';
 import GraphToggle from 'components/GraphToggle';
 import DarkThemeToggle from 'components/DarkThemeToggle';
 import DayTimeline from 'components/DayTimeline';
@@ -18,7 +18,7 @@ function TopPanel(props) {
 				/>
 				<DateNavigation date={props.date} setDate={props.setDate} />
 				<TimeOptionSelect options={props.options} setOptions={props.setOptions} />
-				<TimelineOptions options={props.options} setOptions={props.setOptions} />
+				<TimelineDisplaySelect options={props.options} setOptions={props.setOptions} />
 				<GraphToggle options={props.options} setOptions={props.setOptions} />
 				<DarkThemeToggle options={props.options} setOptions={props.setOptions} />
 			</div>
