@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import { convertObjectKeyRouteToTitleCase } from 'utility/parseText';
 import { postOptions } from 'data/queries';
+import GraphDisplaySelect from 'components/GraphDisplaySelect';
 
 const DisplaySettings = (props) => {
 	const { options, setOptions } = props;
@@ -68,6 +69,7 @@ const DisplaySettings = (props) => {
 				<h2 className="header">Display Settings</h2>
 				<div className="button-column">
 					<div style={gridStyle}>{genCheckboxesWithLabelsArray()}</div>
+					<GraphDisplaySelect options={tempOptions} setOptions={setTempOptions} />
 				</div>
 				<div className="footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
