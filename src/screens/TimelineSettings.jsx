@@ -33,8 +33,6 @@ const TimelineSettings = (props) => {
 		iteration(objToCheck);
 		return booleanObjParams;
 	};
-	const boos = getBooleanObjParams(tempOptions);
-	console.log(boos);
 
 	const generateInverseNestedObject = (obj, route, iter = 0) => {
 		const spread = iter === 0 ? obj : obj[route.key[iter - 1]];
@@ -46,31 +44,20 @@ const TimelineSettings = (props) => {
 		else return !route.value;
 	};
 
-	const newObj = generateInverseNestedObject(tempOptions, boos[0]);
-	console.log(newObj);
-
-	const timelineSelects = [ 'encore', 'start', 'grid', 'twelveHourClock' ];
-	const checkWithLabelArray = () =>
-		timelineSelects.map((el, i) => {
+	const checkWithLabelArray = () => {
+		return getBooleanObjParams(tempOptions).map((el, i) => {
 			return [
-				<div key={`title${i}`}>{el}:</div>,
+				<div key={`title${i}`}>{el.key[el.key.length - 1]}:</div>,
 				<Checkbox
 					key={`check${i}`}
 					style={{ borderRadius: '100%', margin: '1rem' }}
-					default={tempOptions.timeline[el]}
+					default={el.value}
 					options={tempOptions}
-					onChange={() => {
-						setTempOptions({
-							...tempOptions,
-							timeline: {
-								...tempOptions.timeline,
-								[el]: !tempOptions.timeline[el]
-							}
-						});
-					}}
+					onChange={() => setTempOptions(generateInverseNestedObject(tempOptions, el))}
 				/>
 			];
 		});
+	};
 
 	return (
 		<div className="screenContainer">
