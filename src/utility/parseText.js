@@ -1,9 +1,5 @@
-export const capitalizeFirstLetter = (str) => {
-	if (typeof str === 'string' && str.length > 0) return str[0].toUpperCase() + str.slice(1);
-	else return str;
-};
+export const capitalizeFirstLetter = (str) => checkIfStr(str)[0].toUpperCase() + checkIfStr(str).slice(1);
 
-export const splitCamelCase = (str) => {
-	if (typeof str === 'string' && str.length > 0) return str.split(/(?=[A-Z])/).join(' ');
-	else return str;
-};
+export const splitCamelCase = (str) => checkIfStr(str).split(/(?=[A-Z])/).join(' ');
+
+const checkIfStr = (str) => (typeof str === 'string' && str.length > 0 ? str : 'ERROR');
