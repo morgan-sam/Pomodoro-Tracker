@@ -1,10 +1,6 @@
 import React from 'react';
 import TopPageText from 'components/TopPageText';
 import DateNavigation from 'components/DateNavigation';
-import TimeOptionSelect from 'components/TimeOptionSelect';
-import TimelineDisplaySelect from 'components/TimelineDisplaySelect';
-import GraphToggle from 'components/GraphToggle';
-import DarkThemeToggle from 'components/DarkThemeToggle';
 import DayTimeline from 'components/DayTimeline';
 
 function TopPanel(props) {
@@ -17,10 +13,6 @@ function TopPanel(props) {
 					todaysCommits={props.todaysCommits}
 				/>
 				<DateNavigation date={props.date} setDate={props.setDate} />
-				<TimeOptionSelect options={props.options} setOptions={props.setOptions} />
-				<TimelineDisplaySelect options={props.options} setOptions={props.setOptions} />
-				<GraphToggle options={props.options} setOptions={props.setOptions} />
-				<DarkThemeToggle options={props.options} setOptions={props.setOptions} />
 			</div>
 			<DayTimeline
 				hourWidth={props.hourWidth}
