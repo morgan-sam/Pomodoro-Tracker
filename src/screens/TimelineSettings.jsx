@@ -24,11 +24,11 @@ const TimelineSettings = (props) => {
 	const timelineSelects = [ 'encore', 'start', 'grid', 'twelveHourClock' ];
 
 	const checkWithLabelArray = () =>
-		timelineSelects.map((el) => {
-			console.log(tempOptions.timeline[el]);
+		timelineSelects.map((el, i) => {
 			return [
-				<div>{el}:</div>,
+				<div key={`title${i}`}>{el}:</div>,
 				<Checkbox
+					key={`check${i}`}
 					style={{ borderRadius: '100%', margin: '1rem' }}
 					default={tempOptions.timeline[el]}
 					options={tempOptions}
