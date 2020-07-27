@@ -7,7 +7,8 @@ const AuthRedirectRoute = ({ AuthComponent, redirect, ...rest }) => {
 	return (
 		<Route
 			{...rest}
-			render={(routeProps) => (currentUser ? <AuthComponent {...routeProps} /> : <Redirect to={redirect} />)}
+			render={(routeProps) =>
+				currentUser ? <AuthComponent {...routeProps} {...rest} /> : <Redirect to={redirect} />}
 		/>
 	);
 };

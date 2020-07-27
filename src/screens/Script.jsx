@@ -70,7 +70,7 @@ const downloadPomodoroScript = async (file, extension) => {
 	}
 };
 
-const Script = () => {
+const Script = (props) => {
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
 	return (

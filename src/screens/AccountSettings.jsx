@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
 import { accountFunctions } from 'controller/accountFunctions';
 
-const AccountSettings = () => {
+const AccountSettings = (props) => {
 	const { changePassword, changeEmail, resetAccount, deleteAccount } = accountFunctions;
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);

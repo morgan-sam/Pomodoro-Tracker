@@ -8,7 +8,7 @@ const PrivateRoute = ({ AuthComponent, DefaultComponent, ...rest }) => {
 		<Route
 			{...rest}
 			render={(routeProps) =>
-				currentUser ? <AuthComponent {...routeProps} /> : <DefaultComponent {...routeProps} />}
+				currentUser ? <AuthComponent {...routeProps} {...rest} /> : <DefaultComponent {...routeProps} />}
 		/>
 	);
 };

@@ -7,13 +7,12 @@ import { compareObjs } from 'utility/sortAndCompare';
 import { convertUTCISOToUKObj } from 'utility/parseDates';
 import { getAppContainerStyle } from 'styles/app';
 import { getEntries, postOptions, getOptions } from 'data/queries';
-import { defaultOptions } from 'data/defaultState';
 
-function App() {
+function Main(props) {
+	const { options, setOptions } = props;
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ todaysCommits, setTodaysCommits ] = useState(null);
 	const [ date, setDate ] = useState(convertUTCISOToUKObj(new Date().toISOString()).date);
-	const [ options, setOptions ] = useState(defaultOptions);
 	const [ hourWidth, setHourWidth ] = useState(getAutoHourWidth(options.timeline));
 
 	function filterEntries(entries) {
@@ -120,4 +119,4 @@ function App() {
 	);
 }
 
-export default App;
+export default Main;

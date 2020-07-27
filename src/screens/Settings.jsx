@@ -2,10 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
 
-const Settings = () => {
+const Settings = (props) => {
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
-
 	return (
 		<div className="screenContainer">
 			<div className="settingsBox">

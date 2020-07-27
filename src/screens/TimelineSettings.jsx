@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
 
-const TimelineSettings = () => {
+const TimelineSettings = (props) => {
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
 
