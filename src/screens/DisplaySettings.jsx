@@ -10,17 +10,17 @@ const DisplaySettings = (props) => {
 	const { options, setOptions } = props;
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
-
 	const [ tempOptions, setTempOptions ] = useState(options);
 
 	const gridStyle = {
 		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
+		gridTemplateColumns: 'auto auto',
 		gridTemplateRows: 'repeat(5, 1fr)',
-		gridColumnGap: '0px',
+		gridColumnGap: '2rem',
 		gridRowGap: '0px',
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		padding: '1rem'
 	};
 
 	const getBooleanObjParams = (objToCheck) => {
