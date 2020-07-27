@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
 import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
-import { convertCamelToCapital } from 'utility/parseText';
+import { convertObjectKeyRouteToTitleCase } from 'utility/parseText';
 import { postOptions } from 'data/queries';
 
 const DisplaySettings = (props) => {
@@ -49,7 +49,7 @@ const DisplaySettings = (props) => {
 	const checkWithLabelArray = () => {
 		return getBooleanObjParams(tempOptions).map((el, i) => {
 			return [
-				<div key={`title${i}`}>{convertCamelToCapital(el.key[el.key.length - 1])}:</div>,
+				<div key={`title${i}`}>{convertObjectKeyRouteToTitleCase(el.key.join(' '))}:</div>,
 				<Checkbox
 					key={`check${i}`}
 					style={{ borderRadius: '100%', margin: '1rem' }}
