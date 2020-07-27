@@ -26,7 +26,7 @@ const DisplaySettings = (props) => {
 	const getBooleanObjParams = (objToCheck) => {
 		const booleanObjParams = [];
 		const iteration = (obj, layer = []) => {
-			Object.keys(obj).forEach((key) => {
+			Object.keys(obj).sort().forEach((key) => {
 				if (typeof obj[key] === 'object') iteration(obj[key], [ ...layer, key ]);
 				else if (typeof obj[key] === 'boolean')
 					booleanObjParams.push({ value: obj[key], key: [ ...layer, key ] });
