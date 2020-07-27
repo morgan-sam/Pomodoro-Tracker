@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import { convertCamelToCapital } from 'utility/parseText';
 
-const TimelineSettings = (props) => {
+const DisplaySettings = (props) => {
 	const { options, setOptions } = props;
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
@@ -63,9 +63,8 @@ const TimelineSettings = (props) => {
 	return (
 		<div className="screenContainer">
 			<div className="settingsBox">
-				<h2 className="header">Timeline Settings</h2>
+				<h2 className="header">Display Settings</h2>
 				<div className="button-column">
-					<div>Timeline:</div>
 					<div style={gridStyle}>{checkWithLabelArray()}</div>
 				</div>
 				<div className="footer">
@@ -78,4 +77,4 @@ const TimelineSettings = (props) => {
 	);
 };
 
-export default TimelineSettings;
+export default DisplaySettings;

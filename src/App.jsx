@@ -3,7 +3,7 @@ import Main from 'screens/Main';
 import Home from 'screens/Home';
 import Settings from 'screens/Settings';
 import AccountSettings from 'screens/AccountSettings';
-import TimelineSettings from 'screens/TimelineSettings';
+import DisplaySettings from 'screens/DisplaySettings';
 import Script from 'screens/Script';
 import LoginSignUp from 'components/LoginSignUp';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -43,7 +43,7 @@ const App = () => {
 				<AuthRedirectRoute
 					exact
 					path="/settings/timeline"
-					AuthComponent={TimelineSettings}
+					AuthComponent={DisplaySettings}
 					redirect={'/login'}
 					{...{ options, setOptions }}
 				/>
