@@ -3,41 +3,12 @@ import bash from 'img/bash.svg';
 import python from 'img/python.svg';
 import FileIcon from 'components/FileIcon';
 import { useHistory } from 'react-router-dom';
-import { getSystemButtonStyle } from 'styles/settings';
 import bashScript from 'scripts/pomodoro.sh';
 import pythonScript from 'scripts/pomodoro.py';
 import firebase from 'firebase/app';
 import { reauthenticate } from 'data/queries';
-
-const screenContainer = {
-	position: 'absolute',
-	top: '0',
-	left: '0',
-	height: '100vh',
-	width: '100vw',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center'
-};
-
-const settingsBox = {
-	width: 'fit-content',
-	height: 'fit-content',
-	border: '1px solid black',
-	display: 'flex',
-	alignItems: 'center',
-	borderRadius: '1rem',
-	flexDirection: 'column',
-	padding: '2rem'
-};
-
-const titleStyle = {
-	padding: '1rem'
-};
-
-const returnButtonContainer = {
-	padding: '3rem 0 2rem 0'
-};
+import { getAppContainerStyle } from 'styles/app';
+import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
 
 const downloadFile = (filename, text) => {
 	const element = document.createElement('a');
@@ -71,12 +42,12 @@ const downloadPomodoroScript = async (file, extension) => {
 };
 
 const Script = (props) => {
+	const { options } = props;
 	const history = useHistory();
-	const accountButtonStyle = getSystemButtonStyle(false);
 	return (
-		<div style={screenContainer}>
-			<div style={settingsBox}>
-				<h2 style={titleStyle}>Download Script</h2>
+		<div className="screenContainer" style={getAppContainerStyle(options.darkTheme)}>
+			<div className="settingsBox" style={getSettingsBoxStyle(options.darkTheme)}>
+				<h2 className="header">Download Script</h2>
 				<div
 					style={{
 						display: 'flex',
@@ -99,8 +70,8 @@ const Script = (props) => {
 						text={'pomodoro.py'}
 					/>
 				</div>
-				<div style={returnButtonContainer}>
-					<button style={accountButtonStyle} onClick={() => history.push('/')}>
+				<div className="footer">
+					<button style={getSystemButtonStyle(false)} onClick={() => history.push('/')}>
 						Return
 					</button>
 				</div>
