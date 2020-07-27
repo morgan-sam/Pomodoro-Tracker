@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/systemSettings';
 import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
-import { splitCamelCase } from 'utility/parseText';
+import { convertCamelToCapital } from 'utility/parseText';
 
 const TimelineSettings = (props) => {
 	const { options, setOptions } = props;
@@ -48,7 +48,7 @@ const TimelineSettings = (props) => {
 	const checkWithLabelArray = () => {
 		return getBooleanObjParams(tempOptions).map((el, i) => {
 			return [
-				<div key={`title${i}`}>{splitCamelCase(el.key[el.key.length - 1])}:</div>,
+				<div key={`title${i}`}>{convertCamelToCapital(el.key[el.key.length - 1])}:</div>,
 				<Checkbox
 					key={`check${i}`}
 					style={{ borderRadius: '100%', margin: '1rem' }}
