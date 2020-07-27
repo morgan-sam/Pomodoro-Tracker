@@ -12,8 +12,8 @@ const Settings = (props) => {
 			<div className="settingsBox" style={getSettingsBoxStyle(options.darkTheme)}>
 				<h2 className="header">Settings</h2>
 				<div className="button-column">
-					<button style={accountButtonStyle} onClick={() => history.push('/settings/timeline')}>
-						Timeline Settings
+					<button style={accountButtonStyle} onClick={() => history.push('/settings/display')}>
+						Display Settings
 					</button>
 					<button style={accountButtonStyle} onClick={() => history.push('/settings/account')}>
 						Account Settings

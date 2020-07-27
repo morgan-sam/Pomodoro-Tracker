@@ -35,15 +35,15 @@ const App = () => {
 				/>
 				<AuthRedirectRoute
 					exact
-					path="/settings/account"
-					AuthComponent={AccountSettings}
+					path="/settings/display"
+					AuthComponent={DisplaySettings}
 					redirect={'/login'}
 					{...{ options, setOptions }}
 				/>
 				<AuthRedirectRoute
 					exact
-					path="/settings/timeline"
-					AuthComponent={DisplaySettings}
+					path="/settings/account"
+					AuthComponent={AccountSettings}
 					redirect={'/login'}
 					{...{ options, setOptions }}
 				/>
