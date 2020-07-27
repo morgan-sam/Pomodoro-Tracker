@@ -4,6 +4,7 @@ import { getSystemButtonStyle } from 'styles/systemSettings';
 import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import { convertCamelToCapital } from 'utility/parseText';
+import { postOptions } from 'data/queries';
 
 const DisplaySettings = (props) => {
 	const { options, setOptions } = props;
@@ -69,7 +70,17 @@ const DisplaySettings = (props) => {
 				</div>
 				<div className="footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
-						Return
+						{'Cancel'}
+					</button>
+					<button
+						style={accountButtonStyle}
+						onClick={() => {
+							setOptions(tempOptions);
+							postOptions(tempOptions);
+							history.push('/');
+						}}
+					>
+						{'Save'}
 					</button>
 				</div>
 			</div>
