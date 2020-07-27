@@ -50,9 +50,7 @@ const TimelineSettings = (props) => {
 			<div className="settingsBox">
 				<h2 className="header">Timeline Settings</h2>
 				<div className="button-column">
-					{/* <TimeOptionSelect options={props.options} setOptions={props.setOptions} /> */}
 					<div>Timeline:</div>
-
 					<div style={gridStyle}>{checkWithLabelArray()}</div>
 				</div>
 				<div className="footer">
