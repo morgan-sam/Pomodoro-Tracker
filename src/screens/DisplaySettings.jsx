@@ -1,11 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { getAppContainerStyle } from 'styles/app';
 import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
 import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import { convertObjectKeyRouteToTitleCase } from 'utility/parseText';
 import { postOptions } from 'data/queries';
-import { getAppContainerStyle } from 'styles/app';
 
 const DisplaySettings = (props) => {
 	const { options, setOptions } = props;

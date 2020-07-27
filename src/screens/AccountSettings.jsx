@@ -1,16 +1,18 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { getSystemButtonStyle } from 'styles/settings';
+import { getAppContainerStyle } from 'styles/app';
+import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
 import { accountFunctions } from 'controller/accountFunctions';
 
 const AccountSettings = (props) => {
+	const { options } = props;
 	const { changePassword, changeEmail, resetAccount, deleteAccount } = accountFunctions;
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
 
 	return (
-		<div className="screenContainer">
-			<div className="settingsBox">
+		<div className="screenContainer" style={getAppContainerStyle(options.darkTheme)}>
+			<div className="settingsBox" style={getSettingsBoxStyle(options.darkTheme)}>
 				<h2 className="header">Account Settings</h2>
 				<div className="accountButtonGrid">
 					<button style={accountButtonStyle} onClick={changePassword}>
