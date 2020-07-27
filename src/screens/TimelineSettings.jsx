@@ -26,7 +26,8 @@ const TimelineSettings = (props) => {
 		const iteration = (obj, layer = []) => {
 			Object.keys(obj).forEach((key) => {
 				if (typeof obj[key] === 'object') iteration(obj[key], [ ...layer, key ]);
-				else if (typeof obj[key] === 'boolean') booleanObjParams.push([ ...layer, key ]);
+				else if (typeof obj[key] === 'boolean')
+					booleanObjParams.push({ value: obj[key], key: [ ...layer, key ] });
 			});
 		};
 		iteration(objToCheck);
@@ -35,8 +36,20 @@ const TimelineSettings = (props) => {
 	const boos = getBooleanObjParams(tempOptions);
 	console.log(boos);
 
-	const timelineSelects = [ 'encore', 'start', 'grid', 'twelveHourClock' ];
+	const generateInverseNestedObject = (obj, route, iter = 0) => {
+		const spread = iter === 0 ? obj : obj[route.key[iter - 1]];
+		if (iter !== route.key.length)
+			return {
+				...spread,
+				[route.key[iter]]: generateInverseNestedObject(obj, route, ++iter)
+			};
+		else return !route.value;
+	};
 
+	const newObj = generateInverseNestedObject(tempOptions, boos[0]);
+	console.log(newObj);
+
+	const timelineSelects = [ 'encore', 'start', 'grid', 'twelveHourClock' ];
 	const checkWithLabelArray = () =>
 		timelineSelects.map((el, i) => {
 			return [
