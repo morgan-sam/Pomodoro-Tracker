@@ -21,6 +21,20 @@ const TimelineSettings = (props) => {
 		justifyContent: 'center'
 	};
 
+	const getBooleanObjParams = (objToCheck) => {
+		const booleanObjParams = [];
+		const iteration = (obj, layer = []) => {
+			Object.keys(obj).forEach((key) => {
+				if (typeof obj[key] === 'object') iteration(obj[key], [ ...layer, key ]);
+				else if (typeof obj[key] === 'boolean') booleanObjParams.push([ ...layer, key ]);
+			});
+		};
+		iteration(objToCheck);
+		return booleanObjParams;
+	};
+	const boos = getBooleanObjParams(tempOptions);
+	console.log(boos);
+
 	const timelineSelects = [ 'encore', 'start', 'grid', 'twelveHourClock' ];
 
 	const checkWithLabelArray = () =>
