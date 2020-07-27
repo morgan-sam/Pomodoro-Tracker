@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import { convertObjectKeyRouteToTitleCase } from 'utility/parseText';
 import { postOptions } from 'data/queries';
+import { getAppContainerStyle } from 'styles/app';
 
 const DisplaySettings = (props) => {
 	const { options, setOptions } = props;
@@ -62,7 +63,7 @@ const DisplaySettings = (props) => {
 	};
 
 	return (
-		<div className="screenContainer">
+		<div className="screenContainer" style={getAppContainerStyle(tempOptions.darkTheme)}>
 			<div className="settingsBox">
 				<h2 className="header">Display Settings</h2>
 				<div className="button-column">
