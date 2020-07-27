@@ -3,7 +3,7 @@ import bash from 'img/bash.svg';
 import python from 'img/python.svg';
 import FileIcon from 'components/FileIcon';
 import { useHistory } from 'react-router-dom';
-import { getSystemButtonStyle } from 'styles/systemSettings';
+import { getSystemButtonStyle } from 'styles/settings';
 import bashScript from 'scripts/pomodoro.sh';
 import pythonScript from 'scripts/pomodoro.py';
 import firebase from 'firebase/app';

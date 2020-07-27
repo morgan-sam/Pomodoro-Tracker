@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from 'config/firebase';
 import { useHistory } from 'react-router-dom';
-import { getSystemButtonStyle } from 'styles/systemSettings';
+import { getSystemButtonStyle } from 'styles/settings';
 
 const btnContainerStyle = {
 	position: 'absolute',

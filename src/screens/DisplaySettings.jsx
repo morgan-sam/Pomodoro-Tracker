@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { getSystemButtonStyle } from 'styles/systemSettings';
+import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
 import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import { convertObjectKeyRouteToTitleCase } from 'utility/parseText';
@@ -64,7 +64,7 @@ const DisplaySettings = (props) => {
 
 	return (
 		<div className="screenContainer" style={getAppContainerStyle(tempOptions.darkTheme)}>
-			<div className="settingsBox">
+			<div className="settingsBox" style={getSettingsBoxStyle(tempOptions.darkTheme)}>
 				<h2 className="header">Display Settings</h2>
 				<div className="button-column">
 					<div style={gridStyle}>{genCheckboxesWithLabelsArray()}</div>

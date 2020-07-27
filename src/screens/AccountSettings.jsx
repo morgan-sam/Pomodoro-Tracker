@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { getSystemButtonStyle } from 'styles/systemSettings';
+import { getSystemButtonStyle } from 'styles/settings';
 import { accountFunctions } from 'controller/accountFunctions';
 
 const AccountSettings = (props) => {
