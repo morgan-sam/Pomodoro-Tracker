@@ -19,9 +19,9 @@
 .switch-month-btn-container {
 	position: absolute;
 	top: 1rem;
-	width: 90%;
+	width: 55%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 
 .switch-month-btn {
