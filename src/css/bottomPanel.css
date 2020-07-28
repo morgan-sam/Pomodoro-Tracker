@@ -6,10 +6,20 @@
 
 .canvas-container {
 	position: relative;
+	display: flex;
+	justify-content: center;
 }
 
 .switch-graph-view-btn {
 	position: absolute;
 	top: 1rem;
 	right: 1rem;
+}
+
+.switch-month-btn-container {
+	position: absolute;
+	top: 1rem;
+	width: 75%;
+	display: flex;
+	justify-content: space-around;
 }

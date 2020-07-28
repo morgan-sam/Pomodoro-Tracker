@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import GraphCanvas from 'components/GraphCanvas';
 import { getSystemButtonStyle } from 'styles/settings';
 import { graphPeriodOptions } from 'data/defaultState';
+import { monthStringArray } from 'data/dates';
 
 function GraphPanel(props) {
+	const { date, setDate, options, entriesData } = props;
 	const [ periodOffset, setPeriodOffset ] = useState(0);
 	const darkTheme = props.options.darkTheme;
 
 	const getNewPeriod = () => {
-		const index = graphPeriodOptions.findIndex((el) => el === props.options.graph.period);
+		const index = graphPeriodOptions.findIndex((el) => el === options.graph.period);
 		return graphPeriodOptions[(index + periodOffset) % graphPeriodOptions.length];
 	};
 
@@ -21,11 +23,19 @@ function GraphPanel(props) {
 			>
 				Switch View
 			</div>
+			{getNewPeriod() === 'month' ? (
+				<div className={'switch-month-btn-container'}>
+					<button style={getSystemButtonStyle(darkTheme)} onClick={() => setDate}>{`⬅ ${monthStringArray[
+						date.month - 2
+					]}`}</button>
+					<button style={getSystemButtonStyle(darkTheme)}>{`${monthStringArray[date.month]} ➡`}</button>
+				</div>
+			) : null}
 			<GraphCanvas
-				entriesData={props.entriesData}
-				date={props.date}
-				options={props.options}
-				{...props.options.graph}
+				entriesData={entriesData}
+				date={date}
+				options={options}
+				{...options.graph}
 				period={getNewPeriod()}
 			/>
 		</div>
