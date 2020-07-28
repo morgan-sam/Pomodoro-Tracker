@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import GraphCanvas from 'components/GraphCanvas';
 import { getSystemButtonStyle } from 'styles/settings';
 import { graphPeriodOptions } from 'data/defaultState';
-import { monthStringArray } from 'data/dates';
+import { monthStringArray, addSubtractMonthsFromDateObj } from 'data/dates';
 
 function GraphPanel(props) {
 	const { date, setDate, options, entriesData } = props;
@@ -25,10 +25,16 @@ function GraphPanel(props) {
 			</div>
 			{getNewPeriod() === 'month' ? (
 				<div className={'switch-month-btn-container'}>
-					<button style={getSystemButtonStyle(darkTheme)} onClick={() => setDate}>{`⬅ ${monthStringArray[
-						date.month - 2
-					]}`}</button>
-					<button style={getSystemButtonStyle(darkTheme)}>{`${monthStringArray[date.month]} ➡`}</button>
+					<button
+						className={'switch-month-btn'}
+						style={{ ...getSystemButtonStyle(darkTheme), padding: '0.5rem' }}
+						onClick={() => setDate(addSubtractMonthsFromDateObj(date, -1))}
+					>{`⬅   ${monthStringArray[(date.month - 2 + 12) % 12]}`}</button>
+					<button
+						className={'switch-month-btn'}
+						style={{ ...getSystemButtonStyle(darkTheme), padding: '0.5rem' }}
+						onClick={() => setDate(addSubtractMonthsFromDateObj(date, 1))}
+					>{`${monthStringArray[(date.month + 12) % 12]}   ➡`}</button>
 				</div>
 			) : null}
 			<GraphCanvas

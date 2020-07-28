@@ -19,7 +19,14 @@
 .switch-month-btn-container {
 	position: absolute;
 	top: 1rem;
-	width: 75%;
+	width: 90%;
 	display: flex;
 	justify-content: space-around;
+}
+
+.switch-month-btn {
+	position: relative;
+	font-size: 0.7rem;
+	width: 6rem;
+	white-space: pre;
 }

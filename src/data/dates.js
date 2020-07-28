@@ -106,3 +106,17 @@ export const addSubtractDaysFromDateObj = (date, dayChange) => {
 	let numberOfDays = dateToNumberOfDaysFromZeroAD(date);
 	return numberOfDaysFromZeroADToDate(numberOfDays + dayChange);
 };
+
+//resets to first day of month
+export const addSubtractMonthsFromDateObj = (date, monthChange) => {
+	let { month, year } = date;
+	month += monthChange;
+	if (month > 12) {
+		month -= 12;
+		++year;
+	} else if (month < 1) {
+		month += 12;
+		--year;
+	}
+	return { day: 1, month, year };
+};
