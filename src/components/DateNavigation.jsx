@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import DateSelect from 'components/DateSelect';
 import DateArrowButton from 'components/DateArrowButton';
 import { getTodaysDateAsObj } from 'data/dates';
 import { getSystemButtonStyle } from 'styles/settings';
+import ThemeContext from 'context/theme';
 
 const DateNavigation = (props) => {
-	const darkTheme = props.options.darkTheme;
+	const darkTheme = useContext(ThemeContext);
 	return (
 		<div className={'date-nav-container'}>
 			<DateSelect

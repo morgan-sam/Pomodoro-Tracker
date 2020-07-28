@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import GraphCanvas from 'components/GraphCanvas';
 import { getSystemButtonStyle } from 'styles/settings';
 import { graphPeriodOptions } from 'data/defaultState';
 import { monthStringArray, addSubtractMonthsFromDateObj } from 'data/dates';
+import ThemeContext from 'context/theme';
 
 function GraphPanel(props) {
 	const { date, setDate, options, entriesData } = props;
 	const [ periodOffset, setPeriodOffset ] = useState(0);
-	const darkTheme = props.options.darkTheme;
+	const darkTheme = useContext(ThemeContext);
 
 	const getNewPeriod = () => {
 		const index = graphPeriodOptions.findIndex((el) => el === options.graph.period);

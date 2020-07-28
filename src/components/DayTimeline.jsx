@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
 	getBoxStyle,
 	textStyle,
@@ -9,8 +9,10 @@ import {
 } from 'styles/dayTimeline';
 import { getTodaysDateAsObj } from 'data/dates';
 import { convert24hrTo12hrTime } from 'utility/parseTime';
+import ThemeContext from 'context/theme';
 
 function DayTimeline(props) {
+	const darkTheme = useContext(ThemeContext);
 	const eventLengths = {
 		...props.eventLengths,
 		start: 1
@@ -22,7 +24,7 @@ function DayTimeline(props) {
 				<div
 					key={i}
 					style={{
-						...getBoxStyle(props.options.darkTheme),
+						...getBoxStyle(darkTheme),
 						maxWidth: `${props.hourWidth}rem`,
 						minWidth: `${props.hourWidth}rem`,
 						zIndex: props.options.timeline.grid ? '1' : '0'
@@ -67,8 +69,8 @@ function DayTimeline(props) {
 			<div
 				key={i}
 				style={{
-					...getDefaultEventBoxStyle(props.options.darkTheme),
-					...getEventBoxTypeStyle(props.options.darkTheme)[el.type],
+					...getDefaultEventBoxStyle(darkTheme),
+					...getEventBoxTypeStyle(darkTheme)[el.type],
 					...getEventBoxStyle(el)
 				}}
 			/>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { addSubtractDaysFromDateObj } from 'data/dates';
 import { getSystemButtonStyle } from 'styles/settings';
+import ThemeContext from 'context/theme';
 
 const DateArrowButton = (props) => {
-	const darkTheme = props.options.darkTheme;
+	const darkTheme = useContext(ThemeContext);
 	const dayDifference = props.direction === 'left' ? -1 : 1;
 	return (
 		<button
