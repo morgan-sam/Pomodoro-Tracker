@@ -4,6 +4,7 @@ import { getSystemButtonStyle } from 'styles/settings';
 import { graphPeriodOptions } from 'data/defaultState';
 import { monthStringArray, addSubtractMonthsFromDateObj } from 'data/dates';
 import ThemeContext from 'context/theme';
+import { convertObjectKeyRouteToTitleCase } from 'utility/parseText';
 
 function GraphPanel(props) {
 	const { date, setDate, options, entriesData } = props;
@@ -17,13 +18,15 @@ function GraphPanel(props) {
 
 	return (
 		<div className={'canvas-container'} style={props.style}>
-			<div
-				className={'switch-graph-view-btn'}
-				style={getSystemButtonStyle(darkTheme)}
-				onClick={() => setPeriodOffset((periodOffset + 1) % graphPeriodOptions.length)}
-			>
-				Switch View
-			</div>
+			{entriesData.length > 0 && (
+				<div
+					className={'switch-graph-view-btn'}
+					style={getSystemButtonStyle(darkTheme)}
+					onClick={() => setPeriodOffset((periodOffset + 1) % graphPeriodOptions.length)}
+				>
+					{convertObjectKeyRouteToTitleCase(getNewPeriod())}
+				</div>
+			)}
 			{getNewPeriod() === 'month' ? (
 				<div className={'switch-month-btn-container'}>
 					<button
