@@ -7,7 +7,8 @@ export const getSystemButtonStyle = (darkTheme) => {
 		borderRadius: '5px',
 		border: darkTheme ? 'none' : '1px solid #ccc',
 		boxShadow: '2px 2px #ccc',
-		cursor: 'pointer'
+		cursor: 'pointer',
+		userSelect: 'none'
 	};
 };
 
