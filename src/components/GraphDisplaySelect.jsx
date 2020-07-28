@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
+import { graphPeriodOptions } from 'data/defaultState';
 
 function GraphDisplaySelect(props) {
 	return (
@@ -9,7 +10,7 @@ function GraphDisplaySelect(props) {
 				<Dropdown
 					className={'graph-period-select graph-selection-dropdown'}
 					style={{ zIndex: '2' }}
-					options={[ 'week ahead', 'week passed', 'month' ]}
+					options={graphPeriodOptions}
 					default={props.options.graph.period}
 					onClick={(el) =>
 						props.setOptions({

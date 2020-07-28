@@ -14,3 +14,5 @@ export const defaultOptions = {
 	},
 	darkTheme: true
 };
+
+export const graphPeriodOptions = [ 'week ahead', 'week passed', 'month' ];
