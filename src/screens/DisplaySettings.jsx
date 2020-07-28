@@ -4,7 +4,7 @@ import { getAppContainerStyle } from 'styles/app';
 import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
 import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
-import { convertObjectKeyRouteToTitleCase } from 'utility/parseText';
+import { convertTextToTitleCase } from 'utility/parseText';
 import { postOptions } from 'data/queries';
 import GraphDisplaySelect from 'components/GraphDisplaySelect';
 
@@ -51,7 +51,7 @@ const DisplaySettings = (props) => {
 	const genCheckboxesWithLabelsArray = () => {
 		return getBooleanObjParams(tempOptions).map((el, i) => {
 			return [
-				<div key={`title${i}`}>{convertObjectKeyRouteToTitleCase(el.key.join(' '))}:</div>,
+				<div key={`title${i}`}>{convertTextToTitleCase(el.key.join(' '))}:</div>,
 				<Checkbox
 					key={`check${i}`}
 					style={{ borderRadius: '100%', margin: '1rem' }}

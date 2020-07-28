@@ -4,7 +4,7 @@ import { getSystemButtonStyle } from 'styles/settings';
 import { graphPeriodOptions } from 'data/defaultState';
 import { monthStringArray, addSubtractMonthsFromDateObj } from 'data/dates';
 import ThemeContext from 'context/theme';
-import { convertObjectKeyRouteToTitleCase } from 'utility/parseText';
+import { convertTextToTitleCase } from 'utility/parseText';
 
 function GraphPanel(props) {
 	const { date, setDate, options, entriesData } = props;
@@ -24,7 +24,7 @@ function GraphPanel(props) {
 					style={getSystemButtonStyle(darkTheme)}
 					onClick={() => setPeriodOffset((periodOffset + 1) % graphPeriodOptions.length)}
 				>
-					{convertObjectKeyRouteToTitleCase(getNewPeriod())}
+					{convertTextToTitleCase(getNewPeriod())}
 				</div>
 			)}
 			{getNewPeriod() === 'month' ? (
