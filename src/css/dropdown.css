@@ -45,14 +45,13 @@
 	position: absolute;
 	top: 0;
 	transform: translateY(-calc(var(--dropdown-height) / 2));
-	border-radius: 1rem;
+	border-radius: 10px;
 	overflow: hidden;
-	border: 1px solid black;
-	box-shadow: 0 0 2px 2px #ccc;
+	box-shadow: 2px 2px #ccc;
 }
 
 .dropdown-option {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #ccc;
 	width: inherit;
 }
 
@@ -82,6 +81,6 @@
 }
 
 .dropdown-end-node {
-	border-top: 1px solid black;
+	border-top: 1px solid #ccc;
 	z-index: 1;
 }
