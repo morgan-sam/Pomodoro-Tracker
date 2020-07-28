@@ -112,7 +112,7 @@ function Main(props) {
 					}}
 					{...optionProps}
 				/>
-				<TopRightButtons {...{ options }} />
+				<TopRightButtons />
 				{options.graph.visible && <BottomPanel entriesData={entriesData} {...optionProps} />}
 			</div>
 		</div>
