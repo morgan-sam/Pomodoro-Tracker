@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { capitalizeFirstLetter } from 'utility/parseText';
 import { DROPDOWN_HEIGHT_REMS } from 'styles/dropdown';
+import ThemeContext from 'context/theme';
 
 const Dropdown = (props) => {
-	//NEED TO USE CONTEXT TO GET DARK THEME
-	const darkTheme = props.options.darkTheme;
+	const darkTheme = useContext(ThemeContext);
 	const [ listOpen, setListOpen ] = useState(false);
 	const dropdownRef = useRef(null);
 
