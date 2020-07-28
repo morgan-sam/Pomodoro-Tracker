@@ -12,7 +12,7 @@ function TopPanel(props) {
 					date={props.date}
 					todaysCommits={props.todaysCommits}
 				/>
-				<DateNavigation date={props.date} setDate={props.setDate} />
+				<DateNavigation options={props.options} date={props.date} setDate={props.setDate} />
 			</div>
 			<DayTimeline
 				hourWidth={props.hourWidth}

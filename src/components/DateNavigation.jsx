@@ -1,10 +1,11 @@
 import React from 'react';
 import DateSelect from 'components/DateSelect';
-import BounceButton from 'components/BounceButton';
 import DateArrowButton from 'components/DateArrowButton';
 import { getTodaysDateAsObj } from 'data/dates';
+import { getSystemButtonStyle } from 'styles/settings';
 
 const DateNavigation = (props) => {
+	const darkTheme = props.options.darkTheme;
 	return (
 		<div className={'date-nav-container'}>
 			<DateSelect
@@ -13,14 +14,14 @@ const DateNavigation = (props) => {
 					props.setDate(dateObj);
 				}}
 			/>
-			<div>
+			<div className={'date-nav-arrow-container'}>
 				<DateArrowButton {...props} direction={'left'} />
-				<BounceButton
+				<button
 					onClick={() => props.setDate(getTodaysDateAsObj().date)}
-					delay={500}
-					text={'Reset To Today'}
-					style={{ margin: '1rem', padding: '1rem' }}
-				/>
+					style={getSystemButtonStyle(darkTheme)}
+				>
+					{'Reset To Today'}
+				</button>
 				<DateArrowButton {...props} direction={'right'} />
 			</div>
 		</div>
