@@ -1,13 +1,14 @@
 .time-option {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
+	z-index: 10;
 }
 
 .time-option-element {
-	margin: 1rem;
+	margin: 0 1rem;
 }
 
 .time-option-drop-down {

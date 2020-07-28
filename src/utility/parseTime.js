@@ -23,8 +23,8 @@ export const convert12hrTo24hrTime = (i) => {
 
 export const getArrayTimes = (twelveHourClock) => {
 	if (twelveHourClock) {
-		return [ ...Array(24).keys() ].map((el) => convert24hrTo12hrTime(el));
+		return [ ...Array(25).keys() ].map((el) => convert24hrTo12hrTime(el));
 	} else {
-		return [ ...Array(24).keys() ].map((el) => el);
+		return [ ...Array(25).keys() ].map((el) => el);
 	}
 };

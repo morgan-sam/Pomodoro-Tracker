@@ -4,6 +4,7 @@ import { getAppContainerStyle } from 'styles/app';
 import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
 import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
+import TimeOptionSelect from 'components/TimeOptionSelect';
 import { convertTextToTitleCase } from 'utility/parseText';
 import { postOptions } from 'data/queries';
 import GraphDisplaySelect from 'components/GraphDisplaySelect';
@@ -67,9 +68,14 @@ const DisplaySettings = (props) => {
 		<div className="screenContainer" style={getAppContainerStyle(tempOptions.darkTheme)}>
 			<div className="settingsBox" style={getSettingsBoxStyle(tempOptions.darkTheme)}>
 				<h2 className="header">Display Settings</h2>
-				<div className="button-column">
-					<div style={gridStyle}>{genCheckboxesWithLabelsArray()}</div>
-					<GraphDisplaySelect options={tempOptions} setOptions={setTempOptions} />
+				<div className={'two-by-one-grid'}>
+					<div className="button-column">
+						<div style={gridStyle}>{genCheckboxesWithLabelsArray()}</div>
+					</div>
+					<div className="button-column">
+						<TimeOptionSelect options={tempOptions} setOptions={setTempOptions} />
+						<GraphDisplaySelect options={tempOptions} setOptions={setTempOptions} />
+					</div>
 				</div>
 				<div className="footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
