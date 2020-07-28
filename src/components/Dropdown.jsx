@@ -3,6 +3,8 @@ import { capitalizeFirstLetter } from 'utility/parseText';
 import { DROPDOWN_HEIGHT_REMS } from 'styles/dropdown';
 
 const Dropdown = (props) => {
+	//NEED TO USE CONTEXT TO GET DARK THEME
+	const darkTheme = props.options.darkTheme;
 	const [ listOpen, setListOpen ] = useState(false);
 	const dropdownRef = useRef(null);
 
@@ -84,7 +86,7 @@ const Dropdown = (props) => {
 
 	return (
 		<div className={`${props.className} dropdown-parent`} style={{ ...props.style }}>
-			<div className={`${props.className} dropdown-element`}>
+			<div className={`${props.className} dropdown-element ${darkTheme ? 'dark-theme' : ''}`}>
 				<div
 					className={`${props.className} dropdown-option-container ${listOpen
 						? 'dropdown-open'
