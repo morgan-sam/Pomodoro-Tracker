@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'css/loading.css';
 import 'css/home.css';
 import 'css/settings.css';
 import 'css/main.css';
