@@ -100,7 +100,7 @@ function Main(props) {
 		setOptions
 	};
 	return (
-		<div className="App" style={getAppContainerStyle(options.darkTheme)}>
+		<div className="app" style={getAppContainerStyle(options.darkTheme)}>
 			<div className={'main-container'}>
 				<TopPanel
 					filteredEntries={filterEntries(entriesData)}
