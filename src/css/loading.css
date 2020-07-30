@@ -8,14 +8,14 @@
 }
 
 .loading-spinner {
-	height: 3rem;
-	width: 3rem;
-	border-top: 10px solid #4287f5;
-	border-right: 10px solid #eee;
-	border-bottom: 10px solid #eee;
-	border-left: 10px solid #eee;
+	height: 2rem;
+	width: 2rem;
+	border-top: 0.5rem solid #4287f5;
+	border-right: 0.5rem solid #eee;
+	border-bottom: 0.5rem solid #eee;
+	border-left: 0.5rem solid #eee;
 	border-radius: 100%;
-	animation: spin 1s cubic-bezier(.61, .14, .45, .93) infinite;
+	animation: spin 0.65s cubic-bezier(.43, .19, .53, .93) infinite;
 }
 
 @keyframes spin {

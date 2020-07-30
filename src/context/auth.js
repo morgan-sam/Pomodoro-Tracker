@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
 			setLoading(false);
 		});
 	}, []);
-	return <Loading />;
 	if (loading) return <Loading />;
 	else return <AuthContext.Provider value={{ currentUser }}>{children}</AuthContext.Provider>;
 };
