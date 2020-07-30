@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const Loading = () => {
-	const [ dotCount, setDotCount ] = useState(1);
-
-	useEffect(() => {
-		setTimeout(() => {
-			setDotCount(Math.max(1, (dotCount + 1) % 4));
-		}, 500);
-	});
-
-	return <div className={'loading-screen'}>{`Loading${'.'.repeat(dotCount)}`}</div>;
+	return (
+		<div className={'loading-screen'}>
+			<div className={'loading-spinner'} />
+		</div>
+	);
 };
 
 export default Loading;
