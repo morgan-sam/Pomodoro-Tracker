@@ -12,7 +12,7 @@ export const defaultOptions = {
 		type: 'both',
 		maxPomodoro: 14
 	},
-	darkTheme: true
+	darkTheme: false
 };
 
 export const graphPeriodOptions = [ 'week ahead', 'week passed', 'month' ];

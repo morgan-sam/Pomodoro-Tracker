@@ -8,6 +8,7 @@ import TimeOptionSelect from 'components/TimeOptionSelect';
 import { convertTextToTitleCase } from 'utility/parseText';
 import { postOptions } from 'data/queries';
 import GraphDisplaySelect from 'components/GraphDisplaySelect';
+import { defaultOptions } from 'data/defaultState';
 
 const DisplaySettings = (props) => {
 	const { options, setOptions } = props;
@@ -81,7 +82,16 @@ const DisplaySettings = (props) => {
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
 						{'Cancel'}
 					</button>
-					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
+					<button
+						style={accountButtonStyle}
+						onClick={() => {
+							if (window.confirm('Are you sure you want to reset settings to default?')) {
+								setOptions(defaultOptions);
+								postOptions(defaultOptions);
+								history.push('/');
+							}
+						}}
+					>
 						Reset To Default
 					</button>
 					<button
