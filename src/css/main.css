@@ -1,5 +1,8 @@
 .app {
 	opacity: 1;
+}
+
+.fade-in {
 	animation: fade-in 1 ease-in-out 1s;
 }
 

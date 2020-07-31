@@ -9,7 +9,7 @@ import { getAppContainerStyle } from 'styles/app';
 import { getEntries, postOptions, getOptions } from 'data/queries';
 
 function Main(props) {
-	const { options, setOptions } = props;
+	const { options, setOptions, fadeIn, setFadeIn } = props;
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ todaysCommits, setTodaysCommits ] = useState(null);
 	const [ date, setDate ] = useState(convertUTCISOToUKObj(new Date().toISOString()).date);
@@ -99,8 +99,13 @@ function Main(props) {
 		options,
 		setOptions
 	};
+
+	useEffect(() => {
+		setTimeout(() => setFadeIn(false), 1000);
+	}, []);
+
 	return (
-		<div className="app" style={getAppContainerStyle(options.darkTheme)}>
+		<div className={`app ${fadeIn ? 'fade-in' : ''}`} style={getAppContainerStyle(options.darkTheme)}>
 			<div className={'main-container'}>
 				<TopPanel
 					filteredEntries={filterEntries(entriesData)}

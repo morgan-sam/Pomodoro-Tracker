@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'context/theme';
 import Main from 'screens/Main';
 import Home from 'screens/Home';
@@ -15,6 +15,7 @@ import { defaultOptions } from 'data/defaultState';
 
 const App = () => {
 	const [ options, setOptions ] = useState(defaultOptions);
+	const [ fadeIn, setFadeIn ] = useState(true);
 	return (
 		<ThemeProvider value={options.darkTheme}>
 			<AuthProvider>
@@ -24,7 +25,7 @@ const App = () => {
 						path="/"
 						AuthComponent={Main}
 						DefaultComponent={Home}
-						{...{ options, setOptions }}
+						{...{ options, setOptions, fadeIn, setFadeIn }}
 					/>
 					<Route exact path="/login" render={(props) => <LoginSignUp type="login" {...props} />} />
 					<Route exact path="/signup" render={(props) => <LoginSignUp type="signup" {...props} />} />
