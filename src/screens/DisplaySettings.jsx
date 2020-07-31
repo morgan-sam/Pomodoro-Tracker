@@ -81,6 +81,9 @@ const DisplaySettings = (props) => {
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
 						{'Cancel'}
 					</button>
+					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
+						Reset To Default
+					</button>
 					<button
 						style={accountButtonStyle}
 						onClick={() => {
