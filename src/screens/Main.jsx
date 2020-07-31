@@ -101,7 +101,8 @@ function Main(props) {
 	};
 
 	useEffect(() => {
-		setTimeout(() => setFadeIn(false), 1000);
+		const fadeTimer = setTimeout(() => setFadeIn(false), 1000);
+		return () => clearTimeout(fadeTimer);
 	}, []);
 
 	return (
