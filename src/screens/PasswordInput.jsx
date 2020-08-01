@@ -11,23 +11,13 @@ const PasswordInput = (props) => {
 	const darkTheme = useContext(ThemeContext);
 	const history = useHistory();
 
-	const userCheckPassword = async (passwordMsg) => {
-		const password = prompt(passwordMsg);
-		if (password) return await reauthenticate(password);
-		else return false;
-	};
-
 	const onPasswordSubmit = async (e) => {
 		e.preventDefault();
 		const { password } = e.target.elements;
 		if (password.value) {
 			const authenticated = await reauthenticate(password.value);
-			console.log(authenticated);
 			return onConfirm(authenticated);
-		} else {
-			console.log('yoyoyo');
-			return onConfirm(false);
-		}
+		} else return onConfirm(false);
 	};
 
 	return (

@@ -7,6 +7,7 @@ import { accountFunctionTemplates } from 'controller/accountFunctions';
 import Confirm from 'screens/Confirm';
 import PasswordInput from 'screens/PasswordInput';
 import Input from 'screens/Input';
+import Alert from 'screens/Alert';
 
 const AccountSettings = () => {
 	const [ currentDisplay, setCurrentDisplay ] = useState('default');
@@ -22,15 +23,15 @@ const AccountSettings = () => {
 		input: null
 	});
 
-	const resetSequence = () => {
-		console.log('SEQUENCE IS RESETING');
+	const resetSequence = (message) => {
 		setSequence({
 			fnObj: null,
 			confirmed: null,
 			authorised: null,
 			input: null
 		});
-		return setCurrentDisplay('default');
+		if (message) setCurrentDisplay(message);
+		else return setCurrentDisplay('default');
 	};
 
 	const accountFunction = async (obj) => {
@@ -39,8 +40,8 @@ const AccountSettings = () => {
 		if (confirmMsg && confirmed === null) return setCurrentDisplay('confirm');
 		if (confirmed === false) return resetSequence();
 		if (passwordMsg && authorised === null) return setCurrentDisplay('password');
-		if (authorised === false) return resetSequence();
-		console.log('PASSWORD CONFIRMED');
+		if (authorised === false) return resetSequence('Incorrect Password');
+		resetSequence('Correct Password');
 		// const auth = passwordMsg ? await userCheckPassword(passwordMsg) : true;
 		// if (!auth) return alert('Incorrect Password');
 		// const input = inputMsg ? window.prompt(inputMsg) : false;
@@ -94,9 +95,6 @@ const AccountSettings = () => {
 		[ sequence ]
 	);
 
-	console.log(currentDisplay);
-	console.log(sequence);
-
 	if (currentDisplay === 'default') return accountButtons;
 	else if (currentDisplay === 'confirm')
 		return (
@@ -114,6 +112,7 @@ const AccountSettings = () => {
 		);
 	else if (currentDisplay === 'input')
 		return <Input message={sequence.fnObj.inputMsg} onSubmit={(val) => setSequence({ ...sequence, input: val })} />;
+	else return <Alert message={currentDisplay} />;
 };
 
 export default AccountSettings;
