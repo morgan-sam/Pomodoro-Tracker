@@ -34,16 +34,31 @@ export const reauthenticate = async (password) => {
 
 export const changePassword = async (newPassword) => {
 	const user = firebase.auth().currentUser;
-	return user.updatePassword(newPassword);
+	try {
+		user.updatePassword(newPassword);
+		return 'Successfully changed password';
+	} catch (error) {
+		return 'Failed to change password';
+	}
 };
 
 export const changeEmail = async (newEmail) => {
 	const user = firebase.auth().currentUser;
-	return user.updateEmail(newEmail);
+	try {
+		user.updateEmail(newEmail);
+		return 'Successfully changed email';
+	} catch (error) {
+		return 'Failed to change email';
+	}
 };
 
 export const deleteAllEntries = async () => {
-	return firebase.database().ref(`/users/${firebase.auth().currentUser.uid}`).remove();
+	try {
+		firebase.database().ref(`/users/${firebase.auth().currentUser.uid}`).remove();
+		return 'Successfully reset all entries';
+	} catch (error) {
+		return 'Failed to reset all entries';
+	}
 };
 
 export const deleteAccount = async () => {
