@@ -47,7 +47,7 @@ const Script = (props) => {
 	return (
 		<div className="screenContainer" style={getAppContainerStyle(options.darkTheme)}>
 			<div className="settingsBox" style={getSettingsBoxStyle(options.darkTheme)}>
-				<h2 className="header">Download Script</h2>
+				<h2 className="settings-header">Download Script</h2>
 				<div
 					style={{
 						display: 'flex',

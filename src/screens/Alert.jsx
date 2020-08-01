@@ -13,7 +13,7 @@ const Alert = (props) => {
 	return (
 		<div className="screenContainer" style={getAppContainerStyle(darkTheme)}>
 			<div className="settingsBox" style={getSettingsBoxStyle(darkTheme)}>
-				<h2 className="header">{message}</h2>
+				<h2 className="settings-header">{message}</h2>
 				<div className="settings-footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
 						Continue

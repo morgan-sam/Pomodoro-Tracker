@@ -14,7 +14,7 @@ const AccountSettingsOptions = (props) => {
 	return (
 		<div className="screenContainer" style={getAppContainerStyle(darkTheme)}>
 			<div className="settingsBox" style={getSettingsBoxStyle(darkTheme)}>
-				<h2 className="header">Account Settings</h2>
+				<h2 className="settings-header">Account Settings</h2>
 				<div className="accountButtonGrid">
 					<button
 						style={accountButtonStyle}
