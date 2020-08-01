@@ -1,11 +1,30 @@
 import requests
 import datetime
 import random
+import pyrebase
 import math
+import sys
 
 curYear = datetime.datetime.now().year
 curMonth = datetime.datetime.now().month
 curDay = datetime.datetime.now().day
+
+config = {
+    "apiKey": "AIzaSyB-j40wdFsSbJ7giMJJwQsymWacOFm0Boo",
+    "authDomain": "pomodoro-tracker-db95f.firebaseapp.com",
+    "databaseURL": "https://pomodoro-tracker-db95f.firebaseio.com",
+    "storageBucket": "pomodoro-tracker-db95f.appspot.com"
+}
+
+email = sys.argv[1]
+password = sys.argv[2]
+days = int(sys.argv[3]) if len(sys.argv) > 3 else 14
+
+firebase = pyrebase.initialize_app(config)
+auth = firebase.auth()
+user = auth.sign_in_with_email_and_password(
+    email, password)
+db = firebase.database()
 
 
 class Date:
@@ -23,9 +42,8 @@ class Time:
 
 
 def postEvent(iso, type):
-    url = 'https://pomodoro-tracker-db95f.firebaseio.com/users/23456789/events.json'
-    entry = {"type": type, "date": iso}
-    requests.post(url, json=entry)
+    db.child("users").child(user["localId"]).child("events").push(
+        {"type": type, "date": iso}, user["idToken"])
 
 
 def convertDateToIso(date, time):
@@ -72,10 +90,13 @@ def getOffsetDate(date, days):
 
 def addRangeOfDates():
     startingDate = datetime.datetime.now()
-    for i in range(14):
+    for i in range(days):
         newDate = getOffsetDate(startingDate, i)
         events = random.randint(6, 16)
         genRandomDayEvents(newDate, events)
 
 
-addRangeOfDates()
+if (len(sys.argv) == 1):
+    print('Usage: randomDataPost.py [EMAIL] [PASSWORD] [DAYS_TO_ADD]')
+else:
+    addRangeOfDates()
