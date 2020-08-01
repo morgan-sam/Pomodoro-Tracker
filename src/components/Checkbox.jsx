@@ -27,6 +27,7 @@ function Checkbox(props) {
 		height: '100%',
 		width: '100%',
 		transform: 'scale(0.65)',
+		transition: 'background-color 1s ease-in-out',
 		backgroundColor: options.darkTheme ? 'white' : '#444',
 		borderRadius: style ? style.borderRadius : null,
 		boxShadow: '0 0 1px 1px #ddd'
