@@ -138,13 +138,13 @@ const Home = () => {
 						href="/signup"
 						style={{
 							fontSize: '2rem',
-							color: '#fff',
-							border: '2px solid #26C6DA',
+							color: '#00899A',
+							border: '2px solid #00899A',
 							padding: '0.75rem 1.5rem',
-							borderRadius: '10px',
+							borderRadius: '5px',
 							textDecoration: 'none',
-							backgroundColor: '#4DD0E1',
-							boxShadow: '0.4rem 0.4rem #00ACC1'
+							backgroundColor: '#fff',
+							boxShadow: '0.4rem 0.4rem #B2E6EC'
 						}}
 					>
 						Get Started
