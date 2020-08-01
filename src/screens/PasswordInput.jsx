@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
-import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
+import { getSettingsBoxStyle } from 'styles/settings';
 import { reauthenticate } from 'data/queries';
 import ThemeContext from 'context/theme';
 import Form from 'components/Form';

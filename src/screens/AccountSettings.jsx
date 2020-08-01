@@ -36,7 +36,7 @@ const AccountSettings = () => {
 
 	const accountFunction = async (obj) => {
 		const { confirmMsg, passwordMsg, inputMsg, action } = obj;
-		const { fnObj, confirmed, authorised, input } = sequence;
+		const { confirmed, authorised, input } = sequence;
 		if (confirmMsg && confirmed === null) return setCurrentDisplay('confirm');
 		if (confirmed === false) return resetSequence();
 		if (passwordMsg && authorised === null) return setCurrentDisplay('password');

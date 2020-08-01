@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
-import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
+import { getSettingsBoxStyle } from 'styles/settings';
 import ThemeContext from 'context/theme';
 import Form from 'components/Form';
 
@@ -9,7 +9,6 @@ const Input = (props) => {
 	const { message, onSubmit } = props;
 	const darkTheme = useContext(ThemeContext);
 	const history = useHistory();
-	const accountButtonStyle = getSystemButtonStyle(darkTheme);
 
 	return (
 		<div className="screenContainer" style={getAppContainerStyle(darkTheme)}>
