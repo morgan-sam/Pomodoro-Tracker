@@ -1,20 +1,4 @@
-import { reauthenticate, changePassword, changeEmail, deleteAllEntries, deleteAccount } from 'data/queries';
-
-const userCheckPassword = async (passwordMsg) => {
-	const password = prompt(passwordMsg);
-	if (password) return await reauthenticate(password);
-	else return false;
-};
-
-const accountFunction = async (obj) => {
-	const { confirmMsg, passwordMsg, inputMsg, action } = obj;
-	const confirmed = confirmMsg ? window.confirm(confirmMsg) : true;
-	if (!confirmed) return null;
-	const auth = passwordMsg ? await userCheckPassword(passwordMsg) : true;
-	if (!auth) return alert('Incorrect Password');
-	const input = inputMsg ? window.prompt(inputMsg) : false;
-	return input ? action(input) : action();
-};
+import { changePassword, changeEmail, deleteAllEntries, deleteAccount } from 'data/queries';
 
 const changePasswordTemplate = {
 	confirmMsg: '',
@@ -44,9 +28,9 @@ const deleteAccountTemplate = {
 	action: deleteAccount
 };
 
-export const accountFunctions = {
-	changePassword: () => accountFunction(changePasswordTemplate),
-	changeEmail: () => accountFunction(changeEmailTemplate),
-	resetAccount: () => accountFunction(resetAccountTemplate),
-	deleteAccount: () => accountFunction(deleteAccountTemplate)
+export const accountFunctionTemplates = {
+	changePassword: changePasswordTemplate,
+	changeEmail: changeEmailTemplate,
+	resetAccount: resetAccountTemplate,
+	deleteAccount: deleteAccountTemplate
 };
