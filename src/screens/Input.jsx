@@ -3,9 +3,10 @@ import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
 import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
 import ThemeContext from 'context/theme';
+import Form from 'components/Form';
 
 const Input = (props) => {
-	const { inputMsg } = props;
+	const { message, onSubmit } = props;
 	const darkTheme = useContext(ThemeContext);
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(darkTheme);
@@ -13,16 +14,13 @@ const Input = (props) => {
 	return (
 		<div className="screenContainer" style={getAppContainerStyle(darkTheme)}>
 			<div className="settingsBox" style={getSettingsBoxStyle(darkTheme)}>
-				<h2 className="header">{inputMsg}</h2>
-				<form />
-				<div className="settings-footer">
-					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
-						Cancel
-					</button>
-					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
-						Confirm
-					</button>
-				</div>
+				<h2 className="header">{message}</h2>
+				<Form
+					inputs={[ 'password' ]}
+					submitText={'Confirm Password'}
+					onSubmit={onSubmit}
+					onCancel={() => history.push('/settings')}
+				/>
 			</div>
 		</div>
 	);

@@ -41,11 +41,9 @@ const AccountSettings = () => {
 		if (confirmed === false) return resetSequence();
 		if (passwordMsg && authorised === null) return setCurrentDisplay('password');
 		if (authorised === false) return resetSequence('Incorrect Password');
-		resetSequence('Correct Password');
-		// const auth = passwordMsg ? await userCheckPassword(passwordMsg) : true;
-		// if (!auth) return alert('Incorrect Password');
-		// const input = inputMsg ? window.prompt(inputMsg) : false;
-		// return input ? action(input) : action();
+		if (inputMsg && input === null) return setCurrentDisplay('input');
+		action(input);
+		return history.push('/');
 	};
 
 	const accountButtons = (

@@ -21,7 +21,7 @@ const Form = (props) => {
 			) : null}
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
 				{onCancel && (
-					<button className={'form-btn'} type="submit">
+					<button className={'form-btn'} type="button" onClick={onCancel}>
 						{cancelText ? cancelText : 'Cancel'}
 					</button>
 				)}
