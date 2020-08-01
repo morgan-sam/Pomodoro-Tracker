@@ -2,7 +2,7 @@ import React from 'react';
 import { capitalizeFirstLetter } from 'utility/parseText';
 
 const Form = (props) => {
-	const { style, submitText, onSubmit, inputs } = props;
+	const { style, cancelText, submitText, onSubmit, onCancel, inputs } = props;
 
 	return (
 		<form className={'form'} style={{ ...style }} onSubmit={onSubmit}>
@@ -19,10 +19,16 @@ const Form = (props) => {
 					</label>
 				))
 			) : null}
-
-			<button className={'form-btn'} type="submit">
-				{submitText}
-			</button>
+			<div style={{ display: 'flex', flexDirection: 'row' }}>
+				{onCancel && (
+					<button className={'form-btn'} type="submit">
+						{cancelText ? cancelText : 'Cancel'}
+					</button>
+				)}
+				<button className={'form-btn'} type="submit">
+					{submitText ? submitText : 'Submit'}
+				</button>
+			</div>
 		</form>
 	);
 };

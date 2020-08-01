@@ -5,7 +5,7 @@ import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
 import ThemeContext from 'context/theme';
 
 const Confirm = (props) => {
-	const { message, onConfirm, returnToMenu } = props;
+	const { message, onConfirm } = props;
 	const darkTheme = useContext(ThemeContext);
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(darkTheme);
@@ -22,7 +22,6 @@ const Confirm = (props) => {
 						style={accountButtonStyle}
 						onClick={() => {
 							onConfirm();
-							returnToMenu();
 						}}
 					>
 						Confirm

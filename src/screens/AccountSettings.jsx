@@ -4,12 +4,12 @@ import { getAppContainerStyle } from 'styles/app';
 import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
 import ThemeContext from 'context/theme';
 import { accountFunctionTemplates } from 'controller/accountFunctions';
-import { reauthenticate } from 'data/queries';
 import Confirm from 'screens/Confirm';
+import PasswordInput from 'screens/PasswordInput';
 import Input from 'screens/Input';
 
 const AccountSettings = () => {
-	const [ currentDisplay, setCurrentDisplay ] = useState(null);
+	const [ currentDisplay, setCurrentDisplay ] = useState('default');
 	const darkTheme = useContext(ThemeContext);
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(darkTheme);
@@ -22,33 +22,25 @@ const AccountSettings = () => {
 		input: null
 	});
 
-	const userCheckPassword = async (passwordMsg) => {
-		const password = prompt(passwordMsg);
-		if (password) return await reauthenticate(password);
-		else return false;
-	};
-
-	const resetSequence = () =>
+	const resetSequence = () => {
+		console.log('SEQUENCE IS RESETING');
 		setSequence({
 			fnObj: null,
 			confirmed: null,
 			authorised: null,
 			input: null
 		});
+		return setCurrentDisplay('default');
+	};
 
 	const accountFunction = async (obj) => {
 		const { confirmMsg, passwordMsg, inputMsg, action } = obj;
 		const { fnObj, confirmed, authorised, input } = sequence;
-		if (confirmMsg && confirmed === null)
-			return setCurrentDisplay(
-				<Confirm
-					message={confirmMsg}
-					onConfirm={(val) => setSequence({ ...sequence, confirmed: val })}
-					returnToMenu={() => setCurrentDisplay(accountButtons)}
-				/>
-			);
+		if (confirmMsg && confirmed === null) return setCurrentDisplay('confirm');
 		if (confirmed === false) return resetSequence();
-		console.log('hello');
+		if (passwordMsg && authorised === null) return setCurrentDisplay('password');
+		if (authorised === false) return resetSequence();
+		console.log('PASSWORD CONFIRMED');
 		// const auth = passwordMsg ? await userCheckPassword(passwordMsg) : true;
 		// if (!auth) return alert('Incorrect Password');
 		// const input = inputMsg ? window.prompt(inputMsg) : false;
@@ -102,9 +94,26 @@ const AccountSettings = () => {
 		[ sequence ]
 	);
 
-	useEffect(() => setCurrentDisplay(accountButtons), []);
+	console.log(currentDisplay);
+	console.log(sequence);
 
-	return currentDisplay;
+	if (currentDisplay === 'default') return accountButtons;
+	else if (currentDisplay === 'confirm')
+		return (
+			<Confirm
+				message={sequence.fnObj.confirmMsg}
+				onConfirm={(val) => setSequence({ ...sequence, confirmed: val })}
+			/>
+		);
+	else if (currentDisplay === 'password')
+		return (
+			<PasswordInput
+				message={sequence.fnObj.passwordMsg}
+				onConfirm={(val) => setSequence({ ...sequence, authorised: val })}
+			/>
+		);
+	else if (currentDisplay === 'input')
+		return <Input message={sequence.fnObj.inputMsg} onSubmit={(val) => setSequence({ ...sequence, input: val })} />;
 };
 
 export default AccountSettings;
