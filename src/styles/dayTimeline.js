@@ -7,7 +7,7 @@ export const getBoxStyle = (darkTheme) => {
 		height: `${EVENT_HEIGHT_REM + 3}rem`,
 		flexDirection: 'row',
 		border: `1px solid ${darkTheme ? 'white' : 'black'}`,
-		transition: 'border 1.5s',
+		transition: 'border 1.2s ease-in-out',
 		boxSizing: 'border-box',
 		overflowX: 'hidden'
 	};
@@ -31,6 +31,7 @@ export const getDefaultEventBoxStyle = (darkTheme) => {
 		display: 'inline-block',
 		height: `${EVENT_HEIGHT_REM}rem`,
 		border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+		transition: 'border 1.2s ease-in-out',
 		position: 'absolute',
 		bottom: '0'
 	};
@@ -46,10 +47,12 @@ export const getEventBoxTypeStyle = (darkTheme) => {
 			zIndex: '-1'
 		},
 		pomodoro: {
-			backgroundColor: darkTheme ? '#e59400' : '#c3e5a7'
+			backgroundColor: darkTheme ? '#e59400' : '#c3e5a7',
+			transition: 'background-color 1s ease-in-out'
 		},
 		encore: {
-			backgroundColor: darkTheme ? '#a06700' : '#95c39f'
+			backgroundColor: darkTheme ? '#a06700' : '#95c39f',
+			transition: 'background-color 1s ease-in-out'
 		}
 	};
 };
