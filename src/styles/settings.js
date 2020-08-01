@@ -16,6 +16,7 @@ export const getSystemButtonStyle = (darkTheme) => {
 export const getSettingsBoxStyle = (darkTheme) => {
 	return {
 		border: darkTheme ? '1px solid #fff' : '1px solid #000',
-		backgroundColor: darkTheme ? '#333842' : '#fff'
+		backgroundColor: darkTheme ? '#333842' : '#fff',
+		transition: 'background-color 1s ease-in-out, border 1s ease-in-out'
 	};
 };
