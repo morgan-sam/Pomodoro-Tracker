@@ -134,19 +134,7 @@ const Home = () => {
 						justifyContent: 'center'
 					}}
 				>
-					<a
-						href="/signup"
-						style={{
-							fontSize: '2rem',
-							color: '#00899A',
-							border: '2px solid #00899A',
-							padding: '0.75rem 1.5rem',
-							borderRadius: '5px',
-							textDecoration: 'none',
-							backgroundColor: '#fff',
-							boxShadow: '0.4rem 0.4rem #B2E6EC'
-						}}
-					>
+					<a href="/signup" className="get-started-button">
 						Get Started
 					</a>
 				</div>
