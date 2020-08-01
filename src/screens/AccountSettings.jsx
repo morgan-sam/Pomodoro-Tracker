@@ -1,20 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getAppContainerStyle } from 'styles/app';
-import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
-import ThemeContext from 'context/theme';
-import { accountFunctionTemplates } from 'controller/accountFunctions';
 import Confirm from 'screens/Confirm';
 import PasswordInput from 'screens/PasswordInput';
 import Input from 'screens/Input';
 import Alert from 'screens/Alert';
+import AccountSettingsOptions from 'screens/AccountSettingsOptions';
 
 const AccountSettings = () => {
 	const [ currentDisplay, setCurrentDisplay ] = useState('default');
-	const darkTheme = useContext(ThemeContext);
 	const history = useHistory();
-	const accountButtonStyle = getSystemButtonStyle(darkTheme);
-	const { changePassword, changeEmail, resetAccount, deleteAccount } = accountFunctionTemplates;
 
 	const [ sequence, setSequence ] = useState({
 		fnObj: null,
@@ -47,42 +41,6 @@ const AccountSettings = () => {
 		else return history.push('/');
 	};
 
-	const accountButtons = (
-		<div className="screenContainer" style={getAppContainerStyle(darkTheme)}>
-			<div className="settingsBox" style={getSettingsBoxStyle(darkTheme)}>
-				<h2 className="header">Account Settings</h2>
-				<div className="accountButtonGrid">
-					<button
-						style={accountButtonStyle}
-						onClick={() => setSequence({ ...sequence, fnObj: changePassword })}
-					>
-						Change Password
-					</button>
-					<button style={accountButtonStyle} onClick={() => setSequence({ ...sequence, fnObj: changeEmail })}>
-						Change Email
-					</button>
-					<button
-						style={accountButtonStyle}
-						onClick={() => setSequence({ ...sequence, fnObj: resetAccount })}
-					>
-						Reset Account
-					</button>
-					<button
-						style={accountButtonStyle}
-						onClick={() => setSequence({ ...sequence, fnObj: deleteAccount })}
-					>
-						Delete Account
-					</button>
-				</div>
-				<div className="settings-footer">
-					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
-						Return
-					</button>
-				</div>
-			</div>
-		</div>
-	);
-
 	useEffect(
 		() => {
 			const runThroughSequence = async () => {
@@ -94,7 +52,7 @@ const AccountSettings = () => {
 		[ sequence ]
 	);
 
-	if (currentDisplay === 'default') return accountButtons;
+	if (currentDisplay === 'default') return <AccountSettingsOptions {...{ sequence, setSequence }} />;
 	else if (currentDisplay === 'confirm')
 		return (
 			<Confirm
