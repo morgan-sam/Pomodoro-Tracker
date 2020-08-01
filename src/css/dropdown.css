@@ -49,10 +49,11 @@
 	overflow: hidden;
 	box-shadow: 2px 2px #ccc;
 	border: 1px solid #ccc;
+	transition: border 0s 0.5s;
 }
 
 .dropdown-element.dark-theme {
-	border: none;
+	border: 0px solid #ccc;
 }
 
 .dropdown-option {
