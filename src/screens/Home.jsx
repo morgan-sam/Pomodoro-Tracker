@@ -124,7 +124,12 @@ const Home = () => {
 				</div>
 			</div>
 			<div className="home section" ref={fourthRef}>
-				<div className="home content get-started-container">
+				<div className="content-background-container">
+					<div className="home content ">
+						<a href="/signup" className="get-started-button">
+							Get Started
+						</a>
+					</div>
 					<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 						<path
 							fill="#D8F2F5"
@@ -132,10 +137,6 @@ const Home = () => {
 							transform="translate(100 90)"
 						/>
 					</svg>
-
-					<a href="/signup" className="get-started-button">
-						Get Started
-					</a>
 				</div>
 			</div>
 			<div style={loginSignUpBtnContainerStyle}>

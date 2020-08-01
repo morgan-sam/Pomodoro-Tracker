@@ -13,7 +13,7 @@
 }
 .content {
 	grid-area: 2 / 1 / 6 / 2;
-	width: inherit;
+	width: auto;
 	flex-wrap: wrap;
 	overflow: hidden;
 }
@@ -103,18 +103,18 @@
 	}
 }
 
-.get-started-container {
+.content-background-container {
 	position: relative;
-	overflow: visible;
-	height: 100%;
-	width: 100%;
+	height: 100vh;
+	width: 100vw;
 }
 
-.get-started-container > * {
+.content-background-container > * {
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
+	overflow: visible;
 }
 
 .get-started-button {
@@ -132,4 +132,8 @@
 .get-started-button:hover {
 	background-color: #00899a;
 	color: #fff;
+}
+
+svg {
+	z-index: -1;
 }
