@@ -124,16 +124,15 @@ const Home = () => {
 				</div>
 			</div>
 			<div className="home section" ref={fourthRef}>
-				<div
-					className="home content center"
-					style={{
-						height: '100%',
-						width: '100%',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center'
-					}}
-				>
+				<div className="home content get-started-container">
+					<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+						<path
+							fill="#D8F2F5"
+							d="M45.3,-51.5C55.3,-45.6,57.6,-28.1,61.7,-10.1C65.9,8,72,26.5,65.5,38C59.1,49.5,40.2,54.1,21.9,61.1C3.6,68.1,-14.1,77.7,-28.3,74.1C-42.4,70.5,-53.1,53.6,-59.5,37C-66,20.4,-68.1,4,-62.8,-8.5C-57.5,-20.9,-44.7,-29.5,-33,-35.1C-21.3,-40.7,-10.6,-43.4,3.5,-47.6C17.7,-51.7,35.3,-57.4,45.3,-51.5Z"
+							transform="translate(100 90)"
+						/>
+					</svg>
+
 					<a href="/signup" className="get-started-button">
 						Get Started
 					</a>

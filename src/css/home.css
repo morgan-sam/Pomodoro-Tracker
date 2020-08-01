@@ -103,6 +103,20 @@
 	}
 }
 
+.get-started-container {
+	position: relative;
+	overflow: visible;
+	height: 100%;
+	width: 100%;
+}
+
+.get-started-container > * {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
 .get-started-button {
 	font-size: 2rem;
 	color: #00899a;
@@ -111,5 +125,11 @@
 	border-radius: 5px;
 	text-decoration: none;
 	background-color: #fff;
-	box-shadow: 0.4rem 0.4rem #b2e6ec;
+	box-shadow: 0.6rem 0.6rem #b2e6ec;
+	transition: all 0.3s;
+}
+
+.get-started-button:hover {
+	background-color: #00899a;
+	color: #fff;
 }
