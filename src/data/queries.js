@@ -2,23 +2,26 @@ import firebase from 'config/firebase';
 import firebaseApp from 'firebase/app';
 
 export const getEntries = async () => {
-	return firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then((snapshot) => {
-		const raw = snapshot.val();
-		const values = Object.values(raw.events);
-		return values;
-	});
+	if (firebase.auth().currentUser)
+		return firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then((snapshot) => {
+			const raw = snapshot.val();
+			const values = Object.values(raw.events);
+			return values;
+		});
 };
 
 export const getOptions = async () => {
-	return firebase
-		.database()
-		.ref('/users/' + firebase.auth().currentUser.uid + '/settings')
-		.once('value')
-		.then((snapshot) => snapshot.val());
+	if (firebase.auth().currentUser)
+		return firebase
+			.database()
+			.ref('/users/' + firebase.auth().currentUser.uid + '/settings')
+			.once('value')
+			.then((snapshot) => snapshot.val());
 };
 
 export const postOptions = async (options) => {
-	return firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/settings').set(options);
+	if (firebase.auth().currentUser)
+		return firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/settings').set(options);
 };
 
 export const reauthenticate = async (password) => {
