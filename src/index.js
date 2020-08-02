@@ -16,6 +16,7 @@ import 'css/dateSelect.css';
 import 'css/dayTimeline.css';
 import 'css/topPanel.css';
 import 'css/graphDisplaySelect.css';
+import 'css/blobs.css';
 
 import App from './App';
 
