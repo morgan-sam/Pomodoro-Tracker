@@ -42,7 +42,7 @@ const gridSubContainer = {
 	justifyContent: 'center'
 };
 
-const blobColors = [ '#b590ca', '#f5cab3', '#f3ecb8', '#a8d3da' ];
+const blobColors = [ '#E0BBE4', '#FEC8D8', '#D291BC', '#957DAD' ];
 
 const Home = () => {
 	const [ hovered, setHovered ] = useState('');
