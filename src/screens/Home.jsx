@@ -94,9 +94,6 @@ const Home = () => {
 					<DownArrow type={'down'} onClick={handleClicks[1]} />
 				</div>
 			</div>
-
-			{/* // */}
-
 			<div className="home section" ref={secondRef}>
 				<h1 className="home header center">Why</h1>
 				<div className="content-background-container">
