@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const KeyboardShortcut = () => {
 	const [ combo, setCombo ] = useState([ null, null, null ]);
 
-	if (combo === [ 'ctrl', 'alt', 'enter' ]) {
+	if (combo[0] === 'ctrl' && combo[1] === 'alt' && combo[2] === 'enter') {
 		// something
 		setCombo([ null, null, null ]);
 	}
