@@ -18,6 +18,7 @@ const ScrollingTimeline = (props) => {
 	const drawTimeline = () => {
 		Array.from(Array(24).keys()).map((i) => drawTimeBox(i));
 		addEvents();
+		drawTimelineOutline();
 	};
 
 	const addEvents = () => {
@@ -46,6 +47,13 @@ const ScrollingTimeline = (props) => {
 		ctx.rect(hourWidth * time, 0, hourWidth, timelineHeight);
 		ctx.font = '15px Roboto';
 		ctx.fillText(`${convert24hrTo12hrTime(time)}`, 5 + hourWidth * time, 20);
+		ctx.stroke();
+	};
+
+	const drawTimelineOutline = () => {
+		const ctx = canvasRef.current.getContext('2d');
+		ctx.beginPath();
+		ctx.rect(0, 0, hourWidth * 24, timelineHeight - 1);
 		ctx.stroke();
 	};
 
