@@ -13,7 +13,7 @@
 
 	--base-color1: 294;
 	--color1-brightness-mod: 1.15;
-	--color1-saturation-mod: 1.15;
+	--color1-saturation-mod: 1.85;
 
 	--color1-light: hsl(
 		var(--base-color1),
@@ -34,7 +34,7 @@
 	/* Base Color 2: */
 
 	--base-color2: 342;
-	--color2-brightness-mod: 1;
+	--color2-brightness-mod: 0.9;
 	--color2-saturation-mod: 0.9;
 
 	--color2-light: hsl(
