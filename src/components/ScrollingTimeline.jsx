@@ -28,6 +28,10 @@ const ScrollingTimeline = (props) => {
 			for (let i = 0; i < combo; i++) {
 				drawPomodoro(curPos);
 				curPos += hourWidth / 2;
+				if (randBoo()) {
+					drawEncore(curPos);
+					curPos += hourWidth / 12;
+				}
 			}
 			curPos += randInt(30, 100);
 		}
@@ -40,6 +44,17 @@ const ScrollingTimeline = (props) => {
 		ctx.strokeStyle = 'black';
 		ctx.lineWidth = 1;
 		ctx.rect(pos, 40, hourWidth / 2, timelineHeight);
+		ctx.fill();
+		ctx.stroke();
+	};
+
+	const drawEncore = (pos) => {
+		const ctx = canvasRef.current.getContext('2d');
+		ctx.beginPath();
+		ctx.fillStyle = 'red';
+		ctx.strokeStyle = 'black';
+		ctx.lineWidth = 1;
+		ctx.rect(pos, 40, hourWidth / 12, timelineHeight);
 		ctx.fill();
 		ctx.stroke();
 	};
