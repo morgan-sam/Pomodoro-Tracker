@@ -1,6 +1,110 @@
 :root {
-	--color-one: #e0bbe4;
+	/* Default Color Variables  */
+	--base-brightness: 80%;
+	--base-saturation: 50%;
+	--brightness-offset: 15%;
+
+	/* Default Brightness Levels */
+	--light-brightness: calc(var(--base-brightness) + var(--brightness-offset));
+	--mid-brightness: var(--base-brightness);
+	--dark-brightness: calc(var(--base-brightness) + var(--brightness-offset));
+
+	/* Base Color 1: */
+
+	--base-color1: 294;
+	--color1-brightness-mod: 1.15;
+	--color1-saturation-mod: 1.15;
+
+	--color1-light: hsl(
+		var(--base-color1),
+		calc(var(--base-saturation) * var(--color1-saturation-mod)),
+		calc(var(--light-brightness) * var(--color1-brightness-mod))
+	);
+	--color1-mid: hsl(
+		var(--base-color1),
+		calc(var(--base-saturation) * var(--color1-saturation-mod)),
+		calc(var(--mid-brightness) * var(--color1-brightness-mod))
+	);
+	--color1-dark: hsl(
+		var(--base-color1),
+		calc(var(--base-saturation) * var(--color1-saturation-mod)),
+		calc(var(--dark-brightness) * var(--color1-brightness-mod))
+	);
+
+	/* Base Color 2: */
+
+	--base-color2: 342;
+	--color2-brightness-mod: 1;
+	--color2-saturation-mod: 0.9;
+
+	--color2-light: hsl(
+		var(--base-color2),
+		calc(calc(var(--base-saturation) * var(--color2-saturation-mod)) * var(--color2-saturation-mod)),
+		calc(var(--light-brightness) * var(--color2-brightness-mod))
+	);
+	--color2-mid: hsl(
+		var(--base-color2),
+		calc(var(--base-saturation) * var(--color2-saturation-mod)),
+		calc(var(--mid-brightness) * var(--color2-brightness-mod))
+	);
+	--color2-dark: hsl(
+		var(--base-color2),
+		calc(var(--base-saturation) * var(--color2-saturation-mod)),
+		calc(var(--dark-brightness) * var(--color2-brightness-mod))
+	);
+
+	/* Base Color 3: */
+
+	--base-color3: 320;
+	--color3-brightness-mod: 1;
+	--color3-saturation-mod: 1.15;
+
+	--color3-light: hsl(
+		var(--base-color3),
+		calc(var(--base-saturation) * var(--color3-saturation-mod)),
+		calc(var(--light-brightness) * var(--color3-brightness-mod))
+	);
+	--color3-mid: hsl(
+		var(--base-color3),
+		calc(var(--base-saturation) * var(--color3-saturation-mod)),
+		calc(var(--mid-brightness) * var(--color3-brightness-mod))
+	);
+	--color3-dark: hsl(
+		var(--base-color3),
+		calc(var(--base-saturation) * var(--color3-saturation-mod)),
+		calc(var(--dark-brightness) * var(--color3-brightness-mod))
+	);
+
+	/* Base Color 4: */
+
+	--base-color4: 270;
+	--color4-brightness-mod: 1;
+	--color4-saturation-mod: 1.15;
+
+	--color4-light: hsl(
+		var(--base-color4),
+		calc(var(--base-saturation) * var(--color4-saturation-mod)),
+		calc(var(--light-brightness) * var(--color4-brightness-mod))
+	);
+	--color4-mid: hsl(
+		var(--base-color4),
+		calc(var(--base-saturation) * var(--color4-saturation-mod)),
+		calc(var(--mid-brightness) * var(--color4-brightness-mod))
+	);
+	--color4-dark: hsl(
+		var(--base-color4),
+		calc(var(--base-saturation) * var(--color4-saturation-mod)),
+		calc(var(--dark-brightness) * var(--color4-brightness-mod))
+	);
+
+	/*
+    
+    OLD COLORS:
+
+    --color-one: #e0bbe4;
 	--color-two: #fec8d8;
 	--color-three: #d291bc;
-	--color-four: #957dad;
+    --color-four: #957dad;
+    
+    */
 }

@@ -1,12 +1,12 @@
 .blob-one {
-	fill: var(--color-one);
+	fill: var(--color1-mid);
 }
 .blob-two {
-	fill: var(--color-two);
+	fill: var(--color2-mid);
 }
 .blob-three {
-	fill: var(--color-three);
+	fill: var(--color3-mid);
 }
 .blob-four {
-	fill: var(--color-four);
+	fill: var(--color4-mid);
 }
