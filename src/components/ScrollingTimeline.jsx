@@ -6,6 +6,7 @@ const ScrollingTimeline = (props) => {
 	const canvasRef = useRef(null);
 
 	const hourWidth = 70;
+	const timelineHeight = 100;
 
 	useEffect(() => {
 		drawTimeline();
@@ -18,13 +19,13 @@ const ScrollingTimeline = (props) => {
 	const drawTimeBox = (time) => {
 		const ctx = canvasRef.current.getContext('2d');
 		ctx.beginPath();
-		ctx.rect(0, 0, hourWidth * (time + 1), 100);
+		ctx.rect(0, 0, hourWidth * (time + 1), timelineHeight);
 		ctx.font = '15px Roboto';
 		ctx.fillText(`${convert24hrTo12hrTime(time)}`, 5 + hourWidth * time, 20);
 		ctx.stroke();
 	};
 
-	return <canvas ref={canvasRef} width={24 * hourWidth} height={100} />;
+	return <canvas ref={canvasRef} width={24 * hourWidth} height={timelineHeight} />;
 };
 
 export default ScrollingTimeline;
