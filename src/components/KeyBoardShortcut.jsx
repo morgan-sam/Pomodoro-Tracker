@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { randInt } from 'utility/random';
 
 const KeyboardShortcut = () => {
 	const [ keys, setKeys ] = useState([ null, null, null ]);
@@ -6,6 +7,9 @@ const KeyboardShortcut = () => {
 
 	if (keys[0] === 'ctrl' && keys[1] === 'alt' && keys[2] === 'enter') {
 		setCombo(true);
+		for (let i = 1; i < 5; i++) {
+			document.documentElement.style.setProperty(`--base-color${i}`, randInt(0, 359));
+		}
 		setKeys([ null, null, null ]);
 	}
 
