@@ -2,18 +2,18 @@
 	/* Default Color Variables  */
 	--base-brightness: 80%;
 	--base-saturation: 50%;
-	--brightness-offset: 15%;
+	--brightness-offset: 8%;
 
 	/* Default Brightness Levels */
 	--light-brightness: calc(var(--base-brightness) + var(--brightness-offset));
 	--mid-brightness: var(--base-brightness);
-	--dark-brightness: calc(var(--base-brightness) + var(--brightness-offset));
+	--dark-brightness: calc(var(--base-brightness) - var(--brightness-offset));
 
 	/* Base Color 1: */
 
 	--base-color1: 294;
-	--color1-brightness-mod: 1.15;
-	--color1-saturation-mod: 1.85;
+	--color1-brightness-mod: 1.05;
+	--color1-saturation-mod: 1;
 
 	--color1-light: hsl(
 		var(--base-color1),
@@ -34,8 +34,8 @@
 	/* Base Color 2: */
 
 	--base-color2: 342;
-	--color2-brightness-mod: 0.9;
-	--color2-saturation-mod: 0.9;
+	--color2-brightness-mod: 0.98;
+	--color2-saturation-mod: 1;
 
 	--color2-light: hsl(
 		var(--base-color2),

@@ -6,7 +6,11 @@ const ColorTestDisplay = (props) => {
 	return (
 		<div style={{ display: 'flex', position: 'fixed' }}>
 			{Array.from(Array(4).keys()).map((i) => (
-				<div style={{ ...boxDims, backgroundColor: `var(--color${i + 1}-mid` }} />
+				<div>
+					<div style={{ ...boxDims, backgroundColor: `var(--color${i + 1}-light` }} />
+					<div style={{ ...boxDims, backgroundColor: `var(--color${i + 1}-mid` }} />
+					<div style={{ ...boxDims, backgroundColor: `var(--color${i + 1}-dark` }} />
+				</div>
 			))}
 		</div>
 	);
