@@ -73,7 +73,7 @@ const Home = () => {
 						<h2>A pomodoro app without the bells and the whistles.</h2>
 						<p>No loud noises. No complex setup.</p>
 						<p>Open with a keystroke. Focus on your work.</p>
-						<img src={timeline} />
+						<ScrollingTimeline />
 					</div>
 					<Blobs blob={2} />
 				</div>
