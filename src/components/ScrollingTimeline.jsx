@@ -7,7 +7,7 @@ const ScrollingTimeline = (props) => {
 	const canvasRef = useRef(null);
 
 	const hourWidth = 90;
-	const timelineHeight = 120;
+	const timelineHeight = 130;
 
 	const color = window.getComputedStyle(document.documentElement).getPropertyValue('--color1-mid');
 
@@ -34,8 +34,8 @@ const ScrollingTimeline = (props) => {
 		ctx.beginPath();
 		ctx.fillStyle = color;
 		ctx.strokeStyle = 'black';
-		ctx.lineWidth = 0.2;
-		ctx.rect(pos, 30, hourWidth / 2, timelineHeight);
+		ctx.lineWidth = 1;
+		ctx.rect(pos, 40, hourWidth / 2, timelineHeight);
 		ctx.fill();
 		ctx.stroke();
 	};
