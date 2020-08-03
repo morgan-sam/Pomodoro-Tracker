@@ -9,7 +9,8 @@ const ScrollingTimeline = (props) => {
 	const hourWidth = 90;
 	const timelineHeight = 130;
 
-	const color = window.getComputedStyle(document.documentElement).getPropertyValue('--color1-mid');
+	const pomodoroColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color1-mid');
+	const encoreColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color1-dark');
 
 	useEffect(() => {
 		drawTimeline();
@@ -40,7 +41,7 @@ const ScrollingTimeline = (props) => {
 	const drawPomodoro = (pos) => {
 		const ctx = canvasRef.current.getContext('2d');
 		ctx.beginPath();
-		ctx.fillStyle = color;
+		ctx.fillStyle = pomodoroColor;
 		ctx.strokeStyle = 'black';
 		ctx.lineWidth = 1;
 		ctx.rect(pos, 40, hourWidth / 2, timelineHeight);
@@ -51,7 +52,7 @@ const ScrollingTimeline = (props) => {
 	const drawEncore = (pos) => {
 		const ctx = canvasRef.current.getContext('2d');
 		ctx.beginPath();
-		ctx.fillStyle = 'red';
+		ctx.fillStyle = encoreColor;
 		ctx.strokeStyle = 'black';
 		ctx.lineWidth = 1;
 		ctx.rect(pos, 40, hourWidth / 12, timelineHeight);
