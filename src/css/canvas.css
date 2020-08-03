@@ -28,7 +28,10 @@
 .canvas-container {
 	position: relative;
 	overflow: hidden;
-	border: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
 	width: calc(var(--container-width) * 1px);
 }
 
