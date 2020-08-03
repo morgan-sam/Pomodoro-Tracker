@@ -9,7 +9,7 @@ import python from 'img/python.svg';
 import keyboard from 'img/keyboard.gif';
 import terminal_dark from 'img/terminal_dark.gif';
 import graph from 'img/graph.png';
-import ColorTestDisplay from 'components/ColorTestDisplay';
+import ScrollingTimeline from 'components/ScrollingTimeline';
 
 import FileIcon from 'components/FileIcon';
 
@@ -39,7 +39,6 @@ const Home = () => {
 
 	return (
 		<div style={homeStyle}>
-			<ColorTestDisplay />
 			<div className="home section" ref={firstRef}>
 				<h1 className="home header center">Pomodoro Tracker</h1>
 				<div className="content-background-container">

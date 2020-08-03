@@ -12,10 +12,12 @@ import { AuthProvider } from 'context/auth';
 import PrivateRoute from 'routes/PrivateRoute';
 import AuthRedirectRoute from 'routes/AuthRedirectRoute';
 import { defaultOptions } from 'data/defaultState';
+import ScrollingTimeline from 'components/ScrollingTimeline';
 
 const App = () => {
 	const [ options, setOptions ] = useState(defaultOptions);
 	const [ fadeIn, setFadeIn ] = useState(true);
+	return <ScrollingTimeline />;
 	return (
 		<ThemeProvider value={options.darkTheme}>
 			<AuthProvider>
