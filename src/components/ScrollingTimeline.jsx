@@ -76,11 +76,15 @@ const ScrollingTimeline = (props) => {
 	const drawTimelineOutline = () => {
 		const ctx = canvasRef.current.getContext('2d');
 		ctx.beginPath();
-		ctx.rect(0, 0, hourWidth * 24, timelineHeight - 1);
+		ctx.rect(0, 0, hourWidth * 24, timelineHeight);
 		ctx.stroke();
 	};
 
-	return <canvas ref={canvasRef} width={24 * hourWidth} height={timelineHeight} />;
+	return (
+		<div style={{ width: '50rem', height: `${timelineHeight}px`, overflow: 'hidden', border: '1px solid black' }}>
+			<canvas ref={canvasRef} width={24 * hourWidth} height={timelineHeight} />
+		</div>
+	);
 };
 
 export default ScrollingTimeline;
