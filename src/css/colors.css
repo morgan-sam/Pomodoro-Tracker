@@ -2,7 +2,7 @@
 	/* Default Color Variables  */
 	--base-brightness: 80%;
 	--base-saturation: 50%;
-	--brightness-offset: 8%;
+	--brightness-offset: 7%;
 
 	/* Default Brightness Levels */
 	--light-brightness: calc(var(--base-brightness) + var(--brightness-offset));
