@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ColorTestDisplay = (props) => {
-	const boxRemUnit = 7;
+	const boxRemUnit = 5;
 	const boxDims = { width: `${boxRemUnit}rem`, height: `${boxRemUnit}rem` };
 	return (
 		<div style={{ display: 'flex', position: 'fixed' }}>

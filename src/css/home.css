@@ -134,3 +134,26 @@
 svg {
 	z-index: -1;
 }
+
+.login-signup-btn-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 1rem 0.5rem;
+	padding: 1rem;
+}
+
+.login-signup-btn {
+	padding: 0.5rem 1rem;
+	margin-left: 1rem;
+	text-decoration: none;
+	border: 1px solid #444;
+	border-radius: 5px;
+	background-color: white;
+	color: black;
+}
+
+.login-signup-btn:hover {
+	background-color: var(--color4-mid);
+	color: white;
+}

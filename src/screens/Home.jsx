@@ -17,26 +17,6 @@ const homeStyle = {
 	overflowX: 'hidden'
 };
 
-const loginSignUpBtnContainerStyle = {
-	position: 'absolute',
-	top: '0',
-	right: '0',
-	margin: '1rem 0.5rem',
-	padding: '1rem'
-};
-
-const getLoginSignUpBtnStyle = (hover) => {
-	return {
-		padding: '0.5rem 1rem',
-		marginLeft: '1rem',
-		textDecoration: 'none',
-		border: '1px solid #444',
-		borderRadius: '5px',
-		backgroundColor: hover ? '#00BCD4' : 'white',
-		color: hover ? 'white' : 'black'
-	};
-};
-
 const gridSubContainer = {
 	display: 'flex',
 	flexDirection: 'column',
@@ -45,8 +25,6 @@ const gridSubContainer = {
 };
 
 const Home = () => {
-	const [ hovered, setHovered ] = useState('');
-
 	const firstRef = createRef();
 	const secondRef = createRef();
 	const thirdRef = createRef();
@@ -145,21 +123,11 @@ const Home = () => {
 					<Blobs blob={4} />
 				</div>
 			</div>
-			<div style={loginSignUpBtnContainerStyle}>
-				<a
-					onMouseOver={() => setHovered('signup')}
-					onMouseLeave={() => setHovered('')}
-					href="/signup"
-					style={getLoginSignUpBtnStyle(hovered === 'signup')}
-				>
+			<div className="login-signup-btn-container">
+				<a className="login-signup-btn" href="/signup">
 					Sign Up
 				</a>
-				<a
-					onMouseOver={() => setHovered('login')}
-					onMouseLeave={() => setHovered('')}
-					href="/login"
-					style={getLoginSignUpBtnStyle(hovered === 'login')}
-				>
+				<a className="login-signup-btn" href="/login">
 					Log In
 				</a>
 			</div>
