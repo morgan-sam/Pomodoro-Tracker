@@ -116,18 +116,18 @@
 
 .get-started-button {
 	font-size: 2rem;
-	color: var(--color4-dark);
-	border: 2px solid var(--color4-dark);
+	color: var(--color4-darker);
+	border: 2px solid var(--color4-darker);
 	padding: 0.75rem 1.5rem;
 	border-radius: 5px;
 	text-decoration: none;
 	background-color: #fff;
-	box-shadow: 0.6rem 0.6rem var(--color4-light);
+	box-shadow: 0.6rem 0.6rem var(--color4-dark);
 	transition: all 0.3s;
 }
 
 .get-started-button:hover {
-	background-color: var(--color4-dark);
+	background-color: var(--color4-darker);
 	color: #fff;
 }
 
