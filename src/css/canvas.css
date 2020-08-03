@@ -1,7 +1,7 @@
 :root {
 	--canvas-hour-width: 90;
 	--container-width: 560;
-	--base-time: 60;
+	--base-time: 100;
 
 	--offset: calc(calc(var(--canvas-hour-width) * 12) / var(--container-width));
 
