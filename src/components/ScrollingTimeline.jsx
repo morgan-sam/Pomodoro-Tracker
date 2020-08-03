@@ -18,8 +18,8 @@ const ScrollingTimeline = (props) => {
 		ctx.beginPath();
 		ctx.rect(0, 0, 100 * (time + 1), 100);
 		ctx.font = '15px Roboto';
-		ctx.stroke();
 		ctx.fillText(`${convert24hrTo12hrTime(time)}`, 5 + 100 * time, 20);
+		ctx.stroke();
 	};
 
 	return <canvas ref={canvasRef} width={2400} height={100} />;
