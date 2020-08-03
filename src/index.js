@@ -19,6 +19,7 @@ import 'css/dayTimeline.css';
 import 'css/topPanel.css';
 import 'css/graphDisplaySelect.css';
 import 'css/blobs.css';
+import 'css/keyboardShortcut.css';
 
 import App from './App';
 

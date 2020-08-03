@@ -6,10 +6,10 @@ import terminal from 'img/terminal.gif';
 import timeline from 'img/timeline.png';
 import bash from 'img/bash.svg';
 import python from 'img/python.svg';
-import keyboard from 'img/keyboard.gif';
 import terminal_dark from 'img/terminal_dark.gif';
 import graph from 'img/graph.png';
 import ScrollingTimeline from 'components/ScrollingTimeline';
+import KeyBoardShortcut from 'components/KeyBoardShortcut';
 
 import FileIcon from 'components/FileIcon';
 
@@ -95,7 +95,7 @@ const Home = () => {
 						</div>
 						<div style={gridSubContainer}>
 							<p style={{ padding: '1rem' }}>Assign to a keyboard shortcut.</p>
-							<img src={keyboard} className="keyboard" />
+							<KeyBoardShortcut />
 						</div>
 						<div style={gridSubContainer}>
 							<p style={{ padding: '1rem' }}>Run the script and get to work. </p>
