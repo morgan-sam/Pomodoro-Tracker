@@ -5,8 +5,9 @@ import { randInt, randBoo } from 'utility/random';
 
 const ScrollingTimeline = (props) => {
 	const canvasRef = useRef(null);
+	const canvasRef2 = useRef(null);
 
-	const hourWidth = 90;
+	const hourWidth = window.getComputedStyle(document.documentElement).getPropertyValue('--canvas-hour-width');
 	const pomodoroWidth = 5 * hourWidth / 12;
 	const encoreWidth = hourWidth / 12;
 
@@ -16,24 +17,25 @@ const ScrollingTimeline = (props) => {
 	const encoreColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color1-dark');
 
 	useEffect(() => {
-		drawTimeline();
+		drawTimeline(canvasRef);
+		drawTimeline(canvasRef2);
 	}, []);
 
-	const drawTimeline = () => {
-		Array.from(Array(24).keys()).map((i) => drawTimeBox(i));
-		addEvents();
-		drawTimelineOutline();
+	const drawTimeline = (ref) => {
+		Array.from(Array(24).keys()).map((i) => drawTimeBox(i, ref));
+		addEvents(ref);
+		drawTimelineOutline(ref);
 	};
 
-	const addEvents = () => {
+	const addEvents = (ref) => {
 		let curPos = 0;
 		while (curPos < hourWidth * 23) {
 			const combo = randInt(1, 4, 5);
 			for (let i = 0; i < combo; i++) {
-				drawPomodoro(curPos);
+				drawPomodoro(curPos, ref);
 				curPos += pomodoroWidth;
 				if (randBoo()) {
-					drawEncore(curPos);
+					drawEncore(curPos, ref);
 					curPos += encoreWidth;
 				}
 				if (curPos > hourWidth * 23) break;
@@ -42,8 +44,8 @@ const ScrollingTimeline = (props) => {
 		}
 	};
 
-	const drawPomodoro = (pos) => {
-		const ctx = canvasRef.current.getContext('2d');
+	const drawPomodoro = (pos, ref) => {
+		const ctx = ref.current.getContext('2d');
 		ctx.beginPath();
 		ctx.fillStyle = pomodoroColor;
 		ctx.strokeStyle = 'black';
@@ -53,8 +55,8 @@ const ScrollingTimeline = (props) => {
 		ctx.stroke();
 	};
 
-	const drawEncore = (pos) => {
-		const ctx = canvasRef.current.getContext('2d');
+	const drawEncore = (pos, ref) => {
+		const ctx = ref.current.getContext('2d');
 		ctx.beginPath();
 		ctx.fillStyle = encoreColor;
 		ctx.strokeStyle = 'black';
@@ -64,8 +66,8 @@ const ScrollingTimeline = (props) => {
 		ctx.stroke();
 	};
 
-	const drawTimeBox = (time) => {
-		const ctx = canvasRef.current.getContext('2d');
+	const drawTimeBox = (time, ref) => {
+		const ctx = ref.current.getContext('2d');
 		ctx.beginPath();
 		ctx.rect(hourWidth * time, 0, hourWidth, timelineHeight);
 		ctx.font = '15px Roboto';
@@ -73,16 +75,17 @@ const ScrollingTimeline = (props) => {
 		ctx.stroke();
 	};
 
-	const drawTimelineOutline = () => {
-		const ctx = canvasRef.current.getContext('2d');
+	const drawTimelineOutline = (ref) => {
+		const ctx = ref.current.getContext('2d');
 		ctx.beginPath();
 		ctx.rect(0, 0, hourWidth * 24, timelineHeight);
 		ctx.stroke();
 	};
 
 	return (
-		<div style={{ width: '50rem', height: `${timelineHeight}px`, overflow: 'hidden', border: '1px solid black' }}>
-			<canvas ref={canvasRef} width={24 * hourWidth} height={timelineHeight} />
+		<div className="canvas-container" style={{ height: `${timelineHeight}px` }}>
+			<canvas className="canvas-timeline" ref={canvasRef} width={24 * hourWidth} height={timelineHeight} />
+			<canvas className="canvas-timeline-2" ref={canvasRef2} width={24 * hourWidth} height={timelineHeight} />
 		</div>
 	);
 };
