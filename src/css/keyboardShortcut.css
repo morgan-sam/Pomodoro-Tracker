@@ -7,8 +7,9 @@
 .keyboard-key {
 	padding: 1rem;
 	background-color: #fafafa;
-	border-radius: 5px;
-	box-shadow: 0 2px 0 white, 0 2px 0 2px #ccc, -2px 2px 0 1px #888, 2px 2px 0 1px #888, 0 4px 0 1px #888;
+	border-radius: 2px;
+	box-shadow: 0 3px 0 white, 0 3px 0 3px #ccc, -3px 4px 0 1px #888, 3px 4px 0 1px #888, 0 6px 0 1px #888,
+		-2px 5px 0 1.5px #888, 2px 5px 0 1.5px #888;
 	user-select: none;
 	cursor: pointer;
 }
