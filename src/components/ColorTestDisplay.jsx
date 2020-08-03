@@ -10,6 +10,7 @@ const ColorTestDisplay = (props) => {
 					<div style={{ ...boxDims, backgroundColor: `var(--color${i + 1}-light` }} />
 					<div style={{ ...boxDims, backgroundColor: `var(--color${i + 1}-mid` }} />
 					<div style={{ ...boxDims, backgroundColor: `var(--color${i + 1}-dark` }} />
+					<div style={{ ...boxDims, backgroundColor: `var(--color${i + 1}-darker` }} />
 				</div>
 			))}
 		</div>

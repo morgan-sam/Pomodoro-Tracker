@@ -8,6 +8,7 @@
 	--light-brightness: calc(var(--base-brightness) + var(--brightness-offset));
 	--mid-brightness: var(--base-brightness);
 	--dark-brightness: calc(var(--base-brightness) - var(--brightness-offset));
+	--darker-brightness: calc(var(--base-brightness) - calc(2 * var(--brightness-offset)));
 
 	/* Base Color 1: */
 
@@ -29,6 +30,11 @@
 		var(--base-color1),
 		calc(var(--base-saturation) * var(--color1-saturation-mod)),
 		calc(var(--dark-brightness) * var(--color1-brightness-mod))
+	);
+	--color1-darker: hsl(
+		var(--base-color1),
+		calc(var(--base-saturation) * var(--color1-saturation-mod)),
+		calc(var(--darker-brightness) * var(--color1-brightness-mod))
 	);
 
 	/* Base Color 2: */
@@ -52,6 +58,11 @@
 		calc(var(--base-saturation) * var(--color2-saturation-mod)),
 		calc(var(--dark-brightness) * var(--color2-brightness-mod))
 	);
+	--color2-darker: hsl(
+		var(--base-color2),
+		calc(var(--base-saturation) * var(--color2-saturation-mod)),
+		calc(var(--darker-brightness) * var(--color2-brightness-mod))
+	);
 
 	/* Base Color 3: */
 
@@ -74,6 +85,11 @@
 		calc(var(--base-saturation) * var(--color3-saturation-mod)),
 		calc(var(--dark-brightness) * var(--color3-brightness-mod))
 	);
+	--color3-darker: hsl(
+		var(--base-color3),
+		calc(var(--base-saturation) * var(--color3-saturation-mod)),
+		calc(var(--darker-brightness) * var(--color3-brightness-mod))
+	);
 
 	/* Base Color 4: */
 
@@ -95,6 +111,11 @@
 		var(--base-color4),
 		calc(var(--base-saturation) * var(--color4-saturation-mod)),
 		calc(var(--dark-brightness) * var(--color4-brightness-mod))
+	);
+	--color4-darker: hsl(
+		var(--base-color4),
+		calc(var(--base-saturation) * var(--color4-saturation-mod)),
+		calc(var(--darker-brightness) * var(--color4-brightness-mod))
 	);
 
 	/*
