@@ -7,6 +7,9 @@ const ScrollingTimeline = (props) => {
 	const canvasRef = useRef(null);
 
 	const hourWidth = 90;
+	const pomodoroWidth = 5 * hourWidth / 12;
+	const encoreWidth = hourWidth / 12;
+
 	const timelineHeight = 130;
 
 	const pomodoroColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color1-mid');
@@ -28,10 +31,10 @@ const ScrollingTimeline = (props) => {
 			const combo = randInt(1, 4);
 			for (let i = 0; i < combo; i++) {
 				drawPomodoro(curPos);
-				curPos += hourWidth / 2;
+				curPos += pomodoroWidth;
 				if (randBoo()) {
 					drawEncore(curPos);
-					curPos += hourWidth / 12;
+					curPos += encoreWidth;
 				}
 			}
 			curPos += randInt(30, 100);
@@ -44,7 +47,7 @@ const ScrollingTimeline = (props) => {
 		ctx.fillStyle = pomodoroColor;
 		ctx.strokeStyle = 'black';
 		ctx.lineWidth = 1;
-		ctx.rect(pos, 40, hourWidth / 2, timelineHeight);
+		ctx.rect(pos, 40, pomodoroWidth, timelineHeight);
 		ctx.fill();
 		ctx.stroke();
 	};
@@ -55,7 +58,7 @@ const ScrollingTimeline = (props) => {
 		ctx.fillStyle = encoreColor;
 		ctx.strokeStyle = 'black';
 		ctx.lineWidth = 1;
-		ctx.rect(pos, 40, hourWidth / 12, timelineHeight);
+		ctx.rect(pos, 40, encoreWidth, timelineHeight);
 		ctx.fill();
 		ctx.stroke();
 	};
