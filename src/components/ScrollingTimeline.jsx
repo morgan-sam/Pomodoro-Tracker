@@ -27,7 +27,7 @@ const ScrollingTimeline = (props) => {
 
 	const addEvents = () => {
 		let curPos = 0;
-		while (curPos < hourWidth * 24) {
+		while (curPos < hourWidth * 23) {
 			const combo = randInt(1, 4, 5);
 			for (let i = 0; i < combo; i++) {
 				drawPomodoro(curPos);
@@ -36,6 +36,7 @@ const ScrollingTimeline = (props) => {
 					drawEncore(curPos);
 					curPos += encoreWidth;
 				}
+				if (curPos > hourWidth * 23) break;
 			}
 			curPos += randInt(5, 100, 1.4);
 		}
