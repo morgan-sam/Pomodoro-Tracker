@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
-import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
+import { getSystemButtonStyle, getContentBoxStyle } from 'styles/settings';
 
 const Settings = (props) => {
 	const { options } = props;
@@ -9,7 +9,7 @@ const Settings = (props) => {
 	const accountButtonStyle = getSystemButtonStyle(false);
 	return (
 		<div className="screen-container" style={getAppContainerStyle(options.darkTheme)}>
-			<div className="settingsBox" style={getSettingsBoxStyle(options.darkTheme)}>
+			<div className="content-box" style={getContentBoxStyle(options.darkTheme)}>
 				<h2 className="settings-header">Settings</h2>
 				<div className="button-column">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings/display')}>

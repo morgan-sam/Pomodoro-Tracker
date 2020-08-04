@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
-import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
+import { getSystemButtonStyle, getContentBoxStyle } from 'styles/settings';
 import ThemeContext from 'context/theme';
 
 const Alert = (props) => {
@@ -12,7 +12,7 @@ const Alert = (props) => {
 
 	return (
 		<div className="screen-container" style={getAppContainerStyle(darkTheme)}>
-			<div className="settingsBox" style={getSettingsBoxStyle(darkTheme)}>
+			<div className="content-box" style={getContentBoxStyle(darkTheme)}>
 				<h2 className="settings-header">{message}</h2>
 				<div className="settings-footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>

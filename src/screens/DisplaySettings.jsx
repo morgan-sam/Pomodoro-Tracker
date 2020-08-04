@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
-import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
+import { getSystemButtonStyle, getContentBoxStyle } from 'styles/settings';
 import { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import TimeOptionSelect from 'components/TimeOptionSelect';
@@ -67,7 +67,7 @@ const DisplaySettings = (props) => {
 
 	return (
 		<div className="screen-container" style={getAppContainerStyle(tempOptions.darkTheme)}>
-			<div className="settingsBox" style={getSettingsBoxStyle(tempOptions.darkTheme)}>
+			<div className="content-box" style={getContentBoxStyle(tempOptions.darkTheme)}>
 				<h2 className="settings-header">Display Settings</h2>
 				<div className={'two-by-one-grid'}>
 					<div className="button-column">

@@ -8,3 +8,13 @@
 	align-items: center;
 	justify-content: center;
 }
+.content-box {
+	width: fit-content;
+	height: fit-content;
+	border: 1px solid black;
+	display: flex;
+	align-items: center;
+	border-radius: 1rem;
+	flex-direction: column;
+	padding: 2rem;
+}

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
-import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
+import { getSystemButtonStyle, getContentBoxStyle } from 'styles/settings';
 import ThemeContext from 'context/theme';
 import { accountFunctionTemplates } from 'controller/accountFunctions';
 
@@ -13,7 +13,7 @@ const AccountSettingsOptions = (props) => {
 	const history = useHistory();
 	return (
 		<div className="screen-container" style={getAppContainerStyle(darkTheme)}>
-			<div className="settingsBox" style={getSettingsBoxStyle(darkTheme)}>
+			<div className="content-box" style={getContentBoxStyle(darkTheme)}>
 				<h2 className="settings-header">Account Settings</h2>
 				<div className="accountButtonGrid">
 					<button

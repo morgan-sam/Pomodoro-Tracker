@@ -8,7 +8,7 @@ import pythonScript from 'scripts/pomodoro.py';
 import firebase from 'firebase/app';
 import { reauthenticate } from 'data/queries';
 import { getAppContainerStyle } from 'styles/app';
-import { getSystemButtonStyle, getSettingsBoxStyle } from 'styles/settings';
+import { getSystemButtonStyle, getContentBoxStyle } from 'styles/settings';
 
 const downloadFile = (filename, text) => {
 	const element = document.createElement('a');
@@ -46,7 +46,7 @@ const Script = (props) => {
 	const history = useHistory();
 	return (
 		<div className="screen-container" style={getAppContainerStyle(options.darkTheme)}>
-			<div className="settingsBox" style={getSettingsBoxStyle(options.darkTheme)}>
+			<div className="content-box" style={getContentBoxStyle(options.darkTheme)}>
 				<h2 className="settings-header">Download Script</h2>
 				<div
 					style={{
