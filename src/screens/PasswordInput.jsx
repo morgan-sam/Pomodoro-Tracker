@@ -21,7 +21,7 @@ const PasswordInput = (props) => {
 	};
 
 	return (
-		<div className="screenContainer" style={getAppContainerStyle(darkTheme)}>
+		<div className="screen-container" style={getAppContainerStyle(darkTheme)}>
 			<div className="settingsBox" style={getSettingsBoxStyle(darkTheme)}>
 				<h2 className="settings-header">{message}</h2>
 				<Form

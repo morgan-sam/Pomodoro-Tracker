@@ -8,7 +8,7 @@ const Settings = (props) => {
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(false);
 	return (
-		<div className="screenContainer" style={getAppContainerStyle(options.darkTheme)}>
+		<div className="screen-container" style={getAppContainerStyle(options.darkTheme)}>
 			<div className="settingsBox" style={getSettingsBoxStyle(options.darkTheme)}>
 				<h2 className="settings-header">Settings</h2>
 				<div className="button-column">

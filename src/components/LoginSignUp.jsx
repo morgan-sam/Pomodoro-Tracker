@@ -28,7 +28,7 @@ const LoginSignup = (props) => {
 	if (currentUser) return <Redirect to="/" />;
 
 	return (
-		<div className="screenContainer">
+		<div className="screen-container">
 			<div className={'login-signup-box'}>
 				<h3 className={'login-signup-title'}>
 					{type === 'login' ? 'Login to your account' : 'Sign up for an account'}

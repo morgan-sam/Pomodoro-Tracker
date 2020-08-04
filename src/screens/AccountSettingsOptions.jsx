@@ -12,7 +12,7 @@ const AccountSettingsOptions = (props) => {
 	const { changePassword, changeEmail, resetAccount, deleteAccount } = accountFunctionTemplates;
 	const history = useHistory();
 	return (
-		<div className="screenContainer" style={getAppContainerStyle(darkTheme)}>
+		<div className="screen-container" style={getAppContainerStyle(darkTheme)}>
 			<div className="settingsBox" style={getSettingsBoxStyle(darkTheme)}>
 				<h2 className="settings-header">Account Settings</h2>
 				<div className="accountButtonGrid">

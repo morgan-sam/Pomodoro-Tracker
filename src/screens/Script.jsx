@@ -45,7 +45,7 @@ const Script = (props) => {
 	const { options } = props;
 	const history = useHistory();
 	return (
-		<div className="screenContainer" style={getAppContainerStyle(options.darkTheme)}>
+		<div className="screen-container" style={getAppContainerStyle(options.darkTheme)}>
 			<div className="settingsBox" style={getSettingsBoxStyle(options.darkTheme)}>
 				<h2 className="settings-header">Download Script</h2>
 				<div
