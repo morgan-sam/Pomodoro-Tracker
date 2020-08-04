@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'css/loading.css';
+import 'css/general.css';
 import 'css/colors.css';
 import 'css/home.css';
 import 'css/settings.css';
@@ -20,6 +21,7 @@ import 'css/topPanel.css';
 import 'css/graphDisplaySelect.css';
 import 'css/blobs.css';
 import 'css/keyboardShortcut.css';
+import 'css/loginSignUp.css';
 
 import App from './App';
 
