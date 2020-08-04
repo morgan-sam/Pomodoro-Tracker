@@ -4,7 +4,7 @@ const Blobs = (props) => {
 	const { blob } = props;
 	if (blob === 1)
 		return (
-			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className={'blob-one'}>
+			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className={'blob blob-one'}>
 				<path
 					d="M60.2,-16.1C68,4.5,57.4,34.4,41.1,43.1C24.9,51.7,2.9,38.9,-20.5,23.1C-43.9,7.3,-68.7,-11.5,-65.6,-25.7C-62.4,-39.9,-31.2,-49.4,-2.5,-48.6C26.2,-47.7,52.4,-36.6,60.2,-16.1Z"
 					transform="translate(112 77) scale(1.3,1)"
@@ -13,7 +13,7 @@ const Blobs = (props) => {
 		);
 	else if (blob === 2)
 		return (
-			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className={'blob-two'}>
+			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className={'blob blob-two'}>
 				<path
 					d="M20.4,-29.7C26.3,-28,30.7,-22,41.8,-14.2C53,-6.4,70.8,3.2,75,14.5C79.2,25.9,69.7,39.1,57.5,45.5C45.2,52,30.2,51.7,18.5,48.4C6.9,45,-1.2,38.5,-12.7,37.7C-24.1,36.8,-38.8,41.6,-45.9,37.5C-53,33.4,-52.6,20.4,-56.1,7.1C-59.6,-6.3,-67,-20.1,-63.7,-29.8C-60.4,-39.5,-46.4,-45,-34,-43.8C-21.7,-42.5,-10.8,-34.5,-1.8,-31.7C7.3,-28.9,14.6,-31.5,20.4,-29.7Z"
 					transform="translate(60 100) scale(-1,1.2)"
@@ -22,7 +22,7 @@ const Blobs = (props) => {
 		);
 	else if (blob === 3)
 		return (
-			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className={'blob-three'}>
+			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className={'blob blob-three'}>
 				<path
 					d="M41.5,-14.1C54.6,-1.2,66.7,22.2,59.6,39.6C52.6,57.1,26.3,68.6,12.9,61.2C-0.5,53.8,-1,27.3,-7.2,10.4C-13.4,-6.5,-25.2,-13.9,-24.9,-19.4C-24.7,-24.9,-12.3,-28.5,0.9,-29C14.2,-29.6,28.3,-27.1,41.5,-14.1Z"
 					transform="translate(101.8 100)"
@@ -31,7 +31,7 @@ const Blobs = (props) => {
 		);
 	else if (blob === 4)
 		return (
-			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className={'blob-four'}>
+			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className={'blob blob-four'}>
 				<path
 					d="M45.3,-51.5C55.3,-45.6,57.6,-28.1,61.7,-10.1C65.9,8,72,26.5,65.5,38C59.1,49.5,40.2,54.1,21.9,61.1C3.6,68.1,-14.1,77.7,-28.3,74.1C-42.4,70.5,-53.1,53.6,-59.5,37C-66,20.4,-68.1,4,-62.8,-8.5C-57.5,-20.9,-44.7,-29.5,-33,-35.1C-21.3,-40.7,-10.6,-43.4,3.5,-47.6C17.7,-51.7,35.3,-57.4,45.3,-51.5Z"
 					transform="translate(100 90)"

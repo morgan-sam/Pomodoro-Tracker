@@ -7,9 +7,13 @@ const KeyboardShortcut = () => {
 
 	if (keys[0] === 'ctrl' && keys[1] === 'alt' && keys[2] === 'enter') {
 		setCombo(true);
-		for (let i = 1; i < 5; i++) {
-			document.documentElement.style.setProperty(`--base-color${i}`, randInt(0, 359));
-		}
+		setInterval(() => {
+			for (let i = 1; i < 5; i++) {
+				const val = getComputedStyle(document.documentElement).getPropertyValue(`--base-color${i}`);
+				document.documentElement.style.setProperty(`--base-color${i}`, (val + 10) % 360);
+			}
+		}, 1000);
+
 		setKeys([ null, null, null ]);
 	}
 

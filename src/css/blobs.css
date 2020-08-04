@@ -10,3 +10,7 @@
 .blob-four {
 	fill: var(--color4-mid);
 }
+
+.blob {
+	transition: 1s ease-out;
+}
