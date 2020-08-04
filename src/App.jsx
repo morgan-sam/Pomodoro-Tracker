@@ -6,7 +6,7 @@ import Settings from 'screens/Settings';
 import AccountSettings from 'screens/AccountSettings';
 import DisplaySettings from 'screens/DisplaySettings';
 import Script from 'screens/Script';
-import LoginSignUp from 'components/LoginSignUp';
+import LoginSignUp from 'screens/LoginSignUp';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { AuthProvider } from 'context/auth';
 import PrivateRoute from 'routes/PrivateRoute';
