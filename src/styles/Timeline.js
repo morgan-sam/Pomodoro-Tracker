@@ -70,6 +70,7 @@ export const getCurrentTimeMarkerStyle = (colorTheme) => {
 		position: 'absolute',
 		top: '0',
 		right: '0',
-		transform: `rotate(90deg) translateY(-${zzwidth * 2}px)`
+		transform: `rotate(90deg) translateY(-${zzwidth * 2}px)`,
+		filter: 'hue-rotate(-90deg)'
 	};
 };
