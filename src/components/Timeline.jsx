@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import {
 	getBoxStyle,
-	textStyle,
 	innerGridStyle,
 	getDefaultEventBoxStyle,
 	getEventBoxTypeStyle,
