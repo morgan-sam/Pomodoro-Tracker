@@ -7,7 +7,7 @@ import timeline from 'img/timeline.png';
 import bash from 'img/bash.svg';
 import python from 'img/python.svg';
 import terminal_dark from 'img/terminal_dark.gif';
-import graph from 'img/graph.png';
+import graph from 'img/graph.gif';
 import ScrollingTimeline from 'components/ScrollingTimeline';
 import KeyBoardShortcut from 'components/KeyBoardShortcut';
 
@@ -103,7 +103,7 @@ const Home = () => {
 						</div>
 						<div style={gridSubContainer}>
 							<p style={{ padding: '1rem' }}>View your performance on the web app. </p>
-							<img src={graph} className="graph" />
+							<img src={graph} style={{ filter: 'contrast(0.5) brightness(1.2)' }} className="graph" />
 						</div>
 					</div>
 					<Blobs blob={3} />
