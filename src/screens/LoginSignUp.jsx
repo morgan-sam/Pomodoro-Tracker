@@ -38,9 +38,10 @@ const LoginSignup = (props) => {
 					inputs={[ 'email', 'password' ]}
 					submitText={type === 'login' ? 'Log In' : 'Sign Up'}
 				/>
-				<a className={'login-signup-footer'} href={type === 'login' ? '/signup' : '/login'}>
-					{type === 'login' ? 'Sign Up' : 'Log In'}
-				</a>
+				<div className={'login-signup-footer'}>
+					<span>{type === 'login' ? 'New here? ' : 'Returning? '}</span>
+					<a href={type === 'login' ? '/signup' : '/login'}>{type === 'login' ? 'Sign Up' : 'Log In'}</a>
+				</div>
 			</div>
 		</div>
 	);
