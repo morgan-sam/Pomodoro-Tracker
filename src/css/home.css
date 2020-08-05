@@ -88,7 +88,7 @@
 	height: 14rem;
 	border-radius: 1rem;
 	filter: contrast(0.5) brightness(1.2);
-	cursor: wait;
+	cursor: progress;
 }
 
 @media only screen and (max-width: 1600px) and (min-width: 1000px) {
