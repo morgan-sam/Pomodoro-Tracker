@@ -10,6 +10,33 @@
 	--dark-brightness: calc(var(--base-brightness) - var(--brightness-offset));
 	--darker-brightness: calc(var(--base-brightness) - calc(2 * var(--brightness-offset)));
 
+	/* User Color: */
+
+	--base-user-color: 250;
+	--user-color-brightness-mod: 1;
+	--user-color-saturation-mod: 1;
+
+	--user-color-light: hsl(
+		var(--base-user-color),
+		calc(var(--base-saturation) * var(--user-color-saturation-mod)),
+		calc(var(--light-brightness) * var(--user-color-brightness-mod))
+	);
+	--user-color-mid: hsl(
+		var(--base-user-color),
+		calc(var(--base-saturation) * var(--user-color-saturation-mod)),
+		calc(var(--mid-brightness) * var(--user-color-brightness-mod))
+	);
+	--user-color-dark: hsl(
+		var(--base-user-color),
+		calc(var(--base-saturation) * var(--user-color-saturation-mod)),
+		calc(var(--dark-brightness) * var(--user-color-brightness-mod))
+	);
+	--user-color-darker: hsl(
+		var(--base-user-color),
+		calc(var(--base-saturation) * var(--user-color-saturation-mod)),
+		calc(var(--darker-brightness) * var(--user-color-brightness-mod))
+	);
+
 	/* Base Color 1: */
 
 	--base-color1: 294;
