@@ -12,7 +12,8 @@ export const defaultOptions = {
 		type: 'both',
 		maxPomodoro: 14
 	},
-	darkTheme: false
+	darkTheme: false,
+	colorTheme: { hue: 126, saturation: 1, lightness: 1 }
 };
 
 export const graphPeriodOptions = [ 'week ahead', 'week passed', 'month' ];
