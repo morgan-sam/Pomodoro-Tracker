@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
 import { getSystemButtonStyle, getContentBoxStyle } from 'styles/settings';
-import ThemeContext from 'context/theme';
+import DarkThemeContext from 'context/theme';
 
 const Confirm = (props) => {
 	const { message, onConfirm } = props;
-	const darkTheme = useContext(ThemeContext);
+	const darkTheme = useContext(DarkThemeContext);
 	const history = useHistory();
 	const accountButtonStyle = getSystemButtonStyle(darkTheme);
 

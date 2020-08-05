@@ -9,10 +9,10 @@ import {
 } from 'styles/dayTimeline';
 import { getTodaysDateAsObj } from 'data/dates';
 import { convert24hrTo12hrTime } from 'utility/parseTime';
-import ThemeContext from 'context/theme';
+import DarkThemeContext from 'context/theme';
 
 function DayTimeline(props) {
-	const darkTheme = useContext(ThemeContext);
+	const darkTheme = useContext(DarkThemeContext);
 	const eventLengths = {
 		...props.eventLengths,
 		start: 1

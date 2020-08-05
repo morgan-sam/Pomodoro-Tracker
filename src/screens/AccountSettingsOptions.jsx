@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
 import { getSystemButtonStyle, getContentBoxStyle } from 'styles/settings';
-import ThemeContext from 'context/theme';
+import DarkThemeContext from 'context/theme';
 import { accountFunctionTemplates } from 'controller/accountFunctions';
 
 const AccountSettingsOptions = (props) => {
 	const { sequence, setSequence } = props;
-	const darkTheme = useContext(ThemeContext);
+	const darkTheme = useContext(DarkThemeContext);
 	const accountButtonStyle = getSystemButtonStyle(darkTheme);
 	const { changePassword, changeEmail, resetAccount, deleteAccount } = accountFunctionTemplates;
 	const history = useHistory();

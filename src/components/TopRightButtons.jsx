@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import firebase from 'config/firebase';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/settings';
-import ThemeContext from 'context/theme';
+import DarkThemeContext from 'context/theme';
 
 const TopRightButtons = () => {
 	const history = useHistory();
-	const darkTheme = useContext(ThemeContext);
+	const darkTheme = useContext(DarkThemeContext);
 	const topRightButtonStyle = { ...getSystemButtonStyle(darkTheme), marginLeft: '1rem' };
 	return (
 		<div className={'top-right-btns-container'}>
