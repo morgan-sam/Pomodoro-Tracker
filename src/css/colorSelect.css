@@ -1,0 +1,35 @@
+.color-select {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 20rem;
+}
+
+.color-test-box {
+	display: grid;
+	grid-template-columns: 4rem;
+	grid-template-rows: repeat(4, 1rem);
+	border: 1px solid black;
+}
+
+.color-test-box > *:nth-child(1) {
+	background-color: var(--user-color-light);
+}
+.color-test-box > *:nth-child(2) {
+	background-color: var(--user-color-mid);
+}
+.color-test-box > *:nth-child(3) {
+	background-color: var(--user-color-dark);
+}
+.color-test-box > *:nth-child(4) {
+	background-color: var(--user-color-darker);
+}
+
+.hsl-slider-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.hsl-slider {
+	/* // */
+}

@@ -9,6 +9,7 @@ import { convertTextToTitleCase } from 'utility/parseText';
 import { postOptions } from 'data/queries';
 import GraphDisplaySelect from 'components/GraphDisplaySelect';
 import { defaultOptions } from 'data/defaultState';
+import ColorSelect from 'components/ColorSelect';
 
 const DisplaySettings = (props) => {
 	const { options, setOptions } = props;
@@ -77,6 +78,9 @@ const DisplaySettings = (props) => {
 						<TimeOptionSelect options={tempOptions} setOptions={setTempOptions} />
 						<GraphDisplaySelect options={tempOptions} setOptions={setTempOptions} />
 					</div>
+				</div>
+				<div>
+					<ColorSelect />
 				</div>
 				<div className="footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
