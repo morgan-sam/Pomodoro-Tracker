@@ -23,7 +23,7 @@ const PasswordInput = (props) => {
 	return (
 		<div className="screen-container" style={getAppContainerStyle(darkTheme)}>
 			<div className="content-box" style={getContentBoxStyle(darkTheme)}>
-				<h2 className="settings-header">{message}</h2>
+				<h2 className="header">{message}</h2>
 				<Form
 					inputs={[ 'password' ]}
 					submitText={'Confirm Password'}

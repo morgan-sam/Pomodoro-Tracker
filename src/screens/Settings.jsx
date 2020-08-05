@@ -10,7 +10,7 @@ const Settings = (props) => {
 	return (
 		<div className="screen-container" style={getAppContainerStyle(options.darkTheme)}>
 			<div className="content-box" style={getContentBoxStyle(options.darkTheme)}>
-				<h2 className="settings-header">Settings</h2>
+				<h2 className="header">Settings</h2>
 				<div className="button-column">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings/display')}>
 						Display Settings
