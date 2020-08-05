@@ -8,9 +8,9 @@
 .form-btn {
 	margin: 2rem 1rem 1rem 1rem;
 	width: fit-content;
-	border: 2px solid var(--user-color-darker);
 	padding: 7px 10px;
-	background-color: var(--user-color-dark);
+	border: 2px solid var(--color4-darker);
+	background-color: var(--color4-dark);
 	color: white;
 	border-radius: 10px;
 	font-size: 1rem;
