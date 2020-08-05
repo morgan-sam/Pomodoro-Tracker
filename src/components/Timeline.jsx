@@ -6,7 +6,7 @@ import {
 	getDefaultEventBoxStyle,
 	getEventBoxTypeStyle,
 	currentTimeMarkerStyle
-} from 'styles/dayTimeline';
+} from 'styles/Timeline';
 import { getTodaysDateAsObj } from 'data/dates';
 import { convert24hrTo12hrTime } from 'utility/parseTime';
 import { DarkThemeContext, ColorThemeContext } from 'context/theme';

@@ -1,7 +1,7 @@
 import React from 'react';
 import TopPageText from 'components/TopPageText';
 import DateNavigation from 'components/DateNavigation';
-import DayTimeline from 'components/DayTimeline';
+import DayTimeline from 'components/Timeline';
 
 function TopPanel(props) {
 	return (
