@@ -49,7 +49,7 @@ const ColorSelect = (props) => {
 				<input
 					type="range"
 					min="20"
-					max="60"
+					max="55"
 					value={tempOptions.colorTheme.lightness}
 					onChange={(el) =>
 						setTempOptions({
