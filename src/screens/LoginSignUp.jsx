@@ -30,7 +30,7 @@ const LoginSignup = (props) => {
 	return (
 		<div className="screen-container">
 			<div className={'content-box'}>
-				<h3 className={'login-signup-title'}>
+				<h3 className={'settings-header'}>
 					{type === 'login' ? 'Login to your account' : 'Sign up for an account'}
 				</h3>
 				<Form
