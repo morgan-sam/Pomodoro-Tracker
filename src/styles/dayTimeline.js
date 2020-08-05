@@ -47,11 +47,11 @@ export const getEventBoxTypeStyle = (colorTheme) => {
 			zIndex: '-1'
 		},
 		pomodoro: {
-			backgroundColor: colorTheme.mid,
+			backgroundColor: colorTheme.light,
 			transition: 'background-color 1s ease-in-out'
 		},
 		encore: {
-			backgroundColor: colorTheme.darker,
+			backgroundColor: colorTheme.dark,
 			transition: 'background-color 1s ease-in-out'
 		}
 	};
