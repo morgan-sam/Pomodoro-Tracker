@@ -85,7 +85,7 @@ const ScrollingTimeline = (props) => {
 	return (
 		<div className="canvas-timeline-container" style={{ height: `${timelineHeight}px` }}>
 			<canvas className="canvas-timeline" ref={canvasRef} width={24 * hourWidth} height={timelineHeight} />
-			<canvas className="canvas-timeline-2" ref={canvasRef2} width={24 * hourWidth} height={timelineHeight} />
+			<canvas className="canvas-timeline" ref={canvasRef2} width={24 * hourWidth} height={timelineHeight} />
 		</div>
 	);
 };

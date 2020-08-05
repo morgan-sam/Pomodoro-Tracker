@@ -37,13 +37,16 @@
 
 .canvas-timeline {
 	position: absolute;
-	animation: slide var(--slide-time-seconds) linear var(--first-timeline-delay) infinite forwards;
-	left: 0px;
+	animation: slide var(--slide-time-seconds) linear infinite forwards;
 }
 
-.canvas-timeline-2 {
-	position: absolute;
-	padding-left: calc(var(--container-width) * -1px);
+.canvas-timeline-container > *:first-child {
+	left: 0px;
+	animation-delay: var(--first-timeline-delay);
+}
+
+.canvas-timeline-container > *:last-child {
 	left: calc(var(--container-width) * 1px);
-	animation: slide var(--slide-time-seconds) linear var(--second-timeline-delay) infinite forwards;
+	animation-delay: var(--second-timeline-delay);
+	padding-left: calc(var(--container-width) * -1px);
 }
