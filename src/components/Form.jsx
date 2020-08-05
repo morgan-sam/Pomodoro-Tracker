@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { capitalizeFirstLetter } from 'utility/parseText';
+import { ColorThemeContext } from 'context/theme';
 
 const Form = (props) => {
+	const colorTheme = useContext(ColorThemeContext);
 	const { style, cancelText, submitText, onSubmit, onCancel, inputs } = props;
+	console.log(colorTheme);
 
 	return (
 		<form className={'form'} style={{ ...style }} onSubmit={onSubmit}>
@@ -21,11 +24,26 @@ const Form = (props) => {
 			) : null}
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
 				{onCancel && (
-					<button className={'form-btn'} type="button" onClick={onCancel}>
+					<button
+						className={'form-btn'}
+						type="button"
+						onClick={onCancel}
+						style={{
+							border: `2px solid ${colorTheme.darker}`,
+							backgroundColor: `${colorTheme.mid}`
+						}}
+					>
 						{cancelText ? cancelText : 'Cancel'}
 					</button>
 				)}
-				<button className={'form-btn'} type="submit">
+				<button
+					className={'form-btn'}
+					type="submit"
+					style={{
+						border: `2px solid ${colorTheme.darker}`,
+						backgroundColor: `${colorTheme.mid}`
+					}}
+				>
 					{submitText ? submitText : 'Submit'}
 				</button>
 			</div>
