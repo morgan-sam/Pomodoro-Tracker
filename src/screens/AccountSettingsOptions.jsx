@@ -15,7 +15,7 @@ const AccountSettingsOptions = (props) => {
 		<div className="screen-container" style={getAppContainerStyle(darkTheme)}>
 			<div className="content-box" style={getContentBoxStyle(darkTheme)}>
 				<h2 className="header">Account Settings</h2>
-				<div className="accountButtonGrid">
+				<div className="account-button-grid">
 					<button
 						style={accountButtonStyle}
 						onClick={() => setSequence({ ...sequence, fnObj: changePassword })}
