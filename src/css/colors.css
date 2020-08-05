@@ -117,15 +117,4 @@
 		calc(var(--base-saturation) * var(--color4-saturation-mod)),
 		calc(var(--darker-brightness) * var(--color4-brightness-mod))
 	);
-
-	/*
-    
-    OLD COLORS:
-
-    --color-one: #e0bbe4;
-	--color-two: #fec8d8;
-	--color-three: #d291bc;
-    --color-four: #957dad;
-    
-    */
 }
