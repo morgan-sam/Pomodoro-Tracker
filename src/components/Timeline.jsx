@@ -4,7 +4,7 @@ import {
 	innerGridStyle,
 	getDefaultEventBoxStyle,
 	getEventBoxTypeStyle,
-	currentTimeMarkerStyle
+	getCurrentTimeMarkerStyle
 } from 'styles/Timeline';
 import { getTodaysDateAsObj } from 'data/dates';
 import { convert24hrTo12hrTime } from 'utility/parseTime';
@@ -104,7 +104,7 @@ function DayTimeline(props) {
 		const width = props.hourWidth;
 		const { hour, minute } = getTodaysDateAsObj().time;
 		const time = width * (minute / 60 + hour - props.options.timeline.startTime);
-		return <div style={{ ...currentTimeMarkerStyle, left: `${time}rem` }} />;
+		return <div style={{ ...getCurrentTimeMarkerStyle(colorTheme), left: `${time}rem` }} />;
 	};
 
 	return (
