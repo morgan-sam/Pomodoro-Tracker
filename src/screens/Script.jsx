@@ -70,7 +70,7 @@ const Script = (props) => {
 						text={'pomodoro.py'}
 					/>
 				</div>
-				<div className="settings-footer">
+				<div className="footer">
 					<button style={getSystemButtonStyle(false)} onClick={() => history.push('/')}>
 						Return
 					</button>

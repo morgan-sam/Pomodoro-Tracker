@@ -38,7 +38,7 @@ const AccountSettingsOptions = (props) => {
 						Delete Account
 					</button>
 				</div>
-				<div className="settings-footer">
+				<div className="footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
 						Return
 					</button>

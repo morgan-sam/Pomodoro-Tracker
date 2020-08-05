@@ -78,7 +78,7 @@ const DisplaySettings = (props) => {
 						<GraphDisplaySelect options={tempOptions} setOptions={setTempOptions} />
 					</div>
 				</div>
-				<div className="settings-footer">
+				<div className="footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
 						{'Cancel'}
 					</button>

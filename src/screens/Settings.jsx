@@ -19,7 +19,7 @@ const Settings = (props) => {
 						Account Settings
 					</button>
 				</div>
-				<div className="settings-footer">
+				<div className="footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/')}>
 						Return
 					</button>
