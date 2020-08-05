@@ -103,7 +103,7 @@ const Home = () => {
 						</div>
 						<div style={gridSubContainer}>
 							<p style={{ padding: '1rem' }}>View your performance on the web app. </p>
-							<img src={graph} style={{ filter: 'contrast(0.5) brightness(1.2)' }} className="graph" />
+							<img src={graph} className="graph" />
 						</div>
 					</div>
 					<Blobs blob={3} />
