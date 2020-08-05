@@ -1,6 +1,10 @@
 import React, { createRef, useState } from 'react';
 import Blobs from 'components/Blobs';
 import DownArrow from 'components/DownArrow';
+import FileIcon from 'components/FileIcon';
+import ScrollingTimeline from 'components/ScrollingTimeline';
+import KeyBoardShortcut from 'components/KeyBoardShortcut';
+
 import splash from 'img/splash.jpeg';
 import terminal from 'img/terminal.gif';
 import timeline from 'img/timeline.png';
@@ -9,10 +13,6 @@ import python from 'img/python.svg';
 import terminal_dark from 'img/terminal_dark.gif';
 import graph_static from 'img/graph_static.png';
 import graph_animated from 'img/graph_animated.gif';
-import ScrollingTimeline from 'components/ScrollingTimeline';
-import KeyBoardShortcut from 'components/KeyBoardShortcut';
-
-import FileIcon from 'components/FileIcon';
 
 const homeStyle = {
 	overflowX: 'hidden'
