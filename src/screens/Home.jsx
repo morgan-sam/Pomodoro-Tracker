@@ -7,7 +7,8 @@ import timeline from 'img/timeline.png';
 import bash from 'img/bash.svg';
 import python from 'img/python.svg';
 import terminal_dark from 'img/terminal_dark.gif';
-import graph from 'img/graph.gif';
+import graph_static from 'img/graph_static.png';
+import graph_animated from 'img/graph_animated.gif';
 import ScrollingTimeline from 'components/ScrollingTimeline';
 import KeyBoardShortcut from 'components/KeyBoardShortcut';
 
@@ -25,6 +26,8 @@ const gridSubContainer = {
 };
 
 const Home = () => {
+	const [ graphHover, setGraphHover ] = useState(false);
+
 	const firstRef = createRef();
 	const secondRef = createRef();
 	const thirdRef = createRef();
@@ -103,7 +106,12 @@ const Home = () => {
 						</div>
 						<div style={gridSubContainer}>
 							<p style={{ padding: '1rem' }}>View your performance on the web app. </p>
-							<img src={graph} className="graph" />
+							<img
+								onMouseOver={() => setGraphHover(true)}
+								onMouseLeave={() => setGraphHover(false)}
+								src={graphHover ? graph_animated : graph_static}
+								className="graph"
+							/>
 						</div>
 					</div>
 					<Blobs blob={3} />
