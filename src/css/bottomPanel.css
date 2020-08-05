@@ -1,13 +1,10 @@
-.bottom-panel-container {
+.canvas-container {
+	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.canvas-container {
-	position: relative;
-	display: flex;
-	justify-content: center;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .switch-graph-view-btn {

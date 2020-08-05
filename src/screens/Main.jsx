@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TopPanel from 'components/TopPanel';
 import TopRightButtons from 'components/TopRightButtons';
-import BottomPanel from 'components/BottomPanel';
+import GraphPanel from 'components/GraphPanel';
 import { getAutoHourWidth } from 'utility/calculateSizing';
 import { compareObjs } from 'utility/sortAndCompare';
 import { convertUTCISOToUKObj } from 'utility/parseDates';
@@ -119,7 +119,16 @@ function Main(props) {
 					{...optionProps}
 				/>
 				<TopRightButtons />
-				{options.graph.visible && <BottomPanel entriesData={entriesData} {...optionProps} />}
+				{options.graph.visible && (
+					<GraphPanel
+						{...{
+							entriesData,
+							date,
+							setDate,
+							options
+						}}
+					/>
+				)}
 			</div>
 		</div>
 	);
