@@ -37,7 +37,7 @@ export const getDefaultEventBoxStyle = (darkTheme) => {
 	};
 };
 
-export const getEventBoxTypeStyle = (darkTheme) => {
+export const getEventBoxTypeStyle = (colorTheme) => {
 	return {
 		start: {
 			backgroundColor: '#eee',
@@ -47,11 +47,11 @@ export const getEventBoxTypeStyle = (darkTheme) => {
 			zIndex: '-1'
 		},
 		pomodoro: {
-			backgroundColor: darkTheme ? '#e59400' : '#c3e5a7',
+			backgroundColor: colorTheme.mid,
 			transition: 'background-color 1s ease-in-out'
 		},
 		encore: {
-			backgroundColor: darkTheme ? '#a06700' : '#95c39f',
+			backgroundColor: colorTheme.darker,
 			transition: 'background-color 1s ease-in-out'
 		}
 	};

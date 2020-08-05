@@ -9,10 +9,11 @@ import {
 } from 'styles/dayTimeline';
 import { getTodaysDateAsObj } from 'data/dates';
 import { convert24hrTo12hrTime } from 'utility/parseTime';
-import { DarkThemeContext } from 'context/theme';
+import { DarkThemeContext, ColorThemeContext } from 'context/theme';
 
 function DayTimeline(props) {
 	const darkTheme = useContext(DarkThemeContext);
+	const colorTheme = useContext(ColorThemeContext);
 	const eventLengths = {
 		...props.eventLengths,
 		start: 1
@@ -70,7 +71,7 @@ function DayTimeline(props) {
 				key={i}
 				style={{
 					...getDefaultEventBoxStyle(darkTheme),
-					...getEventBoxTypeStyle(darkTheme)[el.type],
+					...getEventBoxTypeStyle(colorTheme)[el.type],
 					...getEventBoxStyle(el)
 				}}
 			/>
