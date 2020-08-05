@@ -11,7 +11,6 @@ import { getEntries, postOptions, getOptions } from 'data/queries';
 function Main(props) {
 	const { options, setOptions, fadeIn, setFadeIn } = props;
 	const [ entriesData, setEntriesData ] = useState([]);
-	const [ todaysCommits, setTodaysCommits ] = useState(null);
 	const [ date, setDate ] = useState(convertUTCISOToUKObj(new Date().toISOString()).date);
 	const [ hourWidth, setHourWidth ] = useState(getAutoHourWidth(options.timeline));
 
@@ -40,27 +39,11 @@ function Main(props) {
 				const entries = await getEntries();
 				const correctedTimezoneData = convertDataToUKTimezone(entries);
 				setEntriesData(correctedTimezoneData);
-				// const todaysCommits = await getTodaysGithubCommits();
-				// setTodaysCommits(todaysCommits);
 			} catch (error) {
 				console.log(error);
 			}
 		})();
 	}, []);
-
-	const getTodaysGithubCommits = async () => {
-		const events = await fetch('https://api.github.com/users/morgan-sam/events?per_page=100', {
-			headers: new Headers({
-				Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
-			})
-		}).then((response) => response.json());
-		const today = new Date().toISOString().substring(0, 10);
-		const todayEvents = events.filter((el) => el.created_at.substring(0, 10) === today);
-		const commitsTotal = todayEvents.reduce((total, el) => {
-			return el.payload.commits.length + total;
-		}, 0);
-		return commitsTotal;
-	};
 
 	useEffect(() => {
 		const getOptionsFromDatabase = async () => {
@@ -110,7 +93,6 @@ function Main(props) {
 			<div className={'main-container'}>
 				<TopPanel
 					filteredEntries={filterEntries(entriesData)}
-					todaysCommits={todaysCommits}
 					hourWidth={hourWidth}
 					eventLengths={{
 						pomodoro: 25,
