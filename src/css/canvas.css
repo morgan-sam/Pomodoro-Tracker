@@ -25,7 +25,7 @@
 	}
 }
 
-.canvas-container {
+.canvas-timeline-container {
 	position: relative;
 	overflow: hidden;
 	border-top: 1px solid black;
