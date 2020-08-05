@@ -80,7 +80,7 @@ const DisplaySettings = (props) => {
 					</div>
 				</div>
 				<div>
-					<ColorSelect />
+					<ColorSelect {...{ tempOptions, setTempOptions }} />
 				</div>
 				<div className="footer">
 					<button style={accountButtonStyle} onClick={() => history.push('/settings')}>
