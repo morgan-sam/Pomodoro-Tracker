@@ -6,7 +6,7 @@
 	grid-template-rows: repeat(6, 1fr);
 }
 
-.header {
+.home.header {
 	grid-area: 1 / 1 / 2 / 2;
 	width: inherit;
 	overflow: hidden;
@@ -29,7 +29,7 @@
 	overflow: visible;
 }
 
-.footer {
+.home.footer {
 	grid-area: 6 / 1 / 7 / 2;
 	width: inherit;
 	overflow: hidden;
