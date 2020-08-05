@@ -5,7 +5,10 @@ import { ColorThemeContext } from 'context/theme';
 const Form = (props) => {
 	const colorTheme = useContext(ColorThemeContext);
 	const { style, cancelText, submitText, onSubmit, onCancel, inputs } = props;
-	console.log(colorTheme);
+	const buttonColors = {
+		border: `2px solid ${colorTheme.darker}`,
+		backgroundColor: `${colorTheme.mid}`
+	};
 
 	return (
 		<form className={'form'} style={{ ...style }} onSubmit={onSubmit}>
@@ -24,26 +27,11 @@ const Form = (props) => {
 			) : null}
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
 				{onCancel && (
-					<button
-						className={'form-btn'}
-						type="button"
-						onClick={onCancel}
-						style={{
-							border: `2px solid ${colorTheme.darker}`,
-							backgroundColor: `${colorTheme.mid}`
-						}}
-					>
+					<button className={'form-btn'} type="button" onClick={onCancel} style={buttonColors}>
 						{cancelText ? cancelText : 'Cancel'}
 					</button>
 				)}
-				<button
-					className={'form-btn'}
-					type="submit"
-					style={{
-						border: `2px solid ${colorTheme.darker}`,
-						backgroundColor: `${colorTheme.mid}`
-					}}
-				>
+				<button className={'form-btn'} type="submit" style={buttonColors}>
 					{submitText ? submitText : 'Submit'}
 				</button>
 			</div>
