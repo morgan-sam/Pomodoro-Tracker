@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import { capitalizeFirstLetter } from 'utility/parseText';
 import { DROPDOWN_HEIGHT_REMS } from 'styles/dropdown';
-import DarkThemeContext from 'context/theme';
+import { DarkThemeContext } from 'context/theme';
 
 const Dropdown = (props) => {
 	const darkTheme = useContext(DarkThemeContext);

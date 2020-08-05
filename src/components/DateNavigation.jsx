@@ -3,7 +3,7 @@ import DateSelect from 'components/DateSelect';
 import DateArrowButton from 'components/DateArrowButton';
 import { getTodaysDateAsObj } from 'data/dates';
 import { getSystemButtonStyle } from 'styles/settings';
-import DarkThemeContext from 'context/theme';
+import { DarkThemeContext } from 'context/theme';
 
 const DateNavigation = (props) => {
 	const darkTheme = useContext(DarkThemeContext);

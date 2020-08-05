@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
 import { getContentBoxStyle } from 'styles/settings';
 import { reauthenticate } from 'data/queries';
-import DarkThemeContext from 'context/theme';
+import { DarkThemeContext } from 'context/theme';
 import Form from 'components/Form';
 
 const PasswordInput = (props) => {

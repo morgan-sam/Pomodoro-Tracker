@@ -3,7 +3,7 @@ import GraphCanvas from 'components/GraphCanvas';
 import { getSystemButtonStyle } from 'styles/settings';
 import { graphPeriodOptions } from 'data/defaultState';
 import { monthStringArray, addSubtractMonthsFromDateObj } from 'data/dates';
-import DarkThemeContext from 'context/theme';
+import { DarkThemeContext } from 'context/theme';
 import { convertTextToTitleCase } from 'utility/parseText';
 
 function GraphPanel(props) {

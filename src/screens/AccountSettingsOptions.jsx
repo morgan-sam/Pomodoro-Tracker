@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAppContainerStyle } from 'styles/app';
 import { getSystemButtonStyle, getContentBoxStyle } from 'styles/settings';
-import DarkThemeContext from 'context/theme';
+import { DarkThemeContext } from 'context/theme';
 import { accountFunctionTemplates } from 'controller/accountFunctions';
 
 const AccountSettingsOptions = (props) => {

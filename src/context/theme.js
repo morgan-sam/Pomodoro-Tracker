@@ -1,8 +1,5 @@
 import React from 'react';
 
-const DarkThemeContext = React.createContext();
-
+export const DarkThemeContext = React.createContext();
 export const DarkThemeProvider = DarkThemeContext.Provider;
-export const DarkThemeConsumer = DarkThemeContext.Consumer;
-
-export default DarkThemeContext;
+const DarkThemeConsumer = DarkThemeContext.Consumer;

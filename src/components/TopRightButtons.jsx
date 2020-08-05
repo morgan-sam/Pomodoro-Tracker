@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import firebase from 'config/firebase';
 import { useHistory } from 'react-router-dom';
 import { getSystemButtonStyle } from 'styles/settings';
-import DarkThemeContext from 'context/theme';
+import { DarkThemeContext } from 'context/theme';
 
 const TopRightButtons = () => {
 	const history = useHistory();

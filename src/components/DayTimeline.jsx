@@ -9,7 +9,7 @@ import {
 } from 'styles/dayTimeline';
 import { getTodaysDateAsObj } from 'data/dates';
 import { convert24hrTo12hrTime } from 'utility/parseTime';
-import DarkThemeContext from 'context/theme';
+import { DarkThemeContext } from 'context/theme';
 
 function DayTimeline(props) {
 	const darkTheme = useContext(DarkThemeContext);
