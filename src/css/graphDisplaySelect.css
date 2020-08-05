@@ -1,7 +1,4 @@
 .graph-option-label {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
 	padding: 1rem;
 }
 
@@ -10,14 +7,6 @@
 	justify-content: center;
 	align-items: center;
 	height: 4rem;
-}
-
-.graph-display-select-label {
-	display: flex;
-	width: auto;
-	justify-content: center;
-	flex-direction: column;
-	padding: 1rem;
 }
 
 .graph-period-select {
