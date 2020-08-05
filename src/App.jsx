@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ThemeProvider } from 'context/theme';
+import { DarkThemeProvider } from 'context/theme';
 import Main from 'screens/Main';
 import Home from 'screens/Home';
 import Settings from 'screens/Settings';
@@ -17,7 +17,7 @@ const App = () => {
 	const [ options, setOptions ] = useState(defaultOptions);
 	const [ fadeIn, setFadeIn ] = useState(true);
 	return (
-		<ThemeProvider value={options.darkTheme}>
+		<DarkThemeProvider value={options.darkTheme}>
 			<AuthProvider>
 				<Router>
 					<PrivateRoute
@@ -59,7 +59,7 @@ const App = () => {
 					/>
 				</Router>
 			</AuthProvider>
-		</ThemeProvider>
+		</DarkThemeProvider>
 	);
 };
 
