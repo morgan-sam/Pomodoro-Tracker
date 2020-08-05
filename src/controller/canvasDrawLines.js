@@ -15,7 +15,7 @@ export const drawCoordinateCrosses = (graph, size) => {
 	const today = parseISOToBigEndian(new Date().toISOString());
 	graph.graphData.forEach((el, i) => {
 		let { x, y } = el.coordinate;
-		const crossColor = today === el.date ? '#FF0000' : graph.darkTheme ? 'white' : 'black';
+		const crossColor = today === el.date ? graph.colorTheme.dark : graph.darkTheme ? 'white' : 'black';
 		drawPassedLinePath(graph.context, (ctx) => {
 			ctx.strokeStyle = crossColor;
 			ctx.beginPath();

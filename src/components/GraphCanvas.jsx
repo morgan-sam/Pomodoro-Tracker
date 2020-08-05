@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import { getPomodoroCount } from 'controller/graphDataProcessing';
 import { getGraphStyle } from 'styles/graphPanel';
 import { GRAPH_SIZES } from 'styles/graphSizing';
 import { drawNoDataMessage, drawEntireGraph } from 'controller/canvasDrawing';
+import { ColorThemeContext } from 'context/theme';
 
 const GraphPanel = (props) => {
+	const colorTheme = useContext(ColorThemeContext);
 	const { options } = props;
 	const Y_AXIS_MAX = props.maxPomodoro;
 	const canvasRef = useRef(null);
@@ -37,7 +39,8 @@ const GraphPanel = (props) => {
 			type: props.type,
 			units,
 			yAxisMax: Y_AXIS_MAX,
-			darkTheme
+			darkTheme,
+			colorTheme
 		};
 		drawEntireGraph(graphDataObj);
 	};
