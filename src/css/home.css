@@ -52,6 +52,11 @@
 	width: 35rem;
 	border: 1px solid black;
 	border-radius: 10px;
+	margin: 1rem;
+}
+
+.splash-text > * > p {
+	padding: 1rem;
 }
 
 .terminal-image {

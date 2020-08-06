@@ -33,13 +33,13 @@ const Home = () => {
 			<div className="home section splash" ref={firstRef}>
 				<h1 className="home header center">Pomodoro Tracker</h1>
 				<div className="content-background-container">
-					<div className="home content center spaced">
+					<div className="home content center splash-text">
 						<div>
-							<p style={{ padding: '0 0 2rem 0' }}>The simplest way to keep track of your pomodoros.</p>
+							<p>The simplest way to keep track of your pomodoros.</p>
 							<img src={splash} className="splash-image" />
 						</div>
 						<div>
-							<p style={{ padding: '1rem' }}>One simple command line script. </p>
+							<p>One simple command line script. </p>
 							<img src={terminal} className="terminal-image" />
 						</div>
 					</div>
