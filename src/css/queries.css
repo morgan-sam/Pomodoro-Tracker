@@ -1,3 +1,5 @@
+/* Home  */
+
 @media only screen and (max-width: 600px) {
 	* {
 		box-sizing: border-box;
@@ -9,7 +11,7 @@
 		align-items: center;
 		justify-content: center;
 		height: 100vh;
-		border: 1px solid black;
+		/* border: 1px solid black; */
 		width: 100vw;
 	}
 
