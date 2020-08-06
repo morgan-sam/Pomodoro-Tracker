@@ -43,6 +43,13 @@
 	justify-content: center;
 }
 
+.splash-image {
+	height: 18rem;
+	width: 35rem;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
 .spaced {
 	justify-content: space-around;
 }
@@ -70,6 +77,13 @@
 	grid-column-gap: 5rem;
 	grid-row-gap: auto;
 	padding-bottom: 2.5rem;
+}
+
+.how-grid > * {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .icons {

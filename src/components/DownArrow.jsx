@@ -5,6 +5,7 @@ const DownArrow = (props) => {
 	const { type, onClick } = props;
 	return (
 		<img
+			className="down-arrow"
 			onClick={onClick}
 			src={arrow}
 			style={{

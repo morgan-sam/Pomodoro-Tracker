@@ -23,6 +23,7 @@ import 'css/blobs.css';
 import 'css/keyboardShortcut.css';
 import 'css/loginSignUp.css';
 import 'css/colorSelect.css';
+import 'css/queries.css';
 
 import App from './App';
 

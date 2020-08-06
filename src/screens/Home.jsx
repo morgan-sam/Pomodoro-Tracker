@@ -18,13 +18,6 @@ const homeStyle = {
 	overflowX: 'hidden'
 };
 
-const gridSubContainer = {
-	display: 'flex',
-	flexDirection: 'column',
-	alignItems: 'center',
-	justifyContent: 'center'
-};
-
 const Home = () => {
 	const [ graphHover, setGraphHover ] = useState(false);
 
@@ -42,21 +35,13 @@ const Home = () => {
 
 	return (
 		<div style={homeStyle}>
-			<div className="home section" ref={firstRef}>
+			<div className="home section splash" ref={firstRef}>
 				<h1 className="home header center">Pomodoro Tracker</h1>
 				<div className="content-background-container">
 					<div className="home content center spaced">
 						<div>
 							<p style={{ padding: '0 0 2rem 0' }}>The simplest way to keep track of your pomodoros.</p>
-							<img
-								src={splash}
-								style={{
-									height: '18rem',
-									width: '35rem',
-									border: '1px solid black',
-									borderRadius: '10px'
-								}}
-							/>
+							<img src={splash} className="splash-image" />
 						</div>
 						<div>
 							<p style={{ padding: '1rem' }}>One simple command line script. </p>
@@ -69,7 +54,7 @@ const Home = () => {
 					<DownArrow type={'down'} onClick={handleClicks[1]} />
 				</div>
 			</div>
-			<div className="home section" ref={secondRef}>
+			<div className="home section why" ref={secondRef}>
 				<h1 className="home header center">Why</h1>
 				<div className="content-background-container">
 					<div className="home content center why-text">
@@ -85,26 +70,26 @@ const Home = () => {
 				</div>
 			</div>
 
-			<div className="home section" ref={thirdRef}>
+			<div className="home section how" ref={thirdRef}>
 				<h1 className="home header center">How</h1>
 				<div className="content-background-container">
 					<div className="home content center how-grid">
-						<div style={gridSubContainer}>
+						<div>
 							<p style={{ padding: '1rem' }}>Sign up and download a pomodoro script.</p>
 							<div className="icons">
 								<FileIcon icon={bash} text={'pomodoro.sh'} />
 								<FileIcon icon={python} text={'pomodoro.py'} />
 							</div>
 						</div>
-						<div style={gridSubContainer}>
+						<div>
 							<p style={{ padding: '1rem' }}>Assign to a keyboard shortcut.</p>
 							<KeyBoardShortcut />
 						</div>
-						<div style={gridSubContainer}>
+						<div>
 							<p style={{ padding: '1rem' }}>Run the script and get to work. </p>
 							<img src={terminal_dark} className="terminal_dark" />
 						</div>
-						<div style={gridSubContainer}>
+						<div>
 							<p style={{ padding: '1rem' }}>View your performance on the web app. </p>
 							<img
 								onMouseOver={() => setGraphHover(true)}
@@ -120,9 +105,9 @@ const Home = () => {
 					<DownArrow type={'down'} onClick={handleClicks[3]} />
 				</div>
 			</div>
-			<div className="home section" ref={fourthRef}>
+			<div className="home section get-started" ref={fourthRef}>
 				<div className="content-background-container">
-					<div className="home content ">
+					<div className="home content">
 						<a href="/signup" className="get-started-button">
 							Get Started
 						</a>
