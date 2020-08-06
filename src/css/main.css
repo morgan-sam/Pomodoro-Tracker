@@ -27,3 +27,6 @@
 	top: 1rem;
 	right: 1rem;
 }
+.top-right-btns-container > * {
+	margin-left: 1rem;
+}

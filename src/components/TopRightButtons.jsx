@@ -7,7 +7,7 @@ import { DarkThemeContext } from 'context/theme';
 const TopRightButtons = () => {
 	const history = useHistory();
 	const darkTheme = useContext(DarkThemeContext);
-	const topRightButtonStyle = { ...getSystemButtonStyle(darkTheme), marginLeft: '1rem' };
+	const topRightButtonStyle = { ...getSystemButtonStyle(darkTheme) };
 	return (
 		<div className={'top-right-btns-container'}>
 			<button style={topRightButtonStyle} onClick={() => history.push('/script')}>
