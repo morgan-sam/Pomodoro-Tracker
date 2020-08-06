@@ -2,16 +2,15 @@
 	* {
 		box-sizing: border-box;
 	}
-	.header {
-		margin: 5rem 0;
-	}
 	.home.section {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		height: 100vh;
-		width: 100vw;
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: repeat(5, 1fr);
 		border: 1px solid black;
+		width: 100vw;
 	}
 
 	.splash-text > * > p {
@@ -32,9 +31,11 @@
 	.home.content {
 		width: 100vw;
 		display: flex;
-		flex-direction: row;
 		align-items: center;
 		justify-content: center;
+	}
+	.home.section.why > .content-background-container {
+		margin: 5rem 0;
 	}
 
 	.why-text > * {
@@ -58,5 +59,12 @@
 	}
 	.home.section.get-started {
 		display: flex;
+	}
+	.home.section.get-started > .content-background-container {
+		height: 100vh;
+	}
+
+	.footer {
+		display: none;
 	}
 }
