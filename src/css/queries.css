@@ -76,3 +76,12 @@
 		display: none;
 	}
 }
+
+@media only screen and (max-width: 360px) {
+	img {
+		display: none;
+	}
+	.home.section.why > .content-background-container {
+		margin: 2rem 0;
+	}
+}
