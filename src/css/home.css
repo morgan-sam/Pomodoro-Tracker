@@ -79,6 +79,10 @@
 	padding-bottom: 2.5rem;
 }
 
+.how-grid > * > p {
+	padding: 1rem;
+}
+
 .how-grid > * {
 	display: flex;
 	flex-direction: column;

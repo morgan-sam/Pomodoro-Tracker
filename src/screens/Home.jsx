@@ -75,22 +75,22 @@ const Home = () => {
 				<div className="content-background-container">
 					<div className="home content center how-grid">
 						<div>
-							<p style={{ padding: '1rem' }}>Sign up and download a pomodoro script.</p>
+							<p>Sign up and download a pomodoro script.</p>
 							<div className="icons">
 								<FileIcon icon={bash} text={'pomodoro.sh'} />
 								<FileIcon icon={python} text={'pomodoro.py'} />
 							</div>
 						</div>
 						<div>
-							<p style={{ padding: '1rem' }}>Assign to a keyboard shortcut.</p>
+							<p>Assign to a keyboard shortcut.</p>
 							<KeyBoardShortcut />
 						</div>
 						<div>
-							<p style={{ padding: '1rem' }}>Run the script and get to work. </p>
+							<p>Run the script and get to work. </p>
 							<img src={terminal_dark} className="terminal_dark" />
 						</div>
 						<div>
-							<p style={{ padding: '1rem' }}>View your performance on the web app. </p>
+							<p>View your performance on the web app. </p>
 							<img
 								onMouseOver={() => setGraphHover(true)}
 								onMouseLeave={() => setGraphHover(false)}
