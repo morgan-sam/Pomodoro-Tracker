@@ -95,3 +95,35 @@
 		border: none;
 	}
 }
+
+/* Main Screen */
+
+@media only screen and (max-width: 600px) {
+	.main-container {
+		width: 100vw;
+		padding: 4rem 1rem 1rem 1rem;
+	}
+	.top-panel {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.top-panel-option {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.top-panel-option > * {
+		text-align: center;
+		width: 100%;
+		position: relative;
+		padding: 1rem;
+	}
+	.daytimeline-scrollbar {
+		display: none;
+	}
+	.canvas-container {
+		display: none;
+	}
+}
