@@ -98,7 +98,7 @@ def addRangeOfDates():
 
 
 if (len(sys.argv) < 3):
-    print('Usage: randomDataPost.py [EMAIL] [PASSWORD] [DAYS_TO_ADD]')
+    print('Usage: addRandomEvents.py [EMAIL] [PASSWORD] [DAYS_TO_ADD]')
 else:
     email = sys.argv[1]
     password = sys.argv[2]
