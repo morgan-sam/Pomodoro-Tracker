@@ -50,6 +50,11 @@
 	border-radius: 10px;
 }
 
+.terminal-image {
+	height: 9rem;
+	width: 18rem;
+}
+
 .spaced {
 	justify-content: space-around;
 }

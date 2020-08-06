@@ -45,7 +45,7 @@ const Home = () => {
 						</div>
 						<div>
 							<p style={{ padding: '1rem' }}>One simple command line script. </p>
-							<img src={terminal} style={{ height: '9rem', width: '18rem' }} />
+							<img src={terminal} className="terminal-image" />
 						</div>
 					</div>
 					<Blobs blob={1} />
