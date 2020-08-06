@@ -18,15 +18,14 @@ config = {
     "storageBucket": "pomodoro-tracker-db95f.appspot.com"
 }
 
-email = sys.argv[1]
-password = sys.argv[2]
-days = int(sys.argv[3]) if len(sys.argv) > 3 else 14
 
-firebase = pyrebase.initialize_app(config)
-auth = firebase.auth()
-user = auth.sign_in_with_email_and_password(
-    email, password)
-db = firebase.database()
+def authorise(email, password):
+    firebase = pyrebase.initialize_app(config)
+    auth = firebase.auth()
+    user = auth.sign_in_with_email_and_password(
+        email, password)
+    db = firebase.database()
+    return [user, db]
 
 
 class Date:
@@ -98,7 +97,11 @@ def addRangeOfDates():
         genRandomDayEvents(newDate, events)
 
 
-if (len(sys.argv) == 1):
+if (len(sys.argv) < 3):
     print('Usage: randomDataPost.py [EMAIL] [PASSWORD] [DAYS_TO_ADD]')
 else:
+    email = sys.argv[1]
+    password = sys.argv[2]
+    days = int(sys.argv[3]) if len(sys.argv) > 3 else 14
+    [user, db] = authorise(email, password)
     addRangeOfDates()
