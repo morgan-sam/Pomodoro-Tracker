@@ -1,4 +1,4 @@
-/* Home  */
+/* Home Screen */
 
 @media only screen and (max-width: 600px) {
 	* {
@@ -85,5 +85,13 @@
 	}
 	.home.section.why > .content-background-container {
 		margin: 2rem 0;
+	}
+}
+
+/* Login/Signup Screen */
+
+@media only screen and (max-width: 600px) {
+	.content-box {
+		border: none;
 	}
 }
