@@ -14,7 +14,7 @@
 		border: 1px solid black;
 	}
 
-	.home.section.splash > * > * > * > p {
+	.splash-text > * > p {
 		width: 80%;
 		margin: 1rem auto;
 	}
