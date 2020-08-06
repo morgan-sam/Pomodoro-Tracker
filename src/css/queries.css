@@ -50,6 +50,9 @@
 	.blob {
 		position: absolute;
 	}
+	.blob-three {
+		transform: translate(-10%, -18%);
+	}
 	.how-grid > *:last-child {
 		display: none;
 	}
