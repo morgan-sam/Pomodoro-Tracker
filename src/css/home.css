@@ -51,8 +51,12 @@
 	margin: 0 auto;
 	width: fit-content;
 }
+.why-text > h2 {
+	margin: 1.25rem 0;
+}
 .why-text > * {
 	width: 100%;
+	margin: 0.75rem 0;
 	text-align: left;
 }
 .why-text > img {
