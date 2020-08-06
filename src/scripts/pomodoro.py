@@ -5,10 +5,7 @@ import math
 import os
 import datetime
 import pyrebase
-import json
 import psutil
-from subprocess import Popen
-
 
 script_name = os.path.abspath(__file__)
 for process in psutil.process_iter():
