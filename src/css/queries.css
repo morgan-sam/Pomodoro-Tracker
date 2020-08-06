@@ -48,6 +48,14 @@
 		width: 20rem;
 		height: 10rem;
 	}
+	.keyboard-container > * {
+		padding: 0 0.5rem;
+	}
+	.keyboard-key {
+		box-shadow: none;
+		background-color: transparent;
+		pointer-events: none;
+	}
 	.blob {
 		position: absolute;
 	}
