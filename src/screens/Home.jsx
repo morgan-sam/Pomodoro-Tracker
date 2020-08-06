@@ -13,10 +13,6 @@ import terminal_dark from 'img/terminal_dark.gif';
 import graph_static from 'img/graph_static.png';
 import graph_animated from 'img/graph_animated.gif';
 
-const homeStyle = {
-	overflowX: 'hidden'
-};
-
 const Home = () => {
 	const [ graphHover, setGraphHover ] = useState(false);
 
@@ -33,7 +29,7 @@ const Home = () => {
 	);
 
 	return (
-		<div style={homeStyle}>
+		<div className="home screen">
 			<div className="home section splash" ref={firstRef}>
 				<h1 className="home header center">Pomodoro Tracker</h1>
 				<div className="content-background-container">
