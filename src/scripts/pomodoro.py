@@ -13,9 +13,7 @@ from subprocess import Popen
 script_name = os.path.abspath(__file__)
 for process in psutil.process_iter():
     if process.cmdline() == ['python3', script_name]:
-        pinfo = process.as_dict(attrs=['pid'])
-        procpid = str(pinfo['pid'])
-        if procpid != str(os.getpid()):
+        if process.pid != os.getpid():
             process.kill()
 
 
