@@ -7,7 +7,6 @@ import KeyBoardShortcut from 'components/KeyBoardShortcut';
 
 import splash from 'img/splash.jpeg';
 import terminal from 'img/terminal.gif';
-import timeline from 'img/timeline.png';
 import bash from 'img/bash.svg';
 import python from 'img/python.svg';
 import terminal_dark from 'img/terminal_dark.gif';
