@@ -48,7 +48,7 @@
 		height: 10rem;
 	}
 	.blob {
-		display: none;
+		position: absolute;
 	}
 	.how-grid > *:last-child {
 		display: none;
