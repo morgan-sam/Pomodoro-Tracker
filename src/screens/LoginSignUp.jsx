@@ -30,6 +30,9 @@ const LoginSignup = (props) => {
 	return (
 		<div className="screen-container">
 			<div className={'content-box'}>
+				<h1 className="login-signup-header">
+					<a href="/">Pomodoro Tracker</a>
+				</h1>
 				<h3 className={'header'}>{type === 'login' ? 'Login to your account' : 'Sign up for an account'}</h3>
 				<Form
 					onSubmit={handleLoginSignUp}
