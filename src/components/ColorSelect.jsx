@@ -1,4 +1,5 @@
 import React from 'react';
+import { getSystemButtonStyle } from 'styles/settings';
 
 const ColorSelect = (props) => {
 	const { tempOptions, setTempOptions } = props;
@@ -62,6 +63,20 @@ const ColorSelect = (props) => {
 					step="1"
 				/>
 			</div>
+			<button
+				style={{ ...getSystemButtonStyle(tempOptions.darkTheme), padding: '0.5rem' }}
+				onClick={() =>
+					setTempOptions({
+						...tempOptions,
+						colorTheme: {
+							...tempOptions.colorTheme,
+							saturation: 50,
+							lightness: 40
+						}
+					})}
+			>
+				Reset S/L
+			</button>
 		</div>
 	);
 };
