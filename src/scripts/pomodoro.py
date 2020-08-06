@@ -1,9 +1,23 @@
+#!/usr/bin/env python3
+
 import time
 import math
 import os
 import datetime
 import pyrebase
 import json
+import psutil
+from subprocess import Popen
+
+
+script_name = os.path.abspath(__file__)
+for process in psutil.process_iter():
+    if process.cmdline() == ['python3', script_name]:
+        pinfo = process.as_dict(attrs=['pid'])
+        procpid = str(pinfo['pid'])
+        if procpid != str(os.getpid()):
+            process.kill()
+
 
 config = {
     "apiKey": "AIzaSyB-j40wdFsSbJ7giMJJwQsymWacOFm0Boo",
@@ -11,6 +25,7 @@ config = {
     "databaseURL": "https://pomodoro-tracker-db95f.firebaseio.com",
     "storageBucket": "pomodoro-tracker-db95f.appspot.com"
 }
+
 
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
