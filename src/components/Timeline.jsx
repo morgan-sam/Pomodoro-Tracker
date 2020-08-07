@@ -1,6 +1,4 @@
 import React, { useContext, useRef, useEffect } from 'react';
-import { getCurrentTimeMarkerStyle } from 'styles/Timeline';
-import { getTodaysDateAsObj } from 'data/dates';
 import { convert24hrTo12hrTime } from 'utility/parseTime';
 import { DarkThemeContext, ColorThemeContext } from 'context/theme';
 import { remToPx } from 'utility/convertUnit';
