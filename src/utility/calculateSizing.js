@@ -4,5 +4,5 @@ export const getPageWidth = () => {
 
 export const getAutoHourWidth = (options) => {
 	const hourRange = options.endTime - options.startTime;
-	return getPageWidth() / hourRange - 0.5;
+	return getPageWidth() / hourRange - 1.5;
 };

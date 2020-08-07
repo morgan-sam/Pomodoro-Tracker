@@ -10,13 +10,3 @@
 	overflow-x: auto;
 	margin: 1.2rem 0;
 }
-
-.daytimeline-scrollbar {
-	display: flex;
-	white-space: nowrap;
-	width: auto;
-	max-width: 100%;
-	overflow-x: auto;
-	position: relative;
-	flex-direction: row;
-}

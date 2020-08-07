@@ -1,7 +1,7 @@
 import React from 'react';
 import TopPageText from 'components/TopPageText';
 import DateNavigation from 'components/DateNavigation';
-import DayTimeline from 'components/Timeline';
+import Timeline from 'components/Timeline';
 
 function TopPanel(props) {
 	return (
@@ -10,7 +10,7 @@ function TopPanel(props) {
 				<TopPageText entriesData={props.filteredEntries} date={props.date} />
 				<DateNavigation date={props.date} setDate={props.setDate} />
 			</div>
-			<DayTimeline
+			<Timeline
 				hourWidth={props.hourWidth}
 				entries={props.filteredEntries}
 				eventLengths={props.eventLengths}
