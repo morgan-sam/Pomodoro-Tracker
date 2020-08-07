@@ -14,7 +14,6 @@ function DayTimeline(props) {
 		...props.eventLengths,
 		start: 1
 	};
-	console.log(entries);
 
 	const hourWidth = remToPx(props.hourWidth);
 	const pomodoroWidth = 5 * hourWidth / 12;
@@ -22,44 +21,44 @@ function DayTimeline(props) {
 
 	const timelineHeight = 130;
 	const timeRange = options.timeline.endTime - options.timeline.startTime;
-
-	const pomodoroColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color1-mid');
-	const encoreColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color1-dark');
+	const eventOffsetY = 40;
 
 	const drawTimeline = (ref, entries) => {
-		drawTimelineGrid(ref);
-		addEntries(ref, entries);
-		drawTimelineOutline(ref);
+		const context = ref.current.getContext('2d');
+
+		context.translate(0.5, 0.5);
+		drawTimelineGrid(context);
+		addEntries(context, entries);
+		drawTimelineOutline(context);
+		context.translate(-0.5, -0.5);
 	};
 
-	const addEntries = (ref, entries) => {
+	const addEntries = (context, entries) => {
 		entries.forEach((el) => {
 			const time = el.time.hour + el.time.minute / 60;
-			if (el.type === 'pomodoro') drawPomodoro(time, ref);
-			if (el.type === 'encore') drawEncore(time, ref);
+			if (el.type === 'pomodoro') drawPomodoro(context, time);
+			if (el.type === 'encore') drawEncore(context, time);
 		});
 	};
 
-	const drawPomodoro = (time, ref) => {
-		const ctx = ref.current.getContext('2d');
+	const drawPomodoro = (ctx, time) => {
 		ctx.beginPath();
 		ctx.fillStyle = colorTheme.light;
 		ctx.strokeStyle = 'black';
 		ctx.lineWidth = 1;
 		const pos = (time - options.timeline.startTime) * hourWidth - pomodoroWidth;
-		ctx.rect(pos, 40, pomodoroWidth, timelineHeight);
+		ctx.rect(pos, eventOffsetY, pomodoroWidth, timelineHeight - eventOffsetY);
 		ctx.fill();
 		ctx.stroke();
 	};
 
-	const drawEncore = (time, ref) => {
-		const ctx = ref.current.getContext('2d');
+	const drawEncore = (ctx, time) => {
 		ctx.beginPath();
 		ctx.fillStyle = colorTheme.dark;
 		ctx.strokeStyle = 'black';
 		ctx.lineWidth = 1;
 		const pos = (time - options.timeline.startTime) * hourWidth - encoreWidth;
-		ctx.rect(pos, 40, encoreWidth, timelineHeight);
+		ctx.rect(pos, eventOffsetY, encoreWidth, timelineHeight - eventOffsetY);
 		ctx.fill();
 		ctx.stroke();
 	};
@@ -70,12 +69,11 @@ function DayTimeline(props) {
 		ctx.fillRect(0, 0, timeRange * hourWidth, timelineHeight);
 	};
 
-	const drawTimelineGrid = (ref) => {
-		Array.from(Array(timeRange).keys()).map((i) => drawTimeBox(i, ref));
+	const drawTimelineGrid = (context) => {
+		Array.from(Array(timeRange).keys()).map((i) => drawTimeBox(i, context));
 	};
 
-	const drawTimeBox = (index, ref) => {
-		const ctx = ref.current.getContext('2d');
+	const drawTimeBox = (index, ctx) => {
 		ctx.beginPath();
 		ctx.fillStyle = 'black';
 		const time = (index + options.timeline.startTime) % 24;
@@ -85,10 +83,9 @@ function DayTimeline(props) {
 		ctx.stroke();
 	};
 
-	const drawTimelineOutline = (ref) => {
-		const ctx = ref.current.getContext('2d');
+	const drawTimelineOutline = (ctx) => {
 		ctx.beginPath();
-		ctx.rect(0, 0, hourWidth * timeRange, timelineHeight);
+		ctx.rect(0, 0, hourWidth * timeRange - 1, timelineHeight - 1);
 		ctx.stroke();
 	};
 
