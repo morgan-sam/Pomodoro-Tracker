@@ -1,10 +1,10 @@
-.main-timeline {
+.canvas-timeline-timeline {
 	margin: 1.2rem 0;
 	width: 90vw;
 }
 
-.timeline-parent {
-	display: flex;
+.canvas-timeline-parent {
+	display: none;
 	align-items: center;
 	justify-content: center;
 }

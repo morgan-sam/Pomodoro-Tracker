@@ -13,6 +13,7 @@ function Main(props) {
 	const [ entriesData, setEntriesData ] = useState([]);
 	const [ date, setDate ] = useState(convertUTCISOToUKObj(new Date().toISOString()).date);
 	const [ hourWidth, setHourWidth ] = useState(getAutoHourWidth(options.timeline));
+	console.log(hourWidth);
 
 	function filterEntries(entries) {
 		return entries.filter((el) => {

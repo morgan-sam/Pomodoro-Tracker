@@ -136,17 +136,22 @@
 		margin-left: 0rem;
 	}
 
-	.main-timeline {
+	.elements-timeline {
+		display: none;
+	}
+
+	.canvas-timeline-timeline {
 		margin: 0;
 		width: auto;
 	}
 
-	.timeline-container {
+	.canvas-timeline-container {
 		width: 100vw;
 		overflow-x: scroll;
 	}
 
-	.timeline-parent {
+	.canvas-timeline-parent {
+		display: flex;
 		border: 1px solid black;
 		margin: 4rem 2rem;
 		overflow: hidden;

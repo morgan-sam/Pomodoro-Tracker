@@ -16,13 +16,14 @@ import 'css/dateNavigation.css';
 import 'css/timelineDisplaySelect.css';
 import 'css/optionsPanel.css';
 import 'css/dateSelect.css';
-import 'css/timeline.css';
 import 'css/topPanel.css';
 import 'css/graphDisplaySelect.css';
 import 'css/blobs.css';
 import 'css/keyboardShortcut.css';
 import 'css/loginSignUp.css';
 import 'css/colorSelect.css';
+import 'css/elementsTimeline.css';
+import 'css/canvasTimeline.css';
 import 'css/queries.css';
 
 import App from './App';

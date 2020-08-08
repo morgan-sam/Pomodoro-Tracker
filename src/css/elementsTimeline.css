@@ -1,0 +1,22 @@
+.elements-timeline-text {
+	position: absolute;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0 5px;
+}
+
+.elements-timeline {
+	height: 9rem;
+	overflow-x: auto;
+	margin: 1.2rem 0;
+}
+
+.elements-timeline-scrollbar {
+	display: flex;
+	white-space: nowrap;
+	width: auto;
+	max-width: 100%;
+	overflow-x: hidden;
+	position: relative;
+	flex-direction: row;
+}
