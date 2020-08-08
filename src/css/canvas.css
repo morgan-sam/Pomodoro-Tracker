@@ -1,9 +1,9 @@
 :root {
-	--canvas-hour-width: 90;
+	--scrolling-timeline-hour-width: 90;
 	--container-width: 560;
 	--base-time: 100;
 
-	--offset: calc(calc(var(--canvas-hour-width) * 12) / var(--container-width));
+	--offset: calc(calc(var(--scrolling-timeline-hour-width) * 12) / var(--container-width));
 
 	--slide-time-seconds: calc(var(--base-time) * 1s);
 	--first-timeline-delay: calc(var(--base-time) * -0.5s);
@@ -15,10 +15,10 @@
 		left: 0px;
 	}
 	50% {
-		left: calc(var(--canvas-hour-width) * -24px);
+		left: calc(var(--scrolling-timeline-hour-width) * -24px);
 	}
 	50.001% {
-		left: calc(var(--canvas-hour-width) * 24px);
+		left: calc(var(--scrolling-timeline-hour-width) * 24px);
 	}
 	100% {
 		left: 0px;

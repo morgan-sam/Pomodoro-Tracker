@@ -7,7 +7,9 @@ const ScrollingTimeline = (props) => {
 	const canvasRef = useRef(null);
 	const canvasRef2 = useRef(null);
 
-	const hourWidth = window.getComputedStyle(document.documentElement).getPropertyValue('--canvas-hour-width');
+	const hourWidth = window
+		.getComputedStyle(document.documentElement)
+		.getPropertyValue('--scrolling-timeline-hour-width');
 	const pomodoroWidth = 5 * hourWidth / 12;
 	const encoreWidth = hourWidth / 12;
 
