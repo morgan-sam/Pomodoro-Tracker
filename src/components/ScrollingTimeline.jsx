@@ -41,7 +41,6 @@ const ScrollingTimeline = (props) => {
 		let events = [];
 		let curTime = 0;
 		while (curTime < 23 * 60) {
-			console.log(curTime);
 			const combo = randInt(1, 4, 5);
 			for (let i = 0; i < combo; i++) {
 				curTime += 25;
