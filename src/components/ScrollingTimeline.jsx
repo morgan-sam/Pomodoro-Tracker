@@ -37,6 +37,8 @@ const ScrollingTimeline = (props) => {
 		drawTimeline({ ...timelineOptions, context: canvasRef2.current.getContext('2d') }, events2);
 	}, []);
 
+	const curTimeToEventTime = (curTime) => ({ hour: Math.floor(curTime / 60), minute: curTime % 60 });
+
 	const generateRandomEvents = () => {
 		let events = [];
 		let curTime = 0;
@@ -46,13 +48,13 @@ const ScrollingTimeline = (props) => {
 				curTime += 25;
 				events.push({
 					type: 'pomodoro',
-					time: { hour: Math.floor(curTime / 60), minute: curTime % 60 }
+					time: curTimeToEventTime(curTime)
 				});
 				if (randBoo()) {
 					curTime += 5;
 					events.push({
 						type: 'encore',
-						time: { hour: Math.floor(curTime / 60), minute: curTime % 60 }
+						time: curTimeToEventTime(curTime)
 					});
 				}
 				if (curTime > 23 * 60) break;
