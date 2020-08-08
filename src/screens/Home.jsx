@@ -71,7 +71,7 @@ const Home = () => {
 					<div className="home content center how-grid">
 						<div>
 							<p>Sign up and download a pomodoro script.</p>
-							<div className="icons">
+							<div className="home-icons">
 								<FileIcon icon={bash} text={'pomodoro.sh'} />
 								<FileIcon icon={python} text={'pomodoro.py'} />
 							</div>

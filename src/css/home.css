@@ -104,11 +104,11 @@
 	justify-content: center;
 }
 
-.icons {
+.home-icons {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 12rem;
+	width: auto;
 }
 
 .keyboard {
