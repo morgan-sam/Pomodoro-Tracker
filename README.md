@@ -40,6 +40,15 @@
 <p>Note: if using the python version extra packages need to be installed
     <a href='https://github.com/morgan-sam/Pomodoro-Tracker/#Installing-Python-Packages'>extra packages need to be installed</a></p>
 
+
+<h3>Usage</h3>
+<p>Run the script to start the pomodoro timer. Focus on your work for 25 minutes.</p>
+<p>When the notification for the pomodoro being over pops up, decide if you were focused for the 25 minutes.</p>
+<p>If you feel you did not focus well, work an extra 5 minutes as an encore.</p>
+<p/>When the pomodoro/encore timer is up and you feel you worked well; either go to the next pomodoro or take a break.</p>
+<p/><a href='https://pomodorotracker.app/login'>Login</a> to the app online and check your progress.</p>
+<p>That's it!</p>
+
 <h3>Installing Python Packages</h3>
 <p>First ensure pip3 is installed:</p>
 <p><code>sudo apt-get install pip3</code></p>
