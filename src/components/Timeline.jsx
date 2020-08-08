@@ -29,7 +29,10 @@ function DayTimeline(props) {
 					encoreWidth,
 					timelineHeight,
 					eventOffsetY: 40,
-					colorTheme,
+					color: {
+						pomodoro: colorTheme.light,
+						encore: colorTheme.dark
+					},
 					startTime: options.timeline.startTime,
 					context: canvasRef.current.getContext('2d')
 				};

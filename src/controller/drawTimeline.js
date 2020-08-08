@@ -1,7 +1,7 @@
 import { convert24hrTo12hrTime } from 'utility/parseTime';
 
 export const drawTimeline = (options, entries) => {
-	const { context, colorTheme, timeRange, hourWidth, timelineHeight, eventOffsetY } = options;
+	const { context } = options;
 	context.translate(0.5, 0.5);
 	drawTimelineGrid(options);
 	addEntries(options, entries);
@@ -25,9 +25,9 @@ const addEntries = (options, entries) => {
 };
 
 const drawPomodoro = (options, pos) => {
-	const { context, colorTheme, eventOffsetY, timelineHeight, pomodoroWidth } = options;
+	const { context, color, eventOffsetY, timelineHeight, pomodoroWidth } = options;
 	context.beginPath();
-	context.fillStyle = colorTheme.light;
+	context.fillStyle = color.pomodoro;
 	context.strokeStyle = 'black';
 	context.lineWidth = 1;
 	context.rect(pos, eventOffsetY, pomodoroWidth, timelineHeight - eventOffsetY);
@@ -36,9 +36,9 @@ const drawPomodoro = (options, pos) => {
 };
 
 const drawEncore = (options, pos) => {
-	const { context, colorTheme, eventOffsetY, timelineHeight, encoreWidth } = options;
+	const { context, color, eventOffsetY, timelineHeight, encoreWidth } = options;
 	context.beginPath();
-	context.fillStyle = colorTheme.dark;
+	context.fillStyle = color.encore;
 	context.strokeStyle = 'black';
 	context.lineWidth = 1;
 	context.rect(pos, eventOffsetY, encoreWidth, timelineHeight - eventOffsetY);
