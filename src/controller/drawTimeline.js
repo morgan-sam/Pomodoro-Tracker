@@ -2,6 +2,7 @@ import { convert24hrTo12hrTime } from 'utility/parseTime';
 
 export const drawTimeline = (options, entries) => {
 	const { context } = options;
+	console.log(options);
 	context.translate(0.5, 0.5);
 	drawTimelineGrid(options);
 	addEntries(options, entries);

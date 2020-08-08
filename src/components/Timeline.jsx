@@ -10,7 +10,7 @@ function DayTimeline(props) {
 	const colorTheme = useContext(ColorThemeContext);
 
 	const timeRange = options.timeline.endTime - options.timeline.startTime;
-	const hourWidth = remToPx(props.hourWidth);
+	const hourWidth = 100;
 	const timelineHeight = 130;
 	const pomodoroWidth = 5 * hourWidth / 12;
 	const encoreWidth = hourWidth / 12;
@@ -39,7 +39,18 @@ function DayTimeline(props) {
 		[ entries ]
 	);
 
-	return <canvas ref={canvasRef} className={'daytimeline'} width={timeRange * hourWidth} height={timelineHeight} />;
+	return (
+		<div className="timeline-parent">
+			<div className="timeline-container">
+				<canvas
+					ref={canvasRef}
+					className={'main-timeline'}
+					width={timeRange * hourWidth}
+					height={timelineHeight}
+				/>
+			</div>{' '}
+		</div>
+	);
 }
 
 export default DayTimeline;

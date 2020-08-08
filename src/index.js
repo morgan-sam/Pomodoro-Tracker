@@ -16,7 +16,7 @@ import 'css/dateNavigation.css';
 import 'css/timelineDisplaySelect.css';
 import 'css/optionsPanel.css';
 import 'css/dateSelect.css';
-import 'css/dayTimeline.css';
+import 'css/timeline.css';
 import 'css/topPanel.css';
 import 'css/graphDisplaySelect.css';
 import 'css/blobs.css';

@@ -120,9 +120,6 @@
 		position: relative;
 		padding: 1rem;
 	}
-	.daytimeline-scrollbar {
-		display: none;
-	}
 	.canvas-container {
 		display: none;
 	}
@@ -137,5 +134,21 @@
 	}
 	.top-right-btns-container > * {
 		margin-left: 0rem;
+	}
+
+	.main-timeline {
+		margin: 0;
+	}
+
+	.timeline-container {
+		width: 100vw;
+		overflow-x: scroll;
+	}
+
+	.timeline-parent {
+		border: 1px solid black;
+		margin: 4rem 2rem;
+		overflow: hidden;
+		position: relative;
 	}
 }
