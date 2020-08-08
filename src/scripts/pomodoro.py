@@ -6,6 +6,7 @@ import os
 import datetime
 import pyrebase
 import psutil
+import subprocess
 
 script_name = os.path.abspath(__file__)
 for process in psutil.process_iter():
@@ -39,6 +40,10 @@ def timer(type, length):
         os.system('clear')
 
 
+def sendNotification(message):
+    subprocess.Popen(['notify-send', message[0], message[1]])
+
+
 def postEvent(type):
     db.child("users").child(user["localId"]).child("events").push({"type": type, "date": str(
         datetime.datetime.now().isoformat())[:-3]+"Z"}, user["idToken"])
@@ -48,5 +53,7 @@ os.system('clear')
 postEvent('start')
 timer('Pomodoro', 1500)
 postEvent('pomodoro')
+sendNotification(['Pomodoro Complete', '25 minutes have passed'])
 timer('Encore', 300)
 postEvent('encore')
+sendNotification(['Encore Complete', '5 minutes have passed'])
