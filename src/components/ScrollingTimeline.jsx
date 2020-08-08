@@ -1,8 +1,7 @@
 import React from 'react';
 import { useEffect, useRef } from 'react';
-import { convert24hrTo12hrTime } from 'utility/parseTime';
 import { randInt, randBoo } from 'utility/random';
-import { drawTimeline, clearTimeline } from 'controller/drawTimeline';
+import { drawTimeline } from 'controller/drawTimeline';
 
 const ScrollingTimeline = (props) => {
 	const canvasRef = useRef(null);
