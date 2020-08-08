@@ -37,10 +37,10 @@
   <li>Ensure <a href='http://vaskovsky.net/notify-send/linux.html'>notify-send</a> is installed</li>
   <li>Run the script and get to work!</p>
 </ol>
-<p>Note: if using the python version extra packages need to be installed</p>
+<p>Note: if using the python version extra packages need to be installed
+    <a href='https://github.com/morgan-sam/Pomodoro-Tracker/#Installing-Python-Packages'>extra packages need to be installed</a></p>
 
-<h3>Python Packages</h3>
-<p>Running the python version of the script will require some extra packages to be installed.</p>
+<h3>Installing Python Packages</h3>
 <p>First ensure pip3 is installed:</p>
 <p><code>sudo apt-get install pip3</code></p>
 <p>Next install the required pip3 packages:</p>
