@@ -53,7 +53,7 @@ const Script = (props) => {
 						display: 'flex',
 						flexDirection: 'row',
 						justifyContent: 'space-between',
-						width: '14rem',
+						width: 'auto',
 						padding: '3rem'
 					}}
 				>

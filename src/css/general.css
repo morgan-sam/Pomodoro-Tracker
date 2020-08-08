@@ -30,3 +30,7 @@
 	display: flex;
 	justify-content: space-around;
 }
+
+.icon {
+	margin: 0 1rem;
+}
