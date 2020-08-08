@@ -10,7 +10,6 @@ const DownArrow = (props) => {
 			src={arrow}
 			style={{
 				height: '8vh',
-				margin: '3rem 0',
 				transform: `scaleY(${type === 'up' ? -1 : 1})`,
 				cursor: 'pointer'
 			}}
