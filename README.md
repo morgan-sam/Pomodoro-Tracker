@@ -34,12 +34,6 @@
   <li>Enter your account password to download the script <b>[Note: encryption is not yet implemented so your password will be stored in the script as plaintext. Please do not use a password that you use for any other account]</b></li>
   <li>Got to your download folder and run <code>chmod +x ./pomodoro.sh</code> in the terminal (<code>pomodoro.py</code> if using the python script)</li>
   <li>Assign the script to a keyboard shortcut.</li>
+  <li>Ensure <a href='http://vaskovsky.net/notify-send/linux.html'>notify-send</a> is installed</li>
   <li>Run the script and get to work!</p>
 </ol>
-
-<h3>Installation</h3>
-<p>You must first install notify-send.</p>
-<blockquote> For Ubuntu/Debian machines:</blockquote>
-<p><code>sudo apt-get install notify-send</code></p>
-<p>Next save <code>pomodoro.sh</code> to your computer and assign it to a keyboard shortcut.</p>
-
