@@ -67,10 +67,10 @@ const DisplaySettings = (props) => {
 	};
 
 	return (
-		<div className="screen-container" style={getAppContainerStyle(tempOptions.darkTheme)}>
+		<div className="display-settings screen-container" style={getAppContainerStyle(tempOptions.darkTheme)}>
 			<div className="content-box" style={getContentBoxStyle(tempOptions.darkTheme)}>
 				<h2 className="header">Display Settings</h2>
-				<div className={'two-by-one-grid'}>
+				<div className={'display-settings-grid'}>
 					<div className="button-column">
 						<div style={gridStyle}>{genCheckboxesWithLabelsArray()}</div>
 					</div>

@@ -16,7 +16,7 @@
 	margin: 0.6rem;
 }
 
-.two-by-one-grid {
+.display-settings-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: 1fr;
