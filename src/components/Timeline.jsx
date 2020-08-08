@@ -14,10 +14,6 @@ function DayTimeline(props) {
 	const timelineHeight = 130;
 	const pomodoroWidth = 5 * hourWidth / 12;
 	const encoreWidth = hourWidth / 12;
-	const eventLengths = {
-		...props.eventLengths,
-		start: 1
-	};
 
 	useEffect(
 		() => {

@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useRef } from 'react';
 import { convert24hrTo12hrTime } from 'utility/parseTime';
 import { randInt, randBoo } from 'utility/random';
+import { drawTimeline, clearTimeline } from 'controller/drawTimeline';
 
 const ScrollingTimeline = (props) => {
 	const canvasRef = useRef(null);
@@ -17,69 +18,49 @@ const ScrollingTimeline = (props) => {
 	const encoreColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color1-dark');
 
 	useEffect(() => {
-		drawTimeline(canvasRef);
-		drawTimeline(canvasRef2);
+		const timelineOptions = {
+			timeRange: 24,
+			hourWidth,
+			pomodoroWidth,
+			encoreWidth,
+			timelineHeight,
+			eventOffsetY: 40,
+			color: {
+				pomodoro: pomodoroColor,
+				encore: encoreColor
+			},
+			startTime: 0
+		};
+		const events = generateRandomEvents();
+		const events2 = generateRandomEvents();
+		drawTimeline({ ...timelineOptions, context: canvasRef.current.getContext('2d') }, events);
+		drawTimeline({ ...timelineOptions, context: canvasRef2.current.getContext('2d') }, events2);
 	}, []);
 
-	const drawTimeline = (ref) => {
-		Array.from(Array(24).keys()).map((i) => drawTimeBox(i, ref));
-		addEvents(ref);
-		drawTimelineOutline(ref);
-	};
-
-	const addEvents = (ref) => {
-		let curPos = 0;
-		while (curPos < hourWidth * 23) {
+	const generateRandomEvents = () => {
+		let events = [];
+		let curTime = 0;
+		while (curTime < 23 * 60) {
+			console.log(curTime);
 			const combo = randInt(1, 4, 5);
 			for (let i = 0; i < combo; i++) {
-				drawPomodoro(curPos, ref);
-				curPos += pomodoroWidth;
+				curTime += 25;
+				events.push({
+					type: 'pomodoro',
+					time: { hour: Math.floor(curTime / 60), minute: curTime % 60 }
+				});
 				if (randBoo()) {
-					drawEncore(curPos, ref);
-					curPos += encoreWidth;
+					curTime += 5;
+					events.push({
+						type: 'encore',
+						time: { hour: Math.floor(curTime / 60), minute: curTime % 60 }
+					});
 				}
-				if (curPos > hourWidth * 23) break;
+				if (curTime > 23 * 60) break;
 			}
-			curPos += randInt(5, 100, 1.4);
+			curTime += randInt(5, 100, 1.4);
 		}
-	};
-
-	const drawPomodoro = (pos, ref) => {
-		const ctx = ref.current.getContext('2d');
-		ctx.beginPath();
-		ctx.fillStyle = pomodoroColor;
-		ctx.strokeStyle = 'black';
-		ctx.lineWidth = 1;
-		ctx.rect(pos, 40, pomodoroWidth, timelineHeight);
-		ctx.fill();
-		ctx.stroke();
-	};
-
-	const drawEncore = (pos, ref) => {
-		const ctx = ref.current.getContext('2d');
-		ctx.beginPath();
-		ctx.fillStyle = encoreColor;
-		ctx.strokeStyle = 'black';
-		ctx.lineWidth = 1;
-		ctx.rect(pos, 40, encoreWidth, timelineHeight);
-		ctx.fill();
-		ctx.stroke();
-	};
-
-	const drawTimeBox = (time, ref) => {
-		const ctx = ref.current.getContext('2d');
-		ctx.beginPath();
-		ctx.rect(hourWidth * time, 0, hourWidth, timelineHeight);
-		ctx.font = '15px Roboto';
-		ctx.fillText(`${convert24hrTo12hrTime(time)}`, 5 + hourWidth * time, 20);
-		ctx.stroke();
-	};
-
-	const drawTimelineOutline = (ref) => {
-		const ctx = ref.current.getContext('2d');
-		ctx.beginPath();
-		ctx.rect(0, 0, hourWidth * 24, timelineHeight);
-		ctx.stroke();
+		return events;
 	};
 
 	return (
