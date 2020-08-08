@@ -30,7 +30,7 @@ function ElementsTimeline(props) {
 						zIndex: props.options.timeline.grid ? '1' : '0'
 					}}
 				>
-					<span className={'daytimeline-text'}>
+					<span className={'elements-timeline-text'}>
 						{props.options.timeline.twelveHourClock ? convert24hrTo12hrTime(i + start) : `${i + start}:00`}
 					</span>
 					{getBoxGrid()}
