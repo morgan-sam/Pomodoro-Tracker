@@ -28,12 +28,19 @@
 
 <h3>Getting Started</h3>
 <ol>
-  <li>Create an account at our signup page <a href='https://pomodorotracker.app/signup'>here</a>. You will be logged in automatically.</li>
-  <li>Click the <code>Get Script</code> button at the top right of the main screen.</li>
-  <li>Choose either a bash or python script.</li>
+  <li>Create an account at our signup page <a href='https://pomodorotracker.app/signup'>here</a> (you will be logged in automatically)</li>
+  <li>Click the <code>Get Script</code> button at the top right of the main screen</li>
+  <li>Choose either a bash or python script (bash is recommended)</li>
   <li>Enter your account password to download the script <b>[Note: encryption is not yet implemented so your password will be stored in the script as plaintext. Please do not use a password that you use for any other account]</b></li>
   <li>Got to your download folder and run <code>chmod +x ./pomodoro.sh</code> in the terminal (<code>pomodoro.py</code> if using the python script)</li>
-  <li>Assign the script to a keyboard shortcut.</li>
+  <li>Assign the script to a keyboard shortcut</li>
   <li>Ensure <a href='http://vaskovsky.net/notify-send/linux.html'>notify-send</a> is installed</li>
   <li>Run the script and get to work!</p>
 </ol>
+
+<h3>Python Packages</h3>
+<p>Running the python version of the script will require some extra packages to be installed.</p>
+<p>First ensure pip3 is installed:</p>
+<p><code>sudo apt-get install pip3</code></p>
+<p>Next install the required pip3 packages:</p>
+<p><code>sudo pip3 install pyrebase psutil</code></p>
