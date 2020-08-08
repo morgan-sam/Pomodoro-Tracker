@@ -138,6 +138,7 @@
 
 	.main-timeline {
 		margin: 0;
+		width: auto;
 	}
 
 	.timeline-container {
