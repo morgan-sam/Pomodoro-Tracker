@@ -47,7 +47,10 @@
 <p>If you feel you did not focus well, work an extra 5 minutes as an encore.</p>
 <p/>When the pomodoro/encore timer is up and you feel you worked well; either go to the next pomodoro or take a break.</p>
 <p/><a href='https://pomodorotracker.app/login'>Login</a> to the app online and check your progress.</p>
-<p>That's it!</p>
+<p><i>That's it!</i></p>
+
+![timeline](/docs/timeline_readme.png?raw=true)
+
 
 <h3>Installing Python Packages</h3>
 <p>First ensure pip3 is installed:</p>
