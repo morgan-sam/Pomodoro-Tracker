@@ -42,7 +42,7 @@ function CanvasTimeline(props) {
 			<div className="canvas-timeline-container">
 				<canvas
 					ref={canvasRef}
-					className={'canvas-timeline-timeline'}
+					className={'canvas-timeline'}
 					width={timeRange * hourWidth}
 					height={timelineHeight}
 				/>

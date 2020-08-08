@@ -25,7 +25,7 @@
 	}
 }
 
-.canvas-timeline-container {
+.scrolling-timeline-container {
 	position: relative;
 	overflow: hidden;
 	border-top: 1px solid black;
@@ -35,17 +35,17 @@
 	width: calc(var(--container-width) * 1px);
 }
 
-.canvas-timeline {
+.scrolling-timeline {
 	position: absolute;
 	animation: slide var(--slide-time-seconds) linear infinite forwards;
 }
 
-.canvas-timeline-container > *:first-child {
+.scrolling-timeline-container > *:first-child {
 	left: 0px;
 	animation-delay: var(--first-timeline-delay);
 }
 
-.canvas-timeline-container > *:last-child {
+.scrolling-timeline-container > *:last-child {
 	left: calc(var(--container-width) * 1px);
 	animation-delay: var(--second-timeline-delay);
 	padding-left: calc(var(--container-width) * -1px);

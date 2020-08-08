@@ -7,7 +7,6 @@ import 'css/colors.css';
 import 'css/home.css';
 import 'css/settings.css';
 import 'css/main.css';
-import 'css/canvas.css';
 import 'css/dropdown.css';
 import 'css/form.css';
 import 'css/timeOptionSelect.css';
@@ -24,6 +23,7 @@ import 'css/loginSignUp.css';
 import 'css/colorSelect.css';
 import 'css/elementsTimeline.css';
 import 'css/canvasTimeline.css';
+import 'css/scrollingTimeline.css';
 import 'css/queries.css';
 
 import App from './App';
