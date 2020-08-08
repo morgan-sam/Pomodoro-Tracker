@@ -31,10 +31,8 @@ const ScrollingTimeline = (props) => {
 			},
 			startTime: 0
 		};
-		const events = generateRandomEvents();
-		const events2 = generateRandomEvents();
-		drawTimeline({ ...timelineOptions, context: canvasRef.current.getContext('2d') }, events);
-		drawTimeline({ ...timelineOptions, context: canvasRef2.current.getContext('2d') }, events2);
+		drawTimeline({ ...timelineOptions, context: canvasRef.current.getContext('2d') }, generateRandomEvents());
+		drawTimeline({ ...timelineOptions, context: canvasRef2.current.getContext('2d') }, generateRandomEvents());
 	}, []);
 
 	const curTimeToEventTime = (curTime) => ({ hour: Math.floor(curTime / 60), minute: curTime % 60 });
