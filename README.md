@@ -1,5 +1,8 @@
 <h2>Pomodoro Tracker App</h2>
-<p>Minimalistic app for keeping track of pomodoros.</p>
+
+<p>Minimalistic app for keeping track of pomodoros:</p>
+
+<a href='https://pomodorotracker.app'>https://pomodorotracker.app</a>
 
 ![Alt text](/src/img/splash.jpeg)
 
