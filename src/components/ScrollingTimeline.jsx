@@ -58,7 +58,7 @@ const ScrollingTimeline = (props) => {
 				}
 				if (curTime > 23 * 60) break;
 			}
-			curTime += randInt(5, 100, 1.4);
+			curTime += randInt(5, 60, 1.4);
 		}
 		return events;
 	};
