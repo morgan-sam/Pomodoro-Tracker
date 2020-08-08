@@ -48,15 +48,7 @@ const Script = (props) => {
 		<div className="screen-container" style={getAppContainerStyle(options.darkTheme)}>
 			<div className="content-box" style={getContentBoxStyle(options.darkTheme)}>
 				<h2 className="header">Download Script</h2>
-				<div
-					style={{
-						display: 'flex',
-						flexDirection: 'row',
-						justifyContent: 'space-between',
-						width: 'auto',
-						padding: '3rem'
-					}}
-				>
+				<div className="icon-container">
 					<FileIcon
 						onClick={() => downloadPomodoroScript(bashScript, 'sh')}
 						style={{ cursor: 'pointer' }}
