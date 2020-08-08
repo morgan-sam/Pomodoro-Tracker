@@ -5,6 +5,7 @@
 
 <a href='https://pomodorotracker.app'>https://pomodorotracker.app</a>
 
+![splash](/src/img/splash.jpeg?raw=true)
 
 <h3>About</h3>
 
