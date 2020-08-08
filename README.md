@@ -26,6 +26,17 @@
 <p>You're back in the zone.</p>
 <p>The focus on your work is unbroken.</p>
 
+<h3>Getting Started</h3>
+<ol>
+  <li>Create an account at our signup page <a href='https://pomodorotracker.app/signup'>here</a>. You will be logged in automatically.</li>
+  <li>Click the <code>Get Script</code> button at the top right of the main screen.</li>
+  <li>Choose either a bash or python script.</li>
+  <li>Enter your account password to download the script <b>[Note: encryption is not yet implemented so your password will be stored in the script as plaintext. Please do not use a password that you use for any other account]</b></li>
+  <li>Got to your download folder and run <code>chmod +x ./pomodoro.sh</code> in the terminal (<code>pomodoro.py</code> if using the python script)</li>
+  <li>Assign the script to a keyboard shortcut.</li>
+  <li>Run the script and get to work!</p>
+</ol>
+
 <h3>Installation</h3>
 <p>You must first install notify-send.</p>
 <blockquote> For Ubuntu/Debian machines:</blockquote>
