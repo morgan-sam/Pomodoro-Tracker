@@ -45,6 +45,6 @@
 <p>Next install the required pip3 packages:</p>
 <p><code>sudo pip3 install pyrebase psutil</code></p>
 
-<h3>Recommended Keyboard Shortcut</p>
+<h3>Recommended Keyboard Shortcut</h3>
 <p>If using gnome-terminal, the following keyboard shortcut is recommended:</p>
 <p><code>gnome-terminal --geometry=1x2 --zoom=3 --title="Pomodoro Timer" -e /path/to/script/pomodoro.sh</code></p>
