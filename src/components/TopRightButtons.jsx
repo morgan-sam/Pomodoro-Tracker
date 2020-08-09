@@ -10,6 +10,12 @@ const TopRightButtons = () => {
 	const topRightButtonStyle = { ...getSystemButtonStyle(darkTheme) };
 	return (
 		<div className={'top-right-btns-container'}>
+			<button
+				style={topRightButtonStyle}
+				onClick={() => (window.location = 'https://github.com/morgan-sam/Pomodoro-Tracker#Getting-Started')}
+			>
+				Help
+			</button>
 			<button style={topRightButtonStyle} onClick={() => history.push('/script')}>
 				Get Script
 			</button>
