@@ -28,7 +28,7 @@
 
 <h3>Getting Started</h3>
 <ol>
-  <li>Create an account at our signup page <a href='https://pomodorotracker.app/signup'>here</a> (you will be logged in automatically)</li>
+  <li>Create an account at the signup page <a href='https://pomodorotracker.app/signup'>here</a> (you will be logged in automatically)</li>
   <li>Click the <code>Get Script</code> button at the top right of the main screen</li>
   <li>Choose either a bash or python script (bash is recommended)</li>
   <li>Enter your account password to download the script <b>[Note: encryption is not yet implemented so your password will be stored in the script as plaintext. Please do not use a password that you use for any other account]</b></li>
