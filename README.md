@@ -34,7 +34,7 @@
   <li>Enter your account password to download the script <b>[Note: encryption is not yet implemented so your password will be stored in the script as plaintext. Please do not use a password that you use for any other account]</b></li>
   <li>Go to your download folder and run <code>chmod +x ./pomodoro.sh</code> in the terminal (<code>pomodoro.py</code> if using the python script)</li>
   <li>Assign the script to a keyboard shortcut</li>
-  <li>Ensure <a href='http://vaskovsky.net/notify-send/linux.html'>notify-send</a> is installed</li>
+  <li>Ensure required packages are installed</li>
   <li>Run the script and get to work!</p>
 </ol>
 <p>Note: if using the python version extra packages need to be installed
@@ -51,11 +51,20 @@
 
 ![splash](/docs/timeline_readme.png?raw=true)
 
-<h3>Installing Python Packages</h3>
+
+<h3>Required Packages</h3>
+<p>Install <a href='http://vaskovsky.net/notify-send/linux.html'>notify-send</a></p>
+<p>Next install packages dependent on type of script used:</p>
+
+<h4>Python</h3>
 <p>First ensure pip3 is installed:</p>
 <p><code>sudo apt-get install pip3</code></p>
 <p>Next install the required pip3 packages:</p>
 <p><code>sudo pip3 install pyrebase psutil</code></p>
+
+<h4>Bash</h3>
+<p>Install jq & curl:</p>
+<p><code>sudo apt-get install jq curl</code></p>
 
 <h3>Recommended Keyboard Shortcut</h3>
 <p>If using gnome-terminal, the following keyboard shortcut is recommended:</p>
