@@ -29,10 +29,6 @@ const App = () => {
     }, {});
   };
 
-  console.log(
-    convertColorThemeToColors({ hue: 250, saturation: 50, lightness: 50 })
-  );
-
   return (
     <ColorThemeProvider value={convertColorThemeToColors(options.colorTheme)}>
       <DarkThemeProvider value={options.darkTheme}>

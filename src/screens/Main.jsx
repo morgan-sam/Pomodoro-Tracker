@@ -17,7 +17,6 @@ function Main(props) {
   const [hourWidth, setHourWidth] = useState(
     getAutoHourWidth(options.timeline)
   );
-  console.log(hourWidth);
 
   function filterEntries(entries) {
     return entries.filter((el) => {
