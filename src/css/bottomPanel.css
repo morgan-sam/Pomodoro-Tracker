@@ -1,29 +1,29 @@
 .canvas-container {
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	left: 50%;
-	transform: translateX(-50%);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .switch-graph-view-btn {
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 .switch-month-btn-container {
-	position: absolute;
-	top: 1rem;
-	width: 55%;
-	display: flex;
-	justify-content: space-between;
+  position: absolute;
+  top: 1rem;
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .switch-month-btn {
-	position: relative;
-	font-size: 0.7rem;
-	width: 6rem;
-	white-space: pre;
+  position: relative;
+  font-size: 0.7rem;
+  width: 6rem;
+  white-space: pre;
 }

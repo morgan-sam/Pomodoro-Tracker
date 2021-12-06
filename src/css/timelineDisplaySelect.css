@@ -1,25 +1,25 @@
 .timeline-display-select-common-margin {
-	margin: 0.5rem;
-	padding: 1rem;
+  margin: 0.5rem;
+  padding: 1rem;
 }
 
 .timeline-display-select-label {
-	display: flex;
-	width: auto;
-	justify-content: center;
-	flex-direction: column;
-	padding-left: 0.5rem;
+  display: flex;
+  width: auto;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 0.5rem;
 }
 
 .timeline-display-select-quarter-panel {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 50%;
-	align-items: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  align-items: left;
 }
 
 .timeline-display-select-toggle-button {
-	height: 2rem;
-	width: auto;
+  height: 2rem;
+  width: auto;
 }

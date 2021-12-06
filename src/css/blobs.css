@@ -1,19 +1,19 @@
 .blob {
-	transition: 1s ease-out;
+  transition: 1s ease-out;
 }
 
 .blob-one {
-	fill: var(--color1-mid);
+  fill: var(--color1-mid);
 }
 
 .blob-two {
-	fill: var(--color2-mid);
+  fill: var(--color2-mid);
 }
 
 .blob-three {
-	fill: var(--color3-mid);
+  fill: var(--color3-mid);
 }
 
 .blob-four {
-	fill: var(--color4-mid);
+  fill: var(--color4-mid);
 }

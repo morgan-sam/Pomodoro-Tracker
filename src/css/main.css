@@ -1,32 +1,32 @@
 .app {
-	opacity: 1;
+  opacity: 1;
 }
 
 .fade-in {
-	animation: fade-in 1 ease-in-out 1s;
+  animation: fade-in 1 ease-in-out 1s;
 }
 
 @keyframes fade-in {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .main-container {
-	height: 100%;
-	width: 100%;
-	box-sizing: border-box;
-	padding: 2.8rem 4rem 4rem 4rem;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2.8rem 4rem 4rem 4rem;
 }
 
 .top-right-btns-container {
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 .top-right-btns-container > * {
-	margin-left: 1rem;
+  margin-left: 1rem;
 }

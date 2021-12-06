@@ -1,15 +1,15 @@
 .options-panel {
-	margin: auto 4rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  margin: auto 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .options-panel > * {
-	display: flex;
-	flex-wrap: wrap;
-	padding: 0.5rem 0;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+  justify-content: center;
+  align-items: center;
 }

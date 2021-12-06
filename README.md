@@ -40,7 +40,6 @@
 <p>Note: if using the python version extra packages need to be installed
     <a href='https://github.com/morgan-sam/Pomodoro-Tracker/#Installing-Python-Packages'>extra packages need to be installed</a></p>
 
-
 <h3>Usage</h3>
 <p>Run the script to start the pomodoro timer. Focus on your work for 25 minutes.</p>
 <p>When the pomodoro finishes and the notification pops up, decide if you were focused for the 25 minutes.</p>
@@ -50,7 +49,6 @@
 <p><i>That's it!</i></p>
 
 ![splash](/docs/timeline_readme.png?raw=true)
-
 
 <h3>Required Packages</h3>
 <p>Install <a href='http://vaskovsky.net/notify-send/linux.html'>notify-send</a></p>

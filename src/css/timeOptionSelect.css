@@ -1,36 +1,36 @@
 .time-option {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-	z-index: 10;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 10;
 }
 
 .time-option-element {
-	margin: 0 1rem;
+  margin: 0 1rem;
 }
 
 .time-option-drop-down {
-	width: 5rem;
+  width: 5rem;
 }
 
 .time-option-label {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	height: 2rem;
-	text-align: left;
-	width: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 2rem;
+  text-align: left;
+  width: auto;
 }
 
 .time-option > * {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: stretch;
-	width: 1fr;
-	margin: 1rem;
-	height: auto;
-	box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: stretch;
+  width: 1fr;
+  margin: 1rem;
+  height: auto;
+  box-sizing: border-box;
 }

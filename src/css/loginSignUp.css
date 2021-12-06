@@ -1,11 +1,11 @@
 .login-signup-header {
-	text-align: center;
+  text-align: center;
 }
 
 .login-signup-header > *:visited {
-	color: black;
+  color: black;
 }
 
 .login-signup-footer {
-	padding: 1.4rem;
+  padding: 1.4rem;
 }

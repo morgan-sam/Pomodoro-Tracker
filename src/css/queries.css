@@ -1,185 +1,185 @@
 /* Home Screen */
 
 @media only screen and (max-width: 600px) {
-	* {
-		box-sizing: border-box;
-	}
-	.home.section {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-		/* border: 1px solid black; */
-		width: 100vw;
-	}
+  * {
+    box-sizing: border-box;
+  }
+  .home.section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* border: 1px solid black; */
+    width: 100vw;
+  }
 
-	.splash-text > * > p {
-		width: 80%;
-		margin: 1rem auto;
-	}
-	.content-background-container {
-		width: 100%;
-	}
-	.content-background-container > * {
-		position: relative;
-		top: 0;
-		left: 0;
-		transform: none;
-		height: 100%;
-		overflow: hidden;
-	}
-	.home.content {
-		width: 100vw;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.home.section.why > .content-background-container {
-		margin: 5rem 0;
-	}
+  .splash-text > * > p {
+    width: 80%;
+    margin: 1rem auto;
+  }
+  .content-background-container {
+    width: 100%;
+  }
+  .content-background-container > * {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    height: 100%;
+    overflow: hidden;
+  }
+  .home.content {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .home.section.why > .content-background-container {
+    margin: 5rem 0;
+  }
 
-	.why-text > * {
-		width: 75%;
-	}
-	.down-arrow {
-		display: none;
-	}
-	.splash-image {
-		width: 20rem;
-		height: 10rem;
-	}
-	.keyboard-container > * {
-		padding: 0 0.5rem;
-	}
-	.keyboard-key {
-		box-shadow: none;
-		background-color: transparent;
-		pointer-events: none;
-	}
-	.blob {
-		position: absolute;
-	}
-	.blob-three {
-		transform: translate(-10%, -18%);
-	}
-	.how-grid > *:last-child {
-		display: none;
-	}
-	.home.section.get-started {
-		display: flex;
-	}
-	.home.section.get-started > .content-background-container {
-		height: 100vh;
-	}
+  .why-text > * {
+    width: 75%;
+  }
+  .down-arrow {
+    display: none;
+  }
+  .splash-image {
+    width: 20rem;
+    height: 10rem;
+  }
+  .keyboard-container > * {
+    padding: 0 0.5rem;
+  }
+  .keyboard-key {
+    box-shadow: none;
+    background-color: transparent;
+    pointer-events: none;
+  }
+  .blob {
+    position: absolute;
+  }
+  .blob-three {
+    transform: translate(-10%, -18%);
+  }
+  .how-grid > *:last-child {
+    display: none;
+  }
+  .home.section.get-started {
+    display: flex;
+  }
+  .home.section.get-started > .content-background-container {
+    height: 100vh;
+  }
 
-	.home.footer {
-		display: none;
-	}
+  .home.footer {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 360px) {
-	img {
-		display: none;
-	}
-	.home.section.why > .content-background-container {
-		margin: 2rem 0;
-	}
+  img {
+    display: none;
+  }
+  .home.section.why > .content-background-container {
+    margin: 2rem 0;
+  }
 }
 
 /* Login/Signup Screen */
 
 @media only screen and (max-width: 600px) {
-	.content-box {
-		border: none;
-	}
+  .content-box {
+    border: none;
+  }
 }
 
 /* Main Screen */
 
 @media only screen and (max-width: 600px) {
-	.main-container {
-		width: 100vw;
-		height: 100vh;
-		padding: 4rem 1rem 1rem 1rem;
-	}
-	.top-panel {
-		height: 100%;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-	}
-	.top-panel-option {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.top-panel-option > * {
-		text-align: center;
-		width: 100%;
-		position: relative;
-		padding: 1rem;
-	}
-	.canvas-container {
-		display: none;
-	}
-	.top-right-btns-container {
-		width: 100vw;
-		left: 0;
-		top: 0;
-		display: flex;
-		align-items: center;
-		justify-content: space-evenly;
-		height: 5rem;
-	}
-	.top-right-btns-container > * {
-		margin-left: 0rem;
-	}
+  .main-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 4rem 1rem 1rem 1rem;
+  }
+  .top-panel {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .top-panel-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .top-panel-option > * {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    padding: 1rem;
+  }
+  .canvas-container {
+    display: none;
+  }
+  .top-right-btns-container {
+    width: 100vw;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 5rem;
+  }
+  .top-right-btns-container > * {
+    margin-left: 0rem;
+  }
 
-	.elements-timeline {
-		display: none;
-	}
+  .elements-timeline {
+    display: none;
+  }
 
-	.canvas-timeline {
-		margin: 0;
-		width: auto;
-	}
+  .canvas-timeline {
+    margin: 0;
+    width: auto;
+  }
 
-	.canvas-timeline-container {
-		width: 100vw;
-		overflow-x: scroll;
-	}
+  .canvas-timeline-container {
+    width: 100vw;
+    overflow-x: scroll;
+  }
 
-	.canvas-timeline-parent {
-		display: flex;
-		border: 1px solid black;
-		margin: 4rem 2rem;
-		overflow: hidden;
-		position: relative;
-	}
+  .canvas-timeline-parent {
+    display: flex;
+    border: 1px solid black;
+    margin: 4rem 2rem;
+    overflow: hidden;
+    position: relative;
+  }
 }
 
 /* Settings Screen(s) */
 
 @media only screen and (max-width: 600px) {
-	.display-settings-grid,
-	.time-option,
-	.color-select {
-		display: flex;
-		flex-direction: column;
-	}
-	.content-box {
-		border: 0px solid;
-	}
-	.display-settings.screen-container {
-		height: auto;
-		position: relative;
-		top: none;
-		bottom: none;
-		left: none;
-		right: none;
-		overflow: hidden;
-	}
+  .display-settings-grid,
+  .time-option,
+  .color-select {
+    display: flex;
+    flex-direction: column;
+  }
+  .content-box {
+    border: 0px solid;
+  }
+  .display-settings.screen-container {
+    height: auto;
+    position: relative;
+    top: none;
+    bottom: none;
+    left: none;
+    right: none;
+    overflow: hidden;
+  }
 }

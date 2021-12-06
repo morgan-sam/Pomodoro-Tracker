@@ -1,52 +1,54 @@
 :root {
-	--scrolling-timeline-hour-width: 90;
-	--container-width: 560;
-	--base-time: 100;
+  --scrolling-timeline-hour-width: 90;
+  --container-width: 560;
+  --base-time: 100;
 
-	--offset: calc(calc(var(--scrolling-timeline-hour-width) * 12) / var(--container-width));
+  --offset: calc(
+    calc(var(--scrolling-timeline-hour-width) * 12) / var(--container-width)
+  );
 
-	--slide-time-seconds: calc(var(--base-time) * 1s);
-	--first-timeline-delay: calc(var(--base-time) * -0.5s);
-	--second-timeline-delay: calc(var(--base-time) * -1s);
+  --slide-time-seconds: calc(var(--base-time) * 1s);
+  --first-timeline-delay: calc(var(--base-time) * -0.5s);
+  --second-timeline-delay: calc(var(--base-time) * -1s);
 }
 
 @keyframes slide {
-	0% {
-		left: 0px;
-	}
-	50% {
-		left: calc(var(--scrolling-timeline-hour-width) * -24px);
-	}
-	50.001% {
-		left: calc(var(--scrolling-timeline-hour-width) * 24px);
-	}
-	100% {
-		left: 0px;
-	}
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: calc(var(--scrolling-timeline-hour-width) * -24px);
+  }
+  50.001% {
+    left: calc(var(--scrolling-timeline-hour-width) * 24px);
+  }
+  100% {
+    left: 0px;
+  }
 }
 
 .scrolling-timeline-container {
-	position: relative;
-	overflow: hidden;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
-	border-left: 2px solid black;
-	border-right: 2px solid black;
-	width: calc(var(--container-width) * 1px);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  width: calc(var(--container-width) * 1px);
 }
 
 .scrolling-timeline {
-	position: absolute;
-	animation: slide var(--slide-time-seconds) linear infinite forwards;
+  position: absolute;
+  animation: slide var(--slide-time-seconds) linear infinite forwards;
 }
 
 .scrolling-timeline-container > *:first-child {
-	left: 0px;
-	animation-delay: var(--first-timeline-delay);
+  left: 0px;
+  animation-delay: var(--first-timeline-delay);
 }
 
 .scrolling-timeline-container > *:last-child {
-	left: calc(var(--container-width) * 1px);
-	animation-delay: var(--second-timeline-delay);
-	padding-left: calc(var(--container-width) * -1px);
+  left: calc(var(--container-width) * 1px);
+  animation-delay: var(--second-timeline-delay);
+  padding-left: calc(var(--container-width) * -1px);
 }

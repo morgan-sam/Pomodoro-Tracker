@@ -1,18 +1,18 @@
 .graph-option-label {
-	padding: 1rem;
+  padding: 1rem;
 }
 
 .graph-option-container > * {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
 }
 
 .graph-period-select {
-	width: 8rem;
+  width: 8rem;
 }
 
 .graph-selection-dropdown {
-	width: 7rem;
+  width: 7rem;
 }
