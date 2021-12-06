@@ -12,7 +12,7 @@ TIME="$(date -u -Iseconds)";
 ENTRY='{"type":"start","date":"'${TIME::-6}.000Z'"}';
 curl -X POST -d $ENTRY "https://pomodoro-tracker-db95f.firebaseio.com/users/${localId}/events.json?auth=${idToken}"
 seconds=1500; date1=$((`date +%s` + $seconds)); 
-echo -ne 'Pomodoro:\n'
+echo -ne '\nPomodoro:\n'
 while [ "$date1" -ge `date +%s` ]; do 
   echo -ne "$(date -u --date @$(($date1 - `date +%s` )) +%H:%M:%S)\r"; 
 done
@@ -22,7 +22,7 @@ TIME="$(date -u -Iseconds)";
 ENTRY='{"type":"pomodoro","date":"'${TIME::-6}.000Z'"}';
 curl -X POST -d $ENTRY "https://pomodoro-tracker-db95f.firebaseio.com/users/${localId}/events.json?auth=${idToken}"
 seconds=300; date1=$((`date +%s` + $seconds)); 
-echo -ne 'Encore:\n'
+echo -ne '\nEncore:\n'
 while [ "$date1" -ge `date +%s` ]; do 
   echo -ne "$(date -u --date @$(($date1 - `date +%s` )) +%H:%M:%S)\r"; 
 done
