@@ -7,9 +7,9 @@ import pyrebase
 import math
 import sys
 
-curYear = datetime.datetime.now().year
-curMonth = datetime.datetime.now().month
-curDay = datetime.datetime.now().day
+curYear = datetime.datetime.utcnow().year
+curMonth = datetime.datetime.utcnow().month
+curDay = datetime.datetime.utcnow().day
 
 config = {
     "apiKey": "AIzaSyB-j40wdFsSbJ7giMJJwQsymWacOFm0Boo",
@@ -90,7 +90,7 @@ def getOffsetDate(date, days):
 
 
 def addRangeOfDates():
-    startingDate = datetime.datetime.now()
+    startingDate = datetime.datetime.utcnow()
     for i in range(days):
         newDate = getOffsetDate(startingDate, i)
         events = random.randint(6, 16)

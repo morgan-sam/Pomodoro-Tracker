@@ -31,7 +31,7 @@ def convertDateToIso(time):
 
 
 def addPomodoroAndEncore():
-    encoreTime = datetime.datetime.now()
+    encoreTime = datetime.datetime.utcnow()
     pomodoroTime = encoreTime + datetime.timedelta(minutes=-5)
     pomodoroIso = convertDateToIso(pomodoroTime)
     encoreIso = convertDateToIso(encoreTime)

@@ -1,4 +1,4 @@
-import { convertUTCISOToUKObj } from "../utility/parseDates.js";
+import { convertUTCISOToDateObj } from "../utility/parseDates.js";
 
 const QUADRICENTENARY = 146097;
 
@@ -32,7 +32,7 @@ export const arrayOfMonthDays = (month, year) => {
 };
 
 export const getTodaysDateAsObj = () => {
-  return convertUTCISOToUKObj(new Date().toISOString());
+  return convertUTCISOToDateObj(new Date().toISOString());
 };
 
 export const daysInMonth = (month, year) => {

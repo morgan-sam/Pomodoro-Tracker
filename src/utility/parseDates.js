@@ -1,9 +1,13 @@
+import momentTZ from "moment-timezone";
+
+const defaultTimeZone = momentTZ.tz.guess();
+
 export const parseISOToLittleEndian = (iso) => {
   const { day, month, year } = parseISOToDateObj(iso);
   return `${day}-${month}-${year}`;
 };
 export const parseISOToBigEndian = (iso) => {
-  const dateObj = convertUTCISOToUKObj(iso).date;
+  const dateObj = convertUTCISOToDateObj(iso).date;
   return parseDateObjToBigEndian(dateObj);
 };
 
@@ -42,15 +46,15 @@ export const parseDateObjToBigEndian = (obj) => {
   return `${obj.year}-${monthString}-${dayString}`;
 };
 
-export const convertUTCISOToUKDateOnly = (iso) => {
+export const convertUTCISOToDateOnly = (iso) => {
   return new Date(iso)
-    .toLocaleString("en-US", { timeZone: "Europe/London" })
+    .toLocaleString("en-US", { timeZone: defaultTimeZone })
     .match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0];
 };
 
-export const convertUTCISOToUKDateISOSubstring = (iso) => {
+export const convertUTCISOToDateISOSubstring = (iso) => {
   const localeString = new Date(iso)
-    .toLocaleString("en-US", { timeZone: "Europe/London" })
+    .toLocaleString("en-US", { timeZone: defaultTimeZone })
     .match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0];
   const [month, day, year] = localeString.split("/");
   const dayString = day > 9 ? day : `0${day}`;
@@ -58,9 +62,9 @@ export const convertUTCISOToUKDateISOSubstring = (iso) => {
   return `${year}-${monthString}-${dayString}`;
 };
 
-export const convertUTCISOToUKObj = (iso) => {
+export const convertUTCISOToDateObj = (iso) => {
   const date = new Date(iso).toLocaleString("en-US", {
-    timeZone: "Europe/London",
+    timeZone: defaultTimeZone,
   });
   const [month, day, year] = date
     .match(/[0-9]+\/[0-9]+\/[0-9]+/g)[0]

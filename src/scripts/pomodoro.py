@@ -46,7 +46,7 @@ def sendNotification(message):
 
 def postEvent(type):
     db.child("users").child(user["localId"]).child("events").push({"type": type, "date": str(
-        datetime.datetime.now().isoformat())[:-3]+"Z"}, user["idToken"])
+        datetime.datetime.utcnow().isoformat())[:-3]+"Z"}, user["idToken"])
 
 
 os.system('clear')

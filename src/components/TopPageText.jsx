@@ -2,7 +2,7 @@ import React from "react";
 import {
   parseDateObjToLittleEndian,
   parseDateObjToBigEndian,
-  convertUTCISOToUKObj,
+  convertUTCISOToDateObj,
 } from "utility/parseDates";
 import { compareObjs } from "utility/sortAndCompare";
 
@@ -38,7 +38,10 @@ function TimelineToggles(props) {
       </h1>
       <h3>
         Total{" "}
-        {compareObjs(props.date, convertUTCISOToUKObj(new Date().toISOString()))
+        {compareObjs(
+          props.date,
+          convertUTCISOToDateObj(new Date().toISOString())
+        )
           ? "for today"
           : ""}
         :{" "}

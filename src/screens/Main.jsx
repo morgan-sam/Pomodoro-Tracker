@@ -4,7 +4,7 @@ import TopRightButtons from "components/TopRightButtons";
 import GraphPanel from "components/GraphPanel";
 import { getAutoHourWidth } from "utility/calculateSizing";
 import { compareObjs } from "utility/sortAndCompare";
-import { convertUTCISOToUKObj } from "utility/parseDates";
+import { convertUTCISOToDateObj } from "utility/parseDates";
 import { getAppContainerStyle } from "styles/app";
 import { getEntries, postOptions, getOptions } from "data/queries";
 
@@ -12,7 +12,7 @@ function Main(props) {
   const { options, setOptions, fadeIn, setFadeIn } = props;
   const [entriesData, setEntriesData] = useState([]);
   const [date, setDate] = useState(
-    convertUTCISOToUKObj(new Date().toISOString()).date
+    convertUTCISOToDateObj(new Date().toISOString()).date
   );
   const [hourWidth, setHourWidth] = useState(
     getAutoHourWidth(options.timeline)
@@ -25,9 +25,9 @@ function Main(props) {
     });
   }
 
-  function convertDataToUKTimezone(data) {
+  function formatEntriesToUseDateObj(data) {
     return data.map((el) => {
-      const { date, time } = convertUTCISOToUKObj(el.date);
+      const { date, time } = convertUTCISOToDateObj(el.date);
       return {
         id: el._id,
         type: el.type,
@@ -41,8 +41,8 @@ function Main(props) {
     (async () => {
       try {
         const entries = await getEntries();
-        const correctedTimezoneData = convertDataToUKTimezone(entries);
-        setEntriesData(correctedTimezoneData);
+        const formattedEntries = formatEntriesToUseDateObj(entries);
+        setEntriesData(formattedEntries);
       } catch (error) {
         console.log(error);
       }
