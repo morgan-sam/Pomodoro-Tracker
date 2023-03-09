@@ -46,7 +46,10 @@ function TimelineToggles(props) {
           : ""}
         :{" "}
       </h3>
-      <h2>Pomodoros: {getEventCountForDay("pomodoro", props.date)}</h2>
+      <h2 className={"top-page-text-title"}>Pomodoros: {getEventCountForDay("pomodoro", props.date)}</h2>
+      <h2 className={"top-page-text-title"}>
+        Emails: <button className={"arrow-button top-page-text-title-btn"}>-</button>0<button className={"arrow-button top-page-text-title-btn"}>+</button>
+      </h2>
     </div>
   );
 }

@@ -1,0 +1,15 @@
+.top-page-text-title {
+    margin: 0;
+    margin-top: 10px;
+}
+
+.top-page-text-title-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 22px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
