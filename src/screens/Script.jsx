@@ -5,7 +5,7 @@ import FileIcon from "components/FileIcon";
 import { useHistory } from "react-router-dom";
 import bashScript from "scripts/pomodoro.sh";
 import pythonScript from "scripts/pomodoro.py";
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
 import { reauthenticate } from "data/queries";
 import { getAppContainerStyle } from "styles/app";
 import { getSystemButtonStyle, getContentBoxStyle } from "styles/settings";

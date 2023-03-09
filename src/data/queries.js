@@ -1,5 +1,5 @@
 import firebase from "config/firebase";
-import firebaseApp from "firebase/app";
+import firebaseApp from "firebase/compat/app";
 
 export const getEntries = async () => {
   if (firebase.auth().currentUser)
