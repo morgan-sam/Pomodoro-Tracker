@@ -121,7 +121,7 @@ function ElementsTimeline(props) {
   };
 
   return (
-    <div className={"elements-timeline"}>
+    <div className={"elements-timeline"} key="elements-timeline">
       <div className={"elements-timeline-scrollbar"}>
         {getTimelineBoxSelection(
           props.options.timeline.startTime,

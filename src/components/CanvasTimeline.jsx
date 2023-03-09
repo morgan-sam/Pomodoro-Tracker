@@ -35,7 +35,7 @@ function CanvasTimeline(props) {
   }, [entries]);
 
   return (
-    <div className="canvas-timeline-parent">
+    <div className="canvas-timeline-parent" key="canvas-timeline">
       <div className="canvas-timeline-container">
         <canvas
           ref={canvasRef}
