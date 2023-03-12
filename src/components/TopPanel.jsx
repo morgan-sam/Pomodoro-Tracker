@@ -7,7 +7,12 @@ function TopPanel(props) {
   return (
     <div className="top-panel">
       <div className={"top-panel-option"}>
-        <TopPageText entriesData={props.filteredEntries} date={props.date} />
+        <TopPageText 
+          entriesData={props.filteredEntries}
+          date={props.date}
+          emailCountData={props.emailCountData}
+          setEmailCountData={props.setEmailCountData}
+        />
         <DateNavigation date={props.date} setDate={props.setDate} />
       </div>
       <Timeline

@@ -6,24 +6,20 @@ import { getAutoHourWidth } from "utility/calculateSizing";
 import { compareObjs } from "utility/sortAndCompare";
 import { convertUTCISOToDateObj } from "utility/parseDates";
 import { getAppContainerStyle } from "styles/app";
-import { getEntries, postOptions, getOptions } from "data/queries";
+import { getEntries, postOptions, getOptions, getEmailCount, postEmailCount} from "data/queries";
 
 function Main(props) {
   const { options, setOptions, fadeIn, setFadeIn } = props;
-  const [entriesData, setEntriesData] = useState([]);
-  const [date, setDate] = useState(
-    convertUTCISOToDateObj(new Date().toISOString()).date
-  );
-  const [hourWidth, setHourWidth] = useState(
-    getAutoHourWidth(options.timeline)
-  );
 
-  function filterEntries(entries) {
-    return entries.filter((el) => {
-      if (compareObjs(el.date, date)) return true;
-      else return false;
-    });
-  }
+  // State
+  
+  const [loaded, setLoaded] = useState(false);
+  const [entriesData, setEntriesData] = useState([]);
+  const [emailCountData, setEmailCountData] = useState({});
+  const [date, setDate] = useState(convertUTCISOToDateObj(new Date().toISOString()).date);
+  const [hourWidth, setHourWidth] = useState(getAutoHourWidth(options.timeline));
+
+  const filterEntries = (entries) => entries.filter((el) => compareObjs(el.date, date));
 
   function formatEntriesToUseDateObj(data) {
     return data.map((el) => {
@@ -37,12 +33,17 @@ function Main(props) {
     });
   }
 
+  // useEffects
+
   useEffect(() => {
     (async () => {
       try {
         const entries = await getEntries();
         const formattedEntries = formatEntriesToUseDateObj(entries);
         setEntriesData(formattedEntries);
+        const emailCount = await getEmailCount();
+        setEmailCountData(emailCount);
+        setLoaded(true);
       } catch (error) {
         console.log(error);
       }
@@ -56,6 +57,7 @@ function Main(props) {
     };
     getOptionsFromDatabase();
     setTimelineToFitWindow();
+
   }, []);
 
   useEffect(() => {
@@ -66,6 +68,19 @@ function Main(props) {
   });
 
   useEffect(() => {
+    console.log(emailCountData);
+    console.log(loaded);
+    if (loaded) postEmailCount(emailCountData);
+  }, [emailCountData]);
+
+  // Email data format: 
+
+  // {
+  //   "count": {},
+  //   "loaded": boolean
+  // }
+
+  useEffect(() => {
     const setDatabaseOptions = async () => {
       const databaseOptions = await getOptions();
       if (JSON.stringify(options) !== JSON.stringify(databaseOptions))
@@ -74,16 +89,7 @@ function Main(props) {
     setDatabaseOptions();
   }, [options]);
 
-  const setTimelineToFitWindow = () => {
-    setHourWidth(getAutoHourWidth(options.timeline));
-  };
-
-  const optionProps = {
-    date,
-    setDate,
-    options,
-    setOptions,
-  };
+  const setTimelineToFitWindow = () => setHourWidth(getAutoHourWidth(options.timeline));
 
   useEffect(() => {
     const fadeTimer = setTimeout(() => setFadeIn(false), 1000);
@@ -97,13 +103,15 @@ function Main(props) {
     >
       <div className={"main-container"}>
         <TopPanel
+          emailCountData={emailCountData}
+          setEmailCountData={setEmailCountData}
           filteredEntries={filterEntries(entriesData)}
           hourWidth={hourWidth}
           eventLengths={{
             pomodoro: 25,
             encore: 5,
           }}
-          {...optionProps}
+          {...{ date, setDate, options, setOptions }}
         />
         <TopRightButtons />
         {options.graph.visible && (

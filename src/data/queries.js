@@ -14,6 +14,18 @@ export const getEntries = async () => {
       });
 };
 
+export const getEmailCount = async () => {
+  if (firebase.auth().currentUser)
+    return firebase
+      .database()
+      .ref("/users/" + firebase.auth().currentUser.uid + "/email_count")
+      .once("value")
+      .then((snapshot) => {
+        const raw = snapshot.val();
+        return raw ? raw : {};
+      });
+};
+
 export const getOptions = async () => {
   if (firebase.auth().currentUser)
     return firebase
@@ -29,6 +41,15 @@ export const postOptions = async (options) => {
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/settings")
       .set(options);
+};
+
+export const postEmailCount = async (emailCount) => {
+  console.log('posted email count');
+  if (firebase.auth().currentUser)
+    return firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid + "/email_count")
+      .set(emailCount);
 };
 
 export const reauthenticate = async (password) => {

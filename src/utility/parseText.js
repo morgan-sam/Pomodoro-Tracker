@@ -8,3 +8,8 @@ export const convertTextToTitleCase = (str) => {
   let words = str.split(" ").map((el) => capitalizeFirstLetter(el));
   return splitCamelCase(words.join("")).join(" ");
 };
+
+export const twoLeadingZeroes = (num) => num.toLocaleString('en-US', {
+  minimumIntegerDigits: 2,
+  useGrouping: false
+});
