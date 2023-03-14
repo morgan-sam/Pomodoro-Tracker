@@ -6,7 +6,7 @@ import { getAutoHourWidth } from "utility/calculateSizing";
 import { compareObjs } from "utility/sortAndCompare";
 import { convertUTCISOToDateObj } from "utility/parseDates";
 import { getAppContainerStyle } from "styles/app";
-import { getEntries, postOptions, getOptions, getEmailCount, postEmailCount} from "data/queries";
+import { getEntries, postOptions, getOptions, getOutreachData, postOutreachData} from "data/queries";
 
 function Main(props) {
   const { options, setOptions, fadeIn, setFadeIn } = props;
@@ -15,7 +15,7 @@ function Main(props) {
   
   const [loaded, setLoaded] = useState(false);
   const [entriesData, setEntriesData] = useState([]);
-  const [emailCountData, setEmailCountData] = useState({});
+  const [outreachData, setOutreachData] = useState({});
   const [date, setDate] = useState(convertUTCISOToDateObj(new Date().toISOString()).date);
   const [hourWidth, setHourWidth] = useState(getAutoHourWidth(options.timeline));
 
@@ -41,8 +41,8 @@ function Main(props) {
         const entries = await getEntries();
         const formattedEntries = formatEntriesToUseDateObj(entries);
         setEntriesData(formattedEntries);
-        const emailCount = await getEmailCount();
-        setEmailCountData(emailCount);
+        const emailCount = await getOutreachData();
+        setOutreachData(emailCount);
         setLoaded(true);
       } catch (error) {
         console.log(error);
@@ -68,17 +68,8 @@ function Main(props) {
   });
 
   useEffect(() => {
-    console.log(emailCountData);
-    console.log(loaded);
-    if (loaded) postEmailCount(emailCountData);
-  }, [emailCountData]);
-
-  // Email data format: 
-
-  // {
-  //   "count": {},
-  //   "loaded": boolean
-  // }
+    if (loaded) postOutreachData(outreachData);
+  }, [outreachData]);
 
   useEffect(() => {
     const setDatabaseOptions = async () => {
@@ -103,8 +94,8 @@ function Main(props) {
     >
       <div className={"main-container"}>
         <TopPanel
-          emailCountData={emailCountData}
-          setEmailCountData={setEmailCountData}
+          outreachData={outreachData}
+          setOutreachData={setOutreachData}
           filteredEntries={filterEntries(entriesData)}
           hourWidth={hourWidth}
           eventLengths={{

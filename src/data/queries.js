@@ -14,11 +14,11 @@ export const getEntries = async () => {
       });
 };
 
-export const getEmailCount = async () => {
+export const getOutreachData = async () => {
   if (firebase.auth().currentUser)
     return firebase
       .database()
-      .ref("/users/" + firebase.auth().currentUser.uid + "/email_count")
+      .ref("/users/" + firebase.auth().currentUser.uid + "/outreach_data")
       .once("value")
       .then((snapshot) => {
         const raw = snapshot.val();
@@ -43,12 +43,11 @@ export const postOptions = async (options) => {
       .set(options);
 };
 
-export const postEmailCount = async (emailCount) => {
-  console.log('posted email count');
+export const postOutreachData = async (emailCount) => {
   if (firebase.auth().currentUser)
     return firebase
       .database()
-      .ref("users/" + firebase.auth().currentUser.uid + "/email_count")
+      .ref("users/" + firebase.auth().currentUser.uid + "/outreach_data")
       .set(emailCount);
 };
 

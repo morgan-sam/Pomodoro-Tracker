@@ -10,8 +10,8 @@ function TopPanel(props) {
         <TopPageText 
           entriesData={props.filteredEntries}
           date={props.date}
-          emailCountData={props.emailCountData}
-          setEmailCountData={props.setEmailCountData}
+          outreachData={props.outreachData}
+          setOutreachData={props.setOutreachData}
         />
         <DateNavigation date={props.date} setDate={props.setDate} />
       </div>
