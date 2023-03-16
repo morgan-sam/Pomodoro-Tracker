@@ -70,19 +70,6 @@ const GraphPanel = (props) => {
     });
   }
 
-  function getOutreachGraphData(counts, units) {
-    return Object.entries(counts).map((el, i) => {
-      return {
-        date: el[0],
-        coordinate: {
-          x: GRAPH_SIZES.LEFT_GAP + units.x * i,
-          y:
-            canvasRef.current.height - GRAPH_SIZES.BOTTOM_GAP - units.y * el[1],
-        },
-      };
-    });
-  }
-
   return <canvas ref={canvasRef} style={getGraphStyle(options.darkTheme)} />;
 };
 
