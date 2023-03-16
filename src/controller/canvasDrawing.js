@@ -65,23 +65,27 @@ const drawXAxis = (graph) => {
 const drawYAxis = (graph) => {
 
   // Draw Outreach Y Axis
-  for (let i = 0; i <= graph.yAxisMax * graph.outreachRatio; i++) {
-    const labelParameters = {
-      i,
-      unit: graph.units.y / graph.outreachRatio
-    };
-    drawOutreachYLabelLine(graph, labelParameters);
-    if (i % 2 === 0) drawOutreachYLabelText(graph, labelParameters);
+  if (graph.linesEnabled.outreach) {
+    for (let i = 0; i <= graph.yAxisMax * graph.outreachRatio; i++) {
+      const labelParameters = {
+        i,
+        unit: graph.units.y / graph.outreachRatio
+      };
+      drawOutreachYLabelLine(graph, labelParameters);
+      if (i % 2 === 0) drawOutreachYLabelText(graph, labelParameters);
+    }
   }
 
   // Draw Podomoros Y Axis
-  for (let i = 0; i <= graph.yAxisMax; i++) {
-    const labelParameters = {
-      i,
-      unit: graph.units.y
-    };
-    drawYLabelLine(graph, labelParameters);
-    drawYLabelText(graph, labelParameters);
+  if (graph.linesEnabled.pomodoros) {
+    for (let i = 0; i <= graph.yAxisMax; i++) {
+      const labelParameters = {
+        i,
+        unit: graph.units.y
+      };
+      drawYLabelLine(graph, labelParameters);
+      drawYLabelText(graph, labelParameters);
+    }
   }
 };
 

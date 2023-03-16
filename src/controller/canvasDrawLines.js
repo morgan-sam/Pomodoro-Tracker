@@ -6,19 +6,24 @@ let CROSS_WIDTH = 3;
 
 export const drawGraphLine = (graph) => {
   // Draw Outreach Line
-  drawPassedLinePath(graph.context, (ctx) => {
-    ctx.strokeStyle = graph.outreachPlotColor;
-    graph.outreachGraphData.forEach((el) =>
-      ctx.lineTo(el.coordinate.x, el.coordinate.y)
-    );
-  });
+  if (graph.linesEnabled.outreach) {
+    drawPassedLinePath(graph.context, (ctx) => {
+      ctx.strokeStyle = graph.outreachPlotColor;
+      graph.outreachGraphData.forEach((el) =>
+        ctx.lineTo(el.coordinate.x, el.coordinate.y)
+      );
+    });
+  }
+
   // Draw Pomodoro Line
-  drawPassedLinePath(graph.context, (ctx) => {
-    ctx.strokeStyle = graph.darkTheme ? "white" : "black";
-    graph.graphData.forEach((el) =>
-      ctx.lineTo(el.coordinate.x, el.coordinate.y)
-    );
-  });
+  if (graph.linesEnabled.pomodoros) {
+    drawPassedLinePath(graph.context, (ctx) => {
+      ctx.strokeStyle = graph.darkTheme ? "white" : "black";
+      graph.graphData.forEach((el) =>
+        ctx.lineTo(el.coordinate.x, el.coordinate.y)
+      );
+    });
+  }
 };
 
 const drawCross = (graph, size, el, crossColor) => {
@@ -49,18 +54,25 @@ const drawCross = (graph, size, el, crossColor) => {
 
 export const drawCoordinateCrosses = (graph, size) => {
   const today = parseISOToBigEndian(new Date().toISOString());
-  graph.outreachGraphData.forEach((el) => {
-    drawCross(graph, size, el, graph.outreachPlotColor);
-  });
-  graph.graphData.forEach((el) => {
-    const crossColor =
-      today === el.date
-        ? graph.colorTheme.darker
-        : graph.darkTheme
-        ? "white"
-        : "black";
-    drawCross(graph, size, el, crossColor);
-  });
+
+  // Draw Outreach Crosses
+  if (graph.linesEnabled.outreach) {
+    graph.outreachGraphData.forEach((el) => {
+      drawCross(graph, size, el, graph.outreachPlotColor);
+    });
+  }
+  // Draw Pomodoros Crosses
+  if (graph.linesEnabled.pomodoros) {
+    graph.graphData.forEach((el) => {
+      const crossColor =
+        today === el.date
+          ? graph.colorTheme.darker
+          : graph.darkTheme
+          ? "white"
+          : "black";
+      drawCross(graph, size, el, crossColor);
+    });
+  }
 };
 
 const crossMod = (index, offset = 0) => {
