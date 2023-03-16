@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAppContainerStyle } from "styles/app";
 import { getSystemButtonStyle, getContentBoxStyle } from "styles/settings";
 import { DarkThemeContext } from "context/theme";
@@ -11,7 +11,7 @@ const AccountSettingsOptions = (props) => {
   const accountButtonStyle = getSystemButtonStyle(darkTheme);
   const { changePassword, changeEmail, resetAccount, deleteAccount } =
     accountFunctionTemplates;
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <div className="screen-container" style={getAppContainerStyle(darkTheme)}>
       <div className="content-box" style={getContentBoxStyle(darkTheme)}>
@@ -45,7 +45,7 @@ const AccountSettingsOptions = (props) => {
         <div className="footer">
           <button
             style={accountButtonStyle}
-            onClick={() => history.push("/settings")}
+            onClick={() => navigate("/settings")}
           >
             Return
           </button>

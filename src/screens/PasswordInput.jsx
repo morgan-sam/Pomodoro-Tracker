@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAppContainerStyle } from "styles/app";
 import { getContentBoxStyle } from "styles/settings";
 import { reauthenticate } from "data/queries";
@@ -9,7 +9,7 @@ import Form from "components/Form";
 const PasswordInput = (props) => {
   const { message, onConfirm } = props;
   const darkTheme = useContext(DarkThemeContext);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const onPasswordSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const PasswordInput = (props) => {
           inputs={["password"]}
           submitText={"Confirm Password"}
           onSubmit={onPasswordSubmit}
-          onCancel={() => history.push("/settings")}
+          onCancel={() => navigate("/settings")}
         />
       </div>
     </div>

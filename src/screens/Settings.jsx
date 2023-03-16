@@ -1,11 +1,11 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAppContainerStyle } from "styles/app";
 import { getSystemButtonStyle, getContentBoxStyle } from "styles/settings";
 
 const Settings = (props) => {
   const { options } = props;
-  const history = useHistory();
+  const navigate = useNavigate();
   const accountButtonStyle = getSystemButtonStyle(false);
   return (
     <div
@@ -20,19 +20,19 @@ const Settings = (props) => {
         <div className="button-column">
           <button
             style={accountButtonStyle}
-            onClick={() => history.push("/settings/display")}
+            onClick={() => navigate("/settings/display")}
           >
             Display Settings
           </button>
           <button
             style={accountButtonStyle}
-            onClick={() => history.push("/settings/account")}
+            onClick={() => navigate("/settings/account")}
           >
             Account Settings
           </button>
         </div>
         <div className="footer">
-          <button style={accountButtonStyle} onClick={() => history.push("/")}>
+          <button style={accountButtonStyle} onClick={() => navigate("/")}>
             Return
           </button>
         </div>

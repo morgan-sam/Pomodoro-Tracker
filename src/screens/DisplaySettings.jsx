@@ -1,8 +1,7 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAppContainerStyle } from "styles/app";
 import { getSystemButtonStyle, getContentBoxStyle } from "styles/settings";
-import { useState } from "react";
 import Checkbox from "components/Checkbox";
 import TimeOptionSelect from "components/TimeOptionSelect";
 import { convertTextToTitleCase } from "utility/parseText";
@@ -13,7 +12,7 @@ import ColorSelect from "components/ColorSelect";
 
 const DisplaySettings = (props) => {
   const { options, setOptions } = props;
-  const history = useHistory();
+  const navigate = useNavigate();
   const accountButtonStyle = getSystemButtonStyle(false);
   const [tempOptions, setTempOptions] = useState(options);
 
@@ -104,7 +103,7 @@ const DisplaySettings = (props) => {
         <div className="footer">
           <button
             style={accountButtonStyle}
-            onClick={() => history.push("/settings")}
+            onClick={() => navigate("/settings")}
           >
             {"Cancel"}
           </button>
@@ -118,7 +117,7 @@ const DisplaySettings = (props) => {
               ) {
                 setOptions(defaultOptions);
                 postOptions(defaultOptions);
-                history.push("/");
+                navigate("/");
               }
             }}
           >
@@ -129,7 +128,7 @@ const DisplaySettings = (props) => {
             onClick={() => {
               setOptions(tempOptions);
               postOptions(tempOptions);
-              history.push("/");
+              navigate("/");
             }}
           >
             {"Save"}
