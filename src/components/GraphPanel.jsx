@@ -7,7 +7,7 @@ import { DarkThemeContext } from "context/theme";
 import { convertTextToTitleCase } from "utility/parseText";
 
 function GraphPanel(props) {
-  const { date, setDate, options, entriesData } = props;
+  const { date, setDate, options, entriesData, outreachData } = props;
   const [periodOffset, setPeriodOffset] = useState(0);
   const darkTheme = useContext(DarkThemeContext);
 
@@ -49,6 +49,7 @@ function GraphPanel(props) {
       ) : null}
       <GraphCanvas
         entriesData={entriesData}
+        outreachData={outreachData}
         date={date}
         options={options}
         {...options.graph}

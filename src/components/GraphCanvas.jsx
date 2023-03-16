@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useContext } from "react";
-import { getPomodoroCount } from "controller/graphDataProcessing";
+import { getPomodoroCount, getOutreachCount } from "controller/graphDataProcessing";
 import { getGraphStyle } from "styles/graphPanel";
 import { GRAPH_SIZES } from "styles/graphSizing";
 import { drawNoDataMessage, drawEntireGraph } from "controller/canvasDrawing";
 import { ColorThemeContext } from "context/theme";
 
 const GraphPanel = (props) => {
+  const { entriesData, outreachData } = props;
   const colorTheme = useContext(ColorThemeContext);
   const { options } = props;
   const Y_AXIS_MAX = props.maxPomodoro;
@@ -22,15 +23,17 @@ const GraphPanel = (props) => {
   const addDataToGraph = (canvasRef, darkTheme) => {
     const entriesParameters = {
       startDate: props.date,
-      period: props.period,
-      entriesData: props.entriesData,
+      period: props.period
     };
-    const counts = getPomodoroCount(entriesParameters);
+    const counts = getPomodoroCount(entriesParameters, entriesData);
+    const outreachCounts = getOutreachCount(entriesParameters, outreachData);
     const units = getUnits(counts);
     const graphData = getGraphData(counts, units);
+    const outreachGraphData = getGraphData(outreachCounts, units);
     const graphDataObj = {
       canvasRef,
       graphData,
+      outreachGraphData,
       counts,
       period: props.period,
       type: props.type,
@@ -55,6 +58,19 @@ const GraphPanel = (props) => {
   }
 
   function getGraphData(counts, units) {
+    return Object.entries(counts).map((el, i) => {
+      return {
+        date: el[0],
+        coordinate: {
+          x: GRAPH_SIZES.LEFT_GAP + units.x * i,
+          y:
+            canvasRef.current.height - GRAPH_SIZES.BOTTOM_GAP - units.y * el[1],
+        },
+      };
+    });
+  }
+
+  function getOutreachGraphData(counts, units) {
     return Object.entries(counts).map((el, i) => {
       return {
         date: el[0],

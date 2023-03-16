@@ -6,6 +6,12 @@ let CROSS_WIDTH = 3;
 
 export const drawGraphLine = (graph) => {
   drawPassedLinePath(graph.context, (ctx) => {
+    ctx.strokeStyle = "red";
+    graph.outreachGraphData.forEach((el) =>
+      ctx.lineTo(el.coordinate.x, el.coordinate.y)
+    );
+  });
+  drawPassedLinePath(graph.context, (ctx) => {
     ctx.strokeStyle = graph.darkTheme ? "white" : "black";
     graph.graphData.forEach((el) =>
       ctx.lineTo(el.coordinate.x, el.coordinate.y)
@@ -13,38 +19,45 @@ export const drawGraphLine = (graph) => {
   });
 };
 
+const drawCross = (graph, size, el, crossColor) => {
+  let { x, y } = el.coordinate;
+  drawPassedLinePath(graph.context, (ctx) => {
+    ctx.strokeStyle = crossColor;
+    ctx.beginPath();
+    x -= size;
+    y -= size;
+    ctx.moveTo(x, y);
+    for (let i = 0; i < 4; i++) {
+      ctx.lineTo(
+        (x += (CROSS_WIDTH / 2) * crossMod(i)),
+        (y += (CROSS_WIDTH / 2) * crossMod(i, 3))
+      );
+      ctx.lineTo(
+        (x += size * crossMod(i, 3) * -1),
+        (y += size * crossMod(i))
+      );
+      ctx.lineTo((x += size * crossMod(i)), (y += size * crossMod(i, 3)));
+    }
+    ctx.stroke();
+    ctx.closePath();
+    ctx.fillStyle = crossColor;
+    ctx.fill();
+  });
+}
+
 export const drawCoordinateCrosses = (graph, size) => {
   const today = parseISOToBigEndian(new Date().toISOString());
-  graph.graphData.forEach((el, i) => {
-    let { x, y } = el.coordinate;
+  graph.graphData.forEach((el) => {
     const crossColor =
       today === el.date
         ? graph.colorTheme.darker
         : graph.darkTheme
         ? "white"
         : "black";
-    drawPassedLinePath(graph.context, (ctx) => {
-      ctx.strokeStyle = crossColor;
-      ctx.beginPath();
-      x -= size;
-      y -= size;
-      ctx.moveTo(x, y);
-      for (let i = 0; i < 4; i++) {
-        ctx.lineTo(
-          (x += (CROSS_WIDTH / 2) * crossMod(i)),
-          (y += (CROSS_WIDTH / 2) * crossMod(i, 3))
-        );
-        ctx.lineTo(
-          (x += size * crossMod(i, 3) * -1),
-          (y += size * crossMod(i))
-        );
-        ctx.lineTo((x += size * crossMod(i)), (y += size * crossMod(i, 3)));
-      }
-      ctx.stroke();
-      ctx.closePath();
-      ctx.fillStyle = crossColor;
-      ctx.fill();
-    });
+    drawCross(graph, size, el, crossColor);
+  });
+  graph.outreachGraphData.forEach((el) => {
+    drawCross(graph, size, el, 'red');
   });
 };
 

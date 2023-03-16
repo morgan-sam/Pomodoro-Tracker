@@ -109,6 +109,7 @@ function Main(props) {
           <GraphPanel
             {...{
               entriesData,
+              outreachData,
               date,
               setDate,
               options,

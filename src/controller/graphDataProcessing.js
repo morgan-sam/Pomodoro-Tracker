@@ -1,12 +1,16 @@
 import { parseDateObjToBigEndian } from "utility/parseDates";
 import { daysInMonth, addSubtractDaysFromDateObj } from "data/dates";
 
-export const getPomodoroCount = (graphDataParameters) => {
-  const dateArray = getAllPomodoroEntryDates(graphDataParameters.entriesData);
+export const getPomodoroCount = (graphDataParameters, entriesData) => {
+  const dateArray = getAllPomodoroEntryDates(entriesData);
   const entries = getDaysWithEntries(dateArray);
   const tallyParameters = getTallyParameters(graphDataParameters);
-  const pomodoroTally = createPomodoroTally(entries, tallyParameters);
-  return pomodoroTally;
+  return createTally(entries, tallyParameters);
+};
+
+export const getOutreachCount = (graphDataParameters, entriesData) => {
+  const tallyParameters = getTallyParameters(graphDataParameters);
+  return createTally(entriesData, tallyParameters);
 };
 
 const getTallyParameters = (graphDataParameters) => {
@@ -35,7 +39,7 @@ const getMonthTimeSpanParameters = (startDate) => {
   };
 };
 
-const createPomodoroTally = (counts, tallyParameters) => {
+const createTally = (counts, tallyParameters) => {
   const { startDate, amountOfDays } = tallyParameters;
   let tally = {};
   for (let i = 0; i < amountOfDays; i++) {
