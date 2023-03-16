@@ -39,15 +39,6 @@ function TimelineToggles(props) {
     if (isNaN(todayOutreachCount)) setDisplayOutreachCount(0);
     else setDisplayOutreachCount(todayOutreachCount);
   }, [outreachData, date]);
-    
-// Outreach count functionality
-
-// - Display updated when email count data recieved
-// - User changes display
-// - Updates local state
-// - Waits 1 or 2 seconds
-// - Updateds global email count
-// - Once global updated post request sent
 
   return (
     <div>
