@@ -10,7 +10,7 @@
 .switch-graph-view-btn {
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  left: 1rem;
 }
 
 .switch-month-btn-container {
