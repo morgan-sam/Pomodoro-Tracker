@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import firebase from "config/firebase";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getSystemButtonStyle } from "styles/settings";
 import { DarkThemeContext } from "context/theme";
 
 const TopRightButtons = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const darkTheme = useContext(DarkThemeContext);
   const topRightButtonStyle = { ...getSystemButtonStyle(darkTheme) };
   return (
@@ -21,13 +21,13 @@ const TopRightButtons = () => {
       </button>
       <button
         style={topRightButtonStyle}
-        onClick={() => history.push("/script")}
+        onClick={() => navigate("/script")}
       >
         Get Script
       </button>
       <button
         style={topRightButtonStyle}
-        onClick={() => history.push("/settings")}
+        onClick={() => navigate("/settings")}
       >
         Settings
       </button>

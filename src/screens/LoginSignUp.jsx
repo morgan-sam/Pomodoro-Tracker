@@ -1,37 +1,34 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import Form from "components/Form";
 import firebase from "config/firebase";
-import { withRouter, useHistory, Redirect } from "react-router-dom";
-import { useContext } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
 import { AuthContext } from "context/auth";
 
 const LoginSignup = (props) => {
-  let history = useHistory();
+  const navigate = useNavigate();
   const { type } = props;
 
-  const handleLoginSignUp = useCallback(
-    async (e) => {
-      e.preventDefault();
-      const { email, password } = e.target.elements;
-      try {
-        if (type === "login")
-          await firebase
-            .auth()
-            .signInWithEmailAndPassword(email.value, password.value);
-        else
-          await firebase
-            .auth()
-            .createUserWithEmailAndPassword(email.value, password.value);
-        history.push("/");
-      } catch (error) {
-        alert(error);
-      }
-    },
-    [history]
-  );
+  async function handleLoginSignUp(e) {
+    e.preventDefault();
+    const { email, password } = e.target.elements;
+    try {
+      if (type === "login")
+        await firebase
+          .auth()
+          .signInWithEmailAndPassword(email.value, password.value);
+      else
+        await firebase
+          .auth()
+          .createUserWithEmailAndPassword(email.value, password.value);
+      navigate("/");
+    } catch (error) {
+      alert(error);
+    }
+  }
+
 
   const { currentUser } = useContext(AuthContext);
-  if (currentUser) return <Redirect to="/" />;
+  if (currentUser) return <Navigate to="/" />;
 
   return (
     <div className="screen-container">
@@ -60,4 +57,4 @@ const LoginSignup = (props) => {
   );
 };
 
-export default withRouter(LoginSignup);
+export default LoginSignup;

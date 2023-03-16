@@ -2,7 +2,7 @@ import React from "react";
 import bash from "img/bash.svg";
 import python from "img/python.svg";
 import FileIcon from "components/FileIcon";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import bashScript from "scripts/pomodoro.sh";
 import pythonScript from "scripts/pomodoro.py";
 import firebase from "firebase/compat/app";
@@ -46,7 +46,7 @@ const downloadPomodoroScript = async (file, extension) => {
 
 const Script = (props) => {
   const { options } = props;
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <div
       className="screen-container"
@@ -74,7 +74,7 @@ const Script = (props) => {
         <div className="footer">
           <button
             style={getSystemButtonStyle(false)}
-            onClick={() => history.push("/")}
+            onClick={() => navigate("/")}
           >
             Return
           </button>

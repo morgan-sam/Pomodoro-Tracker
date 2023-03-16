@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Confirm from "screens/Confirm";
 import PasswordInput from "screens/PasswordInput";
 import Input from "screens/Input";
@@ -8,7 +8,7 @@ import AccountSettingsOptions from "screens/AccountSettingsOptions";
 
 const AccountSettings = () => {
   const [currentDisplay, setCurrentDisplay] = useState("default");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [sequence, setSequence] = useState({
     fnObj: null,
@@ -39,7 +39,7 @@ const AccountSettings = () => {
     if (inputMsg && input === null) return setCurrentDisplay("input");
     const exitMsg = await action(input);
     if (exitMsg) return setCurrentDisplay(exitMsg);
-    else return history.push("/");
+    else return navigate("/");
   };
 
   useEffect(() => {

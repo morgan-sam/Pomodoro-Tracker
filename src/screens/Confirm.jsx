@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAppContainerStyle } from "styles/app";
 import { getSystemButtonStyle, getContentBoxStyle } from "styles/settings";
 import { DarkThemeContext } from "context/theme";
@@ -7,7 +7,7 @@ import { DarkThemeContext } from "context/theme";
 const Confirm = (props) => {
   const { message, onConfirm } = props;
   const darkTheme = useContext(DarkThemeContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   const accountButtonStyle = getSystemButtonStyle(darkTheme);
 
   return (
@@ -17,7 +17,7 @@ const Confirm = (props) => {
         <div className="footer">
           <button
             style={accountButtonStyle}
-            onClick={() => history.push("/settings")}
+            onClick={() => navigate("/settings")}
           >
             Cancel
           </button>

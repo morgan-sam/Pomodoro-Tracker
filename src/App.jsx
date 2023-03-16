@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { DarkThemeProvider, ColorThemeProvider } from "context/theme";
 import Main from "screens/Main";
 import Home from "screens/Home";
@@ -7,10 +7,10 @@ import AccountSettings from "screens/AccountSettings";
 import DisplaySettings from "screens/DisplaySettings";
 import Script from "screens/Script";
 import LoginSignUp from "screens/LoginSignUp";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "context/auth";
-import PrivateRoute from "routes/PrivateRoute";
-import AuthRedirectRoute from "routes/AuthRedirectRoute";
+import Private from "routes/Private";
+import Redirect from "routes/Redirect";
 import { defaultOptions } from "data/defaultState";
 
 const App = () => {
@@ -33,53 +33,38 @@ const App = () => {
     <ColorThemeProvider value={convertColorThemeToColors(options.colorTheme)}>
       <DarkThemeProvider value={options.darkTheme}>
         <AuthProvider>
-          <Router>
-            <PrivateRoute
-              exact
-              path="/"
-              AuthComponent={Main}
-              DefaultComponent={Home}
-              {...{ options, setOptions, fadeIn, setFadeIn }}
-            />
-            <Route
-              exact
-              path="/login"
-              render={(props) => <LoginSignUp type="login" {...props} />}
-            />
-            <Route
-              exact
-              path="/signup"
-              render={(props) => <LoginSignUp type="signup" {...props} />}
-            />
-            <AuthRedirectRoute
-              exact
-              path="/settings"
-              AuthComponent={Settings}
-              redirect={"/login"}
-              {...{ options, setOptions }}
-            />
-            <AuthRedirectRoute
-              exact
-              path="/settings/display"
-              AuthComponent={DisplaySettings}
-              redirect={"/login"}
-              {...{ options, setOptions }}
-            />
-            <AuthRedirectRoute
-              exact
-              path="/settings/account"
-              AuthComponent={AccountSettings}
-              redirect={"/login"}
-              {...{ options, setOptions }}
-            />
-            <AuthRedirectRoute
-              exact
-              path="/script"
-              AuthComponent={Script}
-              redirect={"/login"}
-              {...{ options, setOptions }}
-            />
-          </Router>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={<Private AuthComponent={Main} DefaultComponent={Home} {...{ options, setOptions, fadeIn, setFadeIn }} />}
+              />
+              <Route
+                path="/login"
+                element={<LoginSignUp type="login" />}
+              />
+              <Route
+                path="/signup"
+                element={<LoginSignUp type="signup" />}
+              />
+              <Route
+                path="/settings"
+                element={<Redirect AuthComponent={Settings} redirect={"/login"} {...{ options, setOptions }} />}
+              />
+              <Route
+                path="/settings/display"
+                element={<Redirect AuthComponent={DisplaySettings} redirect={"/login"} {...{ options, setOptions }} />}
+              />
+              <Route
+                path="/settings/account"
+                element={<Redirect AuthComponent={AccountSettings} redirect={"/login"} {...{ options, setOptions }} />}
+              />
+              <Route
+                path="/script"
+                element={<Redirect AuthComponent={Script} redirect={"/login"} {...{ options, setOptions }} />}
+              />
+            </Routes>
+          </BrowserRouter>
         </AuthProvider>
       </DarkThemeProvider>
     </ColorThemeProvider>
