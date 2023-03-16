@@ -25,11 +25,16 @@ const GraphPanel = (props) => {
       startDate: props.date,
       period: props.period
     };
+
+    const outreachRatio = 2;
+    const outreachPlotColor = "#b55c4e";
+
     const counts = getPomodoroCount(entriesParameters, entriesData);
     const outreachCounts = getOutreachCount(entriesParameters, outreachData);
     const units = getUnits(counts);
+    const outreachUnits = getOutreachUnits(units, outreachRatio);
     const graphData = getGraphData(counts, units);
-    const outreachGraphData = getGraphData(outreachCounts, units);
+    const outreachGraphData = getGraphData(outreachCounts, outreachUnits);
     const graphDataObj = {
       canvasRef,
       graphData,
@@ -41,6 +46,8 @@ const GraphPanel = (props) => {
       yAxisMax: Y_AXIS_MAX,
       darkTheme,
       colorTheme,
+      outreachRatio,
+      outreachPlotColor
     };
     drawEntireGraph(graphDataObj);
   };
@@ -55,6 +62,11 @@ const GraphPanel = (props) => {
         GRAPH_SIZES.BOTTOM_GAP) /
       Y_AXIS_MAX;
     return { x, y };
+  }
+
+  function getOutreachUnits(units, outreachRatio) {
+    const { x, y } = units;
+    return { x, y: y / outreachRatio };
   }
 
   function getGraphData(counts, units) {

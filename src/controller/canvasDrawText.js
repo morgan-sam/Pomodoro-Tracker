@@ -42,6 +42,17 @@ export const drawYLabelText = (graph, textLabelObj) => {
   );
 };
 
+export const drawOutreachYLabelText = (graph, textLabelObj) => {
+  const { i, unit } = textLabelObj;
+  graph.context.fillStyle = graph.outreachPlotColor;
+  graph.context.font = (GRAPH_FONT_SIZE / 2) + "px sans-serif";
+  graph.context.fillText(
+    i,
+    GRAPH_FONT_SIZE * 2 + 15,
+    graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit
+  );
+};
+
 function getXAxisFont(period) {
   if (period.match(/week/))
     return ((GRAPH_FONT_SIZE / 1.2) | 0) + "px sans-serif";

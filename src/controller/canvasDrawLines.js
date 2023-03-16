@@ -5,12 +5,14 @@ const GRAPH_BOTTOM_GAP = GRAPH_SIZES.BOTTOM_GAP;
 let CROSS_WIDTH = 3;
 
 export const drawGraphLine = (graph) => {
+  // Draw Outreach Line
   drawPassedLinePath(graph.context, (ctx) => {
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = graph.outreachPlotColor;
     graph.outreachGraphData.forEach((el) =>
       ctx.lineTo(el.coordinate.x, el.coordinate.y)
     );
   });
+  // Draw Pomodoro Line
   drawPassedLinePath(graph.context, (ctx) => {
     ctx.strokeStyle = graph.darkTheme ? "white" : "black";
     graph.graphData.forEach((el) =>
@@ -47,6 +49,9 @@ const drawCross = (graph, size, el, crossColor) => {
 
 export const drawCoordinateCrosses = (graph, size) => {
   const today = parseISOToBigEndian(new Date().toISOString());
+  graph.outreachGraphData.forEach((el) => {
+    drawCross(graph, size, el, graph.outreachPlotColor);
+  });
   graph.graphData.forEach((el) => {
     const crossColor =
       today === el.date
@@ -55,9 +60,6 @@ export const drawCoordinateCrosses = (graph, size) => {
         ? "white"
         : "black";
     drawCross(graph, size, el, crossColor);
-  });
-  graph.outreachGraphData.forEach((el) => {
-    drawCross(graph, size, el, 'red');
   });
 };
 
@@ -84,6 +86,18 @@ export const drawYLabelLine = (graph, lineLabelObj) => {
     ctx.moveTo(0, graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
     ctx.lineTo(
       GRAPH_SCALE,
+      graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit
+    );
+  });
+};
+
+export const drawOutreachYLabelLine = (graph, lineLabelObj) => {
+  const { i, unit } = lineLabelObj;
+  drawPassedLinePath(graph.context, (ctx) => {
+    ctx.strokeStyle = graph.outreachPlotColor;
+    ctx.moveTo(0, graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
+    ctx.lineTo(
+      GRAPH_SCALE - 5,
       graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit
     );
   });

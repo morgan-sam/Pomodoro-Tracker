@@ -2,15 +2,21 @@ import {
   drawGraphTitle,
   drawXLabelText,
   drawYLabelText,
+  drawOutreachYLabelText
 } from "controller/canvasDrawText";
 import {
   drawGraphLine,
   drawCoordinateCrosses,
   drawXLabelLine,
   drawYLabelLine,
+  drawOutreachYLabelLine,
 } from "controller/canvasDrawLines";
-import { getXAxisLabelObj } from "controller/graphAxisLabels";
-import { GRAPH_SIZES } from "styles/graphSizing";
+import {
+  getXAxisLabelObj
+} from "controller/graphAxisLabels";
+import {
+  GRAPH_SIZES
+} from "styles/graphSizing";
 const GRAPH_FONT_SIZE = GRAPH_SIZES.FONT_SIZE;
 
 const getCanvasContext = (canvasRef) => {
@@ -57,8 +63,23 @@ const drawXAxis = (graph) => {
 };
 
 const drawYAxis = (graph) => {
+
+  // Draw Outreach Y Axis
+  for (let i = 0; i <= graph.yAxisMax * graph.outreachRatio; i++) {
+    const labelParameters = {
+      i,
+      unit: graph.units.y / graph.outreachRatio
+    };
+    drawOutreachYLabelLine(graph, labelParameters);
+    if (i % 2 === 0) drawOutreachYLabelText(graph, labelParameters);
+  }
+
+  // Draw Podomoros Y Axis
   for (let i = 0; i <= graph.yAxisMax; i++) {
-    const labelParameters = { i, unit: graph.units.y };
+    const labelParameters = {
+      i,
+      unit: graph.units.y
+    };
     drawYLabelLine(graph, labelParameters);
     drawYLabelText(graph, labelParameters);
   }
