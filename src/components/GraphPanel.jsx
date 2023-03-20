@@ -21,40 +21,42 @@ function GraphPanel(props) {
   };
 
   return (
-    <div className={"canvas-container"} style={props.style}>
-      {entriesData.length > 0 && (
-        <div
-          className={"switch-graph-view-btn"}
-          style={getSystemButtonStyle(darkTheme)}
-          onClick={() =>
-            setPeriodOffset((periodOffset + 1) % graphPeriodOptions.length)
-          }
-        >
-          {convertTextToTitleCase(getNewPeriod())}
-        </div>
-      )}
-      {getNewPeriod() === "month" ? (
-        <div className={"switch-month-btn-container"}>
-          <button
-            className={"switch-month-btn"}
-            style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
-            onClick={() => setDate(addSubtractMonthsFromDateObj(date, -1))}
-          >{`⬅   ${monthStringArray[(date.month - 2 + 12) % 12]}`}</button>
-          <button
-            className={"switch-month-btn"}
-            style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
-            onClick={() => setDate(addSubtractMonthsFromDateObj(date, 1))}
-          >{`${monthStringArray[(date.month + 12) % 12]}   ➡`}</button>
-        </div>
-      ) : null}
-      <GraphCanvas
-        entriesData={entriesData}
-        outreachData={outreachData}
-        date={date}
-        options={options}
-        {...options.graph}
-        period={getNewPeriod()}
-      />
+    <div className={"display-container"}>
+      <div className={"canvas-container"} style={props.style}>
+        {entriesData.length > 0 && (
+          <div
+            className={"switch-graph-view-btn"}
+            style={getSystemButtonStyle(darkTheme)}
+            onClick={() =>
+              setPeriodOffset((periodOffset + 1) % graphPeriodOptions.length)
+            }
+          >
+            {convertTextToTitleCase(getNewPeriod())}
+          </div>
+        )}
+        {getNewPeriod() === "month" ? (
+          <div className={"switch-month-btn-container"}>
+            <button
+              className={"switch-month-btn"}
+              style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
+              onClick={() => setDate(addSubtractMonthsFromDateObj(date, -1))}
+            >{`⬅   ${monthStringArray[(date.month - 2 + 12) % 12]}`}</button>
+            <button
+              className={"switch-month-btn"}
+              style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
+              onClick={() => setDate(addSubtractMonthsFromDateObj(date, 1))}
+            >{`${monthStringArray[(date.month + 12) % 12]}   ➡`}</button>
+          </div>
+        ) : null}
+        <GraphCanvas
+          entriesData={entriesData}
+          outreachData={outreachData}
+          date={date}
+          options={options}
+          {...options.graph}
+          period={getNewPeriod()}
+        />
+      </div>
     </div>
   );
 }
