@@ -9,7 +9,6 @@ function MonthOverview(props) {
   const { date, entriesData, outreachData } = props;
   const colorTheme = useContext(ColorThemeContext);
   console.log(colorTheme);
-  console.log(entriesData);
   console.log(outreachData);
 
   const getMonthPomodoroObj = () => {
@@ -43,8 +42,10 @@ function MonthOverview(props) {
           return (
             <div className="overview-day-node" key={day}>
               <div className="day-label">{day}</div>
-              <div className="pomodoro-count">{twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol"></span></div>
-              <div className="outreach-count">20 <img className="email-symbol" src={EmailSvg} alt="email" /></div>
+              <div className="pomodoro-count">
+                {twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol" style={{background: colorTheme.darker}}></span>
+              </div>
+              <div className="outreach-count">## <img className="email-symbol" src={EmailSvg} alt="email" /></div>
             </div>
           )
         })}
