@@ -18,6 +18,7 @@ import "css/keyboardShortcut.css";
 import "css/loading.css";
 import "css/loginSignUp.css";
 import "css/main.css";
+import "css/monthChart.css";
 import "css/optionsPanel.css";
 import "css/queries.css";
 import "css/scrollingTimeline.css";

@@ -2,12 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .display-container {
   display: flex;
   justify-content: start;
 }
+
 
 .switch-graph-view-btn {
   position: absolute;

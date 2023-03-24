@@ -6,6 +6,8 @@ export const getMonthIntegers = () => {
   return Array.from(Array(12).keys()).map((el) => el + 1);
 };
 
+export const daysOfWeekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 export const monthStringArray = [
   "January",
   "February",
@@ -34,6 +36,11 @@ export const arrayOfMonthDays = (month, year) => {
 export const getTodaysDateAsObj = () => {
   return convertUTCISOToDateObj(new Date().toISOString());
 };
+
+export const getDaysInMonth = (month, year) => {
+  return new Date(year, month, 0).getDate();
+};
+
 
 export const daysInMonth = (month, year) => {
   const monthDays = [

@@ -5,6 +5,7 @@ import { graphPeriodOptions } from "data/defaultState";
 import { monthStringArray, addSubtractMonthsFromDateObj } from "data/dates";
 import { DarkThemeContext } from "context/theme";
 import { convertTextToTitleCase } from "utility/parseText";
+import MonthOverview from "./MonthOverview";
 
 function GraphPanel(props) {
   const { date, setDate, options, entriesData, outreachData } = props;
@@ -57,6 +58,7 @@ function GraphPanel(props) {
           period={getNewPeriod()}
         />
       </div>
+      <MonthOverview {...{ date, entriesData, outreachData }} />
     </div>
   );
 }

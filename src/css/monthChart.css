@@ -1,0 +1,40 @@
+.month-overview {
+    margin: 0 1rem;
+}
+
+.month-overview-days-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.overview-day-node {
+    position: relative;
+    padding: 1.3rem;
+    border: 1px solid black;
+}
+.pomodoro-count,
+.outreach-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pomodoro-symbol,
+.email-symbol {
+    margin-left: 5px;
+}
+.pomodoro-symbol {
+    border-radius: 50%;
+    display: inline-block;
+    background: red;
+    width: 16px;
+    height: 16px;
+}
+.email-symbol {
+    width: 16px;
+}
+
+.month-overview .day-label {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
