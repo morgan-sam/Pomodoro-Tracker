@@ -39,13 +39,17 @@ function MonthOverview(props) {
         {arrayOfMonthDays(date.month, date.year).map(day => {
           const d = new Date(`${date.year}-${date.month}-${day}`);
           let dayOfWeek = d.getDay();
+          const pomodoroSymbolStyle = {
+            background: colorTheme.darker,
+            filter: `opacity(${1/16 * thisMonthsPomodorosObject[day]})`
+          }
           return (
             <div className="overview-day-node" key={day}>
               <div className="day-label">{day}</div>
               <div className="pomodoro-count">
-                {twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol" style={{background: colorTheme.darker}}></span>
+                {twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol" style={pomodoroSymbolStyle}></span>
               </div>
-              <div className="outreach-count">## <img className="email-symbol" src={EmailSvg} alt="email" /></div>
+              <div className="outreach-count">00 <img className="email-symbol" src={EmailSvg} alt="email" /></div>
             </div>
           )
         })}
