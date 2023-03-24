@@ -5,12 +5,13 @@
 .month-overview-days-container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
 }
 
 .overview-day-node {
     position: relative;
-    padding: 1.3rem;
-    border: 1px solid black;
+    padding: 1.5rem;
+    outline: 1px solid black;
 }
 .pomodoro-count,
 .outreach-count {
@@ -35,6 +36,10 @@
 
 .month-overview .day-label {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0;
+    right: 0;
+    width: 20px;
+    text-align: center;
+    padding: 1px;
+    outline: 1px solid black;
 }
