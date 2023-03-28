@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ColorThemeContext } from "context/theme";
 import { getDaysInMonth, monthStringArray, daysOfWeekArray, arrayOfMonthDays } from "data/dates";
 import { twoLeadingZeroes } from "utility/parseText";
-
+import { changeHSLOpacity } from "utility/color";
 import EmailSvg from "img/email.svg";
 
 function MonthOverview(props) {
@@ -34,11 +34,6 @@ function MonthOverview(props) {
     });
     return thisMonthsOutreachObject;
   } 
-
-  const changeHSLOpacity = (hsl, opacity) => {
-    const hslArray = hsl.replace('hsl(', '').replace(')', '').split(', ');
-    return `hsla(${hslArray[0]}, ${hslArray[1]}, ${hslArray[2]}, ${opacity})`;
-  }
 
   const thisMonthsPomodorosObject = getMonthPomodoroObj(date, entriesData);
   const thisMonthsOutreachObject = getMonthOutreachObj(date, outreachData);
