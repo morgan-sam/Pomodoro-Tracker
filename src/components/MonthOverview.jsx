@@ -33,9 +33,7 @@ function MonthOverview(props) {
       }
     });
     return thisMonthsOutreachObject;
-  }
-   
-  
+  } 
   
   const thisMonthsPomodorosObject = getMonthPomodoroObj(date, entriesData);
   const thisMonthsOutreachObject = getMonthOutreachObj(date, outreachData);
@@ -52,7 +50,6 @@ function MonthOverview(props) {
         )}
         {arrayOfMonthDays(date.month, date.year).map(day => {
           const d = new Date(`${date.year}-${date.month}-${day}`);
-          let dayOfWeek = d.getDay();
           const pomodoroSymbolStyle = {
             background: colorTheme.darker,
             filter: `opacity(${1/16 * thisMonthsPomodorosObject[day]})`
