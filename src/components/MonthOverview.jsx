@@ -54,17 +54,17 @@ function MonthOverview(props) {
           </div>
         )}
         {arrayOfMonthDays(date.month, date.year).map(day => {
-          const opacity = 1/16 * thisMonthsPomodorosObject[day];
-          const pomodoroSymbolStyle = {
-            background: changeHSLOpacity(colorTheme.darker, opacity)
-          }
+          const pomodoroOpacity = 1/16 * thisMonthsPomodorosObject[day];
+          const pomodoroSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, pomodoroOpacity) };
+          const outreachOpacity = 1/20 * thisMonthsOutreachObject[day];
+          const outreachSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, outreachOpacity) };
           return (
             <div className="overview-day-node" key={day}>
               <div className="day-label">{day}</div>
               <div className="pomodoro-count">
                 {twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol" style={pomodoroSymbolStyle}></span>
               </div>
-              <div className="outreach-count">{twoLeadingZeroes(thisMonthsOutreachObject[day])} <img className="email-symbol" src={EmailSvg} alt="email" /></div>
+              <div className="outreach-count">{twoLeadingZeroes(thisMonthsOutreachObject[day])} <img className="email-symbol" style={outreachSymbolStyle} src={EmailSvg} alt="email" /></div>
             </div>
           )
         })}
