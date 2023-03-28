@@ -34,14 +34,19 @@ function MonthOverview(props) {
     });
     return thisMonthsOutreachObject;
   } 
-  
+
+  const changeHSLOpacity = (hsl, opacity) => {
+    const hslArray = hsl.replace('hsl(', '').replace(')', '').split(', ');
+    return `hsla(${hslArray[0]}, ${hslArray[1]}, ${hslArray[2]}, ${opacity})`;
+  }
+
   const thisMonthsPomodorosObject = getMonthPomodoroObj(date, entriesData);
   const thisMonthsOutreachObject = getMonthOutreachObj(date, outreachData);
   const starOfMonthWeekdayOffset = new Date(`${date.year}-${date.month}-${1}`).getDay();
 
   return (
     <div className="month-overview">
-      {monthStringArray[(date.month - 1)] + ' ' + date.year} 
+      <h3>{monthStringArray[(date.month - 1)] + ' ' + date.year}</h3> 
       <div className="month-overview-days-container">
         {[...Array(7).keys()].map(day =>
           <div key={day}>
@@ -49,9 +54,9 @@ function MonthOverview(props) {
           </div>
         )}
         {arrayOfMonthDays(date.month, date.year).map(day => {
+          const opacity = 1/16 * thisMonthsPomodorosObject[day];
           const pomodoroSymbolStyle = {
-            background: colorTheme.darker,
-            filter: `opacity(${1/16 * thisMonthsPomodorosObject[day]})`
+            background: changeHSLOpacity(colorTheme.darker, opacity)
           }
           return (
             <div className="overview-day-node" key={day}>
