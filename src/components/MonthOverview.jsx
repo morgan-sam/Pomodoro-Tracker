@@ -49,7 +49,6 @@ function MonthOverview(props) {
           </div>
         )}
         {arrayOfMonthDays(date.month, date.year).map(day => {
-          const d = new Date(`${date.year}-${date.month}-${day}`);
           const pomodoroSymbolStyle = {
             background: colorTheme.darker,
             filter: `opacity(${1/16 * thisMonthsPomodorosObject[day]})`
