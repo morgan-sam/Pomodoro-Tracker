@@ -88,7 +88,7 @@ const GraphPanel = (props) => {
     });
   }
 
-  return <canvas ref={canvasRef} style={getGraphStyle(options.darkTheme)} />;
+  return <canvas className="count-line-graph" ref={canvasRef} style={getGraphStyle(options.darkTheme)} />;
 };
 
 export default GraphPanel;
