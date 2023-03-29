@@ -16,6 +16,12 @@
   left: 1rem;
 }
 
+.switch-graph-data-btn-container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 .switch-month-btn-container {
   position: absolute;
   top: 1rem;

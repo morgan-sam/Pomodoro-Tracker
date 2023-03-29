@@ -29,11 +29,6 @@ const GraphPanel = (props) => {
     const outreachRatio = 2;
     const outreachPlotColor = "#b55c4e";
 
-    const linesEnabled = {
-      pomodoros: true,
-      outreach: true
-    };
-
     const counts = getPomodoroCount(entriesParameters, entriesData);
     const outreachCounts = getOutreachCount(entriesParameters, outreachData);
     const units = getUnits(counts);
@@ -53,7 +48,7 @@ const GraphPanel = (props) => {
       colorTheme,
       outreachRatio,
       outreachPlotColor,
-      linesEnabled
+      linesEnabled: props.options.graph.linesEnabled
     };
     drawEntireGraph(graphDataObj);
   };

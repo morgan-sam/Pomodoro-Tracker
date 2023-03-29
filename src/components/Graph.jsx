@@ -7,9 +7,36 @@ import { DarkThemeContext } from "context/theme";
 import { convertTextToTitleCase } from "utility/parseText";
 
 function Graph(props) {
-  const { date, setDate, options, entriesData, outreachData } = props;
+  const { date, setDate, options, setOptions, entriesData, outreachData } = props;
   const [periodOffset, setPeriodOffset] = useState(0);
   const darkTheme = useContext(DarkThemeContext);
+  
+
+  const handlePomodoroVisibilityChange = (event) => {
+    setOptions({
+        ...options,
+        graph: {
+            ...options.graph,
+            linesEnabled: {
+                ...options.graph.linesEnabled,
+                pomodoros: event.target.checked
+            }
+        }    
+    });
+  };
+
+  const handleOutreachVisibilityChange = (event) => {
+    setOptions({
+        ...options,
+        graph: {
+            ...options.graph,
+            linesEnabled: {
+                ...options.graph.linesEnabled,
+                outreach: event.target.checked
+            }
+        }    
+    });
+  };
 
   const getNewPeriod = () => {
     const index = graphPeriodOptions.findIndex(
@@ -24,29 +51,48 @@ function Graph(props) {
     <div className={"canvas-container"} style={props.style}>
         {entriesData.length > 0 && (
             <div
-            className={"switch-graph-view-btn"}
-            style={getSystemButtonStyle(darkTheme)}
-            onClick={() =>
-                setPeriodOffset((periodOffset + 1) % graphPeriodOptions.length)
-            }
+                className={"switch-graph-view-btn"}
+                style={getSystemButtonStyle(darkTheme)}
+                onClick={() =>
+                    setPeriodOffset((periodOffset + 1) % graphPeriodOptions.length)
+                }
             >
-            {convertTextToTitleCase(getNewPeriod())}
+                {convertTextToTitleCase(getNewPeriod())}
             </div>
         )}
         {getNewPeriod() === "month" ? (
             <div className={"switch-month-btn-container"}>
-            <button
-                className={"switch-month-btn"}
-                style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
-                onClick={() => setDate(addSubtractMonthsFromDateObj(date, -1))}
-            >{`⬅   ${monthStringArray[(date.month - 2 + 12) % 12]}`}</button>
-            <button
-                className={"switch-month-btn"}
-                style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
-                onClick={() => setDate(addSubtractMonthsFromDateObj(date, 1))}
-            >{`${monthStringArray[(date.month + 12) % 12]}   ➡`}</button>
+                <button
+                    className={"switch-month-btn"}
+                    style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
+                    onClick={() => setDate(addSubtractMonthsFromDateObj(date, -1))}
+                >{`⬅   ${monthStringArray[(date.month - 2 + 12) % 12]}`}</button>
+                <button
+                    className={"switch-month-btn"}
+                    style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
+                    onClick={() => setDate(addSubtractMonthsFromDateObj(date, 1))}
+                >{`${monthStringArray[(date.month + 12) % 12]}   ➡`}</button>
             </div>
         ) : null}
+        <div className={"switch-graph-data-btn-container"}>
+            <label>
+                <input
+                    type="checkbox"
+                    checked={options.graph.linesEnabled.pomodoros}
+                    onChange={handlePomodoroVisibilityChange}
+                />
+                Pomodoros
+            </label>
+            <br />
+            <label>
+                <input
+                    type="checkbox"
+                    checked={options.graph.linesEnabled.outreach}
+                    onChange={handleOutreachVisibilityChange}
+                />
+                Outreach
+            </label>
+        </div>
         <GraphCanvas
             entriesData={entriesData}
             outreachData={outreachData}

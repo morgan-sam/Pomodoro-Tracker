@@ -11,6 +11,10 @@ export const defaultOptions = {
     period: "week passed",
     type: "both",
     maxPomodoro: 14,
+    linesEnabled: {
+      pomodoros: true,
+      outreach: true
+    }
   },
   darkTheme: false,
   colorTheme: { hue: 250, saturation: 50, lightness: 50 },
