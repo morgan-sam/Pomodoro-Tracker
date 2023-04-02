@@ -15,7 +15,7 @@ const DisplaySettings = (props) => {
   const navigate = useNavigate();
   const accountButtonStyle = getSystemButtonStyle(false);
   const [tempOptions, setTempOptions] = useState(options);
-
+    
   const gridStyle = {
     display: "grid",
     gridTemplateColumns: "auto auto",
@@ -48,7 +48,7 @@ const DisplaySettings = (props) => {
     if (iter !== route.key.length)
       return {
         ...spread,
-        [route.key[iter]]: generateInverseNestedObject(obj, route, ++iter),
+        [route.key[iter]]: generateInverseNestedObject(spread, route, ++iter),
       };
     else return !route.value;
   };
@@ -64,8 +64,10 @@ const DisplaySettings = (props) => {
           style={{ borderRadius: "100%", margin: "1rem" }}
           default={el.value}
           options={tempOptions}
-          onChange={() =>
-            setTempOptions(generateInverseNestedObject(tempOptions, el))
+          onChange={() => {
+              const temp = generateInverseNestedObject(tempOptions, el);
+              setTempOptions(temp);
+            }
           }
         />,
       ];
