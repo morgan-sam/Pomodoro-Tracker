@@ -16,11 +16,46 @@
   left: 1rem;
 }
 
-.switch-graph-data-btn-container {
+.switch-graph-data-input-container {
   position: absolute;
   top: 1rem;
   right: 1rem;
 }
+.switch-graph-data-label {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.switch-graph-data-input {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid black;
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.switch-graph-data-input:checked::before,
+.switch-graph-data-input:checked::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.switch-graph-data-input:checked::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
 
 .switch-month-btn-container {
   position: absolute;

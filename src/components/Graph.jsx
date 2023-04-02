@@ -74,18 +74,19 @@ function Graph(props) {
                 >{`${monthStringArray[(date.month + 12) % 12]}   ➡`}</button>
             </div>
         ) : null}
-        <div className={"switch-graph-data-btn-container"}>
-            <label>
+        <div className={"switch-graph-data-input-container"}>
+            <label className="switch-graph-data-label">
                 <input
+                    className="switch-graph-data-input"
                     type="checkbox"
                     checked={options.graph.linesEnabled.pomodoros}
                     onChange={handlePomodoroVisibilityChange}
                 />
                 Pomodoros
             </label>
-            <br />
-            <label>
+            <label className="switch-graph-data-label">
                 <input
+                    className="switch-graph-data-input"
                     type="checkbox"
                     checked={options.graph.linesEnabled.outreach}
                     onChange={handleOutreachVisibilityChange}
