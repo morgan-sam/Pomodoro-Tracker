@@ -12,6 +12,7 @@ function TimelineToggles(props) {
 
   const {date, outreachData, setOutreachData} = props;
   const [displayOutreachCount, setDisplayOutreachCount] = useState(0);
+  const [changingOutreach, setChangingOutreach] = useState(false);
 
   const todayDateString = `${date['year']}-${twoLeadingZeroes(date['month'])}-${twoLeadingZeroes(date['day'])}`;
 
@@ -19,9 +20,11 @@ function TimelineToggles(props) {
     const newOutreachData = Object.assign({}, outreachData);
     newOutreachData[todayDateString] = newOutreachCount;
     setOutreachData(newOutreachData)
+    setChangingOutreach(false);
   }
 
   function clickChangeOutreachCount(changeAmount) {
+    setChangingOutreach(true);
     setDisplayOutreachCount(Math.max(0, displayOutreachCount + changeAmount))     
   }
 
@@ -50,6 +53,7 @@ function TimelineToggles(props) {
         <button onClick={() => clickChangeOutreachCount(-1)} className={"arrow-button top-page-text-title-btn"}>-</button>
           {!isNaN(displayOutreachCount) ? displayOutreachCount : 0}
         <button onClick={() => clickChangeOutreachCount(1)} className={"arrow-button top-page-text-title-btn"}>+</button>
+        {changingOutreach && <div className={"inline-loading-spinner"} />}
       </h2>
     </div>
   );
