@@ -12,14 +12,15 @@ function GraphDisplaySelect(props) {
           style={{ zIndex: "2" }}
           options={graphPeriodOptions}
           default={props.options.graph.period}
-          onClick={(el) =>
-            props.setOptions({
-              ...props.options,
-              graph: {
-                ...props.options.graph,
-                period: el,
-              },
-            })
+          onClick={(el) => {
+              props.setOptions({
+                ...props.options,
+                graph: {
+                  ...props.options.graph,
+                  period: el,
+                },
+              })
+            }
           }
         />
       </div>

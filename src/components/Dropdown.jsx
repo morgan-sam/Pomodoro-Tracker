@@ -79,8 +79,15 @@ const Dropdown = (props) => {
       parseFloat(getComputedStyle(dropdownRef.current).fontSize);
   };
 
+  const checkAllClassesInArray = (classList, propClasses) => {
+    for (let i = 0; i < propClasses.length; i++) {
+      if (!classList.contains(propClasses[i])) return false;
+    }
+    return true;
+  };
+
   const whileDropdownOpenClick = (e) => {
-    if (e.target.classList.contains(`${props.className}`)) {
+    if (checkAllClassesInArray(e.target.classList, props.className.split(' '))) {
       return;
     }
     setListOpen(false);

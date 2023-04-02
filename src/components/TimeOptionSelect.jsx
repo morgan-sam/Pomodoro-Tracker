@@ -14,7 +14,7 @@ function TimeOptionSelect(props) {
           Start Hour:
         </span>
         <Dropdown
-          className={"time-option-drop-down"}
+          className={"time-option-drop-down time-start-hour"}
           default={
             props.options.timeline.twelveHourClock
               ? convert24hrTo12hrTime(props.options.timeline.startTime)
@@ -43,7 +43,7 @@ function TimeOptionSelect(props) {
           End Hour:
         </span>
         <Dropdown
-          className={"time-option-drop-down"}
+          className={"time-option-drop-down time-end-hour"}
           default={
             props.options.timeline.twelveHourClock
               ? convert24hrTo12hrTime(props.options.timeline.endTime)
