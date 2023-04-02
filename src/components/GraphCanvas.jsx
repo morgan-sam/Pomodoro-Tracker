@@ -13,8 +13,8 @@ const GraphPanel = (props) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    canvasRef.current.width = 920;
-    canvasRef.current.height = 440;
+    canvasRef.current.width = 1000;
+    canvasRef.current.height = 500;
     props.entriesData.length
       ? addDataToGraph(canvasRef, options.darkTheme)
       : drawNoDataMessage(canvasRef, options.darkTheme);

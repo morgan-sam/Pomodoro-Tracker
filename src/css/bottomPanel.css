@@ -9,6 +9,11 @@
   justify-content: start;
 }
 
+.count-line-graph {
+  width: 1000px;
+  height: 500px;
+}
+
 
 .switch-graph-view-btn {
   position: absolute;
