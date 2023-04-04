@@ -33,8 +33,14 @@ export const arrayOfMonthDays = (month, year) => {
   return Array.from(Array(totalDays).keys()).map((el) => el + 1);
 };
 
+
 export const getTodaysDateAsObj = () => {
   return convertUTCISOToDateObj(new Date().toISOString());
+};
+
+export const isDateToday = (date) => {
+  const today = getTodaysDateAsObj().date;
+  return date.day === today.day && date.month === today.month && date.year === today.year;
 };
 
 export const getDaysInMonth = (month, year) => {
