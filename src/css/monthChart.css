@@ -22,6 +22,7 @@
 .pomodoro-symbol,
 .email-symbol {
     margin-left: 5px;
+    box-sizing: border-box;
 }
 .pomodoro-symbol {
     border-radius: 50%;
