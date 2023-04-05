@@ -10,7 +10,7 @@
 
 .overview-day-node {
     position: relative;
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 1rem 1rem;
     outline: 1px solid black;
 }
 .pomodoro-count,
