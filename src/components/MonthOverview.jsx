@@ -4,6 +4,8 @@ import { getDaysInMonth, monthStringArray, daysOfWeekArray, arrayOfMonthDays } f
 import { twoLeadingZeroes } from "utility/parseText";
 import { changeHSLOpacity } from "utility/color";
 import EmailSvg from "img/email.svg";
+import { sumArr } from "utility/general";
+import MonthStatistics from "components/MonthStatistics";
 
 function MonthOverview(props) {
   const { date, entriesData, outreachData } = props;
@@ -42,8 +44,6 @@ function MonthOverview(props) {
 
   const thisMonthsPomodorosObject = getMonthPomodoroObj(date, entriesData);
   const thisMonthsOutreachObject = getMonthOutreachObj(date, outreachData);
-  const averagePomodoros = getThisMonthsAverageOfDateObj(date, thisMonthsPomodorosObject);
-  const averageOureach = getThisMonthsAverageOfDateObj(date, thisMonthsOutreachObject);
   const starOfMonthWeekdayOffset = new Date(`${date.year}-${date.month}-${1}`).getDay();
   
 
@@ -72,14 +72,12 @@ function MonthOverview(props) {
           )
         })}
         <div className="overview-statistics" style={{ gridColumn: `span ${7 - (getDaysInMonth(date.month, date.year) % 7)}` }}>
-          <div>
-            <span>Mean Pomodoros: </span>
-            <span>{averagePomodoros}</span>
-          </div>
-          <div>
-            <span>Mean Outreach: </span>
-            <span>{averageOureach}</span>
-          </div>
+          <MonthStatistics 
+            totalPomodoros={sumArr(Object.values(thisMonthsPomodorosObject))}
+            averagePomodoros={getThisMonthsAverageOfDateObj(date, thisMonthsPomodorosObject)}
+            totalOutreach={sumArr(Object.values(thisMonthsOutreachObject))}
+            averageOutreach={getThisMonthsAverageOfDateObj(date, thisMonthsOutreachObject)}
+          />
         </div>
       </div>
     </div>
