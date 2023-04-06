@@ -49,7 +49,8 @@ function Graph(props) {
 
   return (
     <div className={"canvas-container"} style={props.style}>
-        {entriesData.length > 0 && (
+        {/* Switch Graph View Button */}
+        {/* {entriesData.length > 0 && (
             <div
                 className={"switch-graph-view-btn"}
                 style={getSystemButtonStyle(darkTheme)}
@@ -59,7 +60,7 @@ function Graph(props) {
             >
                 {convertTextToTitleCase(getNewPeriod())}
             </div>
-        )}
+        )} */}
         {getNewPeriod() === "month" ? (
             <div className={"switch-month-btn-container"}>
                 <button
