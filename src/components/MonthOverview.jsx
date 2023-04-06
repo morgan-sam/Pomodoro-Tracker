@@ -29,22 +29,22 @@ function MonthOverview(props) {
     return thisMonthsOutreachObject;
   } 
 
-  const getThisMonthAveragePomodoros = (date, thisMonthsPomodorosObject) => {
-    const thisMonthsPomodorosArray = Object.values(thisMonthsPomodorosObject);
-    
+  const getThisMonthsAverageOfDateObj = (date, thisMonthsObject) => {
+    const thisMonthsArray = Object.values(thisMonthsObject);
     // get number of days in month not including days past current day
     let daysInMonth = getDaysInMonth(date.month, date.year);
     const isCurrentMonth = date.year === new Date().getFullYear() && date.month === new Date().getMonth() + 1;
     if (isCurrentMonth) daysInMonth = new Date().getDate();
-
-    const thisMonthsPomodorosSum = thisMonthsPomodorosArray.reduce((a, b) => a + b, 0);
-    return Math.round((thisMonthsPomodorosSum / daysInMonth + Number.EPSILON) * 100) / 100
+    const thisMonthsSum = thisMonthsArray.reduce((a, b) => a + b, 0);
+    return Math.round((thisMonthsSum / daysInMonth + Number.EPSILON) * 100) / 100
   }
+
 
   const thisMonthsPomodorosObject = getMonthPomodoroObj(date, entriesData);
   const thisMonthsOutreachObject = getMonthOutreachObj(date, outreachData);
+  const averagePomodoros = getThisMonthsAverageOfDateObj(date, thisMonthsPomodorosObject);
+  const averageOureach = getThisMonthsAverageOfDateObj(date, thisMonthsOutreachObject);
   const starOfMonthWeekdayOffset = new Date(`${date.year}-${date.month}-${1}`).getDay();
-  const averagePomodoros = getThisMonthAveragePomodoros(date, thisMonthsPomodorosObject);
   
 
   return (
@@ -78,7 +78,7 @@ function MonthOverview(props) {
           </div>
           <div>
             <span>Mean Outreach: </span>
-            <span>{0}</span>
+            <span>{averageOureach}</span>
           </div>
         </div>
       </div>
