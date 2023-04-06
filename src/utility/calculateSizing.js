@@ -1,7 +1,6 @@
 export const getTimelineWidthRems = () => {
   let width = 0;
   if (document.querySelector('.elements-timeline')) width = document.querySelector('.elements-timeline').offsetWidth;
-  console.log(parseFloat(getComputedStyle(document.querySelector("body"))["font-size"]));
   return (
     width /
     parseFloat(getComputedStyle(document.querySelector("body"))["font-size"])

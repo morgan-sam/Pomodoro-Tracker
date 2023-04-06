@@ -10,9 +10,7 @@ function MonthOverview(props) {
   const colorTheme = useContext(ColorThemeContext);
   
   const getMonthPomodoroObj = (date, entriesData) => {
-    let thisMonthsPomodorosObject = Object.fromEntries(
-      date ? Array(getDaysInMonth(date.month, date.year)).fill(0).map((el, i) => [i + 1, 0]) : []
-    );  
+    let thisMonthsPomodorosObject = Object.fromEntries(date ? Array(getDaysInMonth(date.month, date.year)).fill(0).map((el, i) => [i + 1, 0]) : []);  
     entriesData.filter(event => {
       if (event.date.month === date.month && event.date.year === date.year && event.type === 'pomodoro') {
         const day = event.date.day;
@@ -24,20 +22,30 @@ function MonthOverview(props) {
   }
   
   const getMonthOutreachObj = (date, outreachData) => {
-    let thisMonthsOutreachObject = Object.fromEntries(
-      date ? Array(getDaysInMonth(date.month, date.year)).fill(0).map((el, i) => [i + 1, 0]) : []
-    );  
+    let thisMonthsOutreachObject = Object.fromEntries(date ? Array(getDaysInMonth(date.month, date.year)).fill(0).map((el, i) => [i + 1, 0]) : []);  
     Object.entries(outreachData).forEach(([key, value]) => {
-      if (key.includes(`${date.year}-${twoLeadingZeroes(date.month)}`)) {
-        thisMonthsOutreachObject[parseInt(key.split('-')[2])] = value;
-      }
+      if (key.includes(`${date.year}-${twoLeadingZeroes(date.month)}`)) thisMonthsOutreachObject[parseInt(key.split('-')[2])] = value;
     });
     return thisMonthsOutreachObject;
   } 
 
+  const getThisMonthAveragePomodoros = (date, thisMonthsPomodorosObject) => {
+    const thisMonthsPomodorosArray = Object.values(thisMonthsPomodorosObject);
+    
+    // get number of days in month not including days past current day
+    let daysInMonth = getDaysInMonth(date.month, date.year);
+    const isCurrentMonth = date.year === new Date().getFullYear() && date.month === new Date().getMonth() + 1;
+    if (isCurrentMonth) daysInMonth = new Date().getDate();
+
+    const thisMonthsPomodorosSum = thisMonthsPomodorosArray.reduce((a, b) => a + b, 0);
+    return Math.round(thisMonthsPomodorosSum / daysInMonth);
+  }
+
   const thisMonthsPomodorosObject = getMonthPomodoroObj(date, entriesData);
   const thisMonthsOutreachObject = getMonthOutreachObj(date, outreachData);
   const starOfMonthWeekdayOffset = new Date(`${date.year}-${date.month}-${1}`).getDay();
+  const averagePomodoros = getThisMonthAveragePomodoros(date, thisMonthsPomodorosObject);
+  
 
   return (
     <div className="month-overview">
@@ -63,6 +71,16 @@ function MonthOverview(props) {
             </div>
           )
         })}
+        <div className="overview-statistics" style={{ gridColumn: `span ${7 - (getDaysInMonth(date.month, date.year) % 7)}` }}>
+          <div>
+            <span>Mean Pomodoros: </span>
+            <span>{averagePomodoros}</span>
+          </div>
+          <div>
+            <span>Mean Outreach: </span>
+            <span>{0}</span>
+          </div>
+        </div>
       </div>
     </div>
   );
