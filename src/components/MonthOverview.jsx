@@ -38,7 +38,7 @@ function MonthOverview(props) {
     if (isCurrentMonth) daysInMonth = new Date().getDate();
 
     const thisMonthsPomodorosSum = thisMonthsPomodorosArray.reduce((a, b) => a + b, 0);
-    return Math.round(thisMonthsPomodorosSum / daysInMonth);
+    return Math.round((thisMonthsPomodorosSum / daysInMonth + Number.EPSILON) * 100) / 100
   }
 
   const thisMonthsPomodorosObject = getMonthPomodoroObj(date, entriesData);
