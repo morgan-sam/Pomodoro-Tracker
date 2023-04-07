@@ -137,8 +137,7 @@ export const addSubtractDaysFromDateObj = (date, dayChange) => {
   return numberOfDaysFromZeroADToDate(numberOfDays + dayChange);
 };
 
-//resets to first day of month
-export const addSubtractMonthsFromDateObj = (date, monthChange) => {
+export const addSubtractMonths = (date, monthChange) => {
   let { month, year } = date;
   month += monthChange;
   if (month > 12) {
@@ -148,5 +147,5 @@ export const addSubtractMonthsFromDateObj = (date, monthChange) => {
     month += 12;
     --year;
   }
-  return { day: 1, month, year };
+  return { newMonth: month, newYear: year };
 };

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import GraphCanvas from "components/GraphCanvas";
 import { getSystemButtonStyle } from "styles/settings";
 import { graphPeriodOptions } from "data/defaultState";
-import { monthStringArray, addSubtractMonthsFromDateObj } from "data/dates";
+import { getTodaysDateAsObj, monthStringArray, addSubtractMonths } from "data/dates";
 import { DarkThemeContext } from "context/theme";
 import { convertTextToTitleCase } from "utility/parseText";
 
@@ -47,6 +47,14 @@ function Graph(props) {
     ];
   };
 
+  const changeMonthOfGraph = (difference) => {
+    const today = getTodaysDateAsObj().date;
+    const { newMonth, newYear } = addSubtractMonths(date, difference);
+    let newDay = 1;
+    if (newMonth === today.month && newYear === today.year) newDay = today.day;
+    setDate({day: newDay, month: newMonth, year: newYear});
+  }
+
   return (
     <div className={"canvas-container"} style={props.style}>
         {/* Switch Graph View Button */}
@@ -66,12 +74,12 @@ function Graph(props) {
                 <button
                     className={"switch-month-btn"}
                     style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
-                    onClick={() => setDate(addSubtractMonthsFromDateObj(date, -1))}
+                    onClick={() => changeMonthOfGraph(-1)}
                 >{`⬅   ${monthStringArray[(date.month - 2 + 12) % 12]}`}</button>
                 <button
                     className={"switch-month-btn"}
                     style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
-                    onClick={() => setDate(addSubtractMonthsFromDateObj(date, 1))}
+                    onClick={() => changeMonthOfGraph(1)}
                 >{`${monthStringArray[(date.month + 12) % 12]}   ➡`}</button>
             </div>
         ) : null}
