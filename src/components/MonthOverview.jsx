@@ -68,6 +68,7 @@ function MonthOverview(props) {
                 {twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol" style={pomodoroSymbolStyle}></span>
               </div>
               <div className="outreach-count">{twoLeadingZeroes(thisMonthsOutreachObject[day])} <img className="email-symbol" style={outreachSymbolStyle} src={EmailSvg} alt="email" /></div>
+              <div className="money-count"><span>$10,000</span></div>
             </div>
           )
         })}

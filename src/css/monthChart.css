@@ -10,7 +10,7 @@
 
 .overview-day-node {
     position: relative;
-    padding: 1.5rem 1.5rem 1rem 1rem;
+    padding: .5rem 2rem .5rem .5rem;
     outline: 1px solid black;
 }
 .pomodoro-count,
@@ -19,6 +19,11 @@
     align-items: center;
     justify-content: center;
 }
+.money-count {
+    overflow: visible;
+    width: 0
+}
+
 .pomodoro-symbol,
 .email-symbol {
     margin-left: 5px;
