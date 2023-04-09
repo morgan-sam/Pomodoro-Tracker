@@ -45,8 +45,7 @@ function TimelineToggles(props) {
 
   return (
     <div>
-      <h1>Data for {parseDateObjToLittleEndian(date)}</h1>
-      <h3>Total{compareObjs(date, convertUTCISOToDateObj(new Date().toISOString()).date) ? " for today": ""}:</h3>
+      <h1>Data for {isToday ? `today (${parseDateObjToLittleEndian(date)})` : parseDateObjToLittleEndian(date)}</h1>
       <h2 className={"top-page-text-title"}>Pomodoros: {getEventCountForDay("pomodoro", date)}</h2>
       <h2 className={"top-page-text-title"}>
         Outreach: 
