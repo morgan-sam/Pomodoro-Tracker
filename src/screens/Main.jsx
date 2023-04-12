@@ -111,7 +111,8 @@ function Main(props) {
               date,
               setDate,
               options,
-              setOptions
+              setOptions,
+              moneyData
             }}
           />
         )}

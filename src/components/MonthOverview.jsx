@@ -8,7 +8,7 @@ import { sumArr } from "utility/general";
 import MonthStatistics from "components/MonthStatistics";
 
 function MonthOverview(props) {
-  const { date, entriesData, outreachData } = props;
+  const { date, entriesData, outreachData, moneyData } = props;
   const colorTheme = useContext(ColorThemeContext);
   
   const getMonthPomodoroObj = (date, entriesData) => {
@@ -41,11 +41,11 @@ function MonthOverview(props) {
     return Math.round((thisMonthsSum / daysInMonth + Number.EPSILON) * 100) / 100
   }
 
-
   const thisMonthsPomodorosObject = getMonthPomodoroObj(date, entriesData);
   const thisMonthsOutreachObject = getMonthOutreachObj(date, outreachData);
   const starOfMonthWeekdayOffset = new Date(`${date.year}-${date.month}-${1}`).getDay();
   
+
 
   return (
     <div className="month-overview">
@@ -61,6 +61,8 @@ function MonthOverview(props) {
           const pomodoroSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, pomodoroOpacity) };
           const outreachOpacity = 1/20 * thisMonthsOutreachObject[day];
           const outreachSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, outreachOpacity) };
+          const todayDateString = `${date.year}-${twoLeadingZeroes(date.month)}-${twoLeadingZeroes(day)}`;
+          const todayMoneyCount = moneyData[todayDateString] || 0;
           return (
             <div className="overview-day-node" key={day}>
               <div className="day-label">{day}</div>
@@ -68,7 +70,7 @@ function MonthOverview(props) {
                 {twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol" style={pomodoroSymbolStyle}></span>
               </div>
               <div className="outreach-count">{twoLeadingZeroes(thisMonthsOutreachObject[day])} <img className="email-symbol" style={outreachSymbolStyle} src={EmailSvg} alt="email" /></div>
-              <div className="money-count"><span>$10,000</span></div>
+              <div className="money-count"><span>${todayMoneyCount}</span></div>
             </div>
           )
         })}
