@@ -21,6 +21,7 @@ import "css/main.css";
 import "css/monthChart.css";
 import "css/optionsPanel.css";
 import "css/queries.css";
+import "css/moneyControl.css";
 import "css/scrollingTimeline.css";
 import "css/settings.css";
 import "css/timeOptionSelect.css";

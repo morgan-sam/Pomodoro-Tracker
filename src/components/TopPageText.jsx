@@ -7,6 +7,7 @@ import {
 import { compareObjs } from "utility/sortAndCompare";
 import { twoLeadingZeroes } from 'utility/parseText'
 import { postMoneyData, postOutreachData } from "data/queries";
+import MoneyControl from "components/MoneyControl";
 
 
 function TimelineToggles(props) {
@@ -24,12 +25,6 @@ function TimelineToggles(props) {
     postOutreachData(newOutreachData);
     setChangingOutreachTimerID(null);
   }
-  function changeMoneyCount(newMoneyCount) {
-    const newMoneyData = Object.assign({}, moneyData);
-    newMoneyData[todayDateString] = newMoneyCount;
-    setMoneyData(newMoneyData);
-    postMoneyData(newMoneyData);
-  }
 
   function clickChangeOutreachCount(changeAmount) {
     const newOutreachAmount = Math.max(0, displayOutreachCount + changeAmount);
@@ -41,17 +36,14 @@ function TimelineToggles(props) {
   const getEventCountForDay = (event, date) => props.entriesData.filter((el) => el.type === event && compareObjs(el.date, date)).length;
   
   const isToday = parseDateObjToBigEndian(date) === new Date().toISOString().substring(0, 10);
-  const todayOutreachCount = parseInt(outreachData[todayDateString]);
-  const todayMoneyCount = moneyData ? moneyData[todayDateString] : null;
 
   useEffect(() => {
     const todayDateString = `${date['year']}-${twoLeadingZeroes(date['month'])}-${twoLeadingZeroes(date['day'])}`;
-    const todayOutreachCount = parseInt(outreachData[todayDateString]);
+    const todayOutreachCount = outreachData ? parseInt(outreachData[todayDateString]) : 0;
     if (isNaN(todayOutreachCount)) setDisplayOutreachCount(0);
     else setDisplayOutreachCount(todayOutreachCount);
   }, [outreachData, date]);
-
-
+  
   useEffect(() => {
     return () => {
       if (changingOutreachTimerID) {
@@ -71,12 +63,7 @@ function TimelineToggles(props) {
         <button onClick={() => clickChangeOutreachCount(1)} className={"arrow-button top-page-text-title-btn"}>+</button>
         {changingOutreachTimerID && <div className={"inline-loading-spinner"} />}
       </h2>
-      <h2 className={"top-page-text-title"}>
-        <label for="currency-input">Money: $</label>
-        <input type="number" id="currency-input" name="currency" min="0.01" max="1000" step="0.01" value={7000}/>
-        <button class="tick-button"></button>
-        <button class="cross-button"></button>
-      </h2>
+      <MoneyControl {...{date, moneyData, setMoneyData}} />
     </div> 
   );
 }

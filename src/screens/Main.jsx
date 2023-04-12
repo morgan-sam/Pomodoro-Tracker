@@ -100,7 +100,7 @@ function Main(props) {
             pomodoro: 25,
             encore: 5,
           }}
-          {...{ date, setDate, options, setOptions }}
+          {...{ date, setDate, options, setOptions, moneyData, setMoneyData }}
         />
         <TopRightButtons />
         {options.graph.visible && (

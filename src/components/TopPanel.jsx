@@ -4,14 +4,13 @@ import DateNavigation from "components/DateNavigation";
 import Timeline from "components/Timeline";
 
 function TopPanel(props) {
+  const { date, options, setOptions, moneyData, setMoneyData } = props;
   return (
     <div className="top-panel">
       <div className={"top-panel-option"}>
         <TopPageText 
           entriesData={props.filteredEntries}
-          date={props.date}
-          outreachData={props.outreachData}
-          setOutreachData={props.setOutreachData}
+          {...{ date, options, setOptions, moneyData, setMoneyData }}
         />
         <DateNavigation date={props.date} setDate={props.setDate} />
       </div>
