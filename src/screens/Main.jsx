@@ -6,7 +6,7 @@ import { getAutoHourWidth } from "utility/calculateSizing";
 import { compareObjs } from "utility/sortAndCompare";
 import { convertUTCISOToDateObj } from "utility/parseDates";
 import { getAppContainerStyle } from "styles/app";
-import { getEntries, postOptions, getOptions, getOutreachData, postOutreachData} from "data/queries";
+import { getEntries, postOptions, getOptions, getOutreachData, postOutreachData, getMoneyData, postMoneyData} from "data/queries";
 
 function Main(props) {
   const { options, setOptions, fadeIn, setFadeIn } = props;
@@ -16,6 +16,7 @@ function Main(props) {
   const [loaded, setLoaded] = useState(false);
   const [entriesData, setEntriesData] = useState([]);
   const [outreachData, setOutreachData] = useState({});
+  const [moneyData, setMoneyData] = useState({});
   const [date, setDate] = useState(convertUTCISOToDateObj(new Date().toISOString()).date);
   const [hourWidth, setHourWidth] = useState(getAutoHourWidth(options.timeline));
 
@@ -43,7 +44,8 @@ function Main(props) {
         setEntriesData(formattedEntries);
         const emailCount = await getOutreachData();
         setOutreachData(emailCount);
-        setLoaded(true);
+        const moneyCount = await getMoneyData();
+        setMoneyData(moneyCount);
       } catch (error) {
         console.log(error);
       }
@@ -66,11 +68,7 @@ function Main(props) {
       window.removeEventListener("resize", setTimelineToFitWindow);
     };
   });
-
-  useEffect(() => {
-    if (loaded) postOutreachData(outreachData);
-  }, [outreachData]);
-
+  
   useEffect(() => {
     const setDatabaseOptions = async () => {
       const databaseOptions = await getOptions();

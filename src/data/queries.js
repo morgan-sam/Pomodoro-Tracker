@@ -26,6 +26,18 @@ export const getOutreachData = async () => {
       });
 };
 
+export const getMoneyData = async () => {
+  if (firebase.auth().currentUser)
+    return firebase
+      .database()
+      .ref("/users/" + firebase.auth().currentUser.uid + "/money_data")
+      .once("value")
+      .then((snapshot) => {
+        const raw = snapshot.val();
+        return raw ? raw : {};
+      });
+};
+
 export const getOptions = async () => {
   if (firebase.auth().currentUser)
     return firebase
@@ -49,6 +61,14 @@ export const postOutreachData = async (emailCount) => {
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/outreach_data")
       .set(emailCount);
+};
+
+export const postMoneyData = async (moneyCount) => {
+  if (firebase.auth().currentUser)
+    return firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid + "/money_data")
+      .set(moneyCount);
 };
 
 export const reauthenticate = async (password) => {

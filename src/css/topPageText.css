@@ -1,6 +1,9 @@
 .top-page-text-title {
     margin: 0;
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
 }
 
 .top-page-text-title-btn {
@@ -13,3 +16,89 @@
     justify-content: center;
     margin: 0 10px;
 }
+
+#currency-input {
+    width: 64px;
+    height: 22px;
+    font-size: 16px;
+    margin: 0 5px;
+}
+
+.currency-change-confirm-btn,
+.currency-change-cancel-btn {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;;
+    font-size: 22px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid #555;
+}
+.currency-change-confirm-btn {
+    background-color: #4CAF50;
+}
+.currency-change-cancel-btn {
+    background-color: #f44336;
+}
+
+.tick-button {
+    position: relative;
+    padding-right: 20px; /* add some padding on the right side for the tick icon */
+    background-color: #007bff; /* set the background color */
+    color: #fff; /* set the text color */
+    border: none; /* remove the border */
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .tick-button::before {
+    content: ''; /* add some content to the pseudo-element */
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: translateY(-50%) rotate(45deg); /* rotate the pseudo-element */
+    transition: all 0.2s ease-in-out; /* add a transition effect */
+  }
+  
+  .cross-button {
+    position: relative;
+    padding-right: 20px; /* add some padding on the right side for the cross icon */
+    background-color: #dc3545; /* set the background color */
+    color: #fff; /* set the text color */
+    border: none; /* remove the border */
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .cross-button::before,
+  .cross-button::after {
+    content: ''; /* add some content to the pseudo-elements */
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 12px;
+    height: 2px;
+    background-color: #fff;
+    transform: translateX(-50%) translateY(-50%) ; /* center the pseudo-elements vertically */
+    transition: all 0.2s ease-in-out; /* add a transition effect */
+  }
+  
+  .cross-button::before {
+    transform: translateX(-50%) translateY(-50%) rotate(45deg); /* rotate the pseudo-element to create a diagonal line */
+  }
+  
+  .cross-button::after {
+    transform: translateX(-50%) translateY(-50%) rotate(-45deg); /* rotate the pseudo-element to create another diagonal line */
+  }
+  
+  
