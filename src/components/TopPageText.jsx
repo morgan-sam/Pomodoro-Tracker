@@ -71,14 +71,12 @@ function TimelineToggles(props) {
         <button onClick={() => clickChangeOutreachCount(1)} className={"arrow-button top-page-text-title-btn"}>+</button>
         {changingOutreachTimerID && <div className={"inline-loading-spinner"} />}
       </h2>
-      {/* <h2 className={"top-page-text-title"}>
+      <h2 className={"top-page-text-title"}>
         <label for="currency-input">Money: $</label>
         <input type="number" id="currency-input" name="currency" min="0.01" max="1000" step="0.01" value={7000}/>
         <button class="tick-button"></button>
         <button class="cross-button"></button>
-        <button className="currency-change-confirm-btn">✓</button>
-        <button className="currency-change-cancel-btn">✗</button>
-      </h2> */}
+      </h2>
     </div> 
   );
 }
