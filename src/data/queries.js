@@ -1,7 +1,7 @@
 import firebase from "config/firebase";
 import firebaseApp from "firebase/compat/app";
 
-export const getEntries = async () => {
+export const getAllData = async () => {
   if (firebase.auth().currentUser)
     return firebase
       .database()
@@ -9,8 +9,19 @@ export const getEntries = async () => {
       .once("value")
       .then((snapshot) => {
         const raw = snapshot.val();
-        const values = Object.values(raw.events);
-        return values;
+        return raw ? raw : {};
+      });
+};
+
+export const getEntries = async () => {
+  if (firebase.auth().currentUser)
+    return firebase
+      .database()
+      .ref("/users/" + firebase.auth().currentUser.uid + "/events")
+      .once("value")
+      .then((snapshot) => {
+        const raw = snapshot.val();
+        return raw ? raw : {};
       });
 };
 

@@ -6,7 +6,7 @@ import { getAutoHourWidth } from "utility/calculateSizing";
 import { compareObjs } from "utility/sortAndCompare";
 import { convertUTCISOToDateObj } from "utility/parseDates";
 import { getAppContainerStyle } from "styles/app";
-import { getEntries, postOptions, getOptions, getOutreachData, postOutreachData, getMoneyData, postMoneyData} from "data/queries";
+import { getAllData, getEntries, postOptions, getOptions, postOutreachData, postMoneyData} from "data/queries";
 
 function Main(props) {
   const { options, setOptions, fadeIn, setFadeIn } = props;
@@ -34,22 +34,33 @@ function Main(props) {
     });
   }
 
-  // useEffects
+  async function updateAllData() {
+    try {
+      const data = await getAllData();
+      const { events, outreach_data, money_data } = data;
+      const formatted_events = formatEntriesToUseDateObj(Object.values(events));
+      setEntriesData(formatted_events);
+      setOutreachData(outreach_data);
+      setMoneyData(money_data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function updateAllEntries() {
+    try {
+      const entries = await getEntries();
+      const formatted_events = formatEntriesToUseDateObj(Object.values(entries));
+      setEntriesData(formatted_events);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-    (async () => {
-      try {
-        const entries = await getEntries();
-        const formattedEntries = formatEntriesToUseDateObj(entries);
-        setEntriesData(formattedEntries);
-        const emailCount = await getOutreachData();
-        setOutreachData(emailCount);
-        const moneyCount = await getMoneyData();
-        setMoneyData(moneyCount);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    updateAllData();
+    // setInterval(function() {
+    //   updateAllEntries();
+    // }, 60000); 
   }, []);
 
   useEffect(() => {
