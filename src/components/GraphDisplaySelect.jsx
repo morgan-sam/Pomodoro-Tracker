@@ -3,6 +3,8 @@ import Dropdown from "components/Dropdown";
 import { graphPeriodOptions } from "data/defaultState";
 
 function GraphDisplaySelect(props) {
+  const { options, setOptions } = props;
+
   return (
     <div className={"graph-option-container"} style={{ ...props.style }}>
       <div>
@@ -11,12 +13,12 @@ function GraphDisplaySelect(props) {
           className={"graph-period-select graph-selection-dropdown"}
           style={{ zIndex: "2" }}
           options={graphPeriodOptions}
-          default={props.options.graph.period}
+          default={options.graph.period}
           onClick={(el) => {
-              props.setOptions({
-                ...props.options,
+              setOptions({
+                ...options,
                 graph: {
-                  ...props.options.graph,
+                  ...options.graph,
                   period: el,
                 },
               })
@@ -29,12 +31,12 @@ function GraphDisplaySelect(props) {
         <Dropdown
           className={"graph-type-select graph-selection-dropdown"}
           options={["scatter", "line", "both"]}
-          default={props.options.graph.type}
+          default={options.graph.type}
           onClick={(el) =>
-            props.setOptions({
-              ...props.options,
+            setOptions({
+              ...options,
               graph: {
-                ...props.options.graph,
+                ...options.graph,
                 type: el,
               },
             })
@@ -47,12 +49,12 @@ function GraphDisplaySelect(props) {
           type="range"
           min="1"
           max="20"
-          value={props.options.graph.maxPomodoro}
+          value={options.graph.maxPomodoro}
           onChange={(el) => {
-            props.setOptions({
-              ...props.options,
+            setOptions({
+              ...options,
               graph: {
-                ...props.options.graph,
+                ...options.graph,
                 maxPomodoro: el.target.value,
               },
             });
@@ -61,7 +63,7 @@ function GraphDisplaySelect(props) {
           style={{ width: "10rem" }}
         />
         <div style={{ width: "1rem", padding: "1rem" }}>
-          {props.options.graph.maxPomodoro}
+          {options.graph.maxPomodoro}
         </div>
       </div>
     </div>
