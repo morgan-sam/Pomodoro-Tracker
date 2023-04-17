@@ -6,7 +6,7 @@ import {
 } from "utility/parseDates";
 import { compareObjs } from "utility/sortAndCompare";
 import { twoLeadingZeroes } from 'utility/parseText'
-import { postMoneyData, postOutreachData } from "data/queries";
+import { postMoneyData, updateOutreachData } from "data/queries";
 import MoneyControl from "components/MoneyControl";
 
 
@@ -22,7 +22,7 @@ function TopPageText(props) {
     const newOutreachData = Object.assign({}, outreachData);
     newOutreachData[todayDateString] = newOutreachCount;
     setOutreachData(newOutreachData);
-    postOutreachData(newOutreachData);
+    updateOutreachData(todayDateString, newOutreachCount);
     setChangingOutreachTimerID(null);
   }
 

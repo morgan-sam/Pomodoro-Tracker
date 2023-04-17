@@ -6,7 +6,7 @@ import { getAutoHourWidth } from "utility/calculateSizing";
 import { compareObjs } from "utility/sortAndCompare";
 import { convertUTCISOToDateObj } from "utility/parseDates";
 import { getAppContainerStyle } from "styles/app";
-import { getAllData, getEntries, postOptions, getOptions, postOutreachData, postMoneyData} from "data/queries";
+import { getAllData, getEntries, postOptions, getOptions, postMoneyData} from "data/queries";
 
 function Main(props) {
   const { options, setOptions, fadeIn, setFadeIn } = props;

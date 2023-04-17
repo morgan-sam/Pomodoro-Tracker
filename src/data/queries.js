@@ -66,12 +66,12 @@ export const postOptions = async (options) => {
       .set(options);
 };
 
-export const postOutreachData = async (emailCount) => {
+export const updateOutreachData = async (dateString, emailCount) => {
   if (firebase.auth().currentUser)
     return firebase
       .database()
-      .ref("users/" + firebase.auth().currentUser.uid + "/outreach_data")
-      .set(emailCount);
+      .ref("users/" + firebase.auth().currentUser.uid + "/outreach_data/")
+      .update({[dateString]: emailCount});
 };
 
 export const postMoneyData = async (moneyCount) => {
