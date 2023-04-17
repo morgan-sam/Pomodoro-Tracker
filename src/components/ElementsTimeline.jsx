@@ -11,6 +11,7 @@ import { convert24hrTo12hrTime } from "utility/parseTime";
 import { DarkThemeContext, ColorThemeContext } from "context/theme";
 
 function ElementsTimeline(props) {
+  const { filteredEntries: entries, hourWidth, options } = props;
   const darkTheme = useContext(DarkThemeContext);
   const colorTheme = useContext(ColorThemeContext);
   const eventLengths = {
@@ -25,13 +26,13 @@ function ElementsTimeline(props) {
           key={i}
           style={{
             ...getBoxStyle(darkTheme),
-            maxWidth: `${props.hourWidth}rem`,
-            minWidth: `${props.hourWidth}rem`,
-            zIndex: props.options.timeline.grid ? "1" : "0",
+            maxWidth: `${hourWidth}rem`,
+            minWidth: `${hourWidth}rem`,
+            zIndex: options.timeline.grid ? "1" : "0",
           }}
         >
           <span className={"elements-timeline-text"}>
-            {props.options.timeline.twelveHourClock
+            {options.timeline.twelveHourClock
               ? convert24hrTo12hrTime(i + start)
               : `${i + start}:00`}
           </span>
@@ -48,7 +49,7 @@ function ElementsTimeline(props) {
           key={i}
           style={{
             ...innerGridStyle,
-            display: props.options.timeline.grid ? "flex" : "none",
+            display: options.timeline.grid ? "flex" : "none",
             left: `${25 * i}%`,
             borderLeft: i ? "1px solid #555" : "none",
           }}
@@ -58,8 +59,8 @@ function ElementsTimeline(props) {
   }
 
   function getEventBoxes(eventType) {
-    if (props.options.timeline[eventType] || eventType === "pomodoro") {
-      const events = props.entries.filter((el) => el.type === eventType);
+    if (options.timeline[eventType] || eventType === "pomodoro") {
+      const events = entries.filter((el) => el.type === eventType);
       return events ? events.map((el, i) => convertEventToBox(el, i)) : [];
     } else {
       return null;
@@ -82,8 +83,8 @@ function ElementsTimeline(props) {
   function getEventBoxStyle(el) {
     const hourPosition = calculateEventHourPosition(el);
     const remPosition =
-      (hourPosition - props.options.timeline.startTime) * props.hourWidth;
-    const eventWidth = (props.hourWidth / 60) * eventLengths[el.type];
+      (hourPosition - options.timeline.startTime) * hourWidth;
+    const eventWidth = (hourWidth / 60) * eventLengths[el.type];
     const overflow = calculateEventOverflow(eventWidth, remPosition);
 
     return {
@@ -92,7 +93,7 @@ function ElementsTimeline(props) {
         overflow > 0 ? "2" : "0"
       }px)`,
       display:
-        props.options.timeline.endTime < hourPosition ? "none" : "inline-block",
+        options.timeline.endTime < hourPosition ? "none" : "inline-block",
     };
   }
 
@@ -102,17 +103,17 @@ function ElementsTimeline(props) {
 
   function calculateEventOverflow(eventWidth, remPosition) {
     const timelineWidth =
-      (props.options.timeline.endTime - props.options.timeline.startTime) *
-      props.hourWidth;
+      (options.timeline.endTime - options.timeline.startTime) *
+      hourWidth;
     const eventEndPosition = eventWidth + remPosition;
     return Math.max(0, eventEndPosition - timelineWidth);
   }
 
   const currentTimeMarker = () => {
-    const width = props.hourWidth;
+    const width = hourWidth;
     const { hour, minute } = getTodaysDateAsObj().time;
     const time =
-      width * (minute / 60 + hour - props.options.timeline.startTime);
+      width * (minute / 60 + hour - options.timeline.startTime);
     return (
       <div
         style={{ ...getCurrentTimeMarkerStyle(colorTheme), left: `${time}rem` }}
@@ -124,8 +125,8 @@ function ElementsTimeline(props) {
     <div className={"elements-timeline"} key="elements-timeline">
       <div className={"elements-timeline-scrollbar"}>
         {getTimelineBoxSelection(
-          props.options.timeline.startTime,
-          props.options.timeline.endTime
+          options.timeline.startTime,
+          options.timeline.endTime
         )}
         {getEventBoxes("start")}
         {getEventBoxes("pomodoro")}

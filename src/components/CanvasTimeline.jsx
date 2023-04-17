@@ -3,7 +3,7 @@ import { DarkThemeContext, ColorThemeContext } from "context/theme";
 import { drawTimeline, clearTimeline } from "controller/drawTimeline";
 
 function CanvasTimeline(props) {
-  const { options, entries } = props;
+  const { options, filteredEntries: entries } = props;
   const canvasRef = useRef(null);
   const colorTheme = useContext(ColorThemeContext);
 

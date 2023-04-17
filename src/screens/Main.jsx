@@ -105,12 +105,11 @@ function Main(props) {
       <div className={"main-container"}>
         <TopPanel
           filteredEntries={filterEntries(entriesData)}
-          hourWidth={hourWidth}
           eventLengths={{
             pomodoro: 25,
             encore: 5,
           }}
-          {...{ date, setDate, options, setOptions, moneyData, setMoneyData, outreachData, setOutreachData }}
+          {...{ date, setDate, options, setOptions, moneyData, setMoneyData, outreachData, setOutreachData, hourWidth }}
         />
         <TopRightButtons />
         {options.graph.visible && (

@@ -12,7 +12,7 @@ import MoneyControl from "components/MoneyControl";
 
 function TopPageText(props) {
 
-  const {date, outreachData, setOutreachData, moneyData, setMoneyData} = props;
+  const {date, outreachData, setOutreachData, moneyData, setMoneyData, filteredEntries: entries } = props;
   const [displayOutreachCount, setDisplayOutreachCount] = useState(0);
   const [changingOutreachTimerID, setChangingOutreachTimerID] = useState(false);
 
@@ -33,7 +33,7 @@ function TopPageText(props) {
     setChangingOutreachTimerID(timeoutID);
   }
 
-  const getEventCountForDay = (event, date) => props.entriesData.filter((el) => el.type === event && compareObjs(el.date, date)).length;
+  const getEventCountForDay = (event, date) => entries.filter((el) => el.type === event && compareObjs(el.date, date)).length;
   
   const isToday = parseDateObjToBigEndian(date) === new Date().toISOString().substring(0, 10);
 
