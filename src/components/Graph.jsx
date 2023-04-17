@@ -104,11 +104,7 @@ function Graph(props) {
             </label>
         </div>
         <GraphCanvas
-            entriesData={entriesData}
-            outreachData={outreachData}
-            date={date}
-            options={options}
-            {...options.graph}
+            {...{ entriesData, outreachData, date, options }}
             period={getNewPeriod()}
         />
     </div>

@@ -6,10 +6,11 @@ import { drawNoDataMessage, drawEntireGraph } from "controller/canvasDrawing";
 import { ColorThemeContext } from "context/theme";
 
 const GraphPanel = (props) => {
-  const { entriesData, outreachData } = props;
+  const { options, entriesData, outreachData } = props;
+  const { period, type, maxPomodoro, linesEnabled } = options.graph;
+  const Y_AXIS_MAX = maxPomodoro;
+  
   const colorTheme = useContext(ColorThemeContext);
-  const { options } = props;
-  const Y_AXIS_MAX = props.maxPomodoro;
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -40,15 +41,15 @@ const GraphPanel = (props) => {
       graphData,
       outreachGraphData,
       counts,
-      period: props.period,
-      type: props.type,
+      period,
+      type,
       units,
       yAxisMax: Y_AXIS_MAX,
       darkTheme,
       colorTheme,
       outreachRatio,
       outreachPlotColor,
-      linesEnabled: props.options.graph.linesEnabled
+      linesEnabled
     };
     drawEntireGraph(graphDataObj);
   };
