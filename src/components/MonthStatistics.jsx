@@ -5,21 +5,25 @@ const MonthStatistics = (props) => {
     
     return (
       <table className="month-statistics-table">
-        <tr>
-          <th></th>
-          <th scope="col">Total</th>
-          <th scope="col">Average</th>
-        </tr>
-        <tr>
-          <th scope="row">Pomodoros</th>
-          <td>{totalPomodoros}</td>
-          <td>{averagePomodoros}</td>
-        </tr>
-        <tr>
-          <th scope="row">Outreach</th>
-          <td>{totalOutreach}</td>
-          <td>{averageOutreach}</td>
-        </tr>
+        <thead>
+          <tr>
+            <th></th>
+            <th scope="col">Total</th>
+            <th scope="col">Average</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Pomodoros</th>
+            <td>{totalPomodoros}</td>
+            <td>{averagePomodoros}</td>
+          </tr>
+          <tr>
+            <th scope="row">Outreach</th>
+            <td>{totalOutreach}</td>
+            <td>{averageOutreach}</td>
+          </tr>          
+        </tbody>
       </table>
     )
 };
