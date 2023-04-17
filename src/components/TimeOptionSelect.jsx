@@ -7,6 +7,7 @@ import {
 } from "utility/parseTime";
 
 function TimeOptionSelect(props) {
+  const { options, setOptions } = props;
   return (
     <div className={"time-option"}>
       <div>
@@ -16,25 +17,22 @@ function TimeOptionSelect(props) {
         <Dropdown
           className={"time-option-drop-down time-start-hour"}
           default={
-            props.options.timeline.twelveHourClock
-              ? convert24hrTo12hrTime(props.options.timeline.startTime)
-              : props.options.timeline.startTime
+            options.timeline.twelveHourClock
+              ? convert24hrTo12hrTime(options.timeline.startTime)
+              : options.timeline.startTime
           }
           onClick={(el) => {
-            props.setOptions({
-              ...props.options,
+            setOptions({
+              ...options,
               timeline: {
-                ...props.options.timeline,
-                startTime: props.options.timeline.twelveHourClock
+                ...options.timeline,
+                startTime: options.timeline.twelveHourClock
                   ? convert12hrTo24hrTime(el)
                   : el,
               },
             });
           }}
-          options={getArrayTimes(
-            props.options.timeline.twelveHourClock,
-            0
-          ).slice(0, props.options.timeline.endTime)}
+          options={getArrayTimes(options.timeline.twelveHourClock, 0).slice(0, options.timeline.endTime)}
           style={{ zIndex: "2" }}
         />
       </div>
@@ -45,26 +43,23 @@ function TimeOptionSelect(props) {
         <Dropdown
           className={"time-option-drop-down time-end-hour"}
           default={
-            props.options.timeline.twelveHourClock
-              ? convert24hrTo12hrTime(props.options.timeline.endTime)
-              : props.options.timeline.endTime
+            options.timeline.twelveHourClock
+              ? convert24hrTo12hrTime(options.timeline.endTime)
+              : options.timeline.endTime
           }
           onClick={(el) => {
-            const endTime = props.options.timeline.twelveHourClock
+            const endTime = options.timeline.twelveHourClock
               ? convert12hrTo24hrTime(el)
               : el;
-            props.setOptions({
-              ...props.options,
+            setOptions({
+              ...options,
               timeline: {
-                ...props.options.timeline,
+                ...options.timeline,
                 endTime: endTime === 0 ? 24 : endTime,
               },
             });
           }}
-          options={getArrayTimes(
-            props.options.timeline.twelveHourClock,
-            1
-          ).slice(props.options.timeline.startTime)}
+          options={getArrayTimes(options.timeline.twelveHourClock, 1).slice(options.timeline.startTime)}
           style={{ zIndex: "1" }}
         />
       </div>
