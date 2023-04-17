@@ -3,7 +3,6 @@ import * as ReactDOMClient from 'react-dom/client';
 import "./index.css";
 import "css/blobs.css";
 import "css/bottomPanel.css";
-import "css/canvasTimeline.css";
 import "css/colorSelect.css";
 import "css/colors.css";
 import "css/dateNavigation.css";

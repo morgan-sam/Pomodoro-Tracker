@@ -1,7 +1,7 @@
 import React from "react";
 import TopPageText from "components/TopPageText";
 import DateNavigation from "components/DateNavigation";
-import Timeline from "components/Timeline";
+import Timeline from "components/ElementsTimeline";
 
 function TopPanel(props) {
   const { date, setDate, options, setOptions, moneyData, setMoneyData, outreachData, setOutreachData, hourWidth, filteredEntries, eventLengths } = props;

@@ -137,28 +137,6 @@
   .top-right-btns-container > * {
     margin-left: 0rem;
   }
-
-  .elements-timeline {
-    display: none;
-  }
-
-  .canvas-timeline {
-    margin: 0;
-    width: auto;
-  }
-
-  .canvas-timeline-container {
-    width: 100vw;
-    overflow-x: scroll;
-  }
-
-  .canvas-timeline-parent {
-    display: flex;
-    border: 1px solid black;
-    margin: 4rem 2rem;
-    overflow: hidden;
-    position: relative;
-  }
 }
 
 /* Settings Screen(s) */
