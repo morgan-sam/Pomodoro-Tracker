@@ -6,7 +6,7 @@ import {
 } from "utility/parseDates";
 import { compareObjs } from "utility/sortAndCompare";
 import { twoLeadingZeroes } from 'utility/parseText'
-import { postMoneyData, updateOutreachData } from "data/queries";
+import { updateOutreachData } from "data/queries";
 import MoneyControl from "components/MoneyControl";
 
 

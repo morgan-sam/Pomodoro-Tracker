@@ -71,15 +71,17 @@ export const updateOutreachData = async (dateString, emailCount) => {
     return firebase
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/outreach_data/")
-      .update({[dateString]: emailCount});
+      .update({
+        [dateString]: emailCount
+      });
 };
 
-export const postMoneyData = async (moneyCount) => {
+export const updateMoneyData = async (dateString, moneyCount) => {
   if (firebase.auth().currentUser)
     return firebase
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/money_data")
-      .set(moneyCount);
+      .update({[dateString]: moneyCount});
 };
 
 export const reauthenticate = async (password) => {

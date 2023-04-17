@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { postMoneyData } from "data/queries";
+import { updateMoneyData } from "data/queries";
 import { twoLeadingZeroes } from 'utility/parseText'
 
 function MoneyControl(props) {
@@ -12,7 +12,7 @@ function MoneyControl(props) {
   const handleConfirm = () => {
     const newMoneyData = { ...moneyData, [todayDateString]: inputValue };
     setMoneyData(newMoneyData);
-    postMoneyData(newMoneyData);
+    updateMoneyData(todayDateString, inputValue);
     setChangingMoneyCount(false); 
   };
 
