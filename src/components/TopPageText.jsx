@@ -10,7 +10,7 @@ import { postMoneyData, postOutreachData } from "data/queries";
 import MoneyControl from "components/MoneyControl";
 
 
-function TimelineToggles(props) {
+function TopPageText(props) {
 
   const {date, outreachData, setOutreachData, moneyData, setMoneyData} = props;
   const [displayOutreachCount, setDisplayOutreachCount] = useState(0);
@@ -68,4 +68,4 @@ function TimelineToggles(props) {
   );
 }
 
-export default TimelineToggles;
+export default TopPageText;

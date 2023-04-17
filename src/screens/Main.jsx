@@ -40,7 +40,8 @@ function Main(props) {
       const { events, outreach_data, money_data } = data;
       const formatted_events = formatEntriesToUseDateObj(Object.values(events));
       setEntriesData(formatted_events);
-      setOutreachData(outreach_data);
+      console.log(outreach_data);
+      if (outreach_data) setOutreachData(outreach_data);
       setMoneyData(money_data);
     } catch (error) {
       console.log(error);
@@ -103,15 +104,13 @@ function Main(props) {
     >
       <div className={"main-container"}>
         <TopPanel
-          outreachData={outreachData}
-          setOutreachData={setOutreachData}
           filteredEntries={filterEntries(entriesData)}
           hourWidth={hourWidth}
           eventLengths={{
             pomodoro: 25,
             encore: 5,
           }}
-          {...{ date, setDate, options, setOptions, moneyData, setMoneyData }}
+          {...{ date, setDate, options, setOptions, moneyData, setMoneyData, outreachData, setOutreachData }}
         />
         <TopRightButtons />
         {options.graph.visible && (
