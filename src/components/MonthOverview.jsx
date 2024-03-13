@@ -57,7 +57,6 @@ function MonthOverview(props) {
   const starOfMonthWeekdayOffset = new Date(`${date.year}-${date.month}-${1}`).getDay();
   
 
-
   return (
     <div className="month-overview">
       <h3>{monthStringArray[(date.month - 1)] + ' ' + date.year}</h3> 
@@ -77,8 +76,12 @@ function MonthOverview(props) {
 
           const todayDateString = `${date.year}-${twoLeadingZeroes(date.month)}-${twoLeadingZeroes(day)}`;
           // const todayMoneyCount = moneyData[todayDateString] || 0;
+
+          const isToday = todayDateString === new Date().toISOString().split('T')[0];
+          const isSelected = day === date.day;
+
           return (
-            <div className="overview-day-node" key={day}>
+            <div className="overview-day-node" key={day} style={{ background: isToday ? colorTheme.light : 'transparent', border: isSelected ? `5px solid ${colorTheme.darker}` : '5px solid transparent' }}>
               <div className="day-label">{day}</div>
               <div className="pomodoro-count">
                 {twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol" style={pomodoroSymbolStyle}></span>

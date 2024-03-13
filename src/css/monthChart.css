@@ -1,5 +1,10 @@
 .month-overview {
   margin: 0 1rem;
+  margin-left: 2rem;
+}
+
+.month-overview h3 {
+  margin-top: 0;
 }
 
 .month-overview-days-container {
@@ -10,7 +15,7 @@
 
 .overview-day-node {
   position: relative;
-  padding: 0.5rem 2rem 0.5rem 0.5rem;
+  padding: 0.4rem 1.6rem 0.4rem 0.4rem;
   outline: 1px solid black;
 }
 .pomodoro-count,
