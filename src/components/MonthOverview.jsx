@@ -95,6 +95,8 @@ function MonthOverview(props) {
             averagePomodoros={getThisMonthsAverageOfDateObj(date, thisMonthsPomodorosObject)}
             totalOutreach={sumArr(Object.values(thisMonthsOutreachObject))}
             averageOutreach={getThisMonthsAverageOfDateObj(date, thisMonthsOutreachObject)}
+            totalApplications={sumArr(Object.values(thisMonthsApplicationsObject))}
+            averageApplications={getThisMonthsAverageOfDateObj(date, thisMonthsApplicationsObject)}
           />
         </div>
       </div>
