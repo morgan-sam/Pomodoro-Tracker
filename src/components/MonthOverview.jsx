@@ -4,11 +4,12 @@ import { getDaysInMonth, monthStringArray, daysOfWeekArray, arrayOfMonthDays } f
 import { twoLeadingZeroes } from "utility/parseText";
 import { changeHSLOpacity } from "utility/color";
 import EmailSvg from "img/email.svg";
+import ApplicationSvg from "img/application.svg";
 import { sumArr } from "utility/general";
 import MonthStatistics from "components/MonthStatistics";
 
 function MonthOverview(props) {
-  const { date, entriesData, outreachData, moneyData } = props;
+  const { date, entriesData, outreachData, applicationsData, moneyData } = props;
   const colorTheme = useContext(ColorThemeContext);
   
   const getMonthPomodoroObj = (date, entriesData) => {
@@ -31,6 +32,15 @@ function MonthOverview(props) {
     return thisMonthsOutreachObject;
   } 
 
+  const getMonthApplicationsObj = (date, applicationsData) => {
+    let thisMonthsApplicationsObject = Object.fromEntries(date ? Array(getDaysInMonth(date.month, date.year)).fill(0).map((el, i) => [i + 1, 0]) : []);  
+    Object.entries(applicationsData).forEach(([key, value]) => {
+      if (key.includes(`${date.year}-${twoLeadingZeroes(date.month)}`)) thisMonthsApplicationsObject[parseInt(key.split('-')[2])] = value;
+    });
+    return thisMonthsApplicationsObject;
+  } 
+
+
   const getThisMonthsAverageOfDateObj = (date, thisMonthsObject) => {
     const thisMonthsArray = Object.values(thisMonthsObject);
     // get number of days in month not including days past current day
@@ -43,6 +53,7 @@ function MonthOverview(props) {
 
   const thisMonthsPomodorosObject = getMonthPomodoroObj(date, entriesData);
   const thisMonthsOutreachObject = getMonthOutreachObj(date, outreachData);
+  const thisMonthsApplicationsObject = getMonthApplicationsObj(date, applicationsData);
   const starOfMonthWeekdayOffset = new Date(`${date.year}-${date.month}-${1}`).getDay();
   
 
@@ -61,8 +72,11 @@ function MonthOverview(props) {
           const pomodoroSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, pomodoroOpacity) };
           const outreachOpacity = 1/20 * thisMonthsOutreachObject[day];
           const outreachSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, outreachOpacity) };
+          const applicationsOpacity = 1/20 * thisMonthsApplicationsObject[day];
+          const applicationsSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, applicationsOpacity) };
+
           const todayDateString = `${date.year}-${twoLeadingZeroes(date.month)}-${twoLeadingZeroes(day)}`;
-          const todayMoneyCount = moneyData[todayDateString] || 0;
+          // const todayMoneyCount = moneyData[todayDateString] || 0;
           return (
             <div className="overview-day-node" key={day}>
               <div className="day-label">{day}</div>
@@ -70,7 +84,8 @@ function MonthOverview(props) {
                 {twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol" style={pomodoroSymbolStyle}></span>
               </div>
               <div className="outreach-count">{twoLeadingZeroes(thisMonthsOutreachObject[day])} <img className="email-symbol" style={outreachSymbolStyle} src={EmailSvg} alt="email" /></div>
-              <div className="money-count"><span>${todayMoneyCount}</span></div>
+              <div className="applications-count">{twoLeadingZeroes(thisMonthsApplicationsObject[day])} <img className="email-symbol" style={applicationsSymbolStyle} src={ApplicationSvg} alt="email" /></div>
+              {/* <div className="money-count"><span>${todayMoneyCount}</span></div> */}
             </div>
           )
         })}

@@ -165,7 +165,7 @@ function TopPageText(props) {
         )}
       </h2>
 
-      <MoneyControl {...{ date, moneyData, setMoneyData }} />
+      {/* <MoneyControl {...{ date, moneyData, setMoneyData }} /> */}
     </div>
   );
 }

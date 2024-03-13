@@ -139,6 +139,7 @@ function Main(props) {
             {...{
               entriesData,
               outreachData,
+              applicationsData,
               date,
               setDate,
               options,
