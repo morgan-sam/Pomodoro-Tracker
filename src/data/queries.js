@@ -72,8 +72,16 @@ export const updateOutreachData = async (dateString, emailCount) => {
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/outreach_data/")
       .update({
-        [dateString]: emailCount
+        [dateString]: emailCount,
       });
+};
+
+export const updateApplicationsData = async (dateString, applicationCount) => {
+  if (firebase.auth().currentUser)
+    return firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid + "/applications_data")
+      .update({ [dateString]: applicationCount });
 };
 
 export const updateMoneyData = async (dateString, moneyCount) => {
@@ -81,7 +89,7 @@ export const updateMoneyData = async (dateString, moneyCount) => {
     return firebase
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/money_data")
-      .update({[dateString]: moneyCount});
+      .update({ [dateString]: moneyCount });
 };
 
 export const reauthenticate = async (password) => {

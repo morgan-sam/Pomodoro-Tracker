@@ -12,15 +12,21 @@ function Main(props) {
   const { options, setOptions, fadeIn, setFadeIn } = props;
 
   // State
-  
+
   const [loaded, setLoaded] = useState(false);
   const [entriesData, setEntriesData] = useState([]);
   const [outreachData, setOutreachData] = useState({});
+  const [applicationsData, setApplicationsData] = useState({});
   const [moneyData, setMoneyData] = useState({});
-  const [date, setDate] = useState(convertUTCISOToDateObj(new Date().toISOString()).date);
-  const [hourWidth, setHourWidth] = useState(getAutoHourWidth(options.timeline));
+  const [date, setDate] = useState(
+    convertUTCISOToDateObj(new Date().toISOString()).date
+  );
+  const [hourWidth, setHourWidth] = useState(
+    getAutoHourWidth(options.timeline)
+  );
 
-  const filterEntries = (entries) => entries.filter((el) => compareObjs(el.date, date));
+  const filterEntries = (entries) =>
+    entries.filter((el) => compareObjs(el.date, date));
 
   function formatEntriesToUseDateObj(data) {
     return data.map((el) => {
@@ -37,11 +43,13 @@ function Main(props) {
   async function updateAllData() {
     try {
       const data = await getAllData();
-      const { events, outreach_data, money_data } = data;
+      console.log(data);
+      const { events, outreach_data, applications_data, money_data } = data;
       const formatted_events = formatEntriesToUseDateObj(Object.values(events));
       setEntriesData(formatted_events);
-      console.log(outreach_data);
+      console.log(applicationsData);
       if (outreach_data) setOutreachData(outreach_data);
+      if (applications_data) setApplicationsData(applications_data);
       setMoneyData(money_data);
     } catch (error) {
       console.log(error);
@@ -50,7 +58,9 @@ function Main(props) {
   async function updateAllEntries() {
     try {
       const entries = await getEntries();
-      const formatted_events = formatEntriesToUseDateObj(Object.values(entries));
+      const formatted_events = formatEntriesToUseDateObj(
+        Object.values(entries)
+      );
       setEntriesData(formatted_events);
     } catch (error) {
       console.log(error);
@@ -61,7 +71,7 @@ function Main(props) {
     updateAllData();
     // setInterval(function() {
     //   updateAllEntries();
-    // }, 60000); 
+    // }, 60000);
   }, []);
 
   useEffect(() => {
@@ -71,7 +81,6 @@ function Main(props) {
     };
     getOptionsFromDatabase();
     setTimelineToFitWindow();
-
   }, []);
 
   useEffect(() => {
@@ -80,7 +89,7 @@ function Main(props) {
       window.removeEventListener("resize", setTimelineToFitWindow);
     };
   });
-  
+
   useEffect(() => {
     const setDatabaseOptions = async () => {
       const databaseOptions = await getOptions();
@@ -90,7 +99,8 @@ function Main(props) {
     setDatabaseOptions();
   }, [options]);
 
-  const setTimelineToFitWindow = () => setHourWidth(getAutoHourWidth(options.timeline));
+  const setTimelineToFitWindow = () =>
+    setHourWidth(getAutoHourWidth(options.timeline));
 
   useEffect(() => {
     const fadeTimer = setTimeout(() => setFadeIn(false), 1000);
@@ -109,7 +119,19 @@ function Main(props) {
             pomodoro: 25,
             encore: 5,
           }}
-          {...{ date, setDate, options, setOptions, moneyData, setMoneyData, outreachData, setOutreachData, hourWidth }}
+          {...{
+            date,
+            setDate,
+            options,
+            setOptions,
+            moneyData,
+            setMoneyData,
+            outreachData,
+            setOutreachData,
+            applicationsData,
+            setApplicationsData,
+            hourWidth,
+          }}
         />
         <TopRightButtons />
         {options.graph.visible && (
@@ -121,7 +143,7 @@ function Main(props) {
               setDate,
               options,
               setOptions,
-              moneyData
+              moneyData,
             }}
           />
         )}
