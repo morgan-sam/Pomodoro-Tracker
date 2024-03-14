@@ -67,7 +67,7 @@ function MonthOverview(props) {
           <span>Selected</span>
           <div className="key-symbol" style={{background: colorTheme.light}}/>
           <span>Today</span>
-          <div className="key-symbol" style={{border: `2px solid ${colorTheme.darker}`}}/>
+          <div className="key-symbol" style={{border: `3px solid ${colorTheme.darker}`}}/>
         </div>
       </div>
       <div className="month-overview-days-container">
@@ -93,7 +93,7 @@ function MonthOverview(props) {
           const isSelected = day === date.day;
 
           return (
-            <div className="overview-day-node" key={day} style={{ background: isSelected ? colorTheme.light : 'transparent', border: isToday ? `5px solid ${colorTheme.darker}` : '5px solid transparent' }}>
+            <div className="overview-day-node" key={day} style={{ background: isSelected ? colorTheme.light : 'transparent', border: isToday ? `3px solid ${colorTheme.darker}` : '3px solid transparent' }}>
               <div className="day-label">{day}</div>
               <div className="pomodoro-count">
                 {twoLeadingZeroes(thisMonthsPomodorosObject[day])} 
