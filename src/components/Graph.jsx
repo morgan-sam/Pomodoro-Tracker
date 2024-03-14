@@ -79,6 +79,12 @@ function Graph(props) {
     setDate({ day: newDay, month: newMonth, year: newYear });
   };
 
+  const lineColors = {
+    pomodoros: "#333",
+    outreach: "#b55c4e",
+    applications: "#4e7cb5",
+  };
+
   return (
     <div className={"canvas-container"} style={props.style}>
       {/* Switch Graph View Button */}
@@ -108,7 +114,10 @@ function Graph(props) {
         </div>
       ) : null}
       <div className={"switch-graph-data-input-container"}>
-        <label className="switch-graph-data-label">
+        <label
+          className="switch-graph-data-label"
+          style={{ color: lineColors.pomodoros }}
+        >
           <input
             className="switch-graph-data-input"
             type="checkbox"
@@ -117,7 +126,10 @@ function Graph(props) {
           />
           Pomodoros
         </label>
-        <label className="switch-graph-data-label">
+        <label
+          className="switch-graph-data-label"
+          style={{ color: lineColors.outreach }}
+        >
           <input
             className="switch-graph-data-input"
             type="checkbox"
@@ -126,7 +138,10 @@ function Graph(props) {
           />
           Outreach
         </label>
-        <label className="switch-graph-data-label">
+        <label
+          className="switch-graph-data-label"
+          style={{ color: lineColors.applications }}
+        >
           <input
             className="switch-graph-data-input"
             type="checkbox"
@@ -137,7 +152,14 @@ function Graph(props) {
         </label>
       </div>
       <GraphCanvas
-        {...{ entriesData, outreachData, applicationsData, date, options }}
+        {...{
+          entriesData,
+          outreachData,
+          applicationsData,
+          date,
+          options,
+          lineColors,
+        }}
         period={getNewPeriod()}
       />
     </div>

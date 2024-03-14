@@ -45,7 +45,7 @@ export const drawYLabelText = (graph, textLabelObj) => {
 export const drawOutreachYLabelText = (graph, textLabelObj) => {
   const { i, unit } = textLabelObj;
   console.log(i);
-  graph.context.fillStyle = graph.outreachPlotColor;
+  graph.context.fillStyle = graph.lineColors.outreach;
   graph.context.font = GRAPH_FONT_SIZE / 2 + "px sans-serif";
   graph.context.fillText(
     i,

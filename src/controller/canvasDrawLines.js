@@ -8,9 +8,9 @@ export const drawGraphLine = (graph) => {
   // Draw Applications Line
   if (graph.linesEnabled.applications) {
     drawPassedLinePath(graph.context, (ctx) => {
-      ctx.strokeStyle = graph.applicationsPlotColor;
+      ctx.strokeStyle = graph.lineColors.applications;
       graph.applicationsGraphData.forEach((el) =>
-        ctx.lineTo(el.coordinate.x +10, el.coordinate.y)
+        ctx.lineTo(el.coordinate.x + 10, el.coordinate.y)
       );
     });
   }
@@ -18,7 +18,7 @@ export const drawGraphLine = (graph) => {
   // Draw Outreach Line
   if (graph.linesEnabled.outreach) {
     drawPassedLinePath(graph.context, (ctx) => {
-      ctx.strokeStyle = graph.outreachPlotColor;
+      ctx.strokeStyle = graph.lineColors.outreach;
       graph.outreachGraphData.forEach((el) =>
         ctx.lineTo(el.coordinate.x, el.coordinate.y)
       );
@@ -28,9 +28,9 @@ export const drawGraphLine = (graph) => {
   // Draw Pomodoro Line
   if (graph.linesEnabled.pomodoros) {
     drawPassedLinePath(graph.context, (ctx) => {
-      ctx.strokeStyle = graph.darkTheme ? "white" : "black";
+      ctx.strokeStyle = graph.lineColors.pomodoros;
       graph.graphData.forEach((el) =>
-        ctx.lineTo(el.coordinate.x -10, el.coordinate.y)
+        ctx.lineTo(el.coordinate.x - 10, el.coordinate.y)
       );
     });
   }
@@ -60,24 +60,38 @@ const drawCross = (graph, size, el, crossColor) => {
 };
 
 export const drawCoordinateCrosses = (graph, size) => {
-  const today = parseISOToBigEndian(new Date().toISOString());
-
   // Draw Applications Crosses
   if (graph.linesEnabled.applications) {
     graph.applicationsGraphData.forEach((el) => {
-      drawCross(graph, size, { ...el,coordinate: {
-        x: el.coordinate.x + 10,
-        y: el.coordinate.y      
-      }}, graph.applicationsPlotColor);
+      drawCross(
+        graph,
+        size,
+        {
+          ...el,
+          coordinate: {
+            x: el.coordinate.x + 10,
+            y: el.coordinate.y,
+          },
+        },
+        graph.lineColors.applications
+      );
     });
   }
   // Draw Outreach Crosses
   if (graph.linesEnabled.outreach) {
     graph.outreachGraphData.forEach((el) => {
-      drawCross(graph, size, { ...el,coordinate: {
-        x: el.coordinate.x + 0,
-        y: el.coordinate.y      
-      }}, graph.outreachPlotColor);
+      drawCross(
+        graph,
+        size,
+        {
+          ...el,
+          coordinate: {
+            x: el.coordinate.x + 0,
+            y: el.coordinate.y,
+          },
+        },
+        graph.lineColors.outreach
+      );
     });
   }
   // Draw Pomodoros Crosses
@@ -89,11 +103,18 @@ export const drawCoordinateCrosses = (graph, size) => {
       //     : graph.darkTheme
       //     ? "white"
       //     : "black";
-      const crossColor = graph.darkTheme ? "white" : "black";
-      drawCross(graph, size, { ...el,coordinate: {
-        x: el.coordinate.x - 10,
-        y: el.coordinate.y      
-      }}, crossColor);
+      drawCross(
+        graph,
+        size,
+        {
+          ...el,
+          coordinate: {
+            x: el.coordinate.x - 10,
+            y: el.coordinate.y,
+          },
+        },
+        graph.lineColors.pomodoros
+      );
     });
   }
 };
@@ -129,7 +150,7 @@ export const drawYLabelLine = (graph, lineLabelObj) => {
 export const drawOutreachYLabelLine = (graph, lineLabelObj) => {
   const { i, unit } = lineLabelObj;
   drawPassedLinePath(graph.context, (ctx) => {
-    ctx.strokeStyle = graph.outreachPlotColor;
+    ctx.strokeStyle = graph.lineColors.outreach;
     ctx.moveTo(0, graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
     ctx.lineTo(
       GRAPH_SCALE - 5,
