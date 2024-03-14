@@ -53,6 +53,7 @@ function Main(props) {
       console.log(error);
     }
   }
+  
   async function updateAllEntries() {
     try {
       const entries = await getEntries();
