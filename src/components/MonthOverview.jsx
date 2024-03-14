@@ -7,6 +7,8 @@ import EmailSvg from "img/email.svg";
 import ApplicationSvg from "img/application.svg";
 import { sumArr } from "utility/general";
 import MonthStatistics from "components/MonthStatistics";
+import { convertUTCISOToDateObj } from "utility/parseDates";
+
 
 function MonthOverview(props) {
   const { date, entriesData, outreachData, applicationsData, moneyData } = props;
@@ -74,17 +76,20 @@ function MonthOverview(props) {
           const applicationsOpacity = 1/20 * thisMonthsApplicationsObject[day];
           const applicationsSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, applicationsOpacity) };
 
-          const todayDateString = `${date.year}-${twoLeadingZeroes(date.month)}-${twoLeadingZeroes(day)}`;
+          // const todayDateString = `${date.year}-${twoLeadingZeroes(date.month)}-${twoLeadingZeroes(day)}`;
           // const todayMoneyCount = moneyData[todayDateString] || 0;
 
-          const isToday = todayDateString === new Date().toISOString().split('T')[0];
+          const todaysIso = new Date().toISOString().split('T')[0];
+          const todaysDateDay = convertUTCISOToDateObj(todaysIso).date.day + 1;
+          const isToday = day === todaysDateDay;
           const isSelected = day === date.day;
 
           return (
             <div className="overview-day-node" key={day} style={{ background: isSelected ? colorTheme.light : 'transparent', border: isToday ? `5px solid ${colorTheme.darker}` : '5px solid transparent' }}>
               <div className="day-label">{day}</div>
               <div className="pomodoro-count">
-                {twoLeadingZeroes(thisMonthsPomodorosObject[day])} <span className="pomodoro-symbol" style={pomodoroSymbolStyle}></span>
+                {twoLeadingZeroes(thisMonthsPomodorosObject[day])} 
+                <span className="pomodoro-symbol" style={pomodoroSymbolStyle}></span>
               </div>
               <div className="outreach-count">{twoLeadingZeroes(thisMonthsOutreachObject[day])} <img className="email-symbol" style={outreachSymbolStyle} src={EmailSvg} alt="email" /></div>
               <div className="applications-count">{twoLeadingZeroes(thisMonthsApplicationsObject[day])} <img className="email-symbol" style={applicationsSymbolStyle} src={ApplicationSvg} alt="email" /></div>
