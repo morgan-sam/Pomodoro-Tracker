@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ColorThemeContext } from "context/theme";
 import { getDaysInMonth, monthStringArray, daysOfWeekArray, arrayOfMonthDays } from "data/dates";
 import { twoLeadingZeroes } from "utility/parseText";
-import { changeHSLOpacity } from "utility/color";
+import { interpolateColor } from "utility/color";
 import EmailSvg from "img/email.svg";
 import ApplicationSvg from "img/application.svg";
 import { sumArr } from "utility/general";
@@ -78,11 +78,11 @@ function MonthOverview(props) {
         )}
         {arrayOfMonthDays(date.month, date.year).map(day => {
           const pomodoroOpacity = 1/16 * thisMonthsPomodorosObject[day];
-          const pomodoroSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, pomodoroOpacity) };
+          const pomodoroSymbolStyle = { background: interpolateColor(colorTheme.darker, pomodoroOpacity) };
           const outreachOpacity = 1/20 * thisMonthsOutreachObject[day];
-          const outreachSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, outreachOpacity) };
+          const outreachSymbolStyle = { background: interpolateColor(colorTheme.darker, outreachOpacity) };
           const applicationsOpacity = 1/20 * thisMonthsApplicationsObject[day];
-          const applicationsSymbolStyle = { background: changeHSLOpacity(colorTheme.darker, applicationsOpacity) };
+          const applicationsSymbolStyle = { background: interpolateColor(colorTheme.darker, applicationsOpacity) };
 
           // const todayDateString = `${date.year}-${twoLeadingZeroes(date.month)}-${twoLeadingZeroes(day)}`;
           // const todayMoneyCount = moneyData[todayDateString] || 0;
@@ -91,6 +91,8 @@ function MonthOverview(props) {
           const todaysDateDay = convertUTCISOToDateObj(todaysIso).date.day + 1;
           const isToday = day === todaysDateDay;
           const isSelected = day === date.day;
+
+          console.log(day);
 
           return (
             <div className="overview-day-node" key={day} style={{ background: isSelected ? colorTheme.light : 'transparent', border: isToday ? `5px solid ${colorTheme.darker}` : '5px solid transparent' }}>
