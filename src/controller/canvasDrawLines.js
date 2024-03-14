@@ -10,7 +10,7 @@ export const drawGraphLine = (graph) => {
     drawPassedLinePath(graph.context, (ctx) => {
       ctx.strokeStyle = graph.applicationsPlotColor;
       graph.applicationsGraphData.forEach((el) =>
-        ctx.lineTo(el.coordinate.x, el.coordinate.y)
+        ctx.lineTo(el.coordinate.x +10, el.coordinate.y)
       );
     });
   }
@@ -30,7 +30,7 @@ export const drawGraphLine = (graph) => {
     drawPassedLinePath(graph.context, (ctx) => {
       ctx.strokeStyle = graph.darkTheme ? "white" : "black";
       graph.graphData.forEach((el) =>
-        ctx.lineTo(el.coordinate.x, el.coordinate.y)
+        ctx.lineTo(el.coordinate.x -10, el.coordinate.y)
       );
     });
   }
@@ -65,25 +65,35 @@ export const drawCoordinateCrosses = (graph, size) => {
   // Draw Applications Crosses
   if (graph.linesEnabled.applications) {
     graph.applicationsGraphData.forEach((el) => {
-      drawCross(graph, size, el, graph.applicationsPlotColor);
+      drawCross(graph, size, { ...el,coordinate: {
+        x: el.coordinate.x + 10,
+        y: el.coordinate.y      
+      }}, graph.applicationsPlotColor);
     });
   }
   // Draw Outreach Crosses
   if (graph.linesEnabled.outreach) {
     graph.outreachGraphData.forEach((el) => {
-      drawCross(graph, size, el, graph.outreachPlotColor);
+      drawCross(graph, size, { ...el,coordinate: {
+        x: el.coordinate.x + 0,
+        y: el.coordinate.y      
+      }}, graph.outreachPlotColor);
     });
   }
   // Draw Pomodoros Crosses
   if (graph.linesEnabled.pomodoros) {
     graph.graphData.forEach((el) => {
-      const crossColor =
-        today === el.date
-          ? graph.colorTheme.darker
-          : graph.darkTheme
-          ? "white"
-          : "black";
-      drawCross(graph, size, el, crossColor);
+      // const crossColor =
+      //   today === el.date
+      //     ? graph.colorTheme.darker
+      //     : graph.darkTheme
+      //     ? "white"
+      //     : "black";
+      const crossColor = graph.darkTheme ? "white" : "black";
+      drawCross(graph, size, { ...el,coordinate: {
+        x: el.coordinate.x - 10,
+        y: el.coordinate.y      
+      }}, crossColor);
     });
   }
 };
