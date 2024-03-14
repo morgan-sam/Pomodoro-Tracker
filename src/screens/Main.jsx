@@ -43,11 +43,9 @@ function Main(props) {
   async function updateAllData() {
     try {
       const data = await getAllData();
-      console.log(data);
       const { events, outreach_data, applications_data, money_data } = data;
       const formatted_events = formatEntriesToUseDateObj(Object.values(events));
       setEntriesData(formatted_events);
-      console.log(applicationsData);
       if (outreach_data) setOutreachData(outreach_data);
       if (applications_data) setApplicationsData(applications_data);
       setMoneyData(money_data);

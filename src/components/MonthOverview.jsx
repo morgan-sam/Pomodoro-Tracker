@@ -92,8 +92,6 @@ function MonthOverview(props) {
           const isToday = day === todaysDateDay;
           const isSelected = day === date.day;
 
-          console.log(day);
-
           return (
             <div className="overview-day-node" key={day} style={{ background: isSelected ? colorTheme.light : 'transparent', border: isToday ? `5px solid ${colorTheme.darker}` : '5px solid transparent' }}>
               <div className="day-label">{day}</div>
