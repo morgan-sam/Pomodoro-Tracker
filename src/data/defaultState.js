@@ -13,8 +13,9 @@ export const defaultOptions = {
     maxPomodoro: 14,
     linesEnabled: {
       pomodoros: true,
-      outreach: true
-    }
+      outreach: true,
+      applications: true,
+    },
   },
   darkTheme: false,
   colorTheme: { hue: 250, saturation: 50, lightness: 50 },

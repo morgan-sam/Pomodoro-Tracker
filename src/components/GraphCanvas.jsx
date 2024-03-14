@@ -1,15 +1,18 @@
 import React, { useEffect, useRef, useContext } from "react";
-import { getPomodoroCount, getOutreachCount } from "controller/graphDataProcessing";
+import {
+  getPomodoroCount,
+  getTallyCount,
+} from "controller/graphDataProcessing";
 import { getGraphStyle } from "styles/graphPanel";
 import { GRAPH_SIZES } from "styles/graphSizing";
 import { drawNoDataMessage, drawEntireGraph } from "controller/canvasDrawing";
 import { ColorThemeContext } from "context/theme";
 
 const GraphPanel = (props) => {
-  const { options, entriesData, outreachData } = props;
+  const { options, entriesData, outreachData, applicationsData } = props;
   const { period, type, maxPomodoro, linesEnabled } = options.graph;
   const Y_AXIS_MAX = maxPomodoro;
-  
+
   const colorTheme = useContext(ColorThemeContext);
   const canvasRef = useRef(null);
 
@@ -24,22 +27,31 @@ const GraphPanel = (props) => {
   const addDataToGraph = (canvasRef, darkTheme) => {
     const entriesParameters = {
       startDate: props.date,
-      period: props.period
+      period: props.period,
     };
 
     const outreachRatio = 2;
     const outreachPlotColor = "#b55c4e";
+    const applicationsRatio = 2;
+    const applicationsPlotColor = "#4e7cb5";
 
     const counts = getPomodoroCount(entriesParameters, entriesData);
-    const outreachCounts = getOutreachCount(entriesParameters, outreachData);
+    const outreachCounts = getTallyCount(entriesParameters, outreachData);
+    const applicationsCounts = getTallyCount(entriesParameters, applicationsData);
+
     const units = getUnits(counts);
     const outreachUnits = getOutreachUnits(units, outreachRatio);
+    const applicationsUnits = getOutreachUnits(units, applicationsRatio);
+
     const graphData = getGraphData(counts, units);
     const outreachGraphData = getGraphData(outreachCounts, outreachUnits);
+    const applicationsGraphData = getGraphData(applicationsCounts, applicationsUnits);
+
     const graphDataObj = {
       canvasRef,
       graphData,
       outreachGraphData,
+      applicationsGraphData,
       counts,
       period,
       type,
@@ -49,7 +61,8 @@ const GraphPanel = (props) => {
       colorTheme,
       outreachRatio,
       outreachPlotColor,
-      linesEnabled
+      applicationsPlotColor,
+      linesEnabled,
     };
     drawEntireGraph(graphDataObj);
   };
@@ -84,7 +97,13 @@ const GraphPanel = (props) => {
     });
   }
 
-  return <canvas className="count-line-graph" ref={canvasRef} style={getGraphStyle(options.darkTheme)} />;
+  return (
+    <canvas
+      className="count-line-graph"
+      ref={canvasRef}
+      style={getGraphStyle(options.darkTheme)}
+    />
+  );
 };
 
 export default GraphPanel;

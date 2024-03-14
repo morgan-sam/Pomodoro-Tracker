@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   getBoxStyle,
   innerGridStyle,
@@ -11,6 +11,7 @@ import { convert24hrTo12hrTime } from "utility/parseTime";
 import { DarkThemeContext, ColorThemeContext } from "context/theme";
 
 function ElementsTimeline(props) {
+  const [reloadKey, setReloadKey] = useState(0);
   const { filteredEntries: entries, hourWidth, options } = props;
   const darkTheme = useContext(DarkThemeContext);
   const colorTheme = useContext(ColorThemeContext);
@@ -82,8 +83,7 @@ function ElementsTimeline(props) {
 
   function getEventBoxStyle(el) {
     const hourPosition = calculateEventHourPosition(el);
-    const remPosition =
-      (hourPosition - options.timeline.startTime) * hourWidth;
+    const remPosition = (hourPosition - options.timeline.startTime) * hourWidth;
     const eventWidth = (hourWidth / 60) * eventLengths[el.type];
     const overflow = calculateEventOverflow(eventWidth, remPosition);
 
@@ -103,8 +103,7 @@ function ElementsTimeline(props) {
 
   function calculateEventOverflow(eventWidth, remPosition) {
     const timelineWidth =
-      (options.timeline.endTime - options.timeline.startTime) *
-      hourWidth;
+      (options.timeline.endTime - options.timeline.startTime) * hourWidth;
     const eventEndPosition = eventWidth + remPosition;
     return Math.max(0, eventEndPosition - timelineWidth);
   }
@@ -112,8 +111,7 @@ function ElementsTimeline(props) {
   const currentTimeMarker = () => {
     const width = hourWidth;
     const { hour, minute } = getTodaysDateAsObj().time;
-    const time =
-      width * (minute / 60 + hour - options.timeline.startTime);
+    const time = width * (minute / 60 + hour - options.timeline.startTime);
     return (
       <div
         style={{ ...getCurrentTimeMarkerStyle(colorTheme), left: `${time}rem` }}
@@ -121,8 +119,16 @@ function ElementsTimeline(props) {
     );
   };
 
+  // force reload element every minute, do not reload window
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setReloadKey(reloadKey + 1);
+    }, 60000);
+    return () => clearInterval(interval);
+  }, [reloadKey]);
+
   return (
-    <div className={"elements-timeline"} key="elements-timeline">
+    <div className={"elements-timeline"} key={reloadKey}>
       <div className={"elements-timeline-scrollbar"}>
         {getTimelineBoxSelection(
           options.timeline.startTime,

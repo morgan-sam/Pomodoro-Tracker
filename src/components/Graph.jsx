@@ -2,39 +2,63 @@ import React, { useState, useContext } from "react";
 import GraphCanvas from "components/GraphCanvas";
 import { getSystemButtonStyle } from "styles/settings";
 import { graphPeriodOptions } from "data/defaultState";
-import { getTodaysDateAsObj, monthStringArray, addSubtractMonths } from "data/dates";
+import {
+  getTodaysDateAsObj,
+  monthStringArray,
+  addSubtractMonths,
+} from "data/dates";
 import { DarkThemeContext } from "context/theme";
 import { convertTextToTitleCase } from "utility/parseText";
 
 function Graph(props) {
-  const { date, setDate, options, setOptions, entriesData, outreachData } = props;
+  const {
+    date,
+    setDate,
+    options,
+    setOptions,
+    entriesData,
+    outreachData,
+    applicationsData,
+  } = props;
   const [periodOffset, setPeriodOffset] = useState(0);
   const darkTheme = useContext(DarkThemeContext);
-  
 
   const handlePomodoroVisibilityChange = (event) => {
     setOptions({
-        ...options,
-        graph: {
-            ...options.graph,
-            linesEnabled: {
-                ...options.graph.linesEnabled,
-                pomodoros: event.target.checked
-            }
-        }    
+      ...options,
+      graph: {
+        ...options.graph,
+        linesEnabled: {
+          ...options.graph.linesEnabled,
+          pomodoros: event.target.checked,
+        },
+      },
     });
   };
 
   const handleOutreachVisibilityChange = (event) => {
     setOptions({
-        ...options,
-        graph: {
-            ...options.graph,
-            linesEnabled: {
-                ...options.graph.linesEnabled,
-                outreach: event.target.checked
-            }
-        }    
+      ...options,
+      graph: {
+        ...options.graph,
+        linesEnabled: {
+          ...options.graph.linesEnabled,
+          outreach: event.target.checked,
+        },
+      },
+    });
+  };
+
+  const handleApplicationsVisibilityChange = (event) => {
+    setOptions({
+      ...options,
+      graph: {
+        ...options.graph,
+        linesEnabled: {
+          ...options.graph.linesEnabled,
+          applications: event.target.checked,
+        },
+      },
     });
   };
 
@@ -52,13 +76,13 @@ function Graph(props) {
     const { newMonth, newYear } = addSubtractMonths(date, difference);
     let newDay = 1;
     if (newMonth === today.month && newYear === today.year) newDay = today.day;
-    setDate({day: newDay, month: newMonth, year: newYear});
-  }
+    setDate({ day: newDay, month: newMonth, year: newYear });
+  };
 
   return (
     <div className={"canvas-container"} style={props.style}>
-        {/* Switch Graph View Button */}
-        {/* {entriesData.length > 0 && (
+      {/* Switch Graph View Button */}
+      {/* {entriesData.length > 0 && (
             <div
                 className={"switch-graph-view-btn"}
                 style={getSystemButtonStyle(darkTheme)}
@@ -69,44 +93,53 @@ function Graph(props) {
                 {convertTextToTitleCase(getNewPeriod())}
             </div>
         )} */}
-        {getNewPeriod() === "month" ? (
-            <div className={"switch-month-btn-container"}>
-                <button
-                    className={"switch-month-btn"}
-                    style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
-                    onClick={() => changeMonthOfGraph(-1)}
-                >{`⬅   ${monthStringArray[(date.month - 2 + 12) % 12]}`}</button>
-                <button
-                    className={"switch-month-btn"}
-                    style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
-                    onClick={() => changeMonthOfGraph(1)}
-                >{`${monthStringArray[(date.month + 12) % 12]}   ➡`}</button>
-            </div>
-        ) : null}
-        <div className={"switch-graph-data-input-container"}>
-            <label className="switch-graph-data-label">
-                <input
-                    className="switch-graph-data-input"
-                    type="checkbox"
-                    checked={options.graph.linesEnabled.pomodoros}
-                    onChange={handlePomodoroVisibilityChange}
-                />
-                Pomodoros
-            </label>
-            <label className="switch-graph-data-label">
-                <input
-                    className="switch-graph-data-input"
-                    type="checkbox"
-                    checked={options.graph.linesEnabled.outreach}
-                    onChange={handleOutreachVisibilityChange}
-                />
-                Outreach
-            </label>
+      {getNewPeriod() === "month" ? (
+        <div className={"switch-month-btn-container"}>
+          <button
+            className={"switch-month-btn"}
+            style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
+            onClick={() => changeMonthOfGraph(-1)}
+          >{`⬅   ${monthStringArray[(date.month - 2 + 12) % 12]}`}</button>
+          <button
+            className={"switch-month-btn"}
+            style={{ ...getSystemButtonStyle(darkTheme), padding: "0.5rem" }}
+            onClick={() => changeMonthOfGraph(1)}
+          >{`${monthStringArray[(date.month + 12) % 12]}   ➡`}</button>
         </div>
-        <GraphCanvas
-            {...{ entriesData, outreachData, date, options }}
-            period={getNewPeriod()}
-        />
+      ) : null}
+      <div className={"switch-graph-data-input-container"}>
+        <label className="switch-graph-data-label">
+          <input
+            className="switch-graph-data-input"
+            type="checkbox"
+            checked={options.graph.linesEnabled.pomodoros}
+            onChange={handlePomodoroVisibilityChange}
+          />
+          Pomodoros
+        </label>
+        <label className="switch-graph-data-label">
+          <input
+            className="switch-graph-data-input"
+            type="checkbox"
+            checked={options.graph.linesEnabled.outreach}
+            onChange={handleOutreachVisibilityChange}
+          />
+          Outreach
+        </label>
+        <label className="switch-graph-data-label">
+          <input
+            className="switch-graph-data-input"
+            type="checkbox"
+            checked={options.graph.linesEnabled.applications}
+            onChange={handleApplicationsVisibilityChange}
+          />
+          Applications
+        </label>
+      </div>
+      <GraphCanvas
+        {...{ entriesData, outreachData, applicationsData, date, options }}
+        period={getNewPeriod()}
+      />
     </div>
   );
 }

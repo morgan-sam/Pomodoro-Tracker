@@ -5,6 +5,16 @@ const GRAPH_BOTTOM_GAP = GRAPH_SIZES.BOTTOM_GAP;
 let CROSS_WIDTH = 3;
 
 export const drawGraphLine = (graph) => {
+  // Draw Applications Line
+  if (graph.linesEnabled.applications) {
+    drawPassedLinePath(graph.context, (ctx) => {
+      ctx.strokeStyle = graph.applicationsPlotColor;
+      graph.applicationsGraphData.forEach((el) =>
+        ctx.lineTo(el.coordinate.x, el.coordinate.y)
+      );
+    });
+  }
+
   // Draw Outreach Line
   if (graph.linesEnabled.outreach) {
     drawPassedLinePath(graph.context, (ctx) => {
@@ -39,10 +49,7 @@ const drawCross = (graph, size, el, crossColor) => {
         (x += (CROSS_WIDTH / 2) * crossMod(i)),
         (y += (CROSS_WIDTH / 2) * crossMod(i, 3))
       );
-      ctx.lineTo(
-        (x += size * crossMod(i, 3) * -1),
-        (y += size * crossMod(i))
-      );
+      ctx.lineTo((x += size * crossMod(i, 3) * -1), (y += size * crossMod(i)));
       ctx.lineTo((x += size * crossMod(i)), (y += size * crossMod(i, 3)));
     }
     ctx.stroke();
@@ -50,11 +57,17 @@ const drawCross = (graph, size, el, crossColor) => {
     ctx.fillStyle = crossColor;
     ctx.fill();
   });
-}
+};
 
 export const drawCoordinateCrosses = (graph, size) => {
   const today = parseISOToBigEndian(new Date().toISOString());
 
+  // Draw Applications Crosses
+  if (graph.linesEnabled.applications) {
+    graph.applicationsGraphData.forEach((el) => {
+      drawCross(graph, size, el, graph.applicationsPlotColor);
+    });
+  }
   // Draw Outreach Crosses
   if (graph.linesEnabled.outreach) {
     graph.outreachGraphData.forEach((el) => {

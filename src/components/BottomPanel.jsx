@@ -17,7 +17,15 @@ function BottomPanel(props) {
   return (
     <div className={"display-container"}>
       <Graph
-        {...{ date, setDate, options, setOptions, entriesData, outreachData }}
+        {...{
+          date,
+          setDate,
+          options,
+          setOptions,
+          entriesData,
+          outreachData,
+          applicationsData,
+        }}
       />
       <MonthOverview
         {...{ date, entriesData, outreachData, applicationsData, moneyData }}

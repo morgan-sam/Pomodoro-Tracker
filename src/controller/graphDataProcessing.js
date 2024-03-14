@@ -8,7 +8,7 @@ export const getPomodoroCount = (graphDataParameters, entriesData) => {
   return createTally(entries, tallyParameters);
 };
 
-export const getOutreachCount = (graphDataParameters, entriesData) => {
+export const getTallyCount = (graphDataParameters, entriesData) => {
   const tallyParameters = getTallyParameters(graphDataParameters);
   return createTally(entriesData, tallyParameters);
 };
