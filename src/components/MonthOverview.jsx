@@ -61,7 +61,15 @@ function MonthOverview(props) {
 
   return (
     <div className="month-overview">
-      <h3>{monthStringArray[(date.month - 1)] + ' ' + date.year}</h3> 
+      <div className="month-overview-topline">
+        <h3>{monthStringArray[(date.month - 1)] + ' ' + date.year}</h3> 
+        <div className="month-overview-key">
+          <span>Selected</span>
+          <div className="key-symbol" style={{background: colorTheme.light}}/>
+          <span>Today</span>
+          <div className="key-symbol" style={{border: `2px solid ${colorTheme.darker}`}}/>
+        </div>
+      </div>
       <div className="month-overview-days-container">
         {[...Array(7).keys()].map(day =>
           <div key={day}>
