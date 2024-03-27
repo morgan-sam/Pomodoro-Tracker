@@ -88,7 +88,7 @@ function MonthOverview(props) {
           // const todayMoneyCount = moneyData[todayDateString] || 0;
 
           const todaysIso = new Date().toISOString().split('T')[0];
-          const todaysDateDay = convertUTCISOToDateObj(todaysIso).date.day + 1;
+          const todaysDateDay = convertUTCISOToDateObj(todaysIso).date.day;
           const isToday = day === todaysDateDay;
           const isSelected = day === date.day;
 
