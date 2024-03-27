@@ -46,9 +46,10 @@ export const drawOutreachYLabelText = (graph, textLabelObj) => {
   const { i, unit } = textLabelObj;
   graph.context.fillStyle = graph.lineColors.outreach;
   graph.context.font = GRAPH_FONT_SIZE / 2 + "px sans-serif";
+  const x_offset = graph.linesEnabled.pomodoros * 15;
   graph.context.fillText(
     i,
-    GRAPH_FONT_SIZE * 2 + 15,
+    GRAPH_FONT_SIZE * 2 + x_offset,
     graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit
   );
 };
@@ -57,9 +58,11 @@ export const drawApplicationsYLabelText = (graph, textLabelObj) => {
   const { i, unit } = textLabelObj;
   graph.context.fillStyle = graph.lineColors.applications;
   graph.context.font = GRAPH_FONT_SIZE / 2 + "px sans-serif";
+  const x_offset =
+    graph.linesEnabled.pomodoros * 15 + graph.linesEnabled.outreach * 15;
   graph.context.fillText(
     i,
-    GRAPH_FONT_SIZE * 2 + 30,
+    GRAPH_FONT_SIZE * 2 + x_offset,
     graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit
   );
 };
