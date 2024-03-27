@@ -41,17 +41,14 @@ const drawCross = (graph, size, el, crossColor) => {
   drawPassedLinePath(graph.context, (ctx) => {
     ctx.strokeStyle = crossColor;
     ctx.beginPath();
+
     x -= size;
     y -= size;
     ctx.moveTo(x, y);
-    for (let i = 0; i < 4; i++) {
-      ctx.lineTo(
-        (x += (CROSS_WIDTH / 2) * crossMod(i)),
-        (y += (CROSS_WIDTH / 2) * crossMod(i, 3))
-      );
-      ctx.lineTo((x += size * crossMod(i, 3) * -1), (y += size * crossMod(i)));
-      ctx.lineTo((x += size * crossMod(i)), (y += size * crossMod(i, 3)));
-    }
+    ctx.lineTo(x + size * 2, y + size * 2);
+    ctx.moveTo(x + size * 2, y);
+    ctx.lineTo(x, y + size * 2);
+
     ctx.stroke();
     ctx.closePath();
     ctx.fillStyle = crossColor;
@@ -59,28 +56,51 @@ const drawCross = (graph, size, el, crossColor) => {
   });
 };
 
+export const drawPlus = (graph, size, el, crossColor) => {
+  let { x, y } = el.coordinate;
+  drawPassedLinePath(graph.context, (ctx) => {
+    ctx.strokeStyle = crossColor;
+    ctx.beginPath();
+
+    ctx.moveTo(x, y - size * 1.5);
+    ctx.lineTo(x, y + size * 1.5);
+    ctx.moveTo(x - size * 1.5, y);
+    ctx.lineTo(x + size * 1.5, y);
+
+    ctx.lineWidth = 2;
+
+    ctx.stroke();
+    ctx.closePath();
+    ctx.fillStyle = crossColor;
+    ctx.fill();
+  });
+};
+
+// Draw Circle Sign
+export const drawCircle = (graph, size, el, crossColor) => {
+  let { x, y } = el.coordinate;
+  drawPassedLinePath(graph.context, (ctx) => {
+    ctx.strokeStyle = crossColor;
+    ctx.beginPath();
+
+    // Draw an outline of a circle
+    ctx.arc(x, y, size, 0, 2 * Math.PI);
+    // make it thicker
+    ctx.lineWidth = 2;
+
+    ctx.stroke();
+    ctx.closePath();
+    // fill with canvas background color
+    ctx.fillStyle = "white";
+    ctx.fill();
+  });
+};
+
 export const drawCoordinateCrosses = (graph, size) => {
-  // Draw Applications Crosses
-  if (graph.linesEnabled.applications) {
-    graph.applicationsGraphData.forEach((el) => {
-      drawCross(
-        graph,
-        size,
-        {
-          ...el,
-          coordinate: {
-            x: el.coordinate.x,
-            y: el.coordinate.y,
-          },
-        },
-        graph.lineColors.applications
-      );
-    });
-  }
   // Draw Outreach Crosses
   if (graph.linesEnabled.outreach) {
     graph.outreachGraphData.forEach((el) => {
-      drawCross(
+      drawCircle(
         graph,
         size,
         {
@@ -91,6 +111,23 @@ export const drawCoordinateCrosses = (graph, size) => {
           },
         },
         graph.lineColors.outreach
+      );
+    });
+  }
+  // Draw Applications Crosses
+  if (graph.linesEnabled.applications) {
+    graph.applicationsGraphData.forEach((el) => {
+      drawPlus(
+        graph,
+        size,
+        {
+          ...el,
+          coordinate: {
+            x: el.coordinate.x,
+            y: el.coordinate.y,
+          },
+        },
+        graph.lineColors.applications
       );
     });
   }
