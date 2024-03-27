@@ -76,9 +76,7 @@ const drawYAxis = (graph) => {
 
   // Draw Applications Y Axis
   if (graph.linesEnabled.applications) {
-    console.log(graph.yAxisMax * graph.applicationsRatio);
     for (let i = 0; i <= graph.yAxisMax * graph.applicationsRatio; i++) {
-      console.log(i);
       const labelParameters = {
         i,
         unit: graph.units.y / graph.applicationsRatio,

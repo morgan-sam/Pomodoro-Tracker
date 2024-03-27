@@ -35,6 +35,7 @@ export const drawYLabelText = (graph, textLabelObj) => {
   const { i, unit } = textLabelObj;
   graph.context.fillStyle = graph.darkTheme ? "white" : "black";
   graph.context.font = (GRAPH_FONT_SIZE | 0) + "px sans-serif";
+  console.log(graph.context.font);
   graph.context.fillText(
     i,
     GRAPH_FONT_SIZE * 2,
@@ -45,7 +46,9 @@ export const drawYLabelText = (graph, textLabelObj) => {
 export const drawOutreachYLabelText = (graph, textLabelObj) => {
   const { i, unit } = textLabelObj;
   graph.context.fillStyle = graph.lineColors.outreach;
-  graph.context.font = GRAPH_FONT_SIZE / 2 + "px sans-serif";
+  graph.context.font = graph.linesEnabled.pomodoros
+    ? GRAPH_FONT_SIZE / 2 + "px sans-serif"
+    : GRAPH_FONT_SIZE + "px sans-serif";
   const x_offset = graph.linesEnabled.pomodoros * 15;
   graph.context.fillText(
     i,
@@ -57,7 +60,11 @@ export const drawOutreachYLabelText = (graph, textLabelObj) => {
 export const drawApplicationsYLabelText = (graph, textLabelObj) => {
   const { i, unit } = textLabelObj;
   graph.context.fillStyle = graph.lineColors.applications;
-  graph.context.font = GRAPH_FONT_SIZE / 2 + "px sans-serif";
+  graph.context.font =
+    graph.linesEnabled.pomodoros || graph.linesEnabled.outreach
+      ? GRAPH_FONT_SIZE / 2 + "px sans-serif"
+      : GRAPH_FONT_SIZE + "px sans-serif";
+  console.log(graph.context.font);
   const x_offset =
     graph.linesEnabled.pomodoros * 15 + graph.linesEnabled.outreach * 15;
   graph.context.fillText(
