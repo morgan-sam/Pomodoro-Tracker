@@ -1,5 +1,5 @@
 import { GRAPH_SIZES } from "styles/graphSizing";
-import { parseISOToBigEndian } from "utility/parseDates";
+
 const GRAPH_SCALE = GRAPH_SIZES.FONT_SIZE;
 const GRAPH_BOTTOM_GAP = GRAPH_SIZES.BOTTOM_GAP;
 let CROSS_WIDTH = 3;
@@ -10,7 +10,7 @@ export const drawGraphLine = (graph) => {
     drawPassedLinePath(graph.context, (ctx) => {
       ctx.strokeStyle = graph.lineColors.applications;
       graph.applicationsGraphData.forEach((el) =>
-        ctx.lineTo(el.coordinate.x + 10, el.coordinate.y)
+        ctx.lineTo(el.coordinate.x, el.coordinate.y)
       );
     });
   }
@@ -30,7 +30,7 @@ export const drawGraphLine = (graph) => {
     drawPassedLinePath(graph.context, (ctx) => {
       ctx.strokeStyle = graph.lineColors.pomodoros;
       graph.graphData.forEach((el) =>
-        ctx.lineTo(el.coordinate.x - 10, el.coordinate.y)
+        ctx.lineTo(el.coordinate.x, el.coordinate.y)
       );
     });
   }
@@ -69,7 +69,7 @@ export const drawCoordinateCrosses = (graph, size) => {
         {
           ...el,
           coordinate: {
-            x: el.coordinate.x + 10,
+            x: el.coordinate.x,
             y: el.coordinate.y,
           },
         },
@@ -86,7 +86,7 @@ export const drawCoordinateCrosses = (graph, size) => {
         {
           ...el,
           coordinate: {
-            x: el.coordinate.x + 0,
+            x: el.coordinate.x,
             y: el.coordinate.y,
           },
         },
@@ -109,7 +109,7 @@ export const drawCoordinateCrosses = (graph, size) => {
         {
           ...el,
           coordinate: {
-            x: el.coordinate.x - 10,
+            x: el.coordinate.x,
             y: el.coordinate.y,
           },
         },
