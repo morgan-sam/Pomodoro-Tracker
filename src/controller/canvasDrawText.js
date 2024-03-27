@@ -44,12 +44,22 @@ export const drawYLabelText = (graph, textLabelObj) => {
 
 export const drawOutreachYLabelText = (graph, textLabelObj) => {
   const { i, unit } = textLabelObj;
-  console.log(i);
   graph.context.fillStyle = graph.lineColors.outreach;
   graph.context.font = GRAPH_FONT_SIZE / 2 + "px sans-serif";
   graph.context.fillText(
     i,
     GRAPH_FONT_SIZE * 2 + 15,
+    graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit
+  );
+};
+
+export const drawApplicationsYLabelText = (graph, textLabelObj) => {
+  const { i, unit } = textLabelObj;
+  graph.context.fillStyle = graph.lineColors.applications;
+  graph.context.font = GRAPH_FONT_SIZE / 2 + "px sans-serif";
+  graph.context.fillText(
+    i,
+    GRAPH_FONT_SIZE * 2 + 30,
     graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit
   );
 };

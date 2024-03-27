@@ -159,6 +159,18 @@ export const drawOutreachYLabelLine = (graph, lineLabelObj) => {
   });
 };
 
+export const drawApplicationsYLabelLine = (graph, lineLabelObj) => {
+  const { i, unit } = lineLabelObj;
+  drawPassedLinePath(graph.context, (ctx) => {
+    ctx.strokeStyle = graph.lineColors.applications;
+    ctx.moveTo(0, graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit);
+    ctx.lineTo(
+      GRAPH_SCALE - 5,
+      graph.canvasRef.current.height - GRAPH_BOTTOM_GAP - i * unit
+    );
+  });
+};
+
 function drawPassedLinePath(context, lineFn) {
   context.beginPath();
   lineFn(context);

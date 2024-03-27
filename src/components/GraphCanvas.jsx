@@ -32,7 +32,7 @@ const GraphPanel = (props) => {
     };
 
     const outreachRatio = 2;
-    const applicationsRatio = 2;
+    const applicationsRatio = 4;
 
     const counts = getPomodoroCount(entriesParameters, entriesData);
     const outreachCounts = getTallyCount(entriesParameters, outreachData);
@@ -65,6 +65,7 @@ const GraphPanel = (props) => {
       darkTheme,
       colorTheme,
       outreachRatio,
+      applicationsRatio,
       lineColors,
       linesEnabled,
     };

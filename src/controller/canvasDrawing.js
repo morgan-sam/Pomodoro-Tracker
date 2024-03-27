@@ -2,7 +2,8 @@ import {
   drawGraphTitle,
   drawXLabelText,
   drawYLabelText,
-  drawOutreachYLabelText
+  drawOutreachYLabelText,
+  drawApplicationsYLabelText,
 } from "controller/canvasDrawText";
 import {
   drawGraphLine,
@@ -10,13 +11,10 @@ import {
   drawXLabelLine,
   drawYLabelLine,
   drawOutreachYLabelLine,
+  drawApplicationsYLabelLine,
 } from "controller/canvasDrawLines";
-import {
-  getXAxisLabelObj
-} from "controller/graphAxisLabels";
-import {
-  GRAPH_SIZES
-} from "styles/graphSizing";
+import { getXAxisLabelObj } from "controller/graphAxisLabels";
+import { GRAPH_SIZES } from "styles/graphSizing";
 const GRAPH_FONT_SIZE = GRAPH_SIZES.FONT_SIZE;
 
 const getCanvasContext = (canvasRef) => {
@@ -63,16 +61,31 @@ const drawXAxis = (graph) => {
 };
 
 const drawYAxis = (graph) => {
-
   // Draw Outreach Y Axis
   if (graph.linesEnabled.outreach) {
     for (let i = 0; i <= graph.yAxisMax * graph.outreachRatio; i++) {
       const labelParameters = {
         i,
-        unit: graph.units.y / graph.outreachRatio
+        unit: graph.units.y / graph.outreachRatio,
       };
       drawOutreachYLabelLine(graph, labelParameters);
-      if (i % 2 === 0) drawOutreachYLabelText(graph, labelParameters);
+      if (i % graph.outreachRatio === 0)
+        drawOutreachYLabelText(graph, labelParameters);
+    }
+  }
+
+  // Draw Applications Y Axis
+  if (graph.linesEnabled.applications) {
+    console.log(graph.yAxisMax * graph.applicationsRatio);
+    for (let i = 0; i <= graph.yAxisMax * graph.applicationsRatio; i++) {
+      console.log(i);
+      const labelParameters = {
+        i,
+        unit: graph.units.y / graph.applicationsRatio,
+      };
+      drawApplicationsYLabelLine(graph, labelParameters);
+      if (i % graph.applicationsRatio === 0)
+        drawApplicationsYLabelText(graph, labelParameters);
     }
   }
 
@@ -81,7 +94,7 @@ const drawYAxis = (graph) => {
     for (let i = 0; i <= graph.yAxisMax; i++) {
       const labelParameters = {
         i,
-        unit: graph.units.y
+        unit: graph.units.y,
       };
       drawYLabelLine(graph, labelParameters);
       drawYLabelText(graph, labelParameters);
