@@ -10,6 +10,8 @@ export const getSystemButtonStyle = (darkTheme) => {
     boxShadow: "2px 2px #ccc",
     cursor: "pointer",
     userSelect: "none",
+    height: "fit-content",
+    whiteSpace: "nowrap",
   };
 };
 

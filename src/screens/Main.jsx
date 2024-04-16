@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import TopPanel from "components/TopPanel";
-import TopRightButtons from "components/TopRightButtons";
 import BottomPanel from "components/BottomPanel";
 import { getAutoHourWidth } from "utility/calculateSizing";
 import { compareObjs } from "utility/sortAndCompare";
@@ -53,7 +52,7 @@ function Main(props) {
       console.log(error);
     }
   }
-  
+
   async function updateAllEntries() {
     try {
       const entries = await getEntries();
@@ -132,7 +131,6 @@ function Main(props) {
             hourWidth,
           }}
         />
-        <TopRightButtons />
         {options.graph.visible && (
           <BottomPanel
             {...{

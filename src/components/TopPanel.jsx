@@ -8,6 +8,8 @@ import {
   parseDateObjToBigEndian,
 } from "utility/parseDates";
 
+import TopRightButtons from "components/TopRightButtons";
+
 function TopPanel(props) {
   const {
     date,
@@ -28,12 +30,15 @@ function TopPanel(props) {
     parseDateObjToBigEndian(date) === new Date().toISOString().substring(0, 10);
   return (
     <div className={"top-panel"}>
-      <h1 className={"top-panel-title"}>
-        Data for{" "}
-        {isToday
-          ? `today (${parseDateObjToLittleEndian(date)})`
-          : parseDateObjToLittleEndian(date)}
-      </h1>
+      <div className="header-container">
+        <h1 className={"top-panel-title"}>
+          Data for{" "}
+          {isToday
+            ? `today (${parseDateObjToLittleEndian(date)})`
+            : parseDateObjToLittleEndian(date)}
+        </h1>
+        <TopRightButtons />
+      </div>
       <div className={"top-panel-option"}>
         <TopPageText
           {...{
