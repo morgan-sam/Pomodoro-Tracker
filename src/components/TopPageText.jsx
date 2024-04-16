@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-  parseDateObjToLittleEndian,
-  parseDateObjToBigEndian,
-  convertUTCISOToDateObj,
-} from "utility/parseDates";
 import { compareObjs } from "utility/sortAndCompare";
 import { twoLeadingZeroes } from "utility/parseText";
 import { updateOutreachData } from "data/queries";
@@ -78,9 +73,6 @@ function TopPageText(props) {
     entries.filter((el) => el.type === event && compareObjs(el.date, date))
       .length;
 
-  const isToday =
-    parseDateObjToBigEndian(date) === new Date().toISOString().substring(0, 10);
-
   useEffect(() => {
     const todayDateString = `${date["year"]}-${twoLeadingZeroes(
       date["month"]
@@ -115,12 +107,6 @@ function TopPageText(props) {
 
   return (
     <div>
-      <h1>
-        Data for{" "}
-        {isToday
-          ? `today (${parseDateObjToLittleEndian(date)})`
-          : parseDateObjToLittleEndian(date)}
-      </h1>
       <h2 className={"top-page-text-title"}>
         Pomodoros: {getEventCountForDay("pomodoro", date)}
       </h2>

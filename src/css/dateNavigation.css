@@ -7,18 +7,15 @@
 
 .date-nav-container {
   display: flex;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   flex-direction: column;
   align-items: center;
   vertical-align: center;
-  padding: 0 5rem;
+  padding: 0 10px;
   z-index: 10;
 }
 
 .date-nav-arrow-container {
-  width: 100%;
   display: flex;
+  gap: 20px;
   justify-content: space-between;
 }

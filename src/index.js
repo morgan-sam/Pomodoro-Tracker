@@ -1,5 +1,5 @@
 import React from "react";
-import * as ReactDOMClient from 'react-dom/client';
+import * as ReactDOMClient from "react-dom/client";
 import "./index.css";
 import "css/blobs.css";
 import "css/bottomPanel.css";
@@ -12,6 +12,7 @@ import "css/elementsTimeline.css";
 import "css/form.css";
 import "css/general.css";
 import "css/graphDisplaySelect.css";
+import "css/habitTracking.css";
 import "css/home.css";
 import "css/keyboardShortcut.css";
 import "css/loading.css";
@@ -30,6 +31,6 @@ import "css/topPanel.css";
 
 import App from "./App";
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
 root.render(<App tab="home" />);
