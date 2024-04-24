@@ -17,6 +17,10 @@
   margin: 0 10px;
 }
 
+.top-page-text-title-btn:disabled {
+  cursor: not-allowed;
+}
+
 #currency-input {
   width: 64px;
   height: 22px;
@@ -66,7 +70,7 @@
 
 .cross-button::before,
 .cross-button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;

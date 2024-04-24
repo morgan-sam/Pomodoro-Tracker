@@ -37,31 +37,55 @@ const App = () => {
             <Routes>
               <Route
                 path="/"
-                element={<Private AuthComponent={Main} DefaultComponent={Home} {...{ options, setOptions, fadeIn, setFadeIn }} />}
+                element={
+                  <Private
+                    AuthComponent={Main}
+                    DefaultComponent={Home}
+                    {...{ options, setOptions, fadeIn, setFadeIn }}
+                  />
+                }
               />
-              <Route
-                path="/login"
-                element={<LoginSignUp type="login" />}
-              />
-              <Route
-                path="/signup"
-                element={<LoginSignUp type="signup" />}
-              />
+              <Route path="/login" element={<LoginSignUp type="login" />} />
+              <Route path="/signup" element={<LoginSignUp type="signup" />} />
               <Route
                 path="/settings"
-                element={<Redirect AuthComponent={Settings} redirect={"/login"} {...{ options, setOptions }} />}
+                element={
+                  <Redirect
+                    AuthComponent={Settings}
+                    redirect={"/login"}
+                    {...{ options, setOptions }}
+                  />
+                }
               />
               <Route
                 path="/settings/display"
-                element={<Redirect AuthComponent={DisplaySettings} redirect={"/login"} {...{ options, setOptions }} />}
+                element={
+                  <Redirect
+                    AuthComponent={DisplaySettings}
+                    redirect={"/login"}
+                    {...{ options, setOptions }}
+                  />
+                }
               />
               <Route
                 path="/settings/account"
-                element={<Redirect AuthComponent={AccountSettings} redirect={"/login"} {...{ options, setOptions }} />}
+                element={
+                  <Redirect
+                    AuthComponent={AccountSettings}
+                    redirect={"/login"}
+                    {...{ options, setOptions }}
+                  />
+                }
               />
               <Route
                 path="/script"
-                element={<Redirect AuthComponent={Script} redirect={"/login"} {...{ options, setOptions }} />}
+                element={
+                  <Redirect
+                    AuthComponent={Script}
+                    redirect={"/login"}
+                    {...{ options, setOptions }}
+                  />
+                }
               />
             </Routes>
           </BrowserRouter>

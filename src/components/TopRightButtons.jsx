@@ -19,16 +19,10 @@ const TopRightButtons = () => {
       >
         Help
       </button>
-      <button
-        style={topRightButtonStyle}
-        onClick={() => navigate("/script")}
-      >
+      <button style={topRightButtonStyle} onClick={() => navigate("/script")}>
         Get Script
       </button>
-      <button
-        style={topRightButtonStyle}
-        onClick={() => navigate("/settings")}
-      >
+      <button style={topRightButtonStyle} onClick={() => navigate("/settings")}>
         Settings
       </button>
       <button

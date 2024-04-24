@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { compareObjs } from "utility/sortAndCompare";
 import { twoLeadingZeroes } from "utility/parseText";
 import { updateOutreachData } from "data/queries";
 import { updateApplicationsData } from "data/queries";
 import MoneyControl from "components/MoneyControl";
+import { DataContext } from "context/data";
 
 function TopPageText(props) {
+  const { filteredEntries: entries } = props;
+
   const {
+    loaded,
     date,
     outreachData,
     setOutreachData,
@@ -14,8 +18,8 @@ function TopPageText(props) {
     setApplicationsData,
     moneyData,
     setMoneyData,
-    filteredEntries: entries,
-  } = props;
+  } = useContext(DataContext);
+
   const [displayOutreachCount, setDisplayOutreachCount] = useState(0);
   const [displayApplicationsCount, setDisplayApplicationsCount] = useState(0);
   const [changingOutreachTimerID, setChangingOutreachTimerID] = useState(false);
@@ -114,6 +118,7 @@ function TopPageText(props) {
       <h2 className={"top-page-text-title"}>
         Outreach:
         <button
+          disabled={!loaded}
           onClick={() => clickChangeOutreachCount(-1)}
           className={"arrow-button top-page-text-title-btn"}
         >
@@ -121,6 +126,7 @@ function TopPageText(props) {
         </button>
         {!isNaN(displayOutreachCount) ? displayOutreachCount : 0}
         <button
+          disabled={!loaded}
           onClick={() => clickChangeOutreachCount(1)}
           className={"arrow-button top-page-text-title-btn"}
         >
@@ -134,6 +140,7 @@ function TopPageText(props) {
       <h2 className={"top-page-text-title"}>
         Applications:
         <button
+          disabled={!loaded}
           onClick={() => clickChangeApplicationsCount(-1)}
           className={"arrow-button top-page-text-title-btn"}
         >
@@ -141,6 +148,7 @@ function TopPageText(props) {
         </button>
         {!isNaN(displayApplicationsCount) ? displayApplicationsCount : 0}
         <button
+          disabled={!loaded}
           onClick={() => clickChangeApplicationsCount(1)}
           className={"arrow-button top-page-text-title-btn"}
         >

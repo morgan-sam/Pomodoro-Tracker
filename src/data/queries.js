@@ -92,6 +92,14 @@ export const updateMoneyData = async (dateString, moneyCount) => {
       .update({ [dateString]: moneyCount });
 };
 
+export const updateHabitsData = async (dateString, habitsData) => {
+  if (firebase.auth().currentUser)
+    return firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid + "/habits_data")
+      .update({ [dateString]: habitsData });
+};
+
 export const reauthenticate = async (password) => {
   const user = firebase.auth().currentUser;
   const credential = firebaseApp.auth.EmailAuthProvider.credential(

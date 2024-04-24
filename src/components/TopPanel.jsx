@@ -12,6 +12,7 @@ import TopRightButtons from "components/TopRightButtons";
 
 function TopPanel(props) {
   const {
+    loaded,
     date,
     setDate,
     options,
@@ -55,7 +56,7 @@ function TopPanel(props) {
           }}
         />
         <DateNavigation {...{ date, setDate }} />
-        <HabitTracking {...{ date, options, setOptions }} />
+        {false && <HabitTracking {...{ date, options, setOptions }} />}
       </div>
       <Timeline {...{ hourWidth, filteredEntries, eventLengths, options }} />
     </div>
